@@ -1,3 +1,18 @@
+import { useEffect, useRef } from "react"
+import { useParams } from "react-router"
+import { Link } from "react-router-dom"
+
 export function TaskDetails() {
-  return <div className="task-details-container"></div>;
+  const ref = useRef()
+  const params = useParams()
+
+  useEffect(() => {
+    ref.current?.showModal()
+  }, [])
+
+  return (
+    <dialog ref={ref}>
+      <Link to={`/board/${params.boardId}`}>Close</Link>
+    </dialog>
+  )
 }

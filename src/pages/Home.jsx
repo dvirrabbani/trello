@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 export function Home() {
-  return <section className="home-container"></section>;
+  return <section className="home-container">Welcome</section>
 }

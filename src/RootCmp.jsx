@@ -1,9 +1,9 @@
-import React from "react";
-import { Routes, Route } from "react-router";
-import { Home } from "./pages/Home";
-import { Workspace } from "./pages/Workspace";
-import { BoardDetails } from "./pages/BoardDetails";
-import { TaskDetails } from "./pages/TaskDetails";
+import React from "react"
+import { Routes, Route } from "react-router"
+import { Home } from "./pages/Home"
+import { Workspace } from "./pages/Workspace"
+import { BoardDetails } from "./pages/BoardDetails"
+import { TaskDetails } from "./pages/TaskDetails"
 
 export function RootCmp() {
   return (
@@ -30,5 +30,5 @@ export function RootCmp() {
         </Routes>
       </main>
     </div>
-  );
+  )
 }
