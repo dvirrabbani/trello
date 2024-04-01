@@ -4,9 +4,9 @@
   height: 100%;
 
   .board-main-content {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin-bottom: 8px;
-    margin-top: 12px;
-    overflow-x: auto;
-    padding-inline-start: em(6px);
   }
 }
