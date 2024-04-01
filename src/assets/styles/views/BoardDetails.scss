@@ -1,0 +1,12 @@
+.board-details-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100%;
+
+  .board-main-content {
+    margin-bottom: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+    padding-inline-start: em(6px);
+  }
+}
