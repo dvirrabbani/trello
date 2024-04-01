@@ -126,14 +126,15 @@ export const DEMO_BOARD_LIST = [
     cmpsOrder: ["status-picker", "member-picker", "date-picker"],
   },
   {
-    _id: "b101",
+    _id: "b102",
     title: "Task management",
     isStarred: true,
     archivedAt: 1589983468418,
     createdBy: {
       userId: "u101",
       fullname: "Abi Abambi",
-      imgUrl: "http://some-img",
+      imgUrl:
+        "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
     },
     style: {
       bgImage:
@@ -154,8 +155,15 @@ export const DEMO_BOARD_LIST = [
     members: [
       {
         _id: "u101",
-        fullname: "Tal Tarablus",
-        imgUrl: "https://www.google.com",
+        fullname: "Dvir Rabbani",
+        imgUrl:
+          "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+      },
+      {
+        _id: "u102",
+        fullname: "Yuval Mor",
+        imgUrl:
+          "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/170.png",
       },
     ],
     groups: [
