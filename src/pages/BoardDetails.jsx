@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { Outlet, useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { GroupList } from "../cmps/GroupList";
-import { loadBoard, loadBoards } from "../store/board.actions";
+import { loadBoard } from "../store/board.actions";
+import { BoardDetailsHeader } from "../cmps/BoardDetailsHeader";
 
 export function BoardDetails() {
   const params = useParams();
@@ -18,7 +19,7 @@ export function BoardDetails() {
     <div className="board-details-container">
       <div className="board-sidebar">Sidebar</div>
       <div className="board-main-content">
-        <div className="board-header">{board.title}</div>
+        <BoardDetailsHeader title={board.title} />
         <div className="board-groups-container">
           <GroupList groups={board.groups} />
         </div>
