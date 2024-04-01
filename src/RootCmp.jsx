@@ -1,13 +1,15 @@
-import React from "react"
-import { Routes, Route } from "react-router"
-import { Home } from "./pages/Home"
-import { Workspace } from "./pages/Workspace"
-import { BoardDetails } from "./pages/BoardDetails"
-import { TaskDetails } from "./pages/TaskDetails"
+import React from "react";
+import { Routes, Route } from "react-router";
+import { Home } from "./pages/Home";
+import { Workspace } from "./pages/Workspace";
+import { BoardDetails } from "./pages/BoardDetails";
+import { TaskDetails } from "./pages/TaskDetails";
+import { AppHeader } from "./cmps/AppHeader";
 
 export function RootCmp() {
   return (
-    <div>
+    <div className="main-app">
+      <AppHeader />
       <main>
         <Routes>
           <Route exact={true} path={"/"} element={<Home />} />
@@ -30,5 +32,5 @@ export function RootCmp() {
         </Routes>
       </main>
     </div>
-  )
+  );
 }

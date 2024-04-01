@@ -1,3 +1,8 @@
 .app-header {
-  background-color: $clr4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid $clr16;
+  border-bottom: 1px solid $clr16;
+  padding: em(8px);
 }
