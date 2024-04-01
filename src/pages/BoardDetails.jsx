@@ -1,26 +1,18 @@
-import { useEffect, useState } from "react"
-import { Outlet, useParams } from "react-router"
-import { boardService } from "../services/board.service"
-import { useSelector } from "react-redux"
-import { GroupList } from "../cmps/GroupList"
+import { useEffect } from "react";
+import { Outlet, useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { GroupList } from "../cmps/GroupList";
+import { loadBoard, loadBoards } from "../store/board.actions";
 
 export function BoardDetails() {
-  const board = useSelector((storeState) => storeState.boardModule.boards[0])
-  //TODO - load board id from where?
+  const params = useParams();
+  const board = useSelector((storeState) => storeState.boardModule.board);
 
-  // const params = useParams()
-  // const [board, setBoard] = useState(null)
+  useEffect(() => {
+    loadBoard(params.boardId);
+  }, [params.boardId]);
 
-  // useEffect(() => {
-  //   loadBoard()
-  // }, [])
-
-  // async function loadBoard() {
-  //   const board = await boardService.getById(params.boardId)
-  //   setBoard(board)
-  // }
-
-  // if (!board) return <div>Loading..</div>
+  if (!board) return <div>Loading..</div>;
 
   return (
     <div className="board-details-container">
@@ -33,5 +25,5 @@ export function BoardDetails() {
       </div>
       <Outlet />
     </div>
-  )
+  );
 }

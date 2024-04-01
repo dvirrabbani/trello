@@ -4,6 +4,7 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js";
 import {
   ADD_BOARD,
   REMOVE_BOARD,
+  SET_BOARD,
   SET_BOARDS,
   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
@@ -40,6 +41,14 @@ export async function loadBoards() {
   } catch (err) {
     console.log("Cannot load boards", err);
     throw err;
+  }
+}
+
+export async function loadBoard(boardId) {
+  try {
+    store.dispatch({ type: SET_BOARD, boardId });
+  } catch (err) {
+    console.log("Cannot load board", err);
   }
 }
 
