@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export function TaskList({ group }) {
   return (
-    <ol>
+    <ol className="clean-list">
       {group.tasks.map((task) => {
         return (
           <li key={task.id}>

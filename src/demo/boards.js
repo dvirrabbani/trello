@@ -9,7 +9,7 @@ export const DEMO_BOARD_LIST = [
       fullname: "Abi Abambi",
       imgUrl: "http://some-img",
     },
-    style: {},
+    style: { backgroundColor: "rgb(11, 80, 175)" },
     labels: [
       {
         id: "l101",

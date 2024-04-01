@@ -1,9 +1,17 @@
 .board-details-container {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: rem(260px) 1fr;
   height: 100%;
 
-  .board-main-content {
+  .board-details-header {
+    padding: 12px 10px 12px 16px;
+  }
+
+  .board-sidebar {
+    border-right: 1px solid white;
+  }
+
+  .board-groups-container {
     margin-bottom: 8px;
     margin-top: 12px;
     overflow-x: auto;
