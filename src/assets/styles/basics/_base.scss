@@ -16,10 +16,8 @@ html {
 }
 
 body {
-  font-size: rem(18px);
+  font-size: rem(16px);
   margin: 0;
-  max-width: 1024px;
-  margin: auto;
 }
 
 h1,
@@ -31,12 +29,6 @@ h6 {
   font-family: caveat;
   margin: 0 0 0.6em;
   line-height: 1;
-}
-
-section,
-main,
-footer {
-  padding: 5px;
 }
 
 img {
@@ -52,4 +44,10 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+
+.main-app {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
