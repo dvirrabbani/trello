@@ -162,7 +162,7 @@ const svgs = {
       />
     </svg>
   `,
-  listEdit: `
+  more: `
     <svg
       width="24"
       height="24"

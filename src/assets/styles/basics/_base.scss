@@ -42,8 +42,15 @@ p {
 a {
   text-decoration: none;
 }
-a:hover {
-  text-decoration: underline;
+
+textarea {
+  background-color: inherit;
+  border: transparent;
+  font-family: inherit;
+  outline: none;
+  overflow: auto;
+  resize: none;
+  height: 100%;
 }
 
 .main-app {

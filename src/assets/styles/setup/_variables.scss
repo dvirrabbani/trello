@@ -1,6 +1,8 @@
 // Colors
 $color-txt-primary: #172b4d;
 $group-background: #f1f2f4;
+$task-background: #ffffff;
+$border-focused: #388bff;
 $clr1: #000000;
 $clr2: #6e5dc6;
 $clr3: #0c66e4;
@@ -20,6 +22,7 @@ $clr17: #e2b203;
 
 //shadow
 $group-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px 0px;
+$task-shadow: 0px 1px 1px #091e4240;
 
 // Breakpoints
 $mobile-breakpoint: 460px;

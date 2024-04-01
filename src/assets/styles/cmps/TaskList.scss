@@ -1,0 +1,25 @@
+.task-list {
+  gap: 8px;
+
+  .task-preview {
+    padding: 8px 12px;
+    background-color: $task-background;
+    border-radius: 8px;
+    box-shadow: $task-shadow;
+    color: $color-txt-primary;
+    min-height: 36px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    white-space: normal;
+    font-size: em(14px);
+    font-weight: 400;
+    line-height: em(20px);
+    cursor: pointer;
+
+    &:hover {
+      outline: 2px solid $border-focused;
+    }
+  }
+}

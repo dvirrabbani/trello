@@ -15,5 +15,26 @@
     min-width: 272px;
     width: 272px;
     padding: 8px;
+
+    button {
+      @include btn;
+    }
+
+    .group-icon-btn {
+      padding: rem(8px);
+    }
+
+    .group-header {
+      height: 32px;
+    }
+
+    .group-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      padding: 6px 8px 6px 12px;
+      white-space: normal;
+      cursor: pointer;
+    }
   }
 }

@@ -9,8 +9,12 @@ export function GroupList({ groups }) {
           <li key={group.id} className="group-li">
             <div className="group-preview">
               <div className="group-header flex justify-between">
-                <div className="group-title">{group.title}</div>
-                <SvgIcon iconName="listEdit" className="svg-icon" />
+                <textarea className="group-title" spellcheck="false" name="">
+                  {group.title}
+                </textarea>
+                <button className="group-edit group-icon-btn">
+                  <SvgIcon iconName="more" className="svg-icon" />
+                </button>
               </div>
               <TaskList group={group} />
               <div className="group-actions">
