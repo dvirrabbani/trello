@@ -12,15 +12,18 @@ export function GroupList({ groups }) {
                 <textarea className="group-title" spellcheck="false" name="">
                   {group.title}
                 </textarea>
-                <button className="group-edit group-icon-btn">
+                <button className="group-edit icon-btn">
                   <SvgIcon iconName="more" className="svg-icon" />
                 </button>
               </div>
               <TaskList group={group} />
-              <div className="group-actions">
-                <button className="add-task">
+              <div className="group-actions flex justify-between">
+                <button className="add-task-btn full">
                   <SvgIcon iconName="plus" />
                   <span>Add a card</span>
+                </button>
+                <button className="icon-btn">
+                  <SvgIcon iconName="taskTemplate" />
                 </button>
               </div>
             </div>

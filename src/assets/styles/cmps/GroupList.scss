@@ -18,10 +18,21 @@
 
     button {
       @include btn;
+      border-radius: 8px;
+
+      &:hover {
+        background-color: $background-neutral-hovered;
+      }
     }
 
-    .group-icon-btn {
-      padding: rem(8px);
+    .icon-btn {
+      padding: 8px;
+    }
+
+    .add-task-btn {
+      justify-content: flex-start;
+      padding: 6px 12px 6px 8px;
+      gap: 8px;
     }
 
     .group-header {
@@ -35,6 +46,10 @@
       padding: 6px 8px 6px 12px;
       white-space: normal;
       cursor: pointer;
+    }
+
+    .group-actions {
+      gap: 4px;
     }
   }
 }
