@@ -1,0 +1,16 @@
+.board-preview {
+  height: 80px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  padding: rem(8px);
+  font-size: rem(14px);
+  border-radius: 3px;
+  color: $clr8;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
