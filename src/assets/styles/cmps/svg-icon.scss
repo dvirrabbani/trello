@@ -1,0 +1,23 @@
+.svg-icon {
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(16px);
+  width: rem(16px);
+
+  &.svg-icon-size-md {
+    height: rem(24px);
+    width: rem(24px);
+  }
+
+  &.svg-icon-size-lg {
+    height: rem(32px);
+    width: rem(32px);
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
