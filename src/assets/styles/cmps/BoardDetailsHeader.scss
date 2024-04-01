@@ -1,0 +1,25 @@
+.board-details-header {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(12px) rem(16px);
+  backdrop-filter: blur(4px);
+  background: $clr18;
+  color: $clr8;
+
+  .member-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+    .member-item {
+      display: flex;
+      align-items: center;
+      width: rem(28px);
+      height: rem(28px);
+    }
+  }
+}
