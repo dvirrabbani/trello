@@ -15,15 +15,21 @@ export function BoardDetails() {
 
   if (!board) return <div>Loading..</div>;
 
+  //TODO - think it need to be in store
+  const boardStyle = {
+    backgroundColor: board.style.backgroundColor,
+    color: "white",
+  };
+
   return (
-    <div className="board-details-container">
+    <div className="board-details-container" style={boardStyle}>
       <div className="board-sidebar">Sidebar</div>
       <div
-        className="board-main-content"
+        className="board-main-content flex column"
         style={{ backgroundImage: `url(${board.style.bgImage})` }}
       >
         <BoardDetailsHeader title={board.title} members={board.members} />
-        <div className="board-groups-container">
+        <div className="board-groups-container full">
           <GroupList groups={board.groups} />
         </div>
       </div>

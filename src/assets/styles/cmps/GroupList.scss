@@ -1,0 +1,19 @@
+.group-list {
+  height: 100%;
+  flex-wrap: nowrap;
+
+  .group-li {
+    height: 100%;
+    padding: 0 6px;
+  }
+
+  .group-preview {
+    background-color: $group-background;
+    box-shadow: $group-shadow;
+    color: $group-color;
+    border-radius: 12px;
+    min-width: 272px;
+    width: 272px;
+    padding: 8px;
+  }
+}

@@ -10,6 +10,7 @@ export const DEMO_BOARD_LIST = [
       imgUrl: "http://some-img",
     },
     style: {
+      backgroundColor: "rgb(11, 80, 175)",
       bgImage:
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/698x960/d156423cadf3438ddc90c80793a5fbfa/photo-1588268317073-67baf5721097.jpg",
     },
@@ -259,4 +260,4 @@ export const DEMO_BOARD_LIST = [
 
     cmpsOrder: ["status-picker", "member-picker", "date-picker"],
   },
-];
+]

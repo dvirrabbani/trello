@@ -3,12 +3,15 @@ import { TaskList } from "./TaskList"
 
 export function GroupList({ groups }) {
   return (
-    <ol>
+    <ol className="group-list clean-list flex">
       {groups.map((group) => {
         return (
-          <li key={group.id}>
+          <li key={group.id} className="group-li">
             <div className="group-preview">
-              <div className="group-title">{group.title}</div>
+              <div className="group-header flex justify-between">
+                <div className="group-title">{group.title}</div>
+                <SvgIcon iconName="listEdit" className="svg-icon" />
+              </div>
               <TaskList group={group} />
               <div className="group-actions">
                 <button className="add-task">
