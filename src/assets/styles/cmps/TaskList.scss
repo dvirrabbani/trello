@@ -20,6 +20,7 @@
     cursor: pointer;
 
     &:hover {
+      outline-color: -webkit-focus-ring-color;
       outline: 2px solid $border-focused;
     }
   }

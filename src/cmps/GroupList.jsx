@@ -9,7 +9,11 @@ export function GroupList({ groups }) {
           <li key={group.id} className="group-li">
             <div className="group-preview">
               <div className="group-header flex justify-between">
-                <textarea className="group-title" spellcheck="false" name="">
+                <textarea
+                  className="group-title full"
+                  spellcheck="false"
+                  name=""
+                >
                   {group.title}
                 </textarea>
                 <button className="group-edit icon-btn">
