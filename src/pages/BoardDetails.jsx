@@ -18,8 +18,11 @@ export function BoardDetails() {
   return (
     <div className="board-details-container">
       <div className="board-sidebar">Sidebar</div>
-      <div className="board-main-content">
-        <BoardDetailsHeader title={board.title} />
+      <div
+        className="board-main-content"
+        style={{ backgroundImage: `url(${board.style.bgImage})` }}
+      >
+        <BoardDetailsHeader title={board.title} members={board.members} />
         <div className="board-groups-container">
           <GroupList groups={board.groups} />
         </div>
