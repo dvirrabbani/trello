@@ -1,11 +1,14 @@
 .workspace-container {
   margin-top: rem(43px);
   padding-inline-start: rem(16px);
-
   .board-list-header {
     color: $color-txt-primary;
     font-weight: bold;
     display: flex;
     gap: 12px;
+  }
+
+  .all-boards {
+    margin-top: rem(55px);
   }
 }
