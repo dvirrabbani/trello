@@ -29,8 +29,15 @@ export const DEMO_BOARD_LIST = [
     members: [
       {
         _id: "u101",
-        fullname: "Tal Tarablus",
-        imgUrl: "https://www.google.com",
+        fullname: "Dvir Rabbani",
+        imgUrl:
+          "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+      },
+      {
+        _id: "u102",
+        fullname: "Yuval Mor",
+        imgUrl:
+          "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/170.png",
       },
     ],
     groups: [
@@ -260,4 +267,4 @@ export const DEMO_BOARD_LIST = [
 
     cmpsOrder: ["status-picker", "member-picker", "date-picker"],
   },
-];
+]
