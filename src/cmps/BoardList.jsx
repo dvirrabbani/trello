@@ -1,9 +1,13 @@
 import { DEMO_BOARD_LIST } from "../demo/boards"
 import { BoardPreview } from "./boardPreview"
-import { getActionAddBoard } from "../store/board.actions"
+import { getActionAddBoard, getActionUpdateBoard } from "../store/board.actions"
 import SvgIcon from "./SvgIcon"
 
 export function BoardList({ boards }) {
+  async function onUpdateBoard(boardToSave) {
+    await getActionUpdateBoard(boardToSave)
+  }
+
   async function onAddBoard() {
     // TODO create new board using function;
     const boardToSave = DEMO_BOARD_LIST[0]
@@ -19,7 +23,14 @@ export function BoardList({ boards }) {
           <li className="board-item" key={board._id}>
             <BoardPreview id={_id} title={title} style={style} />
             <div className="board-actions">
-              <SvgIcon iconName={board.isStarred ? "starFill" : "star"} />
+              <button
+                className="clean-btn "
+                onClick={() =>
+                  onUpdateBoard({ ...board, isStarred: !board.isStarred })
+                }
+              >
+                <SvgIcon iconName={board.isStarred ? "starFill" : "star"} />
+              </button>
             </div>
           </li>
         )

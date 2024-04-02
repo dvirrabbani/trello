@@ -25,14 +25,20 @@ export async function getActionAddBoard(board) {
       board: boardToSave,
     })
   } catch (err) {
-    console.log("Cannot load boards", err)
+    console.log("Cannot add board", err)
     throw err
   }
 }
-export function getActionUpdateBoard(board) {
-  return {
-    type: UPDATE_BOARD,
-    board,
+export async function getActionUpdateBoard(board) {
+  try {
+    const boardToSave = await boardService.save(board)
+    store.dispatch({
+      type: UPDATE_BOARD,
+      board: boardToSave,
+    })
+  } catch (err) {
+    console.log("Cannot update board", err)
+    throw err
   }
 }
 
