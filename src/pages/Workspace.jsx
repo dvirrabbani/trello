@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { loadBoards } from "../store/board.actions.js";
-import { BoardList } from "../cmps/BoardList.jsx";
-import SvgIcon from "../cmps/SvgIcon.jsx";
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { loadBoards } from "../store/board.actions.js"
+import { BoardList } from "../cmps/BoardList.jsx"
+import SvgIcon from "../cmps/SvgIcon.jsx"
 
 export function Workspace() {
-  const boards = useSelector((storeState) => storeState.boardModule.boards);
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
 
   useEffect(() => {
-    loadBoards();
-  }, []);
+    loadBoards()
+  }, [])
 
   return (
     <div className="workspace-container">
@@ -19,5 +19,5 @@ export function Workspace() {
       </div>
       <BoardList boards={boards} />
     </div>
-  );
+  )
 }

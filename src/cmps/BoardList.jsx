@@ -1,7 +1,16 @@
+import { DEMO_BOARD_LIST } from "../demo/boards"
 import { BoardPreview } from "./boardPreview"
+import { getActionAddBoard } from "../store/board.actions"
 import SvgIcon from "./SvgIcon"
 
 export function BoardList({ boards }) {
+  async function onAddBoard() {
+    // TODO create new board using function;
+    const boardToSave = DEMO_BOARD_LIST[0]
+    delete boardToSave._id
+    await getActionAddBoard(boardToSave)
+  }
+
   return (
     <ul className="board-list">
       {boards.map((board) => {
@@ -16,7 +25,7 @@ export function BoardList({ boards }) {
         )
       })}
       <li className="board-item">
-        <button className="btn-secondary">
+        <button className="btn-secondary" onClick={onAddBoard}>
           <span>Create new board</span>
         </button>
       </li>
