@@ -139,7 +139,7 @@ export const DEMO_BOARD_LIST = [
     },
     style: {
       bgImage:
-        "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/698x960/d156423cadf3438ddc90c80793a5fbfa/photo-1588268317073-67baf5721097.jpg",
+        "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/964891d63f67d6c53a74b8908fc8c3d5/photo-1711139299064-f60e2753163f.jpg",
     },
     labels: [
       {
@@ -260,4 +260,4 @@ export const DEMO_BOARD_LIST = [
 
     cmpsOrder: ["status-picker", "member-picker", "date-picker"],
   },
-]
+];
