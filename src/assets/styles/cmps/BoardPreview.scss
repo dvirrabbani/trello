@@ -1,14 +1,28 @@
 .board-preview {
-  height: 80px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  height: 100%;
   display: block;
-  padding: rem(8px);
   font-size: rem(14px);
-  border-radius: 3px;
   color: $clr8;
   font-weight: bold;
+  position: relative;
+
+  .background {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .content {
+    padding: rem(8px);
+  }
+
+  &:hover .background {
+    filter: brightness(0.7);
+  }
 
   &:hover {
     text-decoration: none;

@@ -1,5 +1,7 @@
 .workspace-container {
   margin-top: rem(43px);
+  padding-inline-start: rem(16px);
+
   .board-list-header {
     color: $color-txt-primary;
     font-weight: bold;
