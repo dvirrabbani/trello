@@ -3,5 +3,7 @@
   .board-list-header {
     color: $color-txt-primary;
     font-weight: bold;
+    display: flex;
+    gap: 12px;
   }
 }
