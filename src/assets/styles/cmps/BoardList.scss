@@ -10,6 +10,7 @@
   .board-item {
     height: rem(80px);
     flex-basis: 25%;
+    max-width: rem(178px);
     position: relative;
     overflow: hidden;
     border-radius: rem(3px);
@@ -20,5 +21,11 @@
       bottom: em(10px);
       right: em(9px);
     }
+  }
+
+  .btn-secondary {
+    height: inherit;
+    width: 100%;
+    color: $color-txt-primary;
   }
 }

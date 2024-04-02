@@ -1,11 +1,11 @@
-import { BoardPreview } from "./boardPreview";
-import SvgIcon from "./SvgIcon";
+import { BoardPreview } from "./boardPreview"
+import SvgIcon from "./SvgIcon"
 
 export function BoardList({ boards }) {
   return (
     <ul className="board-list">
       {boards.map((board) => {
-        const { _id, title, style } = board;
+        const { _id, title, style } = board
         return (
           <li className="board-item" key={board._id}>
             <BoardPreview id={_id} title={title} style={style} />
@@ -13,8 +13,13 @@ export function BoardList({ boards }) {
               <SvgIcon iconName={board.isStarred ? "starFill" : "star"} />
             </div>
           </li>
-        );
+        )
       })}
+      <li className="board-item">
+        <button className="btn-secondary">
+          <span>Create new board</span>
+        </button>
+      </li>
     </ul>
-  );
+  )
 }
