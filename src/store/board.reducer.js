@@ -1,5 +1,3 @@
-import { DEMO_BOARD_LIST } from "../demo/boards";
-
 export const SET_BOARDS = "SET_BOARDS";
 export const REMOVE_BOARD = "REMOVE_BOARD";
 export const ADD_BOARD = "ADD_BOARD";
@@ -8,7 +6,7 @@ export const UPDATE_BOARD = "UPDATE_BOARD";
 export const UNDO_REMOVE_BOARD = "UNDO_REMOVE_BOARD";
 
 const initialState = {
-  boards: DEMO_BOARD_LIST,
+  boards: [],
   board: null,
   lastRemovedBoard: null,
 };
@@ -28,8 +26,7 @@ export function boardReducer(state = initialState, action) {
       newState = { ...state, boards, lastRemovedBoard };
       break;
     case SET_BOARD:
-      const board = state.boards.find((board) => board._id === action.boardId);
-      newState = { ...state, board };
+      newState = { ...state, board: action.board };
       break;
     case ADD_BOARD:
       newState = { ...state, boards: [...state.boards, action.board] };

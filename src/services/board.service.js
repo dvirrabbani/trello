@@ -16,29 +16,35 @@ export const boardService = {
 window.cs = boardService;
 
 async function query(filterBy = { txt: "" }) {
-  // return storageService.get(STORAGE_KEY, filterBy);
-  return DEMO_BOARD_LIST;
+  let boards = utilService.loadFromStorage(STORAGE_KEY);
+  if (!boards || !boards.length)
+    utilService.saveToStorage(STORAGE_KEY, DEMO_BOARD_LIST);
+  boards = await storageService.query(STORAGE_KEY);
+  return boards;
 }
 
 function getById(boardId) {
-  return storageService.get(`board/${boardId}`);
+  return storageService.get(STORAGE_KEY, boardId);
 }
 
 async function remove(boardId) {
-  return storageService.delete(`board/${boardId}`);
+  return storageService.remove(STORAGE_KEY, boardId);
 }
 async function save(board) {
   var savedBoard;
   if (board._id) {
-    savedBoard = await storageService.put(`board/${board._id}`, board);
+    savedBoard = await storageService.put(STORAGE_KEY, board);
   } else {
-    savedBoard = await storageService.post("board", board);
+    savedBoard = await storageService.post(STORAGE_KEY, board);
   }
   return savedBoard;
 }
 
 async function addBoardMsg(boardId, txt) {
-  const savedMsg = await storageService.post(`board/${boardId}/msg`, { txt });
+  const savedMsg = await storageService.post(STORAGE_KEY, {
+    _id: boardId,
+    txt,
+  });
   return savedMsg;
 }
 
