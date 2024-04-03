@@ -135,6 +135,16 @@ export async function removeBoard(boardId) {
   }
 }
 
+export async function loadTask(boardId) {
+  try {
+    await boardService.remove(boardId)
+    store.dispatch(getActionRemoveBoard(boardId))
+  } catch (err) {
+    console.log("Cannot remove board", err)
+    throw err
+  }
+}
+
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 export async function onRemoveBoardOptimistic(boardId) {

@@ -49,10 +49,12 @@ export const DEMO_BOARD_LIST = [
           {
             id: "c101",
             title: "Replace logo",
+            description: "description",
           },
           {
             id: "c102",
             title: "Add Samples",
+            description: "description",
           },
         ],
         style: {},
@@ -64,6 +66,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "c103",
             title: "Do that",
+            description: "description",
             archivedAt: 1589983468418,
           },
           {
