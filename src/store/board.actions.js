@@ -78,22 +78,14 @@ export async function updateBoard(
       gIdx = board.groups?.findIndex((g) => g.id === groupId)
     }
 
-    console.log("gorups data")
-    console.log(board.groups[gIdx].tasks)
     if (taskId) {
       tIdx = board.groups[gIdx]?.tasks.findIndex((c) => c.id === taskId)
-      console.log("gorups after")
-      console.log(tIdx)
     }
-    console.log("update task 1 -------------------------")
 
-    console.log({ gIdx, tIdx })
-    if (tIdx) {
-      console.log("")
-      console.log("update task 2 -------------------------")
+    if (taskId) {
       board.groups[gIdx].tasks[tIdx][key] = value
       console.log("update card")
-    } else if (gIdx) {
+    } else if (groupId) {
       board.groups[gIdx][key] = value
       console.log("update group")
     } else {
