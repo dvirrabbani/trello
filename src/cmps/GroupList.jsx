@@ -10,8 +10,10 @@ export function GroupList({ groups }) {
             <div className="group-preview">
               <div className="group-header flex justify-between">
                 <textarea
+                  value=""
+                  onChange={() => console.log("change textarea")}
                   className="group-title full"
-                  spellcheck="false"
+                  spellCheck="false"
                   name=""
                 >
                   {group.title}
