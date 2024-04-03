@@ -1,0 +1,16 @@
+.button {
+  @include btn;
+  color: $color-txt-primary;
+  padding: rem(8px);
+  row-gap: rem(6px);
+  font-weight: 500;
+  justify-content: flex-start;
+  background-color: $background-neutral;
+
+  &:hover {
+    background-color: $background-neutral-hovered;
+  }
+  &:active {
+    background-color: $background-neutral-pressed;
+  }
+}
