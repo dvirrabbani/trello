@@ -1,4 +1,5 @@
 export const SET_BOARDS = "SET_BOARDS"
+export const UPDATE_BOARDS = "UPDATE_BOARDS"
 export const REMOVE_BOARD = "REMOVE_BOARD"
 export const ADD_BOARD = "ADD_BOARD"
 export const SET_BOARD = "SET_BOARD"
@@ -18,6 +19,12 @@ export function boardReducer(state = initialState, action) {
     case SET_BOARDS:
       newState = { ...state, boards: action.boards }
       break
+    case UPDATE_BOARDS:
+      boards = state.boards.map((board) =>
+        board._id === action.board._id ? action.board : board
+      )
+      newState = { ...state, boards: boards }
+      break
     case REMOVE_BOARD:
       const lastRemovedBoard = state.boards.find(
         (board) => board._id === action.boardId
@@ -32,10 +39,10 @@ export function boardReducer(state = initialState, action) {
       newState = { ...state, boards: [...state.boards, action.board] }
       break
     case UPDATE_BOARD:
-      boards = state.boards.map((board) =>
-        board._id === action.board._id ? action.board : board
-      )
-      newState = { ...state, boards }
+      newState = {
+        ...state,
+        board: { ...action.board },
+      }
       break
   }
   return newState
