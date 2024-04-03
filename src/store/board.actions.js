@@ -72,20 +72,26 @@ export async function updateBoard(
   { key, value },
   activityType
 ) {
-  console.log({ key, value })
   try {
-    let gIdx, cIdx
-
+    let gIdx, tIdx
     if (groupId) {
       gIdx = board.groups?.findIndex((g) => g.id === groupId)
     }
 
-    if (gIdx && taskId) {
-      cIdx = board.groups[gIdx]?.cards.findIndex((c) => c.id === taskId)
+    console.log("gorups data")
+    console.log(board.groups[gIdx].tasks)
+    if (taskId) {
+      tIdx = board.groups[gIdx]?.tasks.findIndex((c) => c.id === taskId)
+      console.log("gorups after")
+      console.log(tIdx)
     }
+    console.log("update task 1 -------------------------")
 
-    if (cIdx) {
-      board.groups[gIdx].cards[cIdx][key] = value
+    console.log({ gIdx, tIdx })
+    if (tIdx) {
+      console.log("")
+      console.log("update task 2 -------------------------")
+      board.groups[gIdx].tasks[tIdx][key] = value
       console.log("update card")
     } else if (gIdx) {
       board.groups[gIdx][key] = value
@@ -96,9 +102,9 @@ export async function updateBoard(
     }
 
     const savedBoard = await boardService.save(board)
-    store.dispatch(getActionUpdateBoard(savedBoard))
+    store.dispatch(getActionUpdateBoard({ ...savedBoard }))
     return savedBoard
-  } catch (error) {
+  } catch (err) {
     console.log("Cannot save board", err)
     throw err
   }

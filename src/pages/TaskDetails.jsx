@@ -4,14 +4,21 @@ import { Link } from "react-router-dom"
 import { boardService } from "../services/board.service"
 import SvgIcon from "../cmps/SvgIcon"
 import { Button } from "../cmps/Button"
+import { useForm } from "../customHooks/useForm"
+import { updateBoard } from "../store/board.actions"
+import { useSelector } from "react-redux"
 
 export function TaskDetails() {
   const ref = useRef()
   const params = useParams()
+  const board = useSelector((storeState) => storeState.boardModule.board)
+  const { boardId, groupId, taskId } = params
   const [task, setTask] = useState(null)
+  const [fields, setFields, handleChange] = useForm({
+    description: "",
+  })
 
   useEffect(() => {
-    const { boardId, groupId, taskId } = params
     loadTask(boardId, groupId, taskId)
     ref.current?.showModal()
 
@@ -25,6 +32,15 @@ export function TaskDetails() {
     const group = board.groups?.find((g) => g.id === groupId)
     const task = group.tasks?.find((t) => t.id === taskId)
     setTask(() => task)
+  }
+
+  // TODO - replace with update function
+  async function onAddDescription() {
+    // const { description } = fields
+    await updateBoard(board, groupId, taskId, {
+      key: "description",
+      value: "test",
+    })
   }
 
   if (!task) {
@@ -65,7 +81,13 @@ export function TaskDetails() {
             {!task.description && (
               <Button>Add a more details description... </Button>
             )}
-
+            {/* TODO replace with text area */}
+            <input
+              name="description"
+              onChange={handleChange}
+              value={fields.value}
+            />
+            <button onClick={onAddDescription}>Save</button>
             {task.description && (
               <pre className="task-description">{task.description}</pre>
             )}
