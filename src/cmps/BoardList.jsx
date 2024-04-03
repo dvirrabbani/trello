@@ -1,10 +1,10 @@
 import { BoardPreview } from "./boardPreview"
-import { getActionUpdateBoard } from "../store/board.actions"
+import { updateBoard } from "../store/board.actions"
 import SvgIcon from "./SvgIcon"
 
 export function BoardList({ boards, children }) {
-  async function onUpdateBoard(boardToSave) {
-    await getActionUpdateBoard(boardToSave)
+  async function onUpdateBoard(board, { key, value }) {
+    await updateBoard(board, null, null, { key, value })
   }
 
   return (
@@ -18,7 +18,10 @@ export function BoardList({ boards, children }) {
               <button
                 className="clean-btn "
                 onClick={() =>
-                  onUpdateBoard({ ...board, isStarred: !board.isStarred })
+                  onUpdateBoard(board, {
+                    key: "isStarred",
+                    value: !board.isStarred,
+                  })
                 }
               >
                 <SvgIcon iconName={board.isStarred ? "starFill" : "star"} />

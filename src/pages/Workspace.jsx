@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { getActionAddBoard, loadBoards } from "../store/board.actions.js"
+import { addBoard, loadBoards } from "../store/board.actions.js"
 import { BoardList } from "../cmps/BoardList.jsx"
 import SvgIcon from "../cmps/SvgIcon.jsx"
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
@@ -13,7 +13,7 @@ export function Workspace() {
     const boardToSave = DEMO_BOARD_LIST[0]
     boardToSave.isStarred = false
     delete boardToSave._id
-    await getActionAddBoard(boardToSave)
+    await addBoard(boardToSave)
   }
   useEffect(() => {
     loadBoards()

@@ -17,27 +17,89 @@ export function getActionRemoveBoard(boardId) {
     boardId,
   }
 }
-export async function getActionAddBoard(board) {
+
+export function getActionAddBoard(board) {
+  return {
+    type: ADD_BOARD,
+    board,
+  }
+}
+
+export function getActionUpdateBoard(board) {
+  return {
+    type: UPDATE_BOARD,
+    board,
+  }
+}
+
+export function getActionSetBoard(board) {
+  return {
+    type: SET_BOARD,
+    board,
+  }
+}
+
+export function getActionSetBoards(boards) {
+  return {
+    type: SET_BOARDS,
+    boards,
+  }
+}
+
+export function getActionUndoRemoveBoard() {
+  return {
+    type: UNDO_REMOVE_BOARD,
+  }
+}
+
+// Actions
+export async function addBoard(board) {
   try {
-    const boardToSave = await boardService.save(board)
-    store.dispatch({
-      type: ADD_BOARD,
-      board: boardToSave,
-    })
+    const savedBoard = await boardService.save(board)
+    console.log("Added Board", savedBoard)
+    store.dispatch(getActionAddBoard(savedBoard))
+    return savedBoard
   } catch (err) {
     console.log("Cannot add board", err)
     throw err
   }
 }
-export async function getActionUpdateBoard(board) {
+
+export async function updateBoard(
+  board,
+  groupId,
+  taskId,
+  { key, value },
+  activityType
+) {
+  console.log({ key, value })
   try {
-    const boardToSave = await boardService.save(board)
-    store.dispatch({
-      type: UPDATE_BOARD,
-      board: boardToSave,
-    })
-  } catch (err) {
-    console.log("Cannot update board", err)
+    let gIdx, cIdx
+
+    if (groupId) {
+      gIdx = board.groups?.findIndex((g) => g.id === groupId)
+    }
+
+    if (gIdx && taskId) {
+      cIdx = board.groups[gIdx]?.cards.findIndex((c) => c.id === taskId)
+    }
+
+    if (cIdx) {
+      board.groups[gIdx].cards[cIdx][key] = value
+      console.log("update card")
+    } else if (gIdx) {
+      board.groups[gIdx][key] = value
+      console.log("update group")
+    } else {
+      board[key] = value
+      console.log("update board")
+    }
+
+    const savedBoard = await boardService.save(board)
+    store.dispatch(getActionUpdateBoard(savedBoard))
+    return savedBoard
+  } catch (error) {
+    console.log("Cannot save board", err)
     throw err
   }
 }
@@ -46,10 +108,7 @@ export async function loadBoards() {
   try {
     const boards = await boardService.query()
     console.log("Boards from DB:", boards)
-    store.dispatch({
-      type: SET_BOARDS,
-      boards,
-    })
+    store.dispatch(getActionSetBoards(boards))
   } catch (err) {
     console.log("Cannot load boards", err)
     throw err
@@ -58,9 +117,9 @@ export async function loadBoards() {
 
 export async function loadBoard(boardId) {
   try {
-    store.dispatch({ type: SET_BOARD, board: null })
+    store.dispatch(getActionSetBoard(null))
     const board = await boardService.getById(boardId)
-    store.dispatch({ type: SET_BOARD, board })
+    store.dispatch(getActionSetBoard(board))
   } catch (err) {
     console.log("Cannot load board", err)
   }
@@ -76,51 +135,16 @@ export async function removeBoard(boardId) {
   }
 }
 
-export async function addBoard(board) {
-  try {
-    const savedBoard = await boardService.save(board)
-    console.log("Added Board", savedBoard)
-    store.dispatch(getActionAddBoard(savedBoard))
-    return savedBoard
-  } catch (err) {
-    console.log("Cannot add board", err)
-    throw err
-  }
-}
-
-export function updateBoard(board) {
-  return boardService
-    .save(board)
-    .then((savedBoard) => {
-      console.log("Updated Board:", savedBoard)
-      store.dispatch(getActionUpdateBoard(savedBoard))
-      return savedBoard
-    })
-    .catch((err) => {
-      console.log("Cannot save board", err)
-      throw err
-    })
-}
-
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveBoardOptimistic(boardId) {
-  store.dispatch({
-    type: REMOVE_BOARD,
-    boardId,
-  })
-  showSuccessMsg("Board removed")
-
-  boardService
-    .remove(boardId)
-    .then(() => {
-      console.log("Server Reported - Deleted Succesfully")
-    })
-    .catch((err) => {
-      showErrorMsg("Cannot remove board")
-      console.log("Cannot load boards", err)
-      store.dispatch({
-        type: UNDO_REMOVE_BOARD,
-      })
-    })
+export async function onRemoveBoardOptimistic(boardId) {
+  try {
+    store.dispatch(getActionRemoveBoard(boardId))
+    showSuccessMsg("Board removed")
+    await boardService.remove(boardId)
+  } catch (error) {
+    showErrorMsg("Cannot remove board")
+    console.log("Cannot load boards", err)
+    store.dispatch(getActionUndoRemoveBoard())
+  }
 }
