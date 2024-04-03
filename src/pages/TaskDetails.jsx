@@ -5,7 +5,7 @@ import { boardService } from "../services/board.service"
 import SvgIcon from "../cmps/SvgIcon"
 import { Button } from "../cmps/Button"
 import { useForm } from "../customHooks/useForm"
-import { updateBoard } from "../store/board.actions"
+import { updateCurrentBoard } from "../store/board.actions"
 import { useSelector } from "react-redux"
 
 export function TaskDetails() {
@@ -37,7 +37,7 @@ export function TaskDetails() {
   // TODO - replace with update function
   async function onAddDescription() {
     // const { description } = fields
-    await updateBoard(board, groupId, taskId, {
+    await updateCurrentBoard(groupId, taskId, {
       key: "description",
       value: "test",
     })

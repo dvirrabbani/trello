@@ -57,7 +57,7 @@ export async function addBoard(board) {
   try {
     const savedBoard = await boardService.save(board)
     console.log("Added Board", savedBoard)
-    store.dispatch(getActionAddBoard(savedBoard))
+    store.dispatch(getActionAddBoard(board))
     return savedBoard
   } catch (err) {
     console.log("Cannot add board", err)
@@ -65,41 +65,32 @@ export async function addBoard(board) {
   }
 }
 
-export async function updateBoard(
-  board,
+export function updateCurrentBoard(
   groupId,
   taskId,
   { key, value },
   activityType
 ) {
-  try {
-    let gIdx, tIdx
-    if (groupId) {
-      gIdx = board.groups?.findIndex((g) => g.id === groupId)
-    }
+  const board = store.getState().boardModule.board
+  const updateBoard = boardService.updateBoard(
+    board,
+    groupId,
+    taskId,
+    { key, value },
+    activityType
+  )
+  store.dispatch(getActionUpdateBoard(updateBoard))
+}
 
-    if (taskId) {
-      tIdx = board.groups[gIdx]?.tasks.findIndex((c) => c.id === taskId)
-    }
-
-    if (taskId) {
-      board.groups[gIdx].tasks[tIdx][key] = value
-      console.log("update card")
-    } else if (groupId) {
-      board.groups[gIdx][key] = value
-      console.log("update group")
-    } else {
-      board[key] = value
-      console.log("update board")
-    }
-
-    const savedBoard = await boardService.save(board)
-    store.dispatch(getActionUpdateBoard({ ...savedBoard }))
-    return savedBoard
-  } catch (err) {
-    console.log("Cannot save board", err)
-    throw err
-  }
+export function updateBoard(board, { key, value }, activityType) {
+  const updateBoard = boardService.updateBoard(
+    board,
+    null,
+    null,
+    { key, value },
+    activityType
+  )
+  store.dispatch(getActionUpdateBoard(updateBoard))
 }
 
 export async function loadBoards() {

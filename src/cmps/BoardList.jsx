@@ -1,10 +1,10 @@
-import { BoardPreview } from "./boardPreview"
 import { updateBoard } from "../store/board.actions"
+import { BoardPreview } from "./boardPreview"
 import SvgIcon from "./SvgIcon"
 
 export function BoardList({ boards, children }) {
   async function onUpdateBoard(board, { key, value }) {
-    await updateBoard(board, null, null, { key, value })
+    updateBoard(board, { key, value })
   }
 
   return (
