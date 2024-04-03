@@ -3,6 +3,7 @@ import { useParams } from "react-router"
 import { Link } from "react-router-dom"
 import { boardService } from "../services/board.service"
 import SvgIcon from "../cmps/SvgIcon"
+import { Button } from "../cmps/Button"
 
 export function TaskDetails() {
   const ref = useRef()
@@ -49,29 +50,33 @@ export function TaskDetails() {
       </div>
       <div className="task-main-container">
         <div className="main">
-          <div className="main-header">
+          <section className="main-header">
             <div className="main-header-card">{/*TODO*/}</div>
             <div className="main-header-card">{/*TODO*/}</div>
             <div className="main-header-card">{/*TODO*/}</div>
-          </div>
+          </section>
           {/* Task CheckList */}
-          <div className="task-checklist-container">{/*TODO*/}</div>
+          <section className="task-checklist-container">{/*TODO*/}</section>
           {/* Task Description */}
-          <div className="task-description-container">
+          <section className="task-description-container">
             <h3 className="task-description-title flex">
               <SvgIcon iconName="description" /> Description
             </h3>
-            {task.description && (
-              <div className="task-description">{task.description}</div>
+            {!task.description && (
+              <Button>Add a more details description... </Button>
             )}
-          </div>
+
+            {task.description && (
+              <pre className="task-description">{task.description}</pre>
+            )}
+          </section>
           {/* Task Attachments */}
-          <div className="task-attachments-container">{/*TODO*/}</div>
+          <section className="task-attachments-container">{/*TODO*/}</section>
           {/* Task Activity */}
-          <div className="task-activity-container">{/*TODO*/}</div>
+          <section className="task-activity-container">{/*TODO*/}</section>
         </div>
         {/* Task Sidebar */}
-        <div className="task-sidebar-container">{/*TODO*/}</div>
+        <section className="task-sidebar-container">{/*TODO*/}</section>
       </div>
     </dialog>
   )

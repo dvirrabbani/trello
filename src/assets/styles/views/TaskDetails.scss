@@ -6,4 +6,13 @@
   border: none;
   color: $color-txt-primary;
   display: grid;
+
+  .task-description-container {
+    display: grid;
+    .button {
+      min-height: 40px;
+      padding: 8px 12px;
+      width: fit-content;
+    }
+  }
 }
