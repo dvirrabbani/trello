@@ -4,6 +4,7 @@ import { addBoard, loadBoards } from "../store/board.actions.js"
 import { BoardList } from "../cmps/BoardList.jsx"
 import SvgIcon from "../cmps/SvgIcon.jsx"
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
+import { Button } from "../cmps/Button.jsx"
 
 export function Workspace() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -32,9 +33,9 @@ export function Workspace() {
       </div>
       <BoardList boards={boards}>
         <li className="board-item">
-          <button className="btn-secondary" onClick={onAddBoard}>
+          <Button className="contained" onClick={onAddBoard}>
             <span>Create new board</span>
-          </button>
+          </Button>
         </li>
       </BoardList>
     </div>

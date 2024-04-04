@@ -39,16 +39,6 @@
     "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", fantasy;
 }
 
-@mixin btn-secondary {
-  @include btn;
-  &:hover {
-    background-color: $background-neutral-hovered;
-  }
-  &:active {
-    background-color: $background-neutral-pressed;
-  }
-}
-
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {
   position: relative;
