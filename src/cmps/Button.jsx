@@ -1,5 +1,7 @@
-export function Button({ children, onClick, className }) {
-  const dynamicClass = className ? `button ${className}` : "button"
+export function Button({ children, onClick, className, variant = "text" }) {
+  const dynamicClass = `button${className ? ` ${className}` : ""}${
+    variant ? ` variant-${variant}` : ""
+  }`
 
   return (
     <button className={dynamicClass} onClick={onClick}>
