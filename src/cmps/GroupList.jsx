@@ -30,7 +30,6 @@ function GroupPreview({ group }) {
   }
 
   function onAddTask() {
-    console.log("ad")
     const task = {
       archivedAt: null,
       id: `c${utilService.makeId()}`,
