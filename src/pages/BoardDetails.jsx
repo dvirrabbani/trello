@@ -5,6 +5,7 @@ import { GroupList } from "../cmps/GroupList"
 import { loadBoard, updateCurrentBoard } from "../store/board.actions"
 import { BoardDetailsHeader } from "../cmps/BoardDetailsHeader"
 import SvgIcon from "../cmps/SvgIcon"
+import { utilService } from "../services/util.service"
 
 export function BoardDetails() {
   const params = useParams()
@@ -14,142 +15,15 @@ export function BoardDetails() {
     loadBoard(params.boardId)
   }, [params.boardId])
 
-  const groups = [
-    {
-      id: "g101",
-      title: "Group 1",
-      archivedAt: 1589983468418,
-      tasks: [
-        {
-          id: "c101",
-          title: "Replace logo",
-          description: "description",
-        },
-        {
-          id: "c102",
-          title: "Add Samples",
-          description: "description",
-        },
-      ],
-      style: {},
-    },
-    {
-      id: "g102",
-      title: "Group 2",
-      tasks: [
-        {
-          id: "c103",
-          title: "Do that",
-          description: "description",
-          archivedAt: 1589983468418,
-        },
-        {
-          id: "c104",
-          title: "Help me",
-          description: "description",
-          comments: [
-            {
-              id: "ZdPnm",
-              txt: "also @yaronb please CR this",
-              createdAt: 1590999817436,
-              byMember: {
-                _id: "u101",
-                fullname: "Tal Tarablus",
-                imgUrl:
-                  "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-              },
-            },
-          ],
-          checklists: [
-            {
-              id: "YEhmF",
-              title: "Checklist",
-              todos: [
-                {
-                  id: "212jX",
-                  title: "To Do 1",
-                  isDone: false,
-                },
-              ],
-            },
-          ],
-          memberIds: ["u101"],
-          labelIds: ["l101", "l102"],
-          dueDate: 16156215211,
-          byMember: {
-            _id: "u101",
-            username: "Tal",
-            fullname: "Tal Tarablus",
-            imgUrl:
-              "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-          },
-          style: {
-            bgColor: "#26de81",
-          },
-        },
-      ],
-      style: {},
-    },
-    {
-      id: "g103",
-      title: "new group",
-      tasks: [
-        {
-          id: "c103",
-          title: "Do that",
-          description: "description",
-          archivedAt: 1589983468418,
-        },
-        {
-          id: "c104",
-          title: "Help me",
-          description: "description",
-          comments: [
-            {
-              id: "ZdPnm",
-              txt: "also @yaronb please CR this",
-              createdAt: 1590999817436,
-              byMember: {
-                _id: "u101",
-                fullname: "Tal Tarablus",
-                imgUrl:
-                  "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-              },
-            },
-          ],
-          checklists: [
-            {
-              id: "YEhmF",
-              title: "Checklist",
-              todos: [
-                {
-                  id: "212jX",
-                  title: "To Do 1",
-                  isDone: false,
-                },
-              ],
-            },
-          ],
-          memberIds: ["u101"],
-          labelIds: ["l101", "l102"],
-          dueDate: 16156215211,
-          byMember: {
-            _id: "u101",
-            username: "Tal",
-            fullname: "Tal Tarablus",
-            imgUrl:
-              "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-          },
-          style: {
-            bgColor: "#26de81",
-          },
-        },
-      ],
-      style: {},
-    },
-  ]
-
   function onAddGroup() {
+    const group = {
+      archivedAt: null,
+      id: `g${utilService.makeId()}`,
+      style: {},
+      tasks: [{ id: `t${utilService.makeId()}`, title: "new" }],
+      title: "new group",
+    }
+    const groups = [...board.groups, group]
     updateCurrentBoard(null, null, {
       key: "groups",
       value: groups,
