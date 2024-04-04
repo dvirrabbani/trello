@@ -2,6 +2,7 @@ import { useState } from "react"
 import SvgIcon from "./SvgIcon"
 import { TaskList } from "./TaskList"
 import { updateBoard, updateCurrentBoard } from "../store/board.actions"
+import { utilService } from "../services/util.service"
 
 export function GroupList({ groups }) {
   return (
@@ -28,6 +29,20 @@ function GroupPreview({ group }) {
     })
   }
 
+  function onAddTask() {
+    console.log("ad")
+    const task = {
+      archivedAt: null,
+      id: `c${utilService.makeId()}`,
+      title: "new task",
+    }
+    const tasks = [...group.tasks, task]
+    updateCurrentBoard(group.id, null, {
+      key: "tasks",
+      value: tasks,
+    })
+  }
+
   return (
     <li className="group-li">
       <div className="group-preview">
@@ -48,7 +63,7 @@ function GroupPreview({ group }) {
         </div>
         <TaskList group={group} />
         <div className="group-actions flex justify-between">
-          <button className="add-task-btn full">
+          <button className="add-task-btn full" onClick={onAddTask}>
             <SvgIcon iconName="plus" />
             <span>Add a card</span>
           </button>
