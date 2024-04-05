@@ -50,11 +50,21 @@ export const DEMO_BOARD_LIST = [
             id: "t101",
             title: "Replace logo",
             description: "description",
+            style: {
+              isFull: true,
+              background:
+                "https://trello.com/1/cards/6610204c2098dfd601dd64f0/attachments/6610204c2098dfd601dd6517/previews/6610204c2098dfd601dd651b/download/shutterstock_88924612.jpg",
+            },
           },
           {
             id: "t102",
             title: "Add Samples",
             description: "description",
+            style: {
+              isFull: false,
+              background:
+                "https://trello.com/1/cards/6610204c2098dfd601dd64f0/attachments/6610204c2098dfd601dd6517/previews/6610204c2098dfd601dd651b/download/shutterstock_88924612.jpg",
+            },
           },
         ],
         style: {},
@@ -68,6 +78,10 @@ export const DEMO_BOARD_LIST = [
             title: "Do that",
             description: "description",
             archivedAt: 1589983468418,
+            style: {
+              isFull: true,
+              background: "#26de81",
+            },
           },
           {
             id: "t104",
@@ -163,7 +177,8 @@ export const DEMO_BOARD_LIST = [
                 "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
             },
             style: {
-              bgColor: "#26de81",
+              isFull: false,
+              background: "#26de81",
             },
           },
         ],
