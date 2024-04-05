@@ -15,6 +15,7 @@
     min-width: 272px;
     width: 272px;
     padding: 8px;
+    position: relative;
 
     button {
       @include btn;
@@ -49,8 +50,17 @@
       cursor: pointer;
     }
 
-    .group-actions {
+    .group-footer {
       gap: 4px;
+    }
+
+    .group-actions {
+      position: absolute;
+      background: white;
+      z-index: 1;
+      right: 0;
+      top: 40px;
+      transform: translateX(calc(100% - 32px));
     }
   }
 }

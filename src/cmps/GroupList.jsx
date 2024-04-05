@@ -4,6 +4,7 @@ import { TaskList } from "./TaskList"
 import { updateCurrentBoard } from "../store/board.actions"
 import { utilService } from "../services/util.service"
 import { AddItemForm } from "./AddItemForm"
+import { GroupActions } from "./GroupActions"
 
 export function GroupList({ groups }) {
   const [displayAddItem, setDisplayAddItem] = useState(false)
@@ -24,10 +25,18 @@ export function GroupList({ groups }) {
     setDisplayAddItem(false)
   }
 
+  function deleteGroup(groupId) {
+    const updateGroups = groups.filter((group) => group.id !== groupId)
+    updateCurrentBoard(null, null, {
+      key: "groups",
+      value: updateGroups,
+    })
+  }
+
   return (
     <ol className="group-list clean-list flex">
       {groups.map((group) => (
-        <GroupPreview key={group.id} group={group} />
+        <GroupPreview key={group.id} group={group} deleteGroup={deleteGroup} />
       ))}
       {displayAddItem ? (
         <AddItemForm
@@ -47,8 +56,9 @@ export function GroupList({ groups }) {
   )
 }
 
-function GroupPreview({ group }) {
+function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
+  const [groupActions, setGroupActions] = useState(false)
 
   function handleChange({ target }) {
     let { value, type, name } = target
@@ -75,6 +85,11 @@ function GroupPreview({ group }) {
     })
   }
 
+  function onDeleteGroup(groupId) {
+    deleteGroup(groupId)
+    setGroupActions(false)
+  }
+
   return (
     <li className="group-li">
       <div className="group-preview">
@@ -89,12 +104,22 @@ function GroupPreview({ group }) {
           >
             {groupToEdit.title}
           </textarea>
-          <button className="group-edit icon-btn">
+          <button
+            className="group-edit icon-btn"
+            onClick={() => setGroupActions(true)}
+          >
             <SvgIcon iconName="more" className="svg-icon" />
           </button>
+          {groupActions && (
+            <GroupActions
+              groupId={group.id}
+              onDeleteGroup={onDeleteGroup}
+              setGroupActions={setGroupActions}
+            />
+          )}
         </div>
         <TaskList group={group} />
-        <div className="group-actions flex justify-between">
+        <div className="group-footer flex justify-between">
           <button className="add-task-btn full" onClick={onAddTask}>
             <SvgIcon iconName="plus" />
             <span>Add a card</span>

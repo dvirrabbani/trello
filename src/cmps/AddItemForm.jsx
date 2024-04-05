@@ -18,6 +18,7 @@ export function AddItemForm({ onAddGroup, setDisplayAddItem }) {
         spellCheck="false"
         value={inputVal}
         onChange={handleChange}
+        autoFocus
       ></textarea>
       <div className="add-item-actions">
         <button onClick={() => onAddGroup(inputVal)}>Add</button>
