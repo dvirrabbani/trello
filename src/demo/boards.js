@@ -47,12 +47,12 @@ export const DEMO_BOARD_LIST = [
         archivedAt: 1589983468418,
         tasks: [
           {
-            id: "c101",
+            id: "t101",
             title: "Replace logo",
             description: "description",
           },
           {
-            id: "c102",
+            id: "t102",
             title: "Add Samples",
             description: "description",
           },
@@ -64,13 +64,13 @@ export const DEMO_BOARD_LIST = [
         title: "Group 2",
         tasks: [
           {
-            id: "c103",
+            id: "t103",
             title: "Do that",
             description: "description",
             archivedAt: 1589983468418,
           },
           {
-            id: "c104",
+            id: "t104",
             title: "Help me",
             description: "description",
             comments: [
@@ -88,13 +88,65 @@ export const DEMO_BOARD_LIST = [
             ],
             checklists: [
               {
-                id: "YEhmF",
-                title: "Checklist",
+                id: "checklist1",
+                title: "Daily Tasks",
                 todos: [
                   {
-                    id: "212jX",
-                    title: "To Do 1",
+                    id: "todo1",
+                    title: "Complete morning workout",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo2",
+                    title: "Prepare breakfast",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo3",
+                    title: "Attend team meeting",
                     isDone: false,
+                  },
+                ],
+              },
+              {
+                id: "checklist2",
+                title: "Weekly Goals",
+                todos: [
+                  {
+                    id: "todo4",
+                    title: "Review progress on project",
+                    isDone: false,
+                  },
+                  {
+                    id: "todo5",
+                    title: "Submit weekly report",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo6",
+                    title: "Plan weekend activities",
+                    isDone: false,
+                  },
+                ],
+              },
+              {
+                id: "checklist3",
+                title: "Monthly Tasks",
+                todos: [
+                  {
+                    id: "todo7",
+                    title: "Pay rent",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo8",
+                    title: "Schedule dentist appointment",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo9",
+                    title: "Organize files",
+                    isDone: true,
                   },
                 ],
               },
@@ -128,7 +180,7 @@ export const DEMO_BOARD_LIST = [
           imgUrl: "http://some-img",
         },
         task: {
-          id: "c101",
+          id: "t101",
           title: "Replace Logo",
         },
       },
@@ -184,11 +236,11 @@ export const DEMO_BOARD_LIST = [
         archivedAt: 1589983468418,
         tasks: [
           {
-            id: "c1012",
+            id: "t1012",
             title: "Replace logo",
           },
           {
-            id: "c1013",
+            id: "t1013",
             title: "Add Samples",
           },
         ],
@@ -199,12 +251,12 @@ export const DEMO_BOARD_LIST = [
         title: "Group 2",
         tasks: [
           {
-            id: "c114",
+            id: "t114",
             title: "Do that",
             archivedAt: 1589983468418,
           },
           {
-            id: "c115",
+            id: "t115",
             title: "Help me",
             description: "description",
             comments: [
@@ -262,7 +314,7 @@ export const DEMO_BOARD_LIST = [
           imgUrl: "http://some-img",
         },
         task: {
-          id: "c101",
+          id: "t101",
           title: "Replace Logo",
         },
       },
