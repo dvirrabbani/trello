@@ -15,21 +15,6 @@ export function BoardDetails() {
     loadBoard(params.boardId)
   }, [params.boardId])
 
-  function onAddGroup() {
-    const group = {
-      archivedAt: null,
-      id: `g${utilService.makeId()}`,
-      style: {},
-      tasks: [{ id: `t${utilService.makeId()}`, title: "new" }],
-      title: "new group",
-    }
-    const groups = [...board.groups, group]
-    updateCurrentBoard(null, null, {
-      key: "groups",
-      value: groups,
-    })
-  }
-
   if (!board) return <div>Loading..</div>
 
   //TODO - think it need to be in store?
@@ -48,10 +33,6 @@ export function BoardDetails() {
         <BoardDetailsHeader title={board.title} members={board.members} />
         <div className="board-groups-container full">
           <GroupList groups={board.groups} />
-          <button className="add-group-btn full" onClick={onAddGroup}>
-            <SvgIcon iconName="plus" />
-            <span>Add another group</span>
-          </button>
         </div>
       </div>
       <Outlet />

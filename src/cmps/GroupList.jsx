@@ -1,15 +1,48 @@
 import { useState } from "react"
 import SvgIcon from "./SvgIcon"
 import { TaskList } from "./TaskList"
-import { updateBoard, updateCurrentBoard } from "../store/board.actions"
+import { updateCurrentBoard } from "../store/board.actions"
 import { utilService } from "../services/util.service"
+import { AddItemForm } from "./AddItemForm"
 
 export function GroupList({ groups }) {
+  const [displayAddItem, setDisplayAddItem] = useState(false)
+
+  function onAddGroup(inputVal) {
+    const group = {
+      archivedAt: null,
+      id: `g${utilService.makeId()}`,
+      style: {},
+      tasks: [],
+      title: inputVal,
+    }
+    const updateGroups = [...groups, group]
+    updateCurrentBoard(null, null, {
+      key: "groups",
+      value: updateGroups,
+    })
+    setDisplayAddItem(false)
+  }
+
   return (
     <ol className="group-list clean-list flex">
       {groups.map((group) => (
         <GroupPreview key={group.id} group={group} />
       ))}
+      {displayAddItem ? (
+        <AddItemForm
+          onAddGroup={onAddGroup}
+          setDisplayAddItem={setDisplayAddItem}
+        />
+      ) : (
+        <button
+          className="add-group-btn"
+          onClick={() => setDisplayAddItem(true)}
+        >
+          <SvgIcon iconName="plus" />
+          <span>Add another group</span>
+        </button>
+      )}
     </ol>
   )
 }

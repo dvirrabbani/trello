@@ -1,0 +1,28 @@
+import { useState } from "react"
+
+export function AddItemForm({ onAddGroup, setDisplayAddItem }) {
+  const [inputVal, setInputVal] = useState("")
+
+  function handleChange({ target }) {
+    let { value, type, name } = target
+    setInputVal(value)
+  }
+  const style = {
+    height: "32px",
+  }
+  return (
+    <form>
+      <textarea
+        style={style}
+        name="title"
+        spellCheck="false"
+        value={inputVal}
+        onChange={handleChange}
+      ></textarea>
+      <div className="add-item-actions">
+        <button onClick={() => onAddGroup(inputVal)}>Add</button>
+        <button onClick={() => setDisplayAddItem(false)}>X</button>
+      </div>
+    </form>
+  )
+}
