@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function AddItemForm({ onAddGroup, setDisplayAddItem }) {
+export function AddItemForm({ onAddItem, setDisplayAddItem }) {
   const [inputVal, setInputVal] = useState("")
 
   function handleChange({ target }) {
@@ -21,7 +21,7 @@ export function AddItemForm({ onAddGroup, setDisplayAddItem }) {
         autoFocus
       ></textarea>
       <div className="add-item-actions">
-        <button onClick={() => onAddGroup(inputVal)}>Add</button>
+        <button onClick={() => onAddItem(inputVal)}>Add</button>
         <button onClick={() => setDisplayAddItem(false)}>X</button>
       </div>
     </form>

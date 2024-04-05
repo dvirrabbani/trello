@@ -40,7 +40,7 @@ export function GroupList({ groups }) {
       ))}
       {displayAddItem ? (
         <AddItemForm
-          onAddGroup={onAddGroup}
+          onAddItem={onAddGroup}
           setDisplayAddItem={setDisplayAddItem}
         />
       ) : (
@@ -59,6 +59,7 @@ export function GroupList({ groups }) {
 function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
   const [groupActions, setGroupActions] = useState(false)
+  const [displayAddItem, setDisplayAddItem] = useState(false)
 
   function handleChange({ target }) {
     let { value, type, name } = target
@@ -72,17 +73,18 @@ function GroupPreview({ group, deleteGroup }) {
     })
   }
 
-  function onAddTask() {
+  function onAddTask(inputVal) {
     const task = {
       archivedAt: null,
-      id: `c${utilService.makeId()}`,
-      title: "new task",
+      id: `t${utilService.makeId()}`,
+      title: inputVal,
     }
     const tasks = [...group.tasks, task]
     updateCurrentBoard(group.id, null, {
       key: "tasks",
       value: tasks,
     })
+    setDisplayAddItem(false)
   }
 
   function onDeleteGroup(groupId) {
@@ -120,13 +122,25 @@ function GroupPreview({ group, deleteGroup }) {
         </div>
         <TaskList group={group} />
         <div className="group-footer flex justify-between">
-          <button className="add-task-btn full" onClick={onAddTask}>
-            <SvgIcon iconName="plus" />
-            <span>Add a card</span>
-          </button>
-          <button className="icon-btn">
-            <SvgIcon iconName="taskTemplate" />
-          </button>
+          {displayAddItem ? (
+            <AddItemForm
+              onAddItem={onAddTask}
+              setDisplayAddItem={setDisplayAddItem}
+            />
+          ) : (
+            <div>
+              <button
+                className="add-task-btn full"
+                onClick={() => setDisplayAddItem(true)}
+              >
+                <SvgIcon iconName="plus" />
+                <span>Add a card</span>
+              </button>
+              <button className="icon-btn">
+                <SvgIcon iconName="taskTemplate" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </li>
