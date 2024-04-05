@@ -151,6 +151,7 @@ export const DEMO_BOARD_LIST = [
                 ],
               },
             ],
+            attachments: ["ui_design_guide.pdf", "review.pdf"],
             memberIds: ["u101"],
             labelIds: ["l101", "l102"],
             dueDate: 16156215211,

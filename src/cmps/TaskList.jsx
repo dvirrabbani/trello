@@ -22,8 +22,18 @@ function TaskPreview({ task }) {
     <div className="task-preview">
       <div className="task-title">{task.title}</div>
       <div className="task-actions-badges">
-        {task.description && <SvgIcon iconName="description" />}
+        {task.description && (
+          <div className="action-badge">
+            <SvgIcon iconName="description" />
+          </div>
+        )}
         {task.checklists && <ChecklistsBadge checklists={task.checklists} />}
+        {task.attachments && (
+          <div className="action-badge">
+            <SvgIcon iconName="attachment" />
+            <span>{task.attachments.length}</span>
+          </div>
+        )}
       </div>
     </div>
   )
