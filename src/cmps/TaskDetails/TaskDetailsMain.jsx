@@ -3,12 +3,14 @@ import { TaskDetailsChecklist } from "./TaskDetailsCheckList"
 import { TaskDetailsAttachments } from "./TaskDetailsAttachments"
 import { TaskDetailsActivities } from "./TaskDetailsActivities"
 import { TaskDetailsMainHeader } from "./TaskDetailsMainHeader"
+
 export function TaskDetailsMain({
   task,
   fields,
   handleChange,
   members,
   onUpdateMembers,
+  onAddDescription,
 }) {
   return (
     <div className="task-details-main">
@@ -18,7 +20,12 @@ export function TaskDetailsMain({
         onUpdateMembers={onUpdateMembers}
       />
       {/* <TaskDetailsChecklist /> */}
-      {/* <TaskDetailsDescription fields={fields} handleChange={handleChange} /> */}
+      <TaskDetailsDescription
+        task={task}
+        fields={fields}
+        handleChange={handleChange}
+        onAddDescription={onAddDescription}
+      />
       {/* <TaskDetailsAttachments /> */}
       {/* <TaskDetailsActivities /> */}
     </div>

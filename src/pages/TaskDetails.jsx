@@ -58,9 +58,16 @@ export function TaskDetails() {
     } else {
       membersToEdit = [member]
     }
-    updateCurrentBoard(groupId, taskId, {
+    onUpdateTask({
       key: "memberIds",
       value: [...membersToEdit],
+    })
+  }
+
+  function onAddDescription(description) {
+    onUpdateTask({
+      key: "description",
+      value: description,
     })
   }
 
@@ -83,6 +90,7 @@ export function TaskDetails() {
         handleChange={handleChange}
         members={board.members}
         onUpdateTask={onUpdateTask}
+        onAddDescription={onAddDescription}
       />
       <TaskDetailsSidebar />
     </dialog>
