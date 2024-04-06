@@ -11,6 +11,18 @@
     background-color: $background-neutral;
   }
 
+  &.variant-primary {
+    color: $clr8;
+    border-radius: rem(3px);
+    background-color: $background-brand-bold;
+    &:hover {
+      background-color: $background-brand-bold-hovered;
+    }
+    &:active {
+      background-color: $background-brand-bold-pressed;
+    }
+  }
+
   &.variant-group {
     &:hover {
       background-color: $group-background;

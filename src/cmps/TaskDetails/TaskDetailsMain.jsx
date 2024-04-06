@@ -6,16 +6,16 @@ import { TaskDetailsMainHeader } from "./TaskDetailsMainHeader"
 
 export function TaskDetailsMain({
   task,
-  fields,
   handleChange,
   members,
   labels,
   onUpdateMembers,
-  onAddDescription,
+  onUpdateTaskDescription,
   onUpdateTaskLabel,
   onRemoveChecklist,
   onAddCheckListTodo,
   onRemoveCheckListTodo,
+  onUpdateCheckListTodo,
 }) {
   return (
     <div className="task-details-main">
@@ -26,17 +26,17 @@ export function TaskDetailsMain({
         onUpdateMembers={onUpdateMembers}
         onUpdateTaskLabel={onUpdateTaskLabel}
       />
+      <TaskDetailsDescription
+        description={task.description}
+        handleChange={handleChange}
+        onUpdateTaskDescription={onUpdateTaskDescription}
+      />
       <TaskDetailsChecklist
         checklists={task.checklists}
         onRemoveChecklist={onRemoveChecklist}
         onAddCheckListTodo={onAddCheckListTodo}
         onRemoveCheckListTodo={onRemoveCheckListTodo}
-      />
-      <TaskDetailsDescription
-        task={task}
-        fields={fields}
-        handleChange={handleChange}
-        onAddDescription={onAddDescription}
+        onUpdateCheckListTodo={onUpdateCheckListTodo}
       />
       {/* <TaskDetailsAttachments /> */}
       {/* <TaskDetailsActivities /> */}

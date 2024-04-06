@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router"
-import { useForm } from "../customHooks/useForm"
 import { updateCurrentBoard } from "../store/board.actions"
 import { useSelector } from "react-redux"
 import { TaskDetailsHeader } from "../cmps/TaskDetails/TaskDetailsHeader"
@@ -14,9 +13,6 @@ export function TaskDetails() {
   const { groupId, taskId } = params
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [task, setTask] = useState(null)
-  const [fields, setFields, handleChange] = useForm({
-    description: "",
-  })
 
   useEffect(() => {
     toggleDialog()
@@ -37,7 +33,6 @@ export function TaskDetails() {
       const group = board.groups?.find((g) => g.id === groupId)
       const task = group.tasks?.find((t) => t.id === taskId)
       setTask(() => task)
-      setFields(() => ({ ...task }))
     } catch (err) {
       console.log("Cannot load Task", err)
       throw err
@@ -89,7 +84,7 @@ export function TaskDetails() {
     const checkListToEdit = task?.checklists?.find((c) => c.id === checklistId)
     console.log({ checkListToEdit })
     checkListToEdit.todos = [
-      ...checkListToEdit.todos,
+      ...(checkListToEdit?.todos || []),
       { id: utilService.makeId(), title: todo.title, isDone: false },
     ]
 
@@ -114,6 +109,22 @@ export function TaskDetails() {
       value: task?.checklists,
     })
   }
+  function onUpdateCheckListTodo(checklistId, todoId, fieldsToUpdate) {
+    const checklist = task?.checklists?.find((c) => c.id === checklistId)
+    const TodosToEdit = checklist?.todos.map((t) => {
+      return t.id === todoId ? { ...t, ...fieldsToUpdate } : t
+    })
+
+    onUpdateTask({
+      key: "checklists",
+      value: task?.checklists.map((checklist) => {
+        if (checklist.id === checklistId) {
+          checklist.todos = TodosToEdit
+        }
+        return checklist
+      }),
+    })
+  }
 
   function onUpdateTaskLabel(labelId) {
     let labelIdsToEdit = []
@@ -130,7 +141,7 @@ export function TaskDetails() {
     })
   }
 
-  function onAddDescription(description) {
+  function onUpdateTaskDescription(description) {
     onUpdateTask({
       key: "description",
       value: description,
@@ -180,14 +191,13 @@ export function TaskDetails() {
         params={params}
         task={task}
         labels={labels}
-        fields={fields}
-        handleChange={handleChange}
         members={members}
         onUpdateTask={onUpdateTask}
         onUpdateMembers={onUpdateMembers}
         onUpdateTaskLabel={onUpdateTaskLabel}
-        onAddDescription={onAddDescription}
+        onUpdateTaskDescription={onUpdateTaskDescription}
         onRemoveChecklist={onRemoveChecklist}
+        onUpdateCheckListTodo={onUpdateCheckListTodo}
         onAddCheckListTodo={onAddCheckListTodo}
         onRemoveCheckListTodo={onRemoveCheckListTodo}
       />

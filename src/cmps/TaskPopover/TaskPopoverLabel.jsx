@@ -1,5 +1,3 @@
-import React, { Fragment } from "react"
-
 export function TaskPopoverLabel({ labels, onUpdateTaskLabel }) {
   return (
     <div className="task-popover-label">
