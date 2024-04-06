@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import { TaskDetailsHeader } from "../cmps/TaskDetails/TaskDetailsHeader"
 import { TaskDetailsMain } from "../cmps/TaskDetails/TaskDetailsMain"
 import { TaskDetailsSidebar } from "../cmps/TaskDetails/TaskDetailsSidebar"
+import { utilService } from "../services/util.service"
 
 export function TaskDetails() {
   const dialogRef = useRef()
@@ -62,6 +63,25 @@ export function TaskDetails() {
     onUpdateTask({
       key: "memberIds",
       value: [...membersToEdit],
+    })
+  }
+
+  function onAddToCheckLists(title) {
+    const checkListToAdd = {
+      id: utilService.makeId(),
+      title,
+      todos: [],
+    }
+    onUpdateTask({
+      key: "checklists",
+      value: task?.checklists ? [...task?.checklists, checkListToAdd] : [],
+    })
+  }
+
+  function onRemoveChecklist(checklistId) {
+    onUpdateTask({
+      key: "checklists",
+      value: task.checklists.filter((c) => c.id !== checklistId),
     })
   }
 
@@ -122,6 +142,7 @@ export function TaskDetails() {
   }
   const labels = { board: board.labels, task: getTaskLabels() }
   const members = { board: board.members, task: getTaskMembers() }
+
   return (
     <dialog ref={dialogRef} className="task-details">
       <TaskDetailsHeader params={params} task={task} />
@@ -136,6 +157,7 @@ export function TaskDetails() {
         onUpdateMembers={onUpdateMembers}
         onUpdateTaskLabel={onUpdateTaskLabel}
         onAddDescription={onAddDescription}
+        onRemoveChecklist={onRemoveChecklist}
       />
       <TaskDetailsSidebar
         task={task}
@@ -143,6 +165,7 @@ export function TaskDetails() {
         labels={labels}
         onUpdateMembers={onUpdateMembers}
         onUpdateTaskLabel={onUpdateTaskLabel}
+        onAddToCheckLists={onAddToCheckLists}
       />
     </dialog>
   )

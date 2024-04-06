@@ -9,6 +9,7 @@ export function TaskDetailsSidebar({
   members,
   onUpdateMembers,
   onUpdateTaskLabel,
+  onAddToCheckLists,
 }) {
   const [popover, setPopover] = useState(null)
 
@@ -22,7 +23,6 @@ export function TaskDetailsSidebar({
         props: {
           members,
           onUpdateMembers,
-          setPopover,
         },
       },
     },
@@ -35,7 +35,18 @@ export function TaskDetailsSidebar({
         props: {
           labels,
           onUpdateTaskLabel,
-          setPopover,
+        },
+      },
+    },
+    {
+      iconName: "checkbox",
+      title: "CheckList",
+      popover: {
+        title: "Add to CheckList",
+        type: "CheckList",
+        props: {
+          checklists: task.checklists,
+          onAddToCheckLists,
         },
       },
     },
