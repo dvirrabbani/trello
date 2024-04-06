@@ -120,7 +120,7 @@ function GroupPreview({ group, deleteGroup }) {
             />
           )}
         </div>
-        <TaskList group={group} />
+        {/* <TaskList group={group} /> */}
         <div className="group-footer flex justify-between">
           {displayAddItem ? (
             <AddItemForm
