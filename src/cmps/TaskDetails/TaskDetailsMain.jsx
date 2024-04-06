@@ -14,6 +14,8 @@ export function TaskDetailsMain({
   onAddDescription,
   onUpdateTaskLabel,
   onRemoveChecklist,
+  onAddCheckListTodo,
+  onRemoveCheckListTodo,
 }) {
   return (
     <div className="task-details-main">
@@ -27,6 +29,8 @@ export function TaskDetailsMain({
       <TaskDetailsChecklist
         checklists={task.checklists}
         onRemoveChecklist={onRemoveChecklist}
+        onAddCheckListTodo={onAddCheckListTodo}
+        onRemoveCheckListTodo={onRemoveCheckListTodo}
       />
       <TaskDetailsDescription
         task={task}
