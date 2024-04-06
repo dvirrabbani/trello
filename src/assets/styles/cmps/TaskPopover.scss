@@ -1,0 +1,22 @@
+.task-popover {
+  background-color: $clr8;
+  padding: 8px;
+  width: 304px;
+  overflow: hidden;
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+
+  .popover-header {
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+    color: $color-text-subtle;
+    .popover-title {
+      margin: 0 auto;
+    }
+  }
+}

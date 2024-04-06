@@ -20,10 +20,6 @@ export function TaskDetails() {
   useEffect(() => {
     toggleDialog()
     loadTask()
-
-    return () => {
-      setTask(null)
-    }
   }, [params.taskId])
 
   function toggleDialog() {
@@ -36,10 +32,15 @@ export function TaskDetails() {
   }
 
   async function loadTask() {
-    const group = board.groups?.find((g) => g.id === groupId)
-    const task = group.tasks?.find((t) => t.id === taskId)
-    setTask(() => task)
-    setFields(() => ({ ...task }))
+    try {
+      const group = board.groups?.find((g) => g.id === groupId)
+      const task = group.tasks?.find((t) => t.id === taskId)
+      setTask(() => task)
+      setFields(() => ({ ...task }))
+    } catch (err) {
+      console.log("Cannot load Task", err)
+      throw err
+    }
   }
 
   async function onUpdateTask({ key, value }) {
@@ -56,7 +57,7 @@ export function TaskDetails() {
         ? task.memberIds.filter((mIdx) => mIdx !== member._id)
         : [...task.memberIds, member._id]
     } else {
-      membersToEdit = [member]
+      membersToEdit = [member.id]
     }
     onUpdateTask({
       key: "memberIds",
@@ -69,6 +70,19 @@ export function TaskDetails() {
       key: "description",
       value: description,
     })
+  }
+
+  function getTaskMembers() {
+    const taskMemberList = []
+    task?.memberIds?.map((tmIdx) => {
+      board.members?.map((m) => {
+        if (tmIdx === m._id) {
+          taskMemberList.push(m)
+        }
+      })
+    })
+
+    return taskMemberList
   }
 
   if (!task) {
@@ -92,7 +106,11 @@ export function TaskDetails() {
         onUpdateTask={onUpdateTask}
         onAddDescription={onAddDescription}
       />
-      <TaskDetailsSidebar />
+      <TaskDetailsSidebar
+        task={task}
+        onUpdateMembers={onUpdateMembers}
+        members={{ board: board.members, task: getTaskMembers() }}
+      />
     </dialog>
   )
 }
