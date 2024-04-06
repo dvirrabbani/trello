@@ -54,27 +54,33 @@ function TaskPreview({ task }) {
     >
       {task.style && (
         <div
-          className="task-cover"
+          className="task-preview-cover"
           style={coverStyle(task.style.isFull, task.style.background)}
         ></div>
       )}
-      {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
-      <div className="task-title">{task.title}</div>
-      <div className="task-actions-badges">
-        {task.description && (
-          <div className="action-badge">
-            <SvgIcon iconName="description" />
+      <div className="task-preview-main">
+        {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
+        <div className="task-title">{task.title}</div>
+        <div className="task-preview-footer flex">
+          <div className="task-actions-badges flex">
+            {task.description && (
+              <div className="action-badge">
+                <SvgIcon iconName="description" />
+              </div>
+            )}
+            {task.checklists && (
+              <ChecklistsBadge checklists={task.checklists} />
+            )}
+            {task.attachments && (
+              <div className="action-badge">
+                <SvgIcon iconName="attachment" />
+                <span>{task.attachments.length}</span>
+              </div>
+            )}
           </div>
-        )}
-        {task.checklists && <ChecklistsBadge checklists={task.checklists} />}
-        {task.attachments && (
-          <div className="action-badge">
-            <SvgIcon iconName="attachment" />
-            <span>{task.attachments.length}</span>
-          </div>
-        )}
+          {task.memberIds && <TaskMembers memberIds={task.memberIds} />}
+        </div>
       </div>
-      {task.memberIds && <TaskMembers memberIds={task.memberIds} />}
     </div>
   )
 }

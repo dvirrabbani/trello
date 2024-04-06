@@ -63,18 +63,8 @@
       transform: translateX(calc(100% - 32px));
     }
 
-    .task-member {
-      width: 24px;
-      height: 24px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    .task-cover {
-      width: 100%;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+    .task-actions-badges > * {
+      display: flex;
     }
   }
 }

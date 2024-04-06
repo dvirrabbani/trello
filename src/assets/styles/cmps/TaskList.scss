@@ -3,7 +3,6 @@
   padding: 8px 0;
 
   .task-preview {
-    padding: 8px 12px;
     background-color: $task-background;
     border-radius: 8px;
     box-shadow: $task-shadow;
@@ -22,6 +21,24 @@
     &:hover {
       outline-color: -webkit-focus-ring-color;
       outline: 2px solid $border-focused;
+    }
+
+    .task-cover {
+      width: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .task-preview-main {
+      padding: 8px 12px;
+    }
+
+    .task-member {
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 }
