@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router"
-import { useForm } from "../customHooks/useForm"
 import { updateCurrentBoard } from "../store/board.actions"
 import { useSelector } from "react-redux"
 import { TaskDetailsHeader } from "../cmps/TaskDetails/TaskDetailsHeader"
@@ -14,9 +13,6 @@ export function TaskDetails() {
   const { groupId, taskId } = params
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [task, setTask] = useState(null)
-  const [fields, setFields, handleChange] = useForm({
-    description: "",
-  })
 
   useEffect(() => {
     toggleDialog()
@@ -37,7 +33,6 @@ export function TaskDetails() {
       const group = board.groups?.find((g) => g.id === groupId)
       const task = group.tasks?.find((t) => t.id === taskId)
       setTask(() => task)
-      setFields(() => ({ ...task }))
     } catch (err) {
       console.log("Cannot load Task", err)
       throw err
@@ -130,7 +125,7 @@ export function TaskDetails() {
     })
   }
 
-  function onAddDescription(description) {
+  function onUpdateTaskDescription(description) {
     onUpdateTask({
       key: "description",
       value: description,
@@ -180,13 +175,11 @@ export function TaskDetails() {
         params={params}
         task={task}
         labels={labels}
-        fields={fields}
-        handleChange={handleChange}
         members={members}
         onUpdateTask={onUpdateTask}
         onUpdateMembers={onUpdateMembers}
         onUpdateTaskLabel={onUpdateTaskLabel}
-        onAddDescription={onAddDescription}
+        onUpdateTaskDescription={onUpdateTaskDescription}
         onRemoveChecklist={onRemoveChecklist}
         onAddCheckListTodo={onAddCheckListTodo}
         onRemoveCheckListTodo={onRemoveCheckListTodo}

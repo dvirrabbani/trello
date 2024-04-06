@@ -6,12 +6,11 @@ import { TaskDetailsMainHeader } from "./TaskDetailsMainHeader"
 
 export function TaskDetailsMain({
   task,
-  fields,
   handleChange,
   members,
   labels,
   onUpdateMembers,
-  onAddDescription,
+  onUpdateTaskDescription,
   onUpdateTaskLabel,
   onRemoveChecklist,
   onAddCheckListTodo,
@@ -27,10 +26,9 @@ export function TaskDetailsMain({
         onUpdateTaskLabel={onUpdateTaskLabel}
       />
       <TaskDetailsDescription
-        task={task}
-        fields={fields}
+        description={task.description}
         handleChange={handleChange}
-        onAddDescription={onAddDescription}
+        onUpdateTaskDescription={onUpdateTaskDescription}
       />
       <TaskDetailsChecklist
         checklists={task.checklists}
