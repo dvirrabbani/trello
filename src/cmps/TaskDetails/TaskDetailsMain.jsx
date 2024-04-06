@@ -15,6 +15,7 @@ export function TaskDetailsMain({
   onRemoveChecklist,
   onAddCheckListTodo,
   onRemoveCheckListTodo,
+  onUpdateCheckListTodo,
 }) {
   return (
     <div className="task-details-main">
@@ -35,6 +36,7 @@ export function TaskDetailsMain({
         onRemoveChecklist={onRemoveChecklist}
         onAddCheckListTodo={onAddCheckListTodo}
         onRemoveCheckListTodo={onRemoveCheckListTodo}
+        onUpdateCheckListTodo={onUpdateCheckListTodo}
       />
       {/* <TaskDetailsAttachments /> */}
       {/* <TaskDetailsActivities /> */}

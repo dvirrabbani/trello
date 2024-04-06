@@ -84,7 +84,7 @@ export function TaskDetails() {
     const checkListToEdit = task?.checklists?.find((c) => c.id === checklistId)
     console.log({ checkListToEdit })
     checkListToEdit.todos = [
-      ...checkListToEdit.todos,
+      ...(checkListToEdit?.todos || []),
       { id: utilService.makeId(), title: todo.title, isDone: false },
     ]
 
@@ -107,6 +107,22 @@ export function TaskDetails() {
     onUpdateTask({
       key: "checklists",
       value: task?.checklists,
+    })
+  }
+  function onUpdateCheckListTodo(checklistId, todoId, fieldsToUpdate) {
+    const checklist = task?.checklists?.find((c) => c.id === checklistId)
+    const TodosToEdit = checklist?.todos.map((t) => {
+      return t.id === todoId ? { ...t, ...fieldsToUpdate } : t
+    })
+
+    onUpdateTask({
+      key: "checklists",
+      value: task?.checklists.map((checklist) => {
+        if (checklist.id === checklistId) {
+          checklist.todos = TodosToEdit
+        }
+        return checklist
+      }),
     })
   }
 
@@ -181,6 +197,7 @@ export function TaskDetails() {
         onUpdateTaskLabel={onUpdateTaskLabel}
         onUpdateTaskDescription={onUpdateTaskDescription}
         onRemoveChecklist={onRemoveChecklist}
+        onUpdateCheckListTodo={onUpdateCheckListTodo}
         onAddCheckListTodo={onAddCheckListTodo}
         onRemoveCheckListTodo={onRemoveCheckListTodo}
       />
