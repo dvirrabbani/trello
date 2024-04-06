@@ -11,6 +11,15 @@
     background-color: $background-neutral;
   }
 
+  &.variant-group {
+    &:hover {
+      background-color: $group-background;
+    }
+    &:active {
+      background-color: $background-accent-gray-subtle;
+    }
+  }
+
   &:hover {
     background-color: $background-neutral-hovered;
   }
