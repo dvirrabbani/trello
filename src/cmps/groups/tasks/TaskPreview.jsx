@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux"
 import SvgIcon from "../../SvgIcon"
+import { Link, useNavigate } from "react-router-dom"
+import { eventBus } from "../../../services/event-bus.service"
 
-export function TaskPreview({ task }) {
+export function TaskPreview({ groupId, task }) {
+  const navigate = useNavigate()
   function coverStyle(isFull, background) {
     const isUrl =
       background.startsWith("http://") || background.startsWith("https://")
@@ -28,14 +31,25 @@ export function TaskPreview({ task }) {
       : { backgroundColor: background }
   }
 
+  function onQuickEditTask(e) {
+    e.stopPropagation()
+    const taskInfo = {
+      groupId,
+      task,
+      boundaries: e.target.parentElement.getBoundingClientRect(),
+    }
+    eventBus.emit("quickEditTask", taskInfo)
+  }
+
   return (
     <div
       className="task-preview"
       style={
         task.style && task.style.isFull ? cardStyle(task.style.background) : {}
       }
+      onClick={() => navigate(`${groupId}/${task.id}`)}
     >
-      <button className="task-edit">
+      <button className="task-edit" onClick={onQuickEditTask}>
         <SvgIcon iconName="edit" />
       </button>
       {task.style && (

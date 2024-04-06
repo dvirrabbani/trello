@@ -1,13 +1,27 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Outlet, useParams } from "react-router"
 import { useSelector } from "react-redux"
 import { loadBoard } from "../store/board.actions"
 import { GroupList } from "../cmps/groups/GroupList"
 import { BoardDetailsHeader } from "../cmps/BoardDetailsHeader"
+import { eventBus } from "../services/event-bus.service"
+import { TaskQuickEdit } from "../cmps/TaskQuickEdit"
+import { Modal } from "../cmps/Modal"
 
 export function BoardDetails() {
   const params = useParams()
   const board = useSelector((storeState) => storeState.boardModule.board)
+  const [taskQuickEdit, setTaskQuickEdit] = useState(null)
+
+  useEffect(() => {
+    const unsubscribe = eventBus.on("quickEditTask", (data) => {
+      // console.log("quickEdit data", data)
+      setTaskQuickEdit(data)
+    })
+    return () => {
+      unsubscribe()
+    }
+  })
 
   useEffect(() => {
     loadBoard(params.boardId)
@@ -15,7 +29,6 @@ export function BoardDetails() {
 
   if (!board) return <div>Loading..</div>
 
-  //TODO - think it need to be in store?
   const boardStyle = {
     backgroundColor: board.style.backgroundColor,
     color: "white",
@@ -34,6 +47,16 @@ export function BoardDetails() {
         </div>
       </div>
       <Outlet />
+      {taskQuickEdit && (
+        <Modal cb={setTaskQuickEdit}>
+          <TaskQuickEdit
+            groupId={taskQuickEdit.groupId}
+            task={taskQuickEdit.task}
+            boundaries={taskQuickEdit.boundaries}
+            setTaskQuickEdit={setTaskQuickEdit}
+          />
+        </Modal>
+      )}
     </div>
   )
 }

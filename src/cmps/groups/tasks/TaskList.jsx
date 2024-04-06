@@ -7,9 +7,10 @@ export function TaskList({ group }) {
       {group.tasks.map((task) => {
         return (
           <li key={task.id}>
-            <Link to={`${group.id}/${task.id}`}>
+            {/* <Link to={`${group.id}/${task.id}`}>
               <TaskPreview task={task} />
-            </Link>
+            </Link> */}
+            <TaskPreview groupId={group.id} task={task} />
           </li>
         )
       })}
