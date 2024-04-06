@@ -16,7 +16,7 @@ export function TaskDetailsDescription({
       <input
         name="description"
         onChange={handleChange}
-        value={fields.description}
+        value={fields.description || ""}
       />
       {task.description && <div>{task.description}</div>}
 
