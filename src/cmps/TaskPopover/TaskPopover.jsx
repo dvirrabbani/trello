@@ -1,5 +1,5 @@
-import { Button } from "../../Button"
-import SvgIcon from "../../SvgIcon"
+import { Button } from "../Button"
+import SvgIcon from "../SvgIcon"
 import { TaskPopoverCheckList } from "./TaskPopoverCheckList"
 import { TaskPopoverLabel } from "./TaskPopoverLabel"
 import { TaskPopoverMembers } from "./TaskPopoverMembers"

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
-import { TaskPopover } from "./TaskPopover/TaskPopover"
+import { TaskPopover } from "../TaskPopover/TaskPopover"
 
 export function TaskDetailsSidebar({
   task,
