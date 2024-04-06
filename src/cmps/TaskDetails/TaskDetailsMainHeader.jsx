@@ -17,6 +17,7 @@ export function TaskDetailsMainHeader({
           {members?.task?.map((m) => {
             return (
               <img
+                onClick={() => onUpdateMembers(m)}
                 style={{ width: "32px" }}
                 key={m._id}
                 src={m.imgUrl}
@@ -27,23 +28,6 @@ export function TaskDetailsMainHeader({
           <Button variant={"contained"}>
             <SvgIcon iconName="plus" />
           </Button>
-        </div>
-        <div className="members-edit">
-          <h3>Board members</h3>
-          <div>
-            {members?.task?.map((m) => {
-              return (
-                <Button key={m._id} onClick={() => onUpdateMembers(m)}>
-                  <img
-                    style={{ width: "50px" }}
-                    key={m._id}
-                    src={m.imgUrl}
-                    alt=""
-                  />
-                </Button>
-              )
-            })}
-          </div>
         </div>
       </div>
       {/* Labels */}

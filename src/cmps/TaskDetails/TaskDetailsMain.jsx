@@ -26,17 +26,17 @@ export function TaskDetailsMain({
         onUpdateMembers={onUpdateMembers}
         onUpdateTaskLabel={onUpdateTaskLabel}
       />
-      <TaskDetailsChecklist
-        checklists={task.checklists}
-        onRemoveChecklist={onRemoveChecklist}
-        onAddCheckListTodo={onAddCheckListTodo}
-        onRemoveCheckListTodo={onRemoveCheckListTodo}
-      />
       <TaskDetailsDescription
         task={task}
         fields={fields}
         handleChange={handleChange}
         onAddDescription={onAddDescription}
+      />
+      <TaskDetailsChecklist
+        checklists={task.checklists}
+        onRemoveChecklist={onRemoveChecklist}
+        onAddCheckListTodo={onAddCheckListTodo}
+        onRemoveCheckListTodo={onRemoveCheckListTodo}
       />
       {/* <TaskDetailsAttachments /> */}
       {/* <TaskDetailsActivities /> */}
