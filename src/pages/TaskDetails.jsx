@@ -85,6 +85,36 @@ export function TaskDetails() {
     })
   }
 
+  function onAddCheckListTodo(checklistId, todo) {
+    const checkListToEdit = task?.checklists?.find((c) => c.id === checklistId)
+    console.log({ checkListToEdit })
+    checkListToEdit.todos = [
+      ...checkListToEdit.todos,
+      { id: utilService.makeId(), title: todo.title, isDone: false },
+    ]
+
+    onUpdateTask({
+      key: "checklists",
+      value: task.checklists.map((c) =>
+        c.id === checklistId ? checkListToEdit : c
+      ),
+    })
+  }
+
+  function onRemoveCheckListTodo(checklistId, todoId) {
+    const checklistToEdit = task?.checklists?.find((c) => c.id === checklistId)
+    checklistToEdit.todos = checklistToEdit.todos.filter((t) => t.id !== todoId)
+
+    task?.checklists.map((checklist) =>
+      checklist.id === checklistId ? checklistToEdit : checklist
+    )
+
+    onUpdateTask({
+      key: "checklists",
+      value: task?.checklists,
+    })
+  }
+
   function onUpdateTaskLabel(labelId) {
     let labelIdsToEdit = []
     if (task?.labelIds) {
@@ -158,6 +188,8 @@ export function TaskDetails() {
         onUpdateTaskLabel={onUpdateTaskLabel}
         onAddDescription={onAddDescription}
         onRemoveChecklist={onRemoveChecklist}
+        onAddCheckListTodo={onAddCheckListTodo}
+        onRemoveCheckListTodo={onRemoveCheckListTodo}
       />
       <TaskDetailsSidebar
         task={task}
