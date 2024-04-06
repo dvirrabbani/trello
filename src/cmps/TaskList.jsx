@@ -20,6 +20,8 @@ export function TaskList({ group }) {
 
 function TaskPreview({ task }) {
   function coverStyle(isFull, background) {
+    console.log("background", background)
+    console.log("isFull", isFull)
     const isUrl =
       background.startsWith("http://") || background.startsWith("https://")
     let coverStyle = {}
