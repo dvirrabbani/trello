@@ -1,24 +1,7 @@
-import { Link } from "react-router-dom"
-import SvgIcon from "./SvgIcon"
 import { useSelector } from "react-redux"
+import SvgIcon from "../../SvgIcon"
 
-export function TaskList({ group }) {
-  return (
-    <ol className="clean-list flex column task-list">
-      {group.tasks.map((task) => {
-        return (
-          <li key={task.id}>
-            <Link to={`${group.id}/${task.id}`}>
-              <TaskPreview task={task} />
-            </Link>
-          </li>
-        )
-      })}
-    </ol>
-  )
-}
-
-function TaskPreview({ task }) {
+export function TaskPreview({ task }) {
   function coverStyle(isFull, background) {
     const isUrl =
       background.startsWith("http://") || background.startsWith("https://")

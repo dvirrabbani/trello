@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Outlet, useParams } from "react-router"
 import { useSelector } from "react-redux"
-import { GroupList } from "../cmps/GroupList"
-import { loadBoard, updateCurrentBoard } from "../store/board.actions"
+import { loadBoard } from "../store/board.actions"
+import { GroupList } from "../cmps/groups/GroupList"
 import { BoardDetailsHeader } from "../cmps/BoardDetailsHeader"
-import SvgIcon from "../cmps/SvgIcon"
-import { utilService } from "../services/util.service"
 
 export function BoardDetails() {
   const params = useParams()
