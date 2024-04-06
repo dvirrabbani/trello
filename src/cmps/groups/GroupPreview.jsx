@@ -1,62 +1,12 @@
 import { useState } from "react"
-import SvgIcon from "./SvgIcon"
-import { TaskList } from "./TaskList"
-import { updateCurrentBoard } from "../store/board.actions"
-import { utilService } from "../services/util.service"
-import { AddItemForm } from "./AddItemForm"
+import { updateCurrentBoard } from "../../store/board.actions"
+import { utilService } from "../../services/util.service"
+import SvgIcon from "../SvgIcon"
+import { AddItemForm } from "../AddItemForm"
 import { GroupActions } from "./GroupActions"
+import { TaskList } from "./tasks/TaskList"
 
-export function GroupList({ groups }) {
-  const [displayAddItem, setDisplayAddItem] = useState(false)
-
-  function onAddGroup(inputVal) {
-    const group = {
-      archivedAt: null,
-      id: `g${utilService.makeId()}`,
-      style: {},
-      tasks: [],
-      title: inputVal,
-    }
-    const updateGroups = [...groups, group]
-    updateCurrentBoard(null, null, {
-      key: "groups",
-      value: updateGroups,
-    })
-    setDisplayAddItem(false)
-  }
-
-  function deleteGroup(groupId) {
-    const updateGroups = groups.filter((group) => group.id !== groupId)
-    updateCurrentBoard(null, null, {
-      key: "groups",
-      value: updateGroups,
-    })
-  }
-
-  return (
-    <ol className="group-list clean-list flex">
-      {groups.map((group) => (
-        <GroupPreview key={group.id} group={group} deleteGroup={deleteGroup} />
-      ))}
-      {displayAddItem ? (
-        <AddItemForm
-          onAddItem={onAddGroup}
-          setDisplayAddItem={setDisplayAddItem}
-        />
-      ) : (
-        <button
-          className="add-group-btn"
-          onClick={() => setDisplayAddItem(true)}
-        >
-          <SvgIcon iconName="plus" />
-          <span>Add another group</span>
-        </button>
-      )}
-    </ol>
-  )
-}
-
-function GroupPreview({ group, deleteGroup }) {
+export function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
   const [groupActions, setGroupActions] = useState(false)
   const [displayAddItem, setDisplayAddItem] = useState(false)
