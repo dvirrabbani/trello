@@ -1,6 +1,12 @@
 .task-quick-edit {
-  background: $task-background;
-  color: $color-txt-primary;
-  width: 256px;
-  transform: translateX(-100%);
+  position: absolute;
+
+  .task-preview {
+    background: #ffffff;
+    color: #172b4d;
+    width: 256px;
+  }
+  .task-edit {
+    display: none;
+  }
 }

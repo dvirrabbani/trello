@@ -15,7 +15,6 @@ export function BoardDetails() {
 
   useEffect(() => {
     const unsubscribe = eventBus.on("quickEditTask", (data) => {
-      // console.log("quickEdit data", data)
       setTaskQuickEdit(data)
     })
     return () => {
