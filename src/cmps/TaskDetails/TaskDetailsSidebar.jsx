@@ -3,7 +3,14 @@ import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { TaskPopover } from "./TaskPopover/TaskPopover"
 
-export function TaskDetailsSidebar({ task, members, onUpdateMembers }) {
+export function TaskDetailsSidebar({
+  task,
+  labels,
+  members,
+  onUpdateMembers,
+  onUpdateTaskLabel,
+  onAddToCheckLists,
+}) {
   const [popover, setPopover] = useState(null)
 
   const btnPopoverDataList = [
@@ -16,7 +23,30 @@ export function TaskDetailsSidebar({ task, members, onUpdateMembers }) {
         props: {
           members,
           onUpdateMembers,
-          setPopover,
+        },
+      },
+    },
+    {
+      iconName: "label",
+      title: "Labels",
+      popover: {
+        title: "Labels",
+        type: "Labels",
+        props: {
+          labels,
+          onUpdateTaskLabel,
+        },
+      },
+    },
+    {
+      iconName: "checkbox",
+      title: "CheckList",
+      popover: {
+        title: "Add to CheckList",
+        type: "CheckList",
+        props: {
+          checklists: task.checklists,
+          onAddToCheckLists,
         },
       },
     },

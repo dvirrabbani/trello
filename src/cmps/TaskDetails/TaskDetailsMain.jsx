@@ -9,17 +9,29 @@ export function TaskDetailsMain({
   fields,
   handleChange,
   members,
+  labels,
   onUpdateMembers,
   onAddDescription,
+  onUpdateTaskLabel,
+  onRemoveChecklist,
+  onAddCheckListTodo,
+  onRemoveCheckListTodo,
 }) {
   return (
     <div className="task-details-main">
       <TaskDetailsMainHeader
         task={task}
+        labels={labels}
         members={members}
         onUpdateMembers={onUpdateMembers}
+        onUpdateTaskLabel={onUpdateTaskLabel}
       />
-      {/* <TaskDetailsChecklist /> */}
+      <TaskDetailsChecklist
+        checklists={task.checklists}
+        onRemoveChecklist={onRemoveChecklist}
+        onAddCheckListTodo={onAddCheckListTodo}
+        onRemoveCheckListTodo={onRemoveCheckListTodo}
+      />
       <TaskDetailsDescription
         task={task}
         fields={fields}
