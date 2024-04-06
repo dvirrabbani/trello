@@ -1,5 +1,6 @@
 import { Button } from "../../Button"
 import SvgIcon from "../../SvgIcon"
+import { TaskPopoverLabel } from "./TaskPopoverLabel"
 import { TaskPopoverMembers } from "./TaskPopoverMembers"
 
 export function TaskPopover(props) {
@@ -7,6 +8,8 @@ export function TaskPopover(props) {
     switch (props.popover?.type) {
       case "Members":
         return <TaskPopoverMembers {...props.popover.props} />
+      case "Labels":
+        return <TaskPopoverLabel {...props.popover.props} />
       default:
         return
     }

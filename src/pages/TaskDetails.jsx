@@ -65,6 +65,21 @@ export function TaskDetails() {
     })
   }
 
+  function onUpdateTaskLabel(labelId) {
+    let labelIdsToEdit = []
+    if (task?.labelIds) {
+      labelIdsToEdit = task?.labelIds?.find((lIdx) => lIdx === labelId)
+        ? task.labelIds.filter((lIdx) => lIdx !== labelId)
+        : [...task.labelIds, labelId]
+    } else {
+      labelIdsToEdit = [labelId]
+    }
+    onUpdateTask({
+      key: "labelIds",
+      value: labelIdsToEdit,
+    })
+  }
+
   function onAddDescription(description) {
     onUpdateTask({
       key: "description",
@@ -85,6 +100,19 @@ export function TaskDetails() {
     return taskMemberList
   }
 
+  function getTaskLabels() {
+    const taskLabelList = []
+    task?.labelIds?.map((tlIdx) => {
+      board.labels?.map((l) => {
+        if (tlIdx === l.id) {
+          taskLabelList.push(l)
+        }
+      })
+    })
+
+    return taskLabelList
+  }
+
   if (!task) {
     return (
       <dialog ref={dialogRef} className="task-details">
@@ -92,24 +120,29 @@ export function TaskDetails() {
       </dialog>
     )
   }
-
+  const labels = { board: board.labels, task: getTaskLabels() }
+  const members = { board: board.members, task: getTaskMembers() }
   return (
     <dialog ref={dialogRef} className="task-details">
       <TaskDetailsHeader params={params} task={task} />
       <TaskDetailsMain
-        onUpdateMembers={onUpdateMembers}
         params={params}
         task={task}
+        labels={labels}
         fields={fields}
         handleChange={handleChange}
-        members={board.members}
+        members={members}
         onUpdateTask={onUpdateTask}
+        onUpdateMembers={onUpdateMembers}
+        onUpdateTaskLabel={onUpdateTaskLabel}
         onAddDescription={onAddDescription}
       />
       <TaskDetailsSidebar
         task={task}
+        members={members}
+        labels={labels}
         onUpdateMembers={onUpdateMembers}
-        members={{ board: board.members, task: getTaskMembers() }}
+        onUpdateTaskLabel={onUpdateTaskLabel}
       />
     </dialog>
   )

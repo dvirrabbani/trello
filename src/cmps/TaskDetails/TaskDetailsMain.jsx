@@ -9,15 +9,19 @@ export function TaskDetailsMain({
   fields,
   handleChange,
   members,
+  labels,
   onUpdateMembers,
   onAddDescription,
+  onUpdateTaskLabel,
 }) {
   return (
     <div className="task-details-main">
       <TaskDetailsMainHeader
         task={task}
+        labels={labels}
         members={members}
         onUpdateMembers={onUpdateMembers}
+        onUpdateTaskLabel={onUpdateTaskLabel}
       />
       {/* <TaskDetailsChecklist /> */}
       <TaskDetailsDescription

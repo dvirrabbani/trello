@@ -1,29 +1,20 @@
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 
-export function TaskDetailsMainHeader({ task, members, onUpdateMembers }) {
-  const taskMembers = getTaskMembers()
-
-  function getTaskMembers() {
-    const taskMemberList = []
-    task?.memberIds?.map((tmIdx) => {
-      members?.map((m) => {
-        if (tmIdx === m._id) {
-          taskMemberList.push(m)
-        }
-      })
-    })
-
-    return taskMemberList
-  }
-
+export function TaskDetailsMainHeader({
+  task,
+  members,
+  labels,
+  onUpdateMembers,
+  onUpdateTaskLabel,
+}) {
   return (
-    <section className="task-details-main-header">
+    <section className="task-details-main-header flex">
       {/* Task Members */}
       <div className="main-header-card">
         <h4>Members</h4>
         <div className="member-list flex">
-          {taskMembers?.map((m) => {
+          {members?.task?.map((m) => {
             return (
               <img
                 style={{ width: "32px" }}
@@ -40,7 +31,7 @@ export function TaskDetailsMainHeader({ task, members, onUpdateMembers }) {
         <div className="members-edit">
           <h3>Board members</h3>
           <div>
-            {members?.map((m) => {
+            {members?.task?.map((m) => {
               return (
                 <Button key={m._id} onClick={() => onUpdateMembers(m)}>
                   <img
@@ -53,6 +44,30 @@ export function TaskDetailsMainHeader({ task, members, onUpdateMembers }) {
               )
             })}
           </div>
+        </div>
+      </div>
+      {/* Labels */}
+      <div className="main-header-card">
+        <h4>Labels</h4>
+        <div className="labels-list flex">
+          {labels?.task.map((lt) => {
+            return (
+              <span
+                key={lt.id}
+                style={{
+                  backgroundColor: labels.board.find((lb) => lb.id === lt.id)
+                    .color,
+                  cursor: "pointer",
+                }}
+                onClick={() => onUpdateTaskLabel(lt.id)}
+              >
+                <span>{lt.title}</span>
+              </span>
+            )
+          })}
+          <Button variant={"contained"}>
+            <SvgIcon iconName="plus" />
+          </Button>
         </div>
       </div>
     </section>
