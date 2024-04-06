@@ -16,11 +16,16 @@
     font-size: em(14px);
     font-weight: 400;
     line-height: em(20px);
+    position: relative;
     cursor: pointer;
 
     &:hover {
       outline-color: -webkit-focus-ring-color;
       outline: 2px solid $border-focused;
+    }
+
+    &:hover .task-edit {
+      display: block;
     }
 
     .task-cover {
@@ -39,6 +44,21 @@
       height: 24px;
       background-size: contain;
       background-repeat: no-repeat;
+    }
+
+    .task-edit {
+      position: absolute;
+      display: none;
+      top: 2px;
+      right: 2px;
+      border-radius: 16px;
+      padding: 6px 8px;
+      z-index: 10;
+      background-color: $task-background;
+
+      &:hover {
+        background-color: #f1f2f4;
+      }
     }
   }
 }

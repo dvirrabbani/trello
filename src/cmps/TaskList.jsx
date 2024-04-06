@@ -52,6 +52,9 @@ function TaskPreview({ task }) {
         task.style && task.style.isFull ? cardStyle(task.style.background) : {}
       }
     >
+      <button className="task-edit">
+        <SvgIcon iconName="edit" />
+      </button>
       {task.style && (
         <div
           className="task-preview-cover"
