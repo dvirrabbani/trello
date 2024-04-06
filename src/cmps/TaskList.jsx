@@ -20,8 +20,6 @@ export function TaskList({ group }) {
 
 function TaskPreview({ task }) {
   function coverStyle(isFull, background) {
-    console.log("background", background)
-    console.log("isFull", isFull)
     const isUrl =
       background.startsWith("http://") || background.startsWith("https://")
     let coverStyle = {}
@@ -60,6 +58,7 @@ function TaskPreview({ task }) {
           style={coverStyle(task.style.isFull, task.style.background)}
         ></div>
       )}
+      {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
       <div className="task-title">{task.title}</div>
       <div className="task-actions-badges">
         {task.description && (
@@ -121,4 +120,24 @@ function TaskMember({ boardMembers, memberId }) {
     backgroundImage: `url(${memberImg})`,
   }
   return <div className="task-member" style={style}></div>
+}
+
+function TaskLabels({ labelIds }) {
+  const board = useSelector((storeState) => storeState.boardModule.board)
+  const boardLabels = board.labels
+
+  return (
+    <div className="task-labels">
+      {labelIds.map((labelId) => {
+        const label = boardLabels.find((label) => label.id == labelId)
+        return (
+          <TaskLabel key={label.id} color={label.color} title={label.title} />
+        )
+      })}
+    </div>
+  )
+}
+
+function TaskLabel({ color, title }) {
+  return <span style={{ background: color }}>{title}</span>
 }
