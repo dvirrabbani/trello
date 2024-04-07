@@ -1,0 +1,41 @@
+.task-details-activities {
+  .comments-list {
+    display: grid;
+    .comment-item {
+      display: flex;
+      color: $color-text-subtle;
+      .aside {
+        img {
+          width: rem(32px);
+          height: rem(32px);
+          border-radius: 50%;
+        }
+      }
+
+      .comment-header {
+        display: flex;
+        align-items: center;
+        gap: rem(8px);
+        .member-name {
+          font-weight: 500;
+        }
+        .comment-date {
+          font-size: rem(12px);
+        }
+      }
+      .comment-txt {
+        font-size: rem(14px);
+        border-radius: rem(8px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-shadow: var(
+          --ds-shadow-raised,
+          0 1px 1px #091e4240,
+          0 0 1px #091e424f
+        );
+        padding: rem(8px) rem(12px);
+        background-color: $clr8;
+      }
+    }
+  }
+}
