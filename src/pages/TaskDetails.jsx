@@ -7,6 +7,7 @@ import { TaskDetailsSidebar } from "../cmps/TaskDetails/TaskDetailsSidebar"
 import { TaskDetailsMainHeader } from "../cmps/TaskDetails/TaskDetailsMainHeader"
 import { TaskDetailsDescription } from "../cmps/TaskDetails/TaskDetailsDescription"
 import { TaskDetailsChecklist } from "../cmps/TaskDetails/TaskDetailsCheckList"
+import { TaskDetailsActivities } from "../cmps/TaskDetails/TaskDetailsActivities"
 import { utilService } from "../services/util.service"
 
 export function TaskDetails() {
@@ -115,6 +116,13 @@ export function TaskDetails() {
     return board.labels?.filter((obj) => task?.labelIds?.includes(obj.id))
   }
 
+  function onRemoveComment(commentId, comments) {
+    onUpdateTask({
+      key: "comments",
+      value: comments.filter((c) => c.id !== commentId),
+    })
+  }
+
   if (!task) {
     return (
       <dialog ref={dialogRef} className="task-details">
@@ -152,7 +160,11 @@ export function TaskDetails() {
           onUpdateCheckListTodo={onUpdateCheckListTodo}
         />
         {/* <TaskDetailsAttachments /> */}
-        {/* <TaskDetailsActivities /> */}
+        <TaskDetailsActivities
+          task={task}
+          boardMembers={board.members}
+          onRemoveComment={onRemoveComment}
+        />
       </div>
       <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
     </dialog>

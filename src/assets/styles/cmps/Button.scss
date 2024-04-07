@@ -7,8 +7,24 @@
   justify-content: flex-start;
   background-color: transparent;
 
+  &:hover {
+    background-color: $background-neutral-hovered;
+  }
+  &:active {
+    background-color: $background-neutral-pressed;
+  }
+
   &.shape-circle {
     border-radius: 50%;
+  }
+
+  &.variant-link {
+    background-color: transparent;
+    text-decoration: underline;
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
   }
 
   &.variant-contained {
@@ -34,12 +50,5 @@
     &:active {
       background-color: $background-accent-gray-subtle;
     }
-  }
-
-  &:hover {
-    background-color: $background-neutral-hovered;
-  }
-  &:active {
-    background-color: $background-neutral-pressed;
   }
 }

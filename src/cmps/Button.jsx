@@ -3,7 +3,7 @@ export function Button({
   onClick,
   className,
   variant = "text",
-  shape,
+  shape = "regular",
 }) {
   const dynamicClass = `button${className ? ` ${className}` : ""}${
     variant ? ` variant-${variant}` : ""
