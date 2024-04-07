@@ -154,12 +154,7 @@ export function TaskDetails() {
         {/* <TaskDetailsAttachments /> */}
         {/* <TaskDetailsActivities /> */}
       </div>
-      <TaskDetailsSidebar
-        task={task}
-        members={members}
-        labels={labels}
-        onUpdateTask={onUpdateTask}
-      />
+      <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
     </dialog>
   )
 }

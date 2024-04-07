@@ -1,53 +1,26 @@
 import { useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
-// import { TaskPopover } from "../TaskPopover/TaskPopover"
 import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
 
-export function TaskDetailsSidebar({
-  task,
-  labels,
-  onUpdateTask,
-  members,
-  onUpdateMembers,
-}) {
+export function TaskDetailsSidebar({ task, onUpdateTask }) {
   const [popover, setPopover] = useState(null)
-  const [popoverType, setPopoverType] = useState()
 
   const btnPopoverDataList = [
     {
       iconName: "profile",
+      type: "Members",
       title: "Members",
-      popover: {
-        type: "Members",
-        title: "Members",
-        props: {
-          members,
-          onUpdateMembers,
-        },
-      },
     },
     {
       iconName: "label",
+      type: "Labels",
       title: "Labels",
-      popover: {
-        title: "Labels",
-        type: "Labels",
-        props: {
-          labels,
-        },
-      },
     },
     {
       iconName: "checkbox",
+      type: "CheckList",
       title: "CheckList",
-      popover: {
-        title: "Add to CheckList",
-        type: "CheckList",
-        props: {
-          checklists: task.checklists,
-        },
-      },
     },
   ]
 
@@ -62,11 +35,10 @@ export function TaskDetailsSidebar({
     } // Open Correspond popover
     else {
       const currentPopover = btnPopoverDataList.find(
-        (item) => item.popover.type === popoverType
+        (item) => item.type === popoverType
       )
 
       setPopover(() => currentPopover)
-      // setPopoverType(popoverType)
     }
   }
   return (
@@ -75,10 +47,10 @@ export function TaskDetailsSidebar({
       {btnPopoverDataList.map((item) => {
         return (
           <Button
-            key={item.popover.iconName}
+            key={item.type}
             variant="contained"
             onClick={(ev) => {
-              onClick(ev, item.popover.type)
+              onClick(ev, item.type)
             }}
           >
             <SvgIcon iconName={item.iconName} />
@@ -88,7 +60,7 @@ export function TaskDetailsSidebar({
       })}
       {popover && (
         <DynamicTaskPopover
-          type={popover.popover.type}
+          type={popover.type}
           title={popover.title}
           task={task}
           onClose={onClose}
