@@ -3,8 +3,10 @@ import { useParams } from "react-router"
 import { updateCurrentBoard } from "../store/board.actions"
 import { useSelector } from "react-redux"
 import { TaskDetailsHeader } from "../cmps/TaskDetails/TaskDetailsHeader"
-import { TaskDetailsMain } from "../cmps/TaskDetails/TaskDetailsMain"
 import { TaskDetailsSidebar } from "../cmps/TaskDetails/TaskDetailsSidebar"
+import { TaskDetailsMainHeader } from "../cmps/TaskDetails/TaskDetailsMainHeader"
+import { TaskDetailsDescription } from "../cmps/TaskDetails/TaskDetailsDescription"
+import { TaskDetailsChecklist } from "../cmps/TaskDetails/TaskDetailsCheckList"
 import { utilService } from "../services/util.service"
 
 export function TaskDetails() {
@@ -46,33 +48,6 @@ export function TaskDetails() {
     })
   }
 
-  function onUpdateMembers(member) {
-    let membersToEdit = []
-    if (task?.memberIds) {
-      membersToEdit = task?.memberIds?.find((mIdx) => mIdx === member._id)
-        ? task.memberIds.filter((mIdx) => mIdx !== member._id)
-        : [...task.memberIds, member._id]
-    } else {
-      membersToEdit = [member.id]
-    }
-    onUpdateTask({
-      key: "memberIds",
-      value: [...membersToEdit],
-    })
-  }
-
-  function onAddToCheckLists(title) {
-    const checkListToAdd = {
-      id: utilService.makeId(),
-      title,
-      todos: [],
-    }
-    onUpdateTask({
-      key: "checklists",
-      value: task?.checklists ? [...task?.checklists, checkListToAdd] : [],
-    })
-  }
-
   function onRemoveChecklist(checklistId) {
     onUpdateTask({
       key: "checklists",
@@ -82,7 +57,6 @@ export function TaskDetails() {
 
   function onAddCheckListTodo(checklistId, todo) {
     const checkListToEdit = task?.checklists?.find((c) => c.id === checklistId)
-    console.log({ checkListToEdit })
     checkListToEdit.todos = [
       ...(checkListToEdit?.todos || []),
       { id: utilService.makeId(), title: todo.title, isDone: false },
@@ -126,21 +100,6 @@ export function TaskDetails() {
     })
   }
 
-  function onUpdateTaskLabel(labelId) {
-    let labelIdsToEdit = []
-    if (task?.labelIds) {
-      labelIdsToEdit = task?.labelIds?.find((lIdx) => lIdx === labelId)
-        ? task.labelIds.filter((lIdx) => lIdx !== labelId)
-        : [...task.labelIds, labelId]
-    } else {
-      labelIdsToEdit = [labelId]
-    }
-    onUpdateTask({
-      key: "labelIds",
-      value: labelIdsToEdit,
-    })
-  }
-
   function onUpdateTaskDescription(description) {
     onUpdateTask({
       key: "description",
@@ -149,29 +108,11 @@ export function TaskDetails() {
   }
 
   function getTaskMembers() {
-    const taskMemberList = []
-    task?.memberIds?.map((tmIdx) => {
-      board.members?.map((m) => {
-        if (tmIdx === m._id) {
-          taskMemberList.push(m)
-        }
-      })
-    })
-
-    return taskMemberList
+    return board.members?.filter((obj) => task?.memberIds?.includes(obj._id))
   }
 
   function getTaskLabels() {
-    const taskLabelList = []
-    task?.labelIds?.map((tlIdx) => {
-      board.labels?.map((l) => {
-        if (tlIdx === l.id) {
-          taskLabelList.push(l)
-        }
-      })
-    })
-
-    return taskLabelList
+    return board.labels?.filter((obj) => task?.labelIds?.includes(obj.id))
   }
 
   if (!task) {
@@ -184,30 +125,40 @@ export function TaskDetails() {
   const labels = { board: board.labels, task: getTaskLabels() }
   const members = { board: board.members, task: getTaskMembers() }
 
+  if (!task) {
+    return "loading..."
+  }
+
   return (
     <dialog ref={dialogRef} className="task-details">
       <TaskDetailsHeader params={params} task={task} />
-      <TaskDetailsMain
-        params={params}
-        task={task}
-        labels={labels}
-        members={members}
-        onUpdateTask={onUpdateTask}
-        onUpdateMembers={onUpdateMembers}
-        onUpdateTaskLabel={onUpdateTaskLabel}
-        onUpdateTaskDescription={onUpdateTaskDescription}
-        onRemoveChecklist={onRemoveChecklist}
-        onUpdateCheckListTodo={onUpdateCheckListTodo}
-        onAddCheckListTodo={onAddCheckListTodo}
-        onRemoveCheckListTodo={onRemoveCheckListTodo}
-      />
+      <div className="task-details-main">
+        <TaskDetailsMainHeader
+          task={task}
+          labels={labels}
+          members={members}
+          onUpdateTask={onUpdateTask}
+        />
+        <TaskDetailsDescription
+          description={task.description}
+          onUpdateTask={onUpdateTask}
+          onUpdateTaskDescription={onUpdateTaskDescription}
+        />
+        <TaskDetailsChecklist
+          checklists={task.checklists}
+          onRemoveChecklist={onRemoveChecklist}
+          onAddCheckListTodo={onAddCheckListTodo}
+          onRemoveCheckListTodo={onRemoveCheckListTodo}
+          onUpdateCheckListTodo={onUpdateCheckListTodo}
+        />
+        {/* <TaskDetailsAttachments /> */}
+        {/* <TaskDetailsActivities /> */}
+      </div>
       <TaskDetailsSidebar
         task={task}
         members={members}
         labels={labels}
-        onUpdateMembers={onUpdateMembers}
-        onUpdateTaskLabel={onUpdateTaskLabel}
-        onAddToCheckLists={onAddToCheckLists}
+        onUpdateTask={onUpdateTask}
       />
     </dialog>
   )

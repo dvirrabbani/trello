@@ -1,13 +1,15 @@
 import { useForm } from "../../customHooks/useForm"
+import { addTaskCheckList } from "../../store/board.actions"
 import { Button } from "../Button"
 
-export function TaskPopoverCheckList({ onAddToCheckLists }) {
+export function TaskPopoverCheckList({ task, onUpdateTask }) {
   const [fields, , handleChange] = useForm({
     title: "",
   })
 
   function onAddCheckList() {
-    onAddToCheckLists(fields.title)
+    console.log(onUpdateTask)
+    addTaskCheckList(fields.title, task, onUpdateTask)
   }
 
   return (

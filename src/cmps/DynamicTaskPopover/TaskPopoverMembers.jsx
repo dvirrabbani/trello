@@ -1,16 +1,26 @@
+import { useSelector } from "react-redux"
 import { Button } from "../Button"
+import { updateTaskMemberIds } from "../../store/board.actions"
 
-export function TaskPopoverMembers({ members, onUpdateMembers }) {
+export function TaskPopoverMembers({ task, onUpdateTask }) {
+  const board = useSelector((storeState) => storeState.boardModule.board)
+  const taskMembers = board.members?.filter((obj) =>
+    task?.memberIds?.includes(obj._id)
+  )
+  function onUpdateTaskMembers(memberId) {
+    updateTaskMemberIds(memberId, task?.memberIds, onUpdateTask)
+  }
+
   return (
     <div className="task-popover-members">
       <h4 className="title">Card Members</h4>
       <ul className="clean-list flex column">
-        {members?.task?.map((m) => {
+        {taskMembers?.map((m) => {
           return (
             <Button
               variant="group"
               key={m._id}
-              onClick={() => onUpdateMembers(m)}
+              onClick={() => onUpdateTaskMembers(m._id)}
             >
               <img
                 style={{ width: "30px" }}
@@ -25,12 +35,12 @@ export function TaskPopoverMembers({ members, onUpdateMembers }) {
       </ul>
       <h4 className="title">Board Members</h4>
       <ul className="clean-list flex column">
-        {members?.board?.map((m) => {
+        {board?.members.map((m) => {
           return (
             <Button
               variant="group"
               key={m._id}
-              onClick={() => onUpdateMembers(m)}
+              onClick={() => onUpdateTaskMembers(m._id)}
             >
               <img
                 style={{ width: "30px" }}

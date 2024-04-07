@@ -4,31 +4,33 @@ import { TaskPopoverCheckList } from "./TaskPopoverCheckList"
 import { TaskPopoverLabel } from "./TaskPopoverLabel"
 import { TaskPopoverMembers } from "./TaskPopoverMembers"
 
-export function TaskPopover(props) {
+export function DynamicTaskPopover(props) {
+  const { type, title, onClose } = props
+
   function getPopoverContentType() {
-    switch (props.popover?.type) {
+    switch (type) {
       case "Members":
-        return <TaskPopoverMembers {...props.popover.props} />
+        return <TaskPopoverMembers {...props} />
       case "Labels":
-        return <TaskPopoverLabel {...props.popover.props} />
+        return <TaskPopoverLabel {...props} />
       case "CheckList":
-        return <TaskPopoverCheckList {...props.popover.props} />
+        return <TaskPopoverCheckList {...props} />
       default:
         return
     }
   }
 
   return (
-    <div className="task-popover">
+    <div className="dynamic-task-popover">
       <div className="popover-header flex align-center justify-between">
-        <div className="popover-title">{props.popover.title}</div>
-        <div className="popover-close" onClick={() => props.setPopover(null)}>
+        <div className="popover-title">{title}</div>
+        <div className="popover-close" onClick={onClose}>
           <Button>
             <SvgIcon iconName={"close"} />
           </Button>
         </div>
       </div>
-      <div className="popover-content">{getPopoverContentType(props)}</div>
+      <div className="popover-content">{getPopoverContentType()}</div>
     </div>
   )
 }

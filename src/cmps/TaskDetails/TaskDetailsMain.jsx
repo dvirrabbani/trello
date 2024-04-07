@@ -9,9 +9,8 @@ export function TaskDetailsMain({
   handleChange,
   members,
   labels,
-  onUpdateMembers,
+  onUpdateTask,
   onUpdateTaskDescription,
-  onUpdateTaskLabel,
   onRemoveChecklist,
   onAddCheckListTodo,
   onRemoveCheckListTodo,
@@ -23,8 +22,7 @@ export function TaskDetailsMain({
         task={task}
         labels={labels}
         members={members}
-        onUpdateMembers={onUpdateMembers}
-        onUpdateTaskLabel={onUpdateTaskLabel}
+        onUpdateTask={onUpdateTask}
       />
       <TaskDetailsDescription
         description={task.description}

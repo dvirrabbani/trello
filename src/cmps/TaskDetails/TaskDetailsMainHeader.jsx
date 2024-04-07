@@ -1,13 +1,10 @@
+import { useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
+import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
 
-export function TaskDetailsMainHeader({
-  task,
-  members,
-  labels,
-  onUpdateMembers,
-  onUpdateTaskLabel,
-}) {
+export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <section className="task-details-main-header flex">
       {/* Task Members */}
@@ -17,7 +14,6 @@ export function TaskDetailsMainHeader({
           {members?.task?.map((m) => {
             return (
               <img
-                onClick={() => onUpdateMembers(m)}
                 style={{ width: "32px" }}
                 key={m._id}
                 src={m.imgUrl}
@@ -43,7 +39,7 @@ export function TaskDetailsMainHeader({
                     .color,
                   cursor: "pointer",
                 }}
-                onClick={() => onUpdateTaskLabel(lt.id)}
+                onClick={() => setIsOpen((prev) => !prev)}
               >
                 <span>{lt.title}</span>
               </span>
@@ -53,6 +49,15 @@ export function TaskDetailsMainHeader({
             <SvgIcon iconName="plus" />
           </Button>
         </div>
+        {isOpen && (
+          <DynamicTaskPopover
+            type={"Labels"}
+            title={"Labels"}
+            task={task}
+            onClose={() => setIsOpen(false)}
+            onUpdateTask={onUpdateTask}
+          />
+        )}
       </div>
     </section>
   )

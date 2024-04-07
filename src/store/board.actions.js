@@ -1,3 +1,4 @@
+import { utilService } from "../services/util.service.js"
 import { boardService } from "../services/board.service.js"
 import { store } from "./store.js"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
@@ -124,6 +125,7 @@ export async function removeBoard(boardId) {
   }
 }
 
+// Task Actions
 export async function loadTask(boardId) {
   try {
     await boardService.remove(boardId)
@@ -133,7 +135,64 @@ export async function loadTask(boardId) {
     throw err
   }
 }
+export async function updateTaskMemberIds(
+  memberId,
+  taskMembersIds,
+  onUpdateTask
+) {
+  try {
+    let membersIdsToEdit = []
+    // dose not have members
+    if (!taskMembersIds) {
+      membersIdsToEdit = [memberId]
+      // have members
+    } else {
+      const taskMember = taskMembersIds.find((mIdx) => mIdx === memberId)
+      membersIdsToEdit = taskMember
+        ? taskMembersIds.filter((mIdx) => mIdx !== memberId)
+        : [...taskMembersIds, memberId]
+    }
 
+    onUpdateTask({
+      key: "memberIds",
+      value: membersIdsToEdit,
+    })
+  } catch (err) {
+    console.log("Cannot update member", err)
+    throw err
+  }
+}
+
+export async function updateTaskLabels(labelId, taskLabelsIds, onUpdateTask) {
+  let labelIdsToEdit = []
+  // dose not have labels
+  if (!taskLabelsIds) {
+    labelIdsToEdit = [labelId]
+    // have labels
+  } else {
+    const taskLabel = taskLabelsIds.find((mIdx) => mIdx === labelId)
+    labelIdsToEdit = taskLabel
+      ? taskLabelsIds.filter((mIdx) => mIdx !== labelId)
+      : [...taskLabelsIds, labelId]
+  }
+
+  onUpdateTask({
+    key: "labelIds",
+    value: labelIdsToEdit,
+  })
+}
+
+export async function addTaskCheckList(title, task, onUpdateTask) {
+  const checkListToAdd = {
+    id: utilService.makeId(),
+    title,
+    todos: [],
+  }
+  onUpdateTask({
+    key: "checklists",
+    value: task?.checklists ? [...task?.checklists, checkListToAdd] : [],
+  })
+}
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 export async function onRemoveBoardOptimistic(boardId) {

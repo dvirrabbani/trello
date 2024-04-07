@@ -1,25 +1,26 @@
 import { useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
-import { TaskPopover } from "../TaskPopover/TaskPopover"
+// import { TaskPopover } from "../TaskPopover/TaskPopover"
+import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
 
 export function TaskDetailsSidebar({
   task,
   labels,
+  onUpdateTask,
   members,
   onUpdateMembers,
-  onUpdateTaskLabel,
-  onAddToCheckLists,
 }) {
   const [popover, setPopover] = useState(null)
+  const [popoverType, setPopoverType] = useState()
 
   const btnPopoverDataList = [
     {
       iconName: "profile",
       title: "Members",
       popover: {
-        title: "Members",
         type: "Members",
+        title: "Members",
         props: {
           members,
           onUpdateMembers,
@@ -34,7 +35,6 @@ export function TaskDetailsSidebar({
         type: "Labels",
         props: {
           labels,
-          onUpdateTaskLabel,
         },
       },
     },
@@ -46,12 +46,14 @@ export function TaskDetailsSidebar({
         type: "CheckList",
         props: {
           checklists: task.checklists,
-          onAddToCheckLists,
         },
       },
     },
   ]
 
+  function onClose(params) {
+    setPopover(false)
+  }
   function onClick(ev, popoverType) {
     ev.preventDefault()
     // Close Current popover
@@ -59,11 +61,12 @@ export function TaskDetailsSidebar({
       setPopover(null)
     } // Open Correspond popover
     else {
-      const currentPopover =
-        btnPopoverDataList.find((item) => item.popover.type === popoverType)
-          .popover || null
+      const currentPopover = btnPopoverDataList.find(
+        (item) => item.popover.type === popoverType
+      )
 
       setPopover(() => currentPopover)
+      // setPopoverType(popoverType)
     }
   }
   return (
@@ -72,7 +75,7 @@ export function TaskDetailsSidebar({
       {btnPopoverDataList.map((item) => {
         return (
           <Button
-            key={item.popover.type}
+            key={item.popover.iconName}
             variant="contained"
             onClick={(ev) => {
               onClick(ev, item.popover.type)
@@ -83,7 +86,15 @@ export function TaskDetailsSidebar({
           </Button>
         )
       })}
-      {popover && <TaskPopover popover={popover} setPopover={setPopover} />}
+      {popover && (
+        <DynamicTaskPopover
+          type={popover.popover.type}
+          title={popover.title}
+          task={task}
+          onClose={onClose}
+          onUpdateTask={onUpdateTask}
+        />
+      )}
     </section>
   )
 }
