@@ -5,9 +5,9 @@ import { updateCurrentBoard } from "../store/board.actions"
 
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
-
-  console.log("boundaries", boundaries)
-  console.log("task", task)
+  //TODO - Check X position
+  // console.log("boundaries", boundaries)
+  // console.log("task", task)
   const style = {
     top: boundaries.y,
     left: boundaries.x,
