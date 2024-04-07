@@ -1,10 +1,18 @@
 import { useSelector } from "react-redux"
 import SvgIcon from "../../SvgIcon"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { eventBus } from "../../../services/event-bus.service"
+import { useState } from "react"
 
-export function TaskPreview({ groupId, task }) {
+export function TaskPreview({
+  groupId,
+  task,
+  titleToEdit,
+  setTitleToEdit,
+  isQuickEditParent,
+}) {
   const navigate = useNavigate()
+
   function coverStyle(isFull, background) {
     const isUrl =
       background.startsWith("http://") || background.startsWith("https://")
@@ -41,13 +49,22 @@ export function TaskPreview({ groupId, task }) {
     eventBus.emit("quickEditTask", taskInfo)
   }
 
+  function onTaskClick() {
+    navigate(`${groupId}/${task.id}`)
+  }
+
+  function handleChange({ target }) {
+    let { value, type, name } = target
+    setTitleToEdit(value)
+  }
+
   return (
     <div
       className="task-preview"
       style={
         task.style && task.style.isFull ? cardStyle(task.style.background) : {}
       }
-      onClick={() => navigate(`${groupId}/${task.id}`)}
+      onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button className="task-edit" onClick={onQuickEditTask}>
         <SvgIcon iconName="edit" />
@@ -60,7 +77,21 @@ export function TaskPreview({ groupId, task }) {
       )}
       <div className="task-preview-main">
         {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
-        <div className="task-title">{task.title}</div>
+        {isQuickEditParent ? (
+          <textarea
+            name="title"
+            spellCheck="false"
+            value={titleToEdit}
+            onChange={handleChange}
+            autoFocus
+            disabled={!isQuickEditParent}
+          >
+            {titleToEdit}
+          </textarea>
+        ) : (
+          <div className="task-title">{task.title}</div>
+        )}
+
         <div className="task-preview-footer flex">
           <div className="task-actions-badges flex">
             {task.description && (

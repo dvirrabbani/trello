@@ -1,6 +1,9 @@
 export function Modal({ children, cb }) {
+  function closeModal() {
+    cb(null)
+  }
   return (
-    <div onClick={() => cb(null)} className="modal-container">
+    <div onClick={closeModal} className="modal-container">
       {children}
     </div>
   )
