@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { TaskPreview } from "./groups/tasks/TaskPreview"
-import { Modal } from "./Modal"
 import { updateCurrentBoard } from "../store/board.actions"
+import { TaskDetailsSidebar } from "./TaskDetails/TaskDetailsSidebar"
 
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
@@ -22,6 +22,13 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
     setTaskQuickEdit(null)
   }
 
+  async function onUpdateTask({ key, value }) {
+    updateCurrentBoard(groupId, task.id, {
+      key,
+      value,
+    })
+  }
+
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -35,6 +42,9 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
         setTitleToEdit={setTitleToEdit}
         isQuickEditParent
       />
+      <div className="task-quick-edit-menu">
+        <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
+      </div>
       <button onClick={onSaveTitleTask}>Save</button>
     </div>
   )
