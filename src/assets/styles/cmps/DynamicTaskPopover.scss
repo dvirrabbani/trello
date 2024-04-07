@@ -1,7 +1,7 @@
 .dynamic-task-popover {
   background-color: $clr8;
   padding: 8px;
-  width: 304px;
+  min-width: 304px;
   overflow: hidden;
   border-radius: 8px;
   position: fixed;
