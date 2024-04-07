@@ -22,6 +22,11 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
       type: "CheckList",
       title: "CheckList",
     },
+    {
+      iconName: "clock",
+      type: "Dates",
+      title: "Dates",
+    },
   ]
 
   function onClose(params) {

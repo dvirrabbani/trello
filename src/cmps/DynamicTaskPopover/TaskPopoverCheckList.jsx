@@ -8,7 +8,6 @@ export function TaskPopoverCheckList({ task, onUpdateTask }) {
   })
 
   function onAddCheckList() {
-    console.log(onUpdateTask)
     addTaskCheckList(fields.title, task, onUpdateTask)
   }
 

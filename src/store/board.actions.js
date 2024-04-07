@@ -193,6 +193,13 @@ export async function addTaskCheckList(title, task, onUpdateTask) {
     value: task?.checklists ? [...task?.checklists, checkListToAdd] : [],
   })
 }
+
+export async function updateTaskDate(date, onUpdateTask) {
+  onUpdateTask({
+    key: "dueDate",
+    value: date,
+  })
+}
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 export async function onRemoveBoardOptimistic(boardId) {

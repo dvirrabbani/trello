@@ -2,9 +2,11 @@ import { useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
+import dayjs from "dayjs"
 
 export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isLabelPopOverOpen, setIsLabelPopOverOpen] = useState(false)
+  const [isDatePopoverOpen, setIsDatePopoverOpen] = useState(false)
   return (
     <section className="task-details-main-header flex">
       {/* Task Members */}
@@ -21,7 +23,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
               />
             )
           })}
-          <Button variant={"contained"}>
+          <Button variant={"contained"} shape={"circle"}>
             <SvgIcon iconName="plus" />
           </Button>
         </div>
@@ -39,26 +41,48 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
                     .color,
                   cursor: "pointer",
                 }}
-                onClick={() => setIsOpen((prev) => !prev)}
+                onClick={() => setIsLabelPopOverOpen((prev) => !prev)}
               >
                 <span>{lt.title}</span>
               </span>
             )
           })}
-          <Button variant={"contained"}>
+          <Button variant={"contained"} shape={"circle"}>
             <SvgIcon iconName="plus" />
           </Button>
         </div>
-        {isOpen && (
+        {isLabelPopOverOpen && (
           <DynamicTaskPopover
             type={"Labels"}
             title={"Labels"}
             task={task}
-            onClose={() => setIsOpen(false)}
+            onClose={() => setIsLabelPopOverOpen(false)}
             onUpdateTask={onUpdateTask}
           />
         )}
       </div>
+      {/* Dates */}
+      {task?.dueDate && (
+        <div className="main-header-card">
+          <h4>Due Dates</h4>
+          <input type="checkbox" />
+          <Button
+            variant="contained"
+            onClick={() => setIsDatePopoverOpen((prev) => !prev)}
+          >
+            {dayjs(task?.dueDate).format("MMM D YYYY [at] h:mm A")}
+          </Button>
+          {isDatePopoverOpen && (
+            <DynamicTaskPopover
+              type={"Dates"}
+              title={"Dates"}
+              task={task}
+              onClose={() => setIsDatePopoverOpen(false)}
+              onUpdateTask={onUpdateTask}
+            />
+          )}
+        </div>
+      )}
     </section>
   )
 }
