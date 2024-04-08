@@ -2,7 +2,8 @@
   .comments-list {
     display: grid;
     .comment-item {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr;
       color: $color-text-subtle;
       .aside {
         img {

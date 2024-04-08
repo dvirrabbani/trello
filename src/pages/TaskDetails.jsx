@@ -116,10 +116,38 @@ export function TaskDetails() {
     return board.labels?.filter((obj) => task?.labelIds?.includes(obj.id))
   }
 
-  function onRemoveComment(commentId, comments) {
+  function onRemoveComment(commentId, taskComments) {
     onUpdateTask({
       key: "comments",
-      value: comments.filter((c) => c.id !== commentId),
+      value: taskComments.filter((c) => c.id !== commentId),
+    })
+  }
+
+  function onAddComment(comment, taskComments) {
+    onUpdateTask({
+      key: "comments",
+      value: [
+        {
+          id: utilService.makeId(),
+          createdAt: Date.now(),
+          txt: comment.txt,
+          // TODO replace with the current loggedIn user
+          byMember: {
+            _id: "u101",
+            fullname: "Tal Tarablus",
+            imgUrl:
+              "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+          },
+        },
+        ...taskComments,
+      ],
+    })
+  }
+
+  function onUpdateComment(comment, taskComments) {
+    onUpdateTask({
+      key: "comments",
+      value: taskComments.map((tc) => (tc.id === comment.id ? comment : tc)),
     })
   }
 
@@ -164,6 +192,8 @@ export function TaskDetails() {
           task={task}
           boardMembers={board.members}
           onRemoveComment={onRemoveComment}
+          onAddComment={onAddComment}
+          onUpdateComment={onUpdateComment}
         />
       </div>
       <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
