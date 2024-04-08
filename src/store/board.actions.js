@@ -9,6 +9,7 @@ import {
   SET_BOARDS,
   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
+  UPDATE_BOARDS,
 } from "./board.reducer.js"
 
 // Action Creators:
@@ -29,6 +30,13 @@ export function getActionAddBoard(board) {
 export function getActionUpdateBoard(board) {
   return {
     type: UPDATE_BOARD,
+    board,
+  }
+}
+
+export function getActionUpdateBoards(board) {
+  return {
+    type: UPDATE_BOARDS,
     board,
   }
 }
@@ -91,7 +99,9 @@ export function updateBoard(board, { key, value }, activityType) {
     { key, value },
     activityType
   )
+
   store.dispatch(getActionUpdateBoard(updateBoard))
+  store.dispatch(getActionUpdateBoards(updateBoard))
 }
 
 export async function loadBoards() {
