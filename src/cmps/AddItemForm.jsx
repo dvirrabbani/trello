@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function AddItemForm({ onAddItem, setDisplayAddItem }) {
+export function AddItemForm({ onAddItem, setDisplayAddItem, className }) {
   const [inputVal, setInputVal] = useState("")
 
   function handleChange({ target }) {
@@ -11,7 +11,7 @@ export function AddItemForm({ onAddItem, setDisplayAddItem }) {
     height: "32px",
   }
   return (
-    <form>
+    <form className={className}>
       <textarea
         style={style}
         name="title"
