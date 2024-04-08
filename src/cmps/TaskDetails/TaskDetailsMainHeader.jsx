@@ -83,6 +83,14 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
           )}
         </div>
       )}
+      {/* Notifications */}
+      <div className="main-header-card">
+        <h4>Notifications</h4>
+        <Button variant={"contained"}>
+          <SvgIcon iconName="eye" />
+          <span>Watch</span>
+        </Button>
+      </div>
     </section>
   )
 }
