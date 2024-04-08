@@ -50,6 +50,50 @@ export const DEMO_BOARD_LIST = [
             id: "t101",
             title: "Replace logo",
             description: "description",
+            checklists: [
+              {
+                id: "checklist1",
+                title: "Daily Tasks",
+                todos: [
+                  {
+                    id: "todo1",
+                    title: "Complete morning workout",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo2",
+                    title: "Prepare breakfast",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo3",
+                    title: "Attend team meeting",
+                    isDone: true,
+                  },
+                ],
+              },
+              {
+                id: "checklist2",
+                title: "Weekly Goals",
+                todos: [
+                  {
+                    id: "todo4",
+                    title: "Review progress on project",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo5",
+                    title: "Submit weekly report",
+                    isDone: true,
+                  },
+                  {
+                    id: "todo6",
+                    title: "Plan weekend activities",
+                    isDone: true,
+                  },
+                ],
+              },
+            ],
             style: undefined,
           },
           {

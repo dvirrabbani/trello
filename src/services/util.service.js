@@ -114,7 +114,7 @@ function calculateDueDateStatus(dueDate) {
   const diffInHours = Math.abs(now - due) / 36e5
 
   if (diffInHours <= 24) {
-    return { status: "soon", style: { backgroundColor: "#e2b203" } }
+    return { status: "Due soon", style: { backgroundColor: "#e2b203" } }
   } else if (diffInHours <= 36) {
     return {
       status: "overdue",
