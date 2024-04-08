@@ -1,35 +1,12 @@
 import { useState } from "react"
-import { Button } from "../Button"
-import SvgIcon from "../SvgIcon"
-import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
+import { Button } from "./Button"
+import { DynamicTaskPopover } from "./DynamicTaskPopover/DynamicTaskPopover"
+import SvgIcon from "./SvgIcon"
 
-export function TaskDetailsSidebar({ task, onUpdateTask }) {
+export function TaskSideBtnActions({ btnPopoverDataList, task, onUpdateTask }) {
   const [popover, setPopover] = useState(null)
 
-  const btnPopoverDataList = [
-    {
-      iconName: "profile",
-      type: "Members",
-      title: "Members",
-    },
-    {
-      iconName: "label",
-      type: "Labels",
-      title: "Labels",
-    },
-    {
-      iconName: "checkbox",
-      type: "CheckList",
-      title: "CheckList",
-    },
-    {
-      iconName: "clock",
-      type: "Dates",
-      title: "Dates",
-    },
-  ]
-
-  function onClose(params) {
+  function onClose() {
     setPopover(false)
   }
   function onClick(ev, popoverType) {
@@ -47,8 +24,7 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
     }
   }
   return (
-    <section className="task-details-sidebar">
-      <h4>Add to card</h4>
+    <div className="task-side-btn-actions">
       {btnPopoverDataList.map((item) => {
         return (
           <Button
@@ -72,6 +48,6 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
           onUpdateTask={onUpdateTask}
         />
       )}
-    </section>
+    </div>
   )
 }
