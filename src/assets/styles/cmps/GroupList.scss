@@ -66,5 +66,11 @@
     .task-actions-badges > * {
       display: flex;
     }
+
+    .task-labels span {
+      display: inline-block;
+      min-width: 40px;
+      min-height: 8px;
+    }
   }
 }

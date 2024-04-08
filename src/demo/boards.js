@@ -74,6 +74,7 @@ export const DEMO_BOARD_LIST = [
             title: "Do that",
             description: "description",
             archivedAt: 1589983468418,
+            dueDate: 1649358748000,
             style: {
               isFull: true,
               background: "#26de81",
@@ -164,7 +165,7 @@ export const DEMO_BOARD_LIST = [
             attachments: ["ui_design_guide.pdf", "review.pdf"],
             memberIds: ["u101"],
             labelIds: ["l101", "l102"],
-            dueDate: 16156215211,
+            dueDate: 1712602448965,
             byMember: {
               _id: "u101",
               username: "Tal",

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import SvgIcon from "../../SvgIcon"
-import { Link, useNavigate, useParams } from "react-router-dom"
 import { eventBus } from "../../../services/event-bus.service"
-import { useState } from "react"
+import { utilService } from "../../../services/util.service"
 
 export function TaskPreview({
   groupId,
@@ -94,6 +94,7 @@ export function TaskPreview({
 
         <div className="task-preview-footer flex">
           <div className="task-actions-badges flex">
+            {task.dueDate && <DueDateBadge dueDate={task.dueDate} />}
             {task.description && (
               <div className="action-badge">
                 <SvgIcon iconName="description" />
@@ -112,6 +113,34 @@ export function TaskPreview({
           {task.memberIds && <TaskMembers memberIds={task.memberIds} />}
         </div>
       </div>
+    </div>
+  )
+}
+
+function DueDateBadge({ dueDate }) {
+  const dueDateObj = new Date(dueDate)
+  let dueDateStr = dueDateObj.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  })
+  const currentDate = new Date()
+  const oneYearAgo = new Date(
+    currentDate.setFullYear(currentDate.getFullYear() - 1)
+  )
+
+  if (dueDateObj < oneYearAgo) {
+    dueDateStr = dueDateObj.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })
+  }
+
+  const { status, style } = utilService.calculateDueDateStatus(dueDate)
+  return (
+    <div className="action-badge" style={style}>
+      <SvgIcon iconName="clock" />
+      <span>{dueDateStr}</span>
     </div>
   )
 }
