@@ -152,11 +152,7 @@ export function TaskDetails() {
   }
 
   if (!task) {
-    return (
-      <dialog ref={dialogRef} className="task-details">
-        loading
-      </dialog>
-    )
+    return <div className="task-details">loading</div>
   }
   const labels = { board: board.labels, task: getTaskLabels() }
   const members = { board: board.members, task: getTaskMembers() }
@@ -166,37 +162,41 @@ export function TaskDetails() {
   }
 
   return (
-    <dialog ref={dialogRef} className="task-details">
-      <TaskDetailsHeader params={params} task={task} />
-      <div className="task-details-main">
-        <TaskDetailsMainHeader
-          task={task}
-          labels={labels}
-          members={members}
-          onUpdateTask={onUpdateTask}
-        />
-        <TaskDetailsDescription
-          description={task.description}
-          onUpdateTask={onUpdateTask}
-          onUpdateTaskDescription={onUpdateTaskDescription}
-        />
-        <TaskDetailsChecklist
-          checklists={task.checklists}
-          onRemoveChecklist={onRemoveChecklist}
-          onAddCheckListTodo={onAddCheckListTodo}
-          onRemoveCheckListTodo={onRemoveCheckListTodo}
-          onUpdateCheckListTodo={onUpdateCheckListTodo}
-        />
-        {/* <TaskDetailsAttachments /> */}
-        <TaskDetailsActivities
-          task={task}
-          boardMembers={board.members}
-          onRemoveComment={onRemoveComment}
-          onAddComment={onAddComment}
-          onUpdateComment={onUpdateComment}
-        />
+    <div className="task-details-container">
+      <div className="task-detail-wrapper">
+        <div className="task-details">
+          <TaskDetailsHeader params={params} task={task} />
+          <div className="task-details-main">
+            <TaskDetailsMainHeader
+              task={task}
+              labels={labels}
+              members={members}
+              onUpdateTask={onUpdateTask}
+            />
+            <TaskDetailsDescription
+              description={task.description}
+              onUpdateTask={onUpdateTask}
+              onUpdateTaskDescription={onUpdateTaskDescription}
+            />
+            <TaskDetailsChecklist
+              checklists={task.checklists}
+              onRemoveChecklist={onRemoveChecklist}
+              onAddCheckListTodo={onAddCheckListTodo}
+              onRemoveCheckListTodo={onRemoveCheckListTodo}
+              onUpdateCheckListTodo={onUpdateCheckListTodo}
+            />
+            {/* <TaskDetailsAttachments /> */}
+            <TaskDetailsActivities
+              task={task}
+              boardMembers={board.members}
+              onRemoveComment={onRemoveComment}
+              onAddComment={onAddComment}
+              onUpdateComment={onUpdateComment}
+            />
+          </div>
+          <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
+        </div>
       </div>
-      <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
-    </dialog>
+    </div>
   )
 }
