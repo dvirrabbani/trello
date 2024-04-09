@@ -11,57 +11,61 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
   return (
     <section className="task-details-main-header flex">
       {/* Task Members */}
-      <div className="main-header-card">
-        <h4>Members</h4>
-        <div className="member-list flex">
-          {members?.task?.map((m) => {
-            return (
-              <img
-                style={{ width: "32px" }}
-                key={m._id}
-                src={m.imgUrl}
-                alt=""
-              />
-            )
-          })}
-          <Button variant={"contained"} shape={"circle"}>
-            <SvgIcon iconName="plus" />
-          </Button>
+      {members?.task?.length > 0 && (
+        <div className="main-header-card">
+          <h4 className="h4">Members</h4>
+          <div className="member-list flex">
+            {members.task?.map((m) => {
+              return (
+                <img
+                  style={{ width: "32px" }}
+                  key={m._id}
+                  src={m.imgUrl}
+                  alt=""
+                />
+              )
+            })}
+            <Button variant={"contained"} shape={"circle"}>
+              <SvgIcon iconName="plus" />
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
       {/* Labels */}
-      <div className="main-header-card">
-        <h4>Labels</h4>
-        <div className="labels-list flex">
-          {labels?.task.map((lt) => {
-            return (
-              <LabelButton
-                key={lt.id}
-                color={labels.board.find((lb) => lb.id === lt.id).color}
-                title={lt.title}
-                onClick={() => setIsLabelPopOverOpen((prev) => !prev)}
-              />
-            )
-          })}
-          <Button variant={"contained"} shape={"circle"}>
-            <SvgIcon iconName="plus" />
-          </Button>
+
+      {labels?.task?.length > 0 && (
+        <div className="main-header-card">
+          <h4 className="h4">Labels</h4>
+          <div className="labels-list flex">
+            {labels?.task.map((lt) => {
+              return (
+                <LabelButton
+                  key={lt.id}
+                  color={labels.board.find((lb) => lb.id === lt.id).color}
+                  title={lt.title}
+                  onClick={() => setIsLabelPopOverOpen((prev) => !prev)}
+                />
+              )
+            })}
+            <Button variant={"contained"} shape={"circle"}>
+              <SvgIcon iconName="plus" />
+            </Button>
+          </div>
+          {isLabelPopOverOpen && (
+            <DynamicTaskPopover
+              type={"Labels"}
+              title={"Labels"}
+              task={task}
+              onClose={() => setIsLabelPopOverOpen(false)}
+              onUpdateTask={onUpdateTask}
+            />
+          )}
         </div>
-        {isLabelPopOverOpen && (
-          <DynamicTaskPopover
-            type={"Labels"}
-            title={"Labels"}
-            task={task}
-            onClose={() => setIsLabelPopOverOpen(false)}
-            onUpdateTask={onUpdateTask}
-          />
-        )}
-      </div>
+      )}
       {/* Dates */}
       {task?.dueDate && (
         <div className="main-header-card">
-          <h4>Due Dates</h4>
-          <input type="checkbox" />
+          <h4 className="h4">Due Dates</h4>
           <Button
             variant="contained"
             onClick={() => setIsDatePopoverOpen((prev) => !prev)}
@@ -81,7 +85,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
       )}
       {/* Notifications */}
       <div className="main-header-card">
-        <h4>Notifications</h4>
+        <h4 className="h4">Notifications</h4>
         <Button variant={"contained"}>
           <SvgIcon iconName="eye" />
           <span>Watch</span>

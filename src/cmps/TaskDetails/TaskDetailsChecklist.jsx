@@ -15,9 +15,9 @@ export function TaskDetailsChecklist({
         return (
           <div className="task-details-checklist" key={checklist.id}>
             {/* Checklist header */}
-            <div className="task-details-checklist-header flex align-center">
-              <SvgIcon iconName={"checkbox"} />
-              {checklist.title}
+            <div className="task-details-checklist-header task-detail-header-section">
+              <SvgIcon size={"md"} iconName={"checkbox"} />
+              <h3>{checklist.title}</h3>
               <Button
                 variant="contained"
                 onClick={() => onRemoveChecklist(checklist.id)}

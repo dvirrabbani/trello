@@ -10,9 +10,10 @@ export function TaskDetailsActivities({
 }) {
   return (
     <section className="task-details-activities">
-      <div className="task-details-activities-header flex justify-between">
-        <h3 className="task-description-title flex align-center">
-          <SvgIcon iconName="description" /> Activities
+      <div className="task-details-activities-header task-detail-header-section">
+        <SvgIcon size={"lg"} iconName="activities" />
+        <h3 className="task-details-activities-title flex align-center">
+          Activities
         </h3>
       </div>
 

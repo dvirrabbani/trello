@@ -15,10 +15,9 @@ export function TaskDetailsDescription({
 
   return (
     <section className="task-details-description">
-      <div className="task-details-description flex justify-between">
-        <h3 className="task-description-title flex align-center">
-          <SvgIcon iconName="description" /> Description
-        </h3>
+      <div className="task-details-description task-detail-header-section">
+        <SvgIcon size={"md"} iconName="description" />
+        <h3 className="task-description-title">Description</h3>
         {/* Edit Button */}
         {!isFormOpen && (
           <Button variant="contained" onClick={() => setIsFormOpen(true)}>

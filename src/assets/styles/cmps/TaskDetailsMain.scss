@@ -1,7 +1,14 @@
 .task-details-main {
   padding: 0 rem(8px) rem(8px) rem(16px);
   display: grid;
-
   gap: rem(32px);
   align-content: start;
+
+  .task-detail-header-section {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
 }

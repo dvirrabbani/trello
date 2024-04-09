@@ -9,35 +9,29 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.75);
   padding: 48px 0;
+
   overflow-y: auto;
   height: 100dvh;
   .task-detail-wrapper {
     display: grid;
     grid-template-columns: minmax(auto, 768px);
     height: 100%;
+    position: relative;
+
     .task-details {
       grid-column: 1/-1;
-      background-color: $group-background;
-      border-radius: 8px;
+      & > * {
+        background-color: $group-background;
+      }
+      .task-details-main-container {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
       border: none;
       color: $color-txt-primary;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      grid-template-rows: auto 1fr;
-      grid-template-areas:
-        "h h h"
-        "m m s";
-
-      .task-details-header {
-        grid-area: h;
-      }
-
-      .task-details-main {
-        grid-area: m;
-      }
-
-      .task-details-sidebar {
-        grid-area: s;
+      .task-cover {
+        min-height: 78px;
       }
     }
   }

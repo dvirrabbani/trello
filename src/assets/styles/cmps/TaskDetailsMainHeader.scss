@@ -1,6 +1,13 @@
 .task-details-main-header {
+  display: flex;
+  gap: 8px;
   .main-header-card {
     position: relative;
+
+    > *.flex {
+      gap: 4px;
+    }
+
     .member-img {
       width: rem(30px);
       height: rem(30px);

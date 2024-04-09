@@ -3,6 +3,10 @@
   width: rem(192px);
   position: relative;
 
+  .task-side-btn-actions {
+    display: grid;
+    gap: 8px;
+  }
   .task-side-btn-actions > .button {
     width: 100%;
   }

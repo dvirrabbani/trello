@@ -3,7 +3,7 @@ import { TaskSideBtnActions } from "../TaskSideBtnActions"
 export function TaskDetailsSidebar({ task, onUpdateTask }) {
   return (
     <section className="task-details-sidebar">
-      <h4>Add to card</h4>
+      <h4 className="h4">Add to card</h4>
       <TaskSideBtnActions
         btnPopoverDataList={[
           {

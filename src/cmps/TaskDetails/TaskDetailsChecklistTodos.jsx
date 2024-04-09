@@ -16,21 +16,26 @@ export function TaskDetailsChecklistTodos({
   })
   return (
     <div className="task-details-checklist-sub-items">
-      <ul>
+      <ul className="clean-list">
         {/* Checklist sub items */}
         {todos?.map((todo) => {
           return (
-            <li className="task-details-checklist-item" key={todo.id}>
-              <input
-                type="checkbox"
-                checked={todo.isDone}
-                onChange={() =>
-                  onUpdateCheckListTodo(checklistsId, todo.id, {
-                    isDone: !todo.isDone,
-                  })
-                }
-              />
-              {todo.title}
+            <li
+              className="task-details-checklist-item flex justify-between"
+              key={todo.id}
+            >
+              <div className="preview">
+                <input
+                  type="checkbox"
+                  checked={todo.isDone}
+                  onChange={() =>
+                    onUpdateCheckListTodo(checklistsId, todo.id, {
+                      isDone: !todo.isDone,
+                    })
+                  }
+                />
+                <span>{todo.title}</span>
+              </div>
               <Button
                 variant="contained"
                 onClick={() => onRemoveCheckListTodo(checklistsId, todo.id)}

@@ -3,12 +3,14 @@ import { useParams } from "react-router"
 import { updateCurrentBoard } from "../store/board.actions"
 import { useSelector } from "react-redux"
 import { TaskDetailsHeader } from "../cmps/TaskDetails/TaskDetailsHeader"
-import { TaskDetailsSidebar } from "../cmps/TaskDetails/TaskSideBtnActions"
+import { TaskDetailsSidebar } from "../cmps/TaskDetails/TaskDetailsSidebar"
 import { TaskDetailsMainHeader } from "../cmps/TaskDetails/TaskDetailsMainHeader"
 import { TaskDetailsDescription } from "../cmps/TaskDetails/TaskDetailsDescription"
 import { TaskDetailsChecklist } from "../cmps/TaskDetails/TaskDetailsCheckList"
 import { TaskDetailsActivities } from "../cmps/TaskDetails/TaskDetailsActivities"
 import { utilService } from "../services/util.service"
+import { Link } from "react-router-dom"
+import SvgIcon from "../cmps/SvgIcon"
 
 export function TaskDetails() {
   const params = useParams()
@@ -155,35 +157,37 @@ export function TaskDetails() {
       <div className="task-detail-wrapper">
         <div className="task-details">
           <TaskDetailsHeader params={params} task={task} />
-          <div className="task-details-main">
-            <TaskDetailsMainHeader
-              task={task}
-              labels={labels}
-              members={members}
-              onUpdateTask={onUpdateTask}
-            />
-            <TaskDetailsDescription
-              description={task.description}
-              onUpdateTask={onUpdateTask}
-              onUpdateTaskDescription={onUpdateTaskDescription}
-            />
-            <TaskDetailsChecklist
-              checklists={task.checklists}
-              onRemoveChecklist={onRemoveChecklist}
-              onAddCheckListTodo={onAddCheckListTodo}
-              onRemoveCheckListTodo={onRemoveCheckListTodo}
-              onUpdateCheckListTodo={onUpdateCheckListTodo}
-            />
-            {/* <TaskDetailsAttachments /> */}
-            <TaskDetailsActivities
-              task={task}
-              boardMembers={board.members}
-              onRemoveComment={onRemoveComment}
-              onAddComment={onAddComment}
-              onUpdateComment={onUpdateComment}
-            />
+          <div className="flex task-details-main-container">
+            <div className="task-details-main full">
+              <TaskDetailsMainHeader
+                task={task}
+                labels={labels}
+                members={members}
+                onUpdateTask={onUpdateTask}
+              />
+              <TaskDetailsDescription
+                description={task.description}
+                onUpdateTask={onUpdateTask}
+                onUpdateTaskDescription={onUpdateTaskDescription}
+              />
+              <TaskDetailsChecklist
+                checklists={task.checklists}
+                onRemoveChecklist={onRemoveChecklist}
+                onAddCheckListTodo={onAddCheckListTodo}
+                onRemoveCheckListTodo={onRemoveCheckListTodo}
+                onUpdateCheckListTodo={onUpdateCheckListTodo}
+              />
+              {/* <TaskDetailsAttachments /> */}
+              <TaskDetailsActivities
+                task={task}
+                boardMembers={board.members}
+                onRemoveComment={onRemoveComment}
+                onAddComment={onAddComment}
+                onUpdateComment={onUpdateComment}
+              />
+            </div>
+            <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
           </div>
-          <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
         </div>
       </div>
     </div>
