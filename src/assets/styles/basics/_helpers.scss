@@ -57,6 +57,22 @@
   cursor: pointer;
 }
 
+// Typography
+.h3 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.h4 {
+  color: $color-text-subtle;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  line-height: 20px;
+  margin-bottom: 4px;
+  margin-top: 16px;
+}
+
 // Media helpers
 
 .square-ratio {
