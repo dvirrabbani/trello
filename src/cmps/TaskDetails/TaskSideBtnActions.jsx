@@ -1,4 +1,4 @@
-import { TaskSideBtnActions } from "../TaskSideActions"
+import { TaskSideBtnActions } from "../TaskSideBtnActions"
 
 export function TaskDetailsSidebar({ task, onUpdateTask }) {
   return (

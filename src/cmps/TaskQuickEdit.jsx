@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { TaskPreview } from "./groups/tasks/TaskPreview"
 import { updateCurrentBoard } from "../store/board.actions"
-import { TaskDetailsSidebar } from "./TaskDetails/TaskDetailsSidebar"
+import { TaskDetailsSidebar } from "./TaskDetails/TaskSideBtnActions"
 
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
