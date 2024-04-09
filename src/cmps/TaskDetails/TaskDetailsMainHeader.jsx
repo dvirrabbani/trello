@@ -3,6 +3,7 @@ import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
 import dayjs from "dayjs"
+import { LabelButton } from "../LabelButton"
 
 export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
   const [isLabelPopOverOpen, setIsLabelPopOverOpen] = useState(false)
@@ -34,17 +35,12 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
         <div className="labels-list flex">
           {labels?.task.map((lt) => {
             return (
-              <span
+              <LabelButton
                 key={lt.id}
-                style={{
-                  backgroundColor: labels.board.find((lb) => lb.id === lt.id)
-                    .color,
-                  cursor: "pointer",
-                }}
+                color={labels.board.find((lb) => lb.id === lt.id).color}
+                title={lt.title}
                 onClick={() => setIsLabelPopOverOpen((prev) => !prev)}
-              >
-                <span>{lt.title}</span>
-              </span>
+              />
             )
           })}
           <Button variant={"contained"} shape={"circle"}>

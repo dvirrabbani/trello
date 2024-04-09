@@ -5,6 +5,7 @@ import { TaskPopoverLabelEdit } from "./TaskPopoverLabelEdit"
 import { LABELS_LIST } from "../../../const/label"
 import SvgIcon from "../../SvgIcon"
 import { updateBoard, updateTaskLabels } from "../../../store/board.actions"
+import { LabelButton } from "../../LabelButton"
 
 export function TaskPopoverLabel({ task, onUpdateTask, onClose }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -87,19 +88,13 @@ export function TaskPopoverLabel({ task, onUpdateTask, onClose }) {
                   updateTaskLabels(lb.id, task?.labelIds, onUpdateTask)
                 }
               />
-              <div
-                className="label"
-                style={{
-                  backgroundColor: lb.color,
-                  minWidth: "32px",
-                  cursor: "pointer",
-                }}
+              <LabelButton
+                color={lb.color}
+                title={lb.title}
                 onClick={() =>
                   updateTaskLabels(lb.id, task?.labelIds, onUpdateTask)
                 }
-              >
-                <span>{lb.title}</span>
-              </div>
+              />
               <Button onClick={() => onSelectEditLabel(lb)}>
                 <SvgIcon iconName={"edit"} />
               </Button>
