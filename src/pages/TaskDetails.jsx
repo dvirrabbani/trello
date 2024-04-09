@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { updateCurrentBoard } from "../store/board.actions"
 import { useSelector } from "react-redux"
 import { TaskDetailsHeader } from "../cmps/TaskDetails/TaskDetailsHeader"
-import { TaskDetailsSidebar } from "../cmps/TaskDetails/TaskDetailsSidebar"
+import { TaskDetailsSidebar } from "../cmps/TaskDetails/TaskSideBtnActions"
 import { TaskDetailsMainHeader } from "../cmps/TaskDetails/TaskDetailsMainHeader"
 import { TaskDetailsDescription } from "../cmps/TaskDetails/TaskDetailsDescription"
 import { TaskDetailsChecklist } from "../cmps/TaskDetails/TaskDetailsCheckList"
@@ -11,25 +11,14 @@ import { TaskDetailsActivities } from "../cmps/TaskDetails/TaskDetailsActivities
 import { utilService } from "../services/util.service"
 
 export function TaskDetails() {
-  const dialogRef = useRef()
   const params = useParams()
   const { groupId, taskId } = params
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [task, setTask] = useState(null)
 
   useEffect(() => {
-    toggleDialog()
     loadTask()
   }, [params.taskId])
-
-  function toggleDialog() {
-    if (!dialogRef.current) {
-      return
-    }
-    dialogRef.current.hasAttribute("open")
-      ? dialogRef.current.close()
-      : dialogRef.current.showModal()
-  }
 
   async function loadTask() {
     try {
