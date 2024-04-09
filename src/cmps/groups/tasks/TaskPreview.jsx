@@ -44,7 +44,7 @@ export function TaskPreview({
     const taskInfo = {
       groupId,
       task,
-      boundaries: e.target.parentElement.getBoundingClientRect(),
+      boundaries: e.currentTarget.parentElement.getBoundingClientRect(),
     }
     eventBus.emit("quickEditTask", taskInfo)
   }
