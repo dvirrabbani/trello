@@ -6,6 +6,7 @@
   font-weight: 500;
   justify-content: flex-start;
   background-color: transparent;
+  border-radius: rem(3px);
 
   &:hover {
     background-color: $background-neutral-hovered;
@@ -39,7 +40,6 @@
 
   &.variant-primary {
     color: $clr8;
-    border-radius: rem(3px);
     background-color: $background-brand-bold;
     &:hover {
       background-color: $background-brand-bold-hovered;
