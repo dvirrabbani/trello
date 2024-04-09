@@ -10,6 +10,7 @@ import {
   UNDO_REMOVE_BOARD,
   UPDATE_BOARD,
   UPDATE_BOARDS,
+  TOGGLE_LABELS,
 } from "./board.reducer.js"
 
 // Action Creators:
@@ -209,6 +210,10 @@ export async function updateTaskDate(date, onUpdateTask) {
     key: "dueDate",
     value: date,
   })
+}
+
+export function toggleLabels() {
+  store.dispatch({ type: TOGGLE_LABELS })
 }
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)

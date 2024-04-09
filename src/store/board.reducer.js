@@ -5,11 +5,13 @@ export const ADD_BOARD = "ADD_BOARD"
 export const SET_BOARD = "SET_BOARD"
 export const UPDATE_BOARD = "UPDATE_BOARD"
 export const UNDO_REMOVE_BOARD = "UNDO_REMOVE_BOARD"
+export const TOGGLE_LABELS = "TOGGLE_LABELS"
 
 const initialState = {
   boards: [],
   board: null,
   lastRemovedBoard: null,
+  labelsExpand: true,
 }
 
 export function boardReducer(state = initialState, action) {
@@ -43,6 +45,9 @@ export function boardReducer(state = initialState, action) {
         ...state,
         board: { ...action.board },
       }
+      break
+    case TOGGLE_LABELS:
+      newState = { ...state, labelsExpand: !state.labelsExpand }
       break
   }
   return newState

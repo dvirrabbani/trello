@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom"
 import SvgIcon from "../../SvgIcon"
 import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
-import { useContext } from "react"
-import { LabelsToggleContext } from "../../../context/labelToggleContext"
+import { useState } from "react"
+import { toggleLabels } from "../../../store/board.actions"
 
 export function TaskPreview({
   groupId,
@@ -214,11 +214,14 @@ function TaskLabels({ labelIds }) {
 }
 
 function TaskLabel({ color, title }) {
-  const { labelsExpand, setLabelsExpand } = useContext(LabelsToggleContext)
+  const labelsExpand = useSelector(
+    (storeState) => storeState.boardModule.labelsExpand
+  )
   const className = labelsExpand ? "expand" : "collapsed"
+
   function toggleLabel(e) {
     e.stopPropagation()
-    setLabelsExpand((prevLabelsExpand) => !prevLabelsExpand)
+    toggleLabels()
   }
 
   return (
