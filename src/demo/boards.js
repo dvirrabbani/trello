@@ -16,9 +16,9 @@ export const DEMO_BOARD_LIST = [
     },
     labels: [
       { id: "l101", title: "Done", color: "#4bce97" },
-      { id: "l102", title: "Done", color: "#e2b203" },
-      { id: "l103", title: "Done", color: "#faa53d" },
-      { id: "l104", title: "Done", color: "#f87462" },
+      { id: "l102", title: "Progress", color: "#e2b203" },
+      { id: "l103", title: "", color: "#faa53d" },
+      { id: "l104", title: "", color: "#f87462" },
     ],
     members: [
       {
@@ -120,7 +120,7 @@ export const DEMO_BOARD_LIST = [
           },
           {
             id: "t104",
-            title: "Help me",
+            title: "Assign project tasks",
             description: "description",
             comments: [
               {
@@ -200,8 +200,19 @@ export const DEMO_BOARD_LIST = [
                 ],
               },
             ],
-            attachments: ["ui_design_guide.pdf", "review.pdf"],
-            memberIds: ["u101"],
+            attachments: [
+              {
+                id: "at01",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
+              },
+              {
+                id: "at02",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
+              },
+            ],
+            memberIds: [],
             labelIds: ["l101", "l102"],
             dueDate: 1712602448965,
             byMember: {
@@ -256,7 +267,7 @@ export const DEMO_BOARD_LIST = [
     },
     labels: [
       { id: "l101", title: "Done", color: "#4bce97" },
-      { id: "l102", title: "Done", color: "#e2b203" },
+      { id: "l102", title: "Progress", color: "#e2b203" },
     ],
     members: [
       {

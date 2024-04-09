@@ -18,7 +18,7 @@ export function TaskDetailsComments({
   })
 
   function onSaveNewComment() {
-    onAddComment({ txt: fields.txt }, comments)
+    onAddComment({ txt: fields.txt }, comments || [])
     setIsEditNewCommentOpen(() => false)
     resetForm()
   }
@@ -79,7 +79,7 @@ export function TaskDetailsComments({
           )}
         </div>
 
-        {comments.map((comment) => (
+        {comments?.map((comment) => (
           <li key={comment.id} className="comment-item">
             <div className="aside">
               <Button shape={"circle"}>

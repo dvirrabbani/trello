@@ -17,15 +17,13 @@ export function TaskDetailsActivities({
         </h3>
       </div>
 
-      {task?.comments && (
-        <TaskDetailsComments
-          comments={task.comments}
-          boardMembers={boardMembers}
-          onRemoveComment={onRemoveComment}
-          onAddComment={onAddComment}
-          onUpdateComment={onUpdateComment}
-        />
-      )}
+      <TaskDetailsComments
+        comments={task?.comments}
+        boardMembers={boardMembers}
+        onRemoveComment={onRemoveComment}
+        onAddComment={onAddComment}
+        onUpdateComment={onUpdateComment}
+      />
     </section>
   )
 }

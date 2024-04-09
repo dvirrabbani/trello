@@ -9,8 +9,7 @@ import { TaskDetailsDescription } from "../cmps/TaskDetails/TaskDetailsDescripti
 import { TaskDetailsChecklist } from "../cmps/TaskDetails/TaskDetailsCheckList"
 import { TaskDetailsActivities } from "../cmps/TaskDetails/TaskDetailsActivities"
 import { utilService } from "../services/util.service"
-import { Link } from "react-router-dom"
-import SvgIcon from "../cmps/SvgIcon"
+import { TaskDetailsAttachments } from "../cmps/TaskDetails/TaskDetailsAttachments"
 
 export function TaskDetails() {
   const params = useParams()
@@ -177,7 +176,13 @@ export function TaskDetails() {
                 onRemoveCheckListTodo={onRemoveCheckListTodo}
                 onUpdateCheckListTodo={onUpdateCheckListTodo}
               />
-              {/* <TaskDetailsAttachments /> */}
+
+              {task?.attachments && (
+                <TaskDetailsAttachments
+                  attachments={task.attachments}
+                  onUpdateTask={onUpdateTask}
+                />
+              )}
               <TaskDetailsActivities
                 task={task}
                 boardMembers={board.members}
