@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { TaskPreview } from "./groups/tasks/TaskPreview"
 import { updateCurrentBoard } from "../store/board.actions"
-import { TaskDetailsSidebar } from "./TaskDetails/TaskSideBtnActions"
+import { TaskSideBtnActions } from "./TaskSideBtnActions"
 
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
@@ -12,6 +12,24 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
     top: boundaries.y,
     left: boundaries.x,
   }
+
+  const btnPopoverDataList = [
+    {
+      iconName: "profile",
+      type: "Members",
+      title: "Members",
+    },
+    {
+      iconName: "label",
+      type: "Labels",
+      title: "Labels",
+    },
+    {
+      iconName: "clock",
+      type: "Dates",
+      title: "Dates",
+    },
+  ]
 
   function onSaveTitleTask() {
     updateCurrentBoard(groupId, task.id, {
@@ -43,7 +61,11 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
         isQuickEditParent
       />
       <div className="task-quick-edit-menu">
-        <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
+        <TaskSideBtnActions
+          btnPopoverDataList={btnPopoverDataList}
+          task={task}
+          onUpdateTask={onUpdateTask}
+        />
       </div>
       <button onClick={onSaveTitleTask}>Save</button>
     </div>

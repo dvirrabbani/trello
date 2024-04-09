@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import SvgIcon from "../../SvgIcon"
-import { Link, useNavigate, useParams } from "react-router-dom"
 import { eventBus } from "../../../services/event-bus.service"
-import { useState } from "react"
+import { utilService } from "../../../services/util.service"
 
 export function TaskPreview({
   groupId,
@@ -92,8 +92,9 @@ export function TaskPreview({
           <div className="task-title">{task.title}</div>
         )}
 
-        <div className="task-preview-footer flex">
+        <div className="task-preview-footer flex justify-between">
           <div className="task-actions-badges flex">
+            {task.dueDate && <DueDateBadge dueDate={task.dueDate} />}
             {task.description && (
               <div className="action-badge">
                 <SvgIcon iconName="description" />
@@ -116,6 +117,34 @@ export function TaskPreview({
   )
 }
 
+function DueDateBadge({ dueDate }) {
+  const dueDateObj = new Date(dueDate)
+  let dueDateStr = dueDateObj.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  })
+  const currentDate = new Date()
+  const oneYearAgo = new Date(
+    currentDate.setFullYear(currentDate.getFullYear() - 1)
+  )
+
+  if (dueDateObj < oneYearAgo) {
+    dueDateStr = dueDateObj.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })
+  }
+
+  const { status, style } = utilService.calculateDueDateStatus(dueDate)
+  return (
+    <div className="action-badge" style={style}>
+      <SvgIcon iconName="clock" />
+      <span>{dueDateStr}</span>
+    </div>
+  )
+}
+
 function ChecklistsBadge({ checklists }) {
   const totalTodos = checklists.reduce((accumulator, checklist) => {
     return accumulator + checklist.todos.length
@@ -125,8 +154,11 @@ function ChecklistsBadge({ checklists }) {
     return accumulator + checklist.todos.filter((todo) => todo.isDone).length
   }, 0)
 
+  const allTasksDone = totalTodos === totalDoneTodos
+  const badgeClassName = allTasksDone ? "complete" : ""
+
   return (
-    <div className="action-badge">
+    <div className={`action-badge ${badgeClassName}`}>
       <SvgIcon iconName="checkbox" />
       <span>{totalDoneTodos}</span>/<span>{totalTodos}</span>
     </div>
@@ -159,22 +191,45 @@ function TaskMember({ boardMembers, memberId }) {
   return <div className="task-member" style={style}></div>
 }
 
+import { useState } from "react"
+
 function TaskLabels({ labelIds }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const boardLabels = board.labels
+  const [labelsExpand, setLabelsExpand] = useState(true)
+  const className = labelsExpand ? "expand" : "collapsed"
 
   return (
     <div className="task-labels">
       {labelIds.map((labelId) => {
         const label = boardLabels.find((label) => label.id == labelId)
         return (
-          <TaskLabel key={label.id} color={label.color} title={label.title} />
+          <TaskLabel
+            key={label.id}
+            color={label.color}
+            title={label.title}
+            setLabelsExpand={setLabelsExpand}
+            className={className}
+          />
         )
       })}
     </div>
   )
 }
 
-function TaskLabel({ color, title }) {
-  return <span style={{ background: color }}>{title}</span>
+function TaskLabel({ color, title, setLabelsExpand, className }) {
+  function toggleLabel(e) {
+    e.stopPropagation()
+    setLabelsExpand((prevLabelsExpand) => !prevLabelsExpand)
+  }
+
+  return (
+    <span
+      style={{ background: color }}
+      className={`${className} task-label`}
+      onClick={toggleLabel}
+    >
+      {title}
+    </span>
+  )
 }
