@@ -1,15 +1,21 @@
-import { useState } from "react"
 import { COVER_COLORS_lIST } from "../../const/label"
 import { LabelButton } from "../LabelButton"
 import { Button } from "../Button"
 
 export function TaskCoverPopover({ task, onUpdateTask }) {
-  const [cover, setCover] = useState(null)
-
   return (
     <div className="task-cover-popover">
       {/* Remove Color */}
-      <Button className={"remove-cover-btn"} variant="contained">
+      <Button
+        className={"remove-cover-btn"}
+        variant="contained"
+        onClick={() => {
+          onUpdateTask({
+            key: "style",
+            value: {},
+          })
+        }}
+      >
         Remove cover
       </Button>
       {/* Update Cover Color */}
@@ -17,6 +23,7 @@ export function TaskCoverPopover({ task, onUpdateTask }) {
         {COVER_COLORS_lIST.map((color) => {
           return (
             <LabelButton
+              key={color}
               color={color}
               onClick={() =>
                 onUpdateTask({

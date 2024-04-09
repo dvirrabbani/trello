@@ -62,14 +62,16 @@ export function TaskPreview({
     <div
       className="task-preview"
       style={
-        task.style && task.style.isFull ? cardStyle(task.style.background) : {}
+        task.style?.background && task?.style?.isFull
+          ? cardStyle(task.style.background)
+          : {}
       }
       onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button className="task-edit" onClick={onQuickEditTask}>
         <SvgIcon iconName="edit" />
       </button>
-      {task.style && (
+      {task.style?.background && (
         <div
           className="task-preview-cover"
           style={coverStyle(task.style.isFull, task.style.background)}
