@@ -44,14 +44,14 @@ export function TaskPopoverLabelEdit({
         ></div>
       </div>
       <div className="edit-label-main">
-        <h4>Title</h4>
+        <h3 className="h4">Title</h3>
         <input
           name="title"
           value={fields.title}
           onChange={handleChange}
           type="text"
         />
-        <h4>Select a color</h4>
+        <h3 className="h4">Select a color</h3>
         <ul className="clean-list label-grid">
           {/* Label Color Grid */}
           {LABELS_LIST.map((label) => {

@@ -13,7 +13,7 @@ export function TaskPopoverCheckList({ task, onUpdateTask }) {
 
   return (
     <div className="task-popover-check-list" style={{ display: "grid" }}>
-      <label htmlFor="task-checklist-title">Title</label>
+      <label htmlFor="task-checklist-title h4">Title</label>
       <input
         name="title"
         id="task-checklist-title"
