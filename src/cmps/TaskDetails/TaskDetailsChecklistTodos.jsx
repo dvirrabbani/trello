@@ -10,7 +10,7 @@ export function TaskDetailsChecklistTodos({
   onRemoveCheckListTodo,
   onUpdateCheckListTodo,
 }) {
-  const [isTodoFormOpen, setIsTodoFormOpen] = useState(Boolean(todos?.length))
+  const [isTodoFormOpen, setIsTodoFormOpen] = useState(false)
   const [fields, , handleChange] = useForm({
     title: "",
   })
