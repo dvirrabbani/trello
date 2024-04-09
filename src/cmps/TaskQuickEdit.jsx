@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { TaskPreview } from "./groups/tasks/TaskPreview"
 import { updateCurrentBoard } from "../store/board.actions"
 import { TaskSideBtnActions } from "./TaskSideBtnActions"
 
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
+  const navigate = useNavigate()
   //TODO - Check X position
   // console.log("boundaries", boundaries)
   // console.log("task", task)
@@ -47,6 +49,11 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
     })
   }
 
+  function onOpenTask() {
+    setTaskQuickEdit(null)
+    navigate(`${groupId}/${task.id}`)
+  }
+
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -61,6 +68,9 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
         isQuickEditParent
       />
       <div className="task-quick-edit-menu">
+        <button className="button" onClick={onOpenTask}>
+          open card
+        </button>
         <TaskSideBtnActions
           btnPopoverDataList={btnPopoverDataList}
           task={task}
