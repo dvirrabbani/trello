@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import SvgIcon from "../../SvgIcon"
 import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
-import { useState } from "react"
 import { toggleLabels } from "../../../store/board.actions"
+import SvgIcon from "../../SvgIcon"
 
 export function TaskPreview({
   groupId,
@@ -198,8 +197,6 @@ function TaskMember({ boardMembers, memberId }) {
 function TaskLabels({ labelIds }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const boardLabels = board.labels
-  // const [labelsExpand, setLabelsExpand] = useState(true)
-  // const className = labelsExpand ? "expand" : "collapsed"
 
   return (
     <div className="task-labels">

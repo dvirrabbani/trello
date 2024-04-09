@@ -14,7 +14,6 @@ export function BoardDetails() {
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
 
   useEffect(() => {
-    console.log("BoardDetails useEffect")
     const unsubscribe = eventBus.on("quickEditTask", (data) => {
       setTaskQuickEdit(data)
     })
