@@ -29,6 +29,12 @@
 
   &.variant-contained {
     background-color: $background-neutral;
+    &:hover {
+      background-color: $background-neutral-hovered;
+    }
+    &:active {
+      background-color: $background-neutral-pressed;
+    }
   }
 
   &.variant-primary {
