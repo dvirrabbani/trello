@@ -1,0 +1,29 @@
+.task-popover-label-edit {
+  position: absolute;
+  width: 100%;
+  background-color: $clr8;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
+  .edit-label-preview {
+    padding: 32px;
+    background-color: $group-background;
+  }
+
+  .edit-label-main {
+    padding: 12px;
+    min-height: 100px;
+  }
+
+  .label {
+    height: 32px;
+  }
+
+  .label-grid {
+    display: grid;
+    padding: 8px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+  }
+}

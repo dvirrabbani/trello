@@ -2,7 +2,7 @@ import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { TaskDatesPopover } from "./TaskDatesPopover"
 import { TaskPopoverCheckList } from "./TaskPopoverCheckList"
-import { TaskPopoverLabel } from "./TaskPopoverLabel"
+import { TaskPopoverLabel } from "./TaskPopoverLabel/TaskPopoverLabel"
 import { TaskPopoverMembers } from "./TaskPopoverMembers"
 
 export function DynamicTaskPopover(props) {

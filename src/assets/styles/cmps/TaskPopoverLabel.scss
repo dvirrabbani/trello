@@ -1,0 +1,13 @@
+.task-popover-label {
+  .task-label-list {
+    display: grid;
+    width: 100%;
+    gap: 8px;
+
+    li {
+      display: grid;
+      gap: 4px;
+      grid-template-columns: auto 1fr auto;
+    }
+  }
+}

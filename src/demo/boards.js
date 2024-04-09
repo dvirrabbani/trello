@@ -15,16 +15,10 @@ export const DEMO_BOARD_LIST = [
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/698x960/d156423cadf3438ddc90c80793a5fbfa/photo-1588268317073-67baf5721097.jpg",
     },
     labels: [
-      {
-        id: "l101",
-        title: "Done",
-        color: "#61bd4f",
-      },
-      {
-        id: "l102",
-        title: "Progress",
-        color: "#61bd33",
-      },
+      { id: "l101", title: "Done", color: "#4bce97" },
+      { id: "l102", title: "Done", color: "#e2b203" },
+      { id: "l103", title: "Done", color: "#faa53d" },
+      { id: "l104", title: "Done", color: "#f87462" },
     ],
     members: [
       {
@@ -216,16 +210,8 @@ export const DEMO_BOARD_LIST = [
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/964891d63f67d6c53a74b8908fc8c3d5/photo-1711139299064-f60e2753163f.jpg",
     },
     labels: [
-      {
-        id: "l101",
-        title: "Done",
-        color: "#61bd4f",
-      },
-      {
-        id: "l102",
-        title: "Progress",
-        color: "#61bd33",
-      },
+      { id: "l101", title: "Done", color: "#4bce97" },
+      { id: "l102", title: "Done", color: "#e2b203" },
     ],
     members: [
       {
