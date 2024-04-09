@@ -4,6 +4,7 @@ import { utilService } from "../../services/util.service"
 import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
 import { GroupPreview } from "./GroupPreview"
+import { LabelsToggleProvider } from "../../context/labelToggleContext"
 
 export function GroupList({ groups }) {
   const [displayAddItem, setDisplayAddItem] = useState(false)
@@ -33,25 +34,31 @@ export function GroupList({ groups }) {
   }
 
   return (
-    <ol className="group-list clean-list flex">
-      {groups.map((group) => (
-        <GroupPreview key={group.id} group={group} deleteGroup={deleteGroup} />
-      ))}
-      {displayAddItem ? (
-        <AddItemForm
-          onAddItem={onAddGroup}
-          setDisplayAddItem={setDisplayAddItem}
-          className="group-preview"
-        />
-      ) : (
-        <button
-          className="add-group-btn"
-          onClick={() => setDisplayAddItem(true)}
-        >
-          <SvgIcon iconName="plus" />
-          <span>Add another group</span>
-        </button>
-      )}
-    </ol>
+    <LabelsToggleProvider>
+      <ol className="group-list clean-list flex">
+        {groups.map((group) => (
+          <GroupPreview
+            key={group.id}
+            group={group}
+            deleteGroup={deleteGroup}
+          />
+        ))}
+        {displayAddItem ? (
+          <AddItemForm
+            onAddItem={onAddGroup}
+            setDisplayAddItem={setDisplayAddItem}
+            className="group-preview"
+          />
+        ) : (
+          <button
+            className="add-group-btn"
+            onClick={() => setDisplayAddItem(true)}
+          >
+            <SvgIcon iconName="plus" />
+            <span>Add another group</span>
+          </button>
+        )}
+      </ol>
+    </LabelsToggleProvider>
   )
 }

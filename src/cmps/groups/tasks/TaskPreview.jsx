@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import SvgIcon from "../../SvgIcon"
 import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
+import { useContext } from "react"
+import { LabelsToggleContext } from "../../../context/labelToggleContext"
 
 export function TaskPreview({
   groupId,
@@ -193,33 +195,27 @@ function TaskMember({ boardMembers, memberId }) {
   return <div className="task-member" style={style}></div>
 }
 
-import { useState } from "react"
-
 function TaskLabels({ labelIds }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const boardLabels = board.labels
-  const [labelsExpand, setLabelsExpand] = useState(true)
-  const className = labelsExpand ? "expand" : "collapsed"
+  // const [labelsExpand, setLabelsExpand] = useState(true)
+  // const className = labelsExpand ? "expand" : "collapsed"
 
   return (
     <div className="task-labels">
       {labelIds.map((labelId) => {
         const label = boardLabels.find((label) => label.id == labelId)
         return (
-          <TaskLabel
-            key={label.id}
-            color={label.color}
-            title={label.title}
-            setLabelsExpand={setLabelsExpand}
-            className={className}
-          />
+          <TaskLabel key={label.id} color={label.color} title={label.title} />
         )
       })}
     </div>
   )
 }
 
-function TaskLabel({ color, title, setLabelsExpand, className }) {
+function TaskLabel({ color, title }) {
+  const { labelsExpand, setLabelsExpand } = useContext(LabelsToggleContext)
+  const className = labelsExpand ? "expand" : "collapsed"
   function toggleLabel(e) {
     e.stopPropagation()
     setLabelsExpand((prevLabelsExpand) => !prevLabelsExpand)
