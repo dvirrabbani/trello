@@ -52,7 +52,7 @@ export function TaskPopoverLabelEdit({
           type="text"
         />
         <h3 className="h4">Select a color</h3>
-        <ul className="clean-list label-grid">
+        <ul className="clean-list colors-palette-grid">
           {/* Label Color Grid */}
           {LABELS_LIST.map((label) => {
             return (

@@ -26,6 +26,11 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
             type: "Dates",
             title: "Dates",
           },
+          {
+            iconName: "taskWindow",
+            type: "Cover",
+            title: "Cover",
+          },
         ]}
         task={task}
         onUpdateTask={onUpdateTask}

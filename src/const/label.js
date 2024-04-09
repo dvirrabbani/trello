@@ -10,3 +10,16 @@ export const LABELS_LIST = [
   { id: "l109", title: "", color: "#ca3521" },
   { id: "l110", title: "", color: "#6e5dc6" },
 ]
+
+export const COVER_COLORS_lIST = [
+  "#4bce97",
+  "#e2b203",
+  "#faa53d",
+  "#f87462",
+  "#9f8fef",
+  "#1f845a",
+  "#946f00",
+  "#b65c02",
+  "#ca3521",
+  "#6e5dc6",
+]

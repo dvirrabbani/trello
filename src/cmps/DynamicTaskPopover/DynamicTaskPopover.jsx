@@ -1,5 +1,6 @@
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
+import { TaskCoverPopover } from "./TaskCoverPopover"
 import { TaskDatesPopover } from "./TaskDatesPopover"
 import { TaskPopoverCheckList } from "./TaskPopoverCheckList"
 import { TaskPopoverLabel } from "./TaskPopoverLabel/TaskPopoverLabel"
@@ -18,6 +19,8 @@ export function DynamicTaskPopover(props) {
         return <TaskPopoverCheckList {...props} />
       case "Dates":
         return <TaskDatesPopover {...props} />
+      case "Cover":
+        return <TaskCoverPopover {...props} />
       default:
         return
     }
