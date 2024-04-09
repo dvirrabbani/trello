@@ -13,15 +13,21 @@ export function TaskPopoverCheckList({ task, onUpdateTask }) {
 
   return (
     <div className="task-popover-check-list" style={{ display: "grid" }}>
-      <label htmlFor="task-checklist-title h4">Title</label>
-      <input
-        name="title"
-        id="task-checklist-title"
-        type="text"
-        value={fields.title || ""}
-        onChange={handleChange}
-      />
-      <Button onClick={onAddCheckList}>Add</Button>
+      <div className="form-group">
+        <label htmlFor="task-checklist-title" className="title">
+          Title
+        </label>
+        <input
+          name="title"
+          id="task-checklist-title"
+          type="text"
+          value={fields.title || ""}
+          onChange={handleChange}
+        />
+      </div>
+      <Button variant="primary" onClick={onAddCheckList}>
+        Add
+      </Button>
     </div>
   )
 }

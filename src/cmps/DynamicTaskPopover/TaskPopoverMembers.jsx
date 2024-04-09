@@ -35,7 +35,7 @@ export function TaskPopoverMembers({ task, onUpdateTask }) {
           })}
         </ul>
       )}
-      <h4 className="title">Board Members</h4>
+      <h4 className="title h4">Board Members</h4>
       <ul className="clean-list flex column">
         {board?.members.map((m) => {
           return (

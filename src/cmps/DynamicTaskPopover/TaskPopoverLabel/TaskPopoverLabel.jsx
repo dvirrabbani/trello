@@ -76,7 +76,7 @@ export function TaskPopoverLabel({ task, onUpdateTask, onClose }) {
   const boardLabelsIds = board.labels.map((label) => label.id)
   return (
     <div className="task-popover-label">
-      <h4 className="title">Label</h4>
+      <h4 className="title h4">Labels</h4>
       <ul className="clean-list task-label-list">
         {board?.labels?.map((lb) => {
           return (
