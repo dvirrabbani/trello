@@ -373,10 +373,7 @@ export const DEMO_BOARD_LIST = [
           imgUrl:
             "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
         },
-        task: {
-          id: "t115",
-          title: "Replace Logo",
-        },
+        taskId: "t115",
       },
     ],
 

@@ -50,7 +50,7 @@ async function addBoardMsg(boardId, txt) {
   return savedMsg
 }
 
-function updateBoard(board, groupId, taskId, { key, value }, activityType) {
+function updateBoard(board, groupId, taskId, { key, value }, activity) {
   let gIdx = board.groups?.findIndex((g) => g.id === groupId)
   let tIdx = board.groups[gIdx]?.tasks.findIndex((c) => c.id === taskId)
 
@@ -62,12 +62,25 @@ function updateBoard(board, groupId, taskId, { key, value }, activityType) {
     console.log("update group")
   } else {
     board[key] = value
-    console.log("update board")
   }
-  // addActivity(activityType)
+
+  if (activity) {
+    console.log("update activity", activity)
+    board.activities = [addActivity(activity), ...board.activities]
+  }
 
   save(board)
   return board
+}
+
+function addActivity(activity) {
+  activity.id = utilService.makeId()
+  activity.createdAt = new Date().getTime()
+  if (activity?.task) {
+    activity.byMember = { ...activity.task?.byMember }
+    activity.taskId = activity.task.id
+  }
+  return activity
 }
 
 // TODO

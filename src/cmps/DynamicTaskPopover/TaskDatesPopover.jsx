@@ -3,13 +3,23 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar"
 import { Button } from "../Button"
-import { updateTaskDate } from "../../store/board.actions"
+import { formatDate, utilService } from "../../services/util.service"
 
 export function TaskDatesPopover({ task, onUpdateTask }) {
   const [duetDate, setDuetDate] = useState(null)
 
   function onSaveTaskDate() {
-    updateTaskDate(duetDate, onUpdateTask)
+    const TaskDueDate = new Date(duetDate)
+    onUpdateTask(
+      {
+        key: "dueDate",
+        value: TaskDueDate,
+      },
+      {
+        txt: `Update this task due date to ${formatDate(TaskDueDate)} `,
+        task,
+      }
+    )
   }
 
   return (

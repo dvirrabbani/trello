@@ -1,3 +1,5 @@
+import { format } from "date-fns"
+
 export const utilService = {
   makeId,
   makeLorem,
@@ -126,4 +128,8 @@ function calculateDueDateStatus(dueDate) {
       style: { backgroundColor: "#ffd2cc", color: "#ae2a19" },
     }
   }
+}
+
+export function formatDate(date) {
+  return format(new Date(date).getTime(), "MMM d yyyy 'at' h:mm aa")
 }

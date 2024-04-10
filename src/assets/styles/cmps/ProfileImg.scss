@@ -1,6 +1,6 @@
 .profile-img {
   @include size(24px);
-
+  border-radius: 50%;
   &.profile-img-size-md {
     @include size(28px);
   }

@@ -32,11 +32,16 @@ export function TaskDetails() {
     }
   }
 
-  async function onUpdateTask({ key, value }) {
-    updateCurrentBoard(groupId, taskId, {
-      key,
-      value,
-    })
+  async function onUpdateTask({ key, value }, activity) {
+    updateCurrentBoard(
+      groupId,
+      taskId,
+      {
+        key,
+        value,
+      },
+      activity
+    )
   }
 
   function onRemoveChecklist(checklistId) {
@@ -190,7 +195,7 @@ export function TaskDetails() {
                 // filter board activities by task
                 activities={
                   board?.activities.filter(
-                    (activity) => activity?.task?.id === task.id
+                    (activity) => activity?.taskId === task.id
                   ) || []
                 }
                 onRemoveComment={onRemoveComment}

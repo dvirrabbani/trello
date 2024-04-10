@@ -75,30 +75,25 @@ export async function addBoard(board) {
   }
 }
 
-export function updateCurrentBoard(
-  groupId,
-  taskId,
-  { key, value },
-  activityType
-) {
+export function updateCurrentBoard(groupId, taskId, { key, value }, activity) {
   const board = store.getState().boardModule.board
   const updateBoard = boardService.updateBoard(
     board,
     groupId,
     taskId,
     { key, value },
-    activityType
+    activity
   )
   store.dispatch(getActionUpdateBoard(updateBoard))
 }
 
-export function updateBoard(board, { key, value }, activityType) {
+export function updateBoard(board, { key, value }, activity) {
   const updateBoard = boardService.updateBoard(
     board,
     null,
     null,
     { key, value },
-    activityType
+    activity
   )
 
   store.dispatch(getActionUpdateBoard(updateBoard))
