@@ -1,17 +1,37 @@
 import { useState } from "react"
 import { Button } from "./Button"
 import SvgIcon from "./SvgIcon"
-import { LabelButton } from "./LabelButton"
 
 export function FilterPopover({ members, labels, onClose }) {
-  console.log(members, labels)
-  const [filter, setFilter] = useState({})
-  const handleFilterChange = (name, value) => {
-    setFilter((prevFilter) => ({
-      ...prevFilter,
-      [name]: value,
-    }))
+  const filterBy = {
+    labels: ["l101"],
+    members: ["u101", "u102"],
   }
+  const [filter, setFilter] = useState(filterBy)
+
+  const handleFilterChange = (e) => {
+    const { type, name, value, checked } = e.currentTarget
+    setFilter((prevFilter) => {
+      let updatedFilter = { ...prevFilter }
+      if (type === "checkbox") {
+        if (checked) {
+          // Add the value if checkbox is checked
+          updatedFilter[name] = [...(updatedFilter[name] || []), value]
+        } else {
+          // Remove the value if checkbox is unchecked
+          updatedFilter[name] = (updatedFilter[name] || []).filter(
+            (v) => v !== value
+          )
+        }
+      } else {
+        updatedFilter[name] = value
+      }
+      return updatedFilter
+    })
+  }
+
+  console.log("filter", filter)
+
   return (
     <div className="dynamic-task-popover">
       <div className="popover-header flex align-center justify-between">
@@ -29,12 +49,15 @@ export function FilterPopover({ members, labels, onClose }) {
             <ul className="clean-list flex column">
               {members?.map((m) => {
                 return (
-                  <label>
-                    <input type="checkbox" onChange={handleFilterChange} />
-                    <div
-                      className="button label-button variant-text shape-regular"
-                      onClick={handleFilterChange}
-                    >
+                  <label key={m._id}>
+                    <input
+                      type="checkbox"
+                      name="members"
+                      value={m._id}
+                      checked={filter.members?.includes(m._id)}
+                      onChange={handleFilterChange}
+                    />
+                    <div className="button label-button variant-text shape-regular">
                       <img
                         style={{ width: "30px" }}
                         key={m._id}
@@ -55,7 +78,13 @@ export function FilterPopover({ members, labels, onClose }) {
                 return (
                   <li key={lb.id} className="">
                     <label>
-                      <input type="checkbox" onChange={handleFilterChange} />
+                      <input
+                        type="checkbox"
+                        name="labels"
+                        value={lb.id}
+                        checked={filter.labels?.includes(lb.id)}
+                        onChange={handleFilterChange}
+                      />
                       <div
                         className="button label-button variant-text shape-regular"
                         style={{ backgroundColor: lb.color }}
