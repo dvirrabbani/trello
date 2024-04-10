@@ -2,11 +2,7 @@ import { useState } from "react"
 import { Button } from "./Button"
 import SvgIcon from "./SvgIcon"
 
-export function FilterPopover({ members, labels, onClose }) {
-  const filterBy = {
-    labels: ["l101"],
-    members: ["u101", "u102"],
-  }
+export function FilterPopover({ members, labels, onClose, filterBy }) {
   const [filter, setFilter] = useState(filterBy)
 
   const handleFilterChange = (e) => {
@@ -29,8 +25,6 @@ export function FilterPopover({ members, labels, onClose }) {
       return updatedFilter
     })
   }
-
-  console.log("filter", filter)
 
   return (
     <div className="dynamic-task-popover">

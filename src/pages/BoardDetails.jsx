@@ -14,6 +14,10 @@ export function BoardDetails() {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [displayFilter, setDisplayFilter] = useState(false)
+  const filterBy = {
+    labels: ["l101"],
+    members: ["u101", "u102"],
+  }
 
   useEffect(() => {
     const unsubscribe = eventBus.on("quickEditTask", (data) => {
@@ -42,6 +46,7 @@ export function BoardDetails() {
           members={board.members}
           labels={board.labels}
           onClose={() => setDisplayFilter(false)}
+          filterBy={filterBy}
         />
       )}
       <div className="board-sidebar">Sidebar</div>
