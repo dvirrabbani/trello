@@ -3,9 +3,9 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar"
 import { Button } from "../Button"
-import { formatDate, utilService } from "../../services/util.service"
+import { formatDate } from "../../services/util.service"
 
-export function TaskDatesPopover({ task, onUpdateTask }) {
+export function TaskDatesPopover({ task, onUpdateTask, onClose }) {
   const [duetDate, setDuetDate] = useState(null)
 
   function onSaveTaskDate() {
@@ -20,6 +20,7 @@ export function TaskDatesPopover({ task, onUpdateTask }) {
         task,
       }
     )
+    onClose()
   }
 
   return (
