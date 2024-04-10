@@ -1,0 +1,12 @@
+#activities-popover-id {
+  .content {
+    padding: 12px 12px 8px;
+    overflow-y: auto;
+    max-width: rem(693px);
+    width: 100%;
+    .activities-popover {
+      display: grid;
+      gap: 16px;
+    }
+  }
+}
