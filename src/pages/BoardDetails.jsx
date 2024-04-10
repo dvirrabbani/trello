@@ -7,11 +7,13 @@ import { BoardDetailsHeader } from "../cmps/BoardDetailsHeader"
 import { eventBus } from "../services/event-bus.service"
 import { TaskQuickEdit } from "../cmps/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
+import { FilterPopover } from "../cmps/FilterPopover"
 
 export function BoardDetails() {
   const params = useParams()
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
+  const [displayFilter, setDisplayFilter] = useState(false)
 
   useEffect(() => {
     const unsubscribe = eventBus.on("quickEditTask", (data) => {
@@ -35,12 +37,23 @@ export function BoardDetails() {
 
   return (
     <div className="board-details-container" style={boardStyle}>
+      {displayFilter && (
+        <FilterPopover
+          members={board.members}
+          labels={board.labels}
+          onClose={() => setDisplayFilter(false)}
+        />
+      )}
       <div className="board-sidebar">Sidebar</div>
       <div
         className="board-main-content flex column"
         style={{ backgroundImage: `url(${board.style.bgImage})` }}
       >
-        <BoardDetailsHeader title={board.title} members={board.members} />
+        <BoardDetailsHeader
+          title={board.title}
+          members={board.members}
+          setDisplayFilter={setDisplayFilter}
+        />
         <div className="board-groups-container full">
           <GroupList groups={board.groups} />
         </div>

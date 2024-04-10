@@ -1,13 +1,13 @@
 import SvgIcon from "./SvgIcon"
 
-export function BoardDetailsHeader({ title, members }) {
+export function BoardDetailsHeader({ title, members, setDisplayFilter }) {
   return (
     <section className="board-details-header">
       <div className="board-topbar-start">
         <h3 className="board-details-title">{title}</h3>
       </div>
       <div className="board-topbar-end">
-        <button className="button">
+        <button className="button" onClick={() => setDisplayFilter(true)}>
           <SvgIcon iconName="filter" />
           Filters
         </button>
