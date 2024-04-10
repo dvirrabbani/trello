@@ -1,0 +1,25 @@
+.activity {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  color: $color-txt-primary;
+  gap: 8px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: rem(4px);
+  }
+
+  .activity-title {
+    font-weight: 700;
+    text-transform: lowercase;
+    font-size: rem(14px);
+  }
+
+  .activity-sub-title,
+  .activity-date {
+    font-size: rem(12px);
+    color: $color-text-subtle;
+    font-weight: 400;
+  }
+}
