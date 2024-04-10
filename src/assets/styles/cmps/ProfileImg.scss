@@ -1,0 +1,11 @@
+.profile-img {
+  @include size(24px);
+
+  &.profile-img-size-md {
+    @include size(28px);
+  }
+
+  &.profile-img-size-lg {
+    @include size(32px);
+  }
+}

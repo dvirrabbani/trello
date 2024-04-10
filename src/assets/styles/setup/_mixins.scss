@@ -71,3 +71,8 @@
     }
   }
 }
+
+@mixin size($size) {
+  width: rem($size);
+  height: rem($size);
+}
