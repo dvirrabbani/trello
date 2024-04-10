@@ -1,4 +1,5 @@
 import SvgIcon from "../SvgIcon"
+import { Activity } from "./Activity"
 import { TaskDetailsComments } from "./TaskDetailsComments"
 
 export function TaskDetailsActivities({
@@ -7,6 +8,7 @@ export function TaskDetailsActivities({
   onRemoveComment,
   onAddComment,
   onUpdateComment,
+  activities,
 }) {
   return (
     <section className="task-details-activities">
@@ -24,6 +26,20 @@ export function TaskDetailsActivities({
         onAddComment={onAddComment}
         onUpdateComment={onUpdateComment}
       />
+      {/*Task Activities  */}
+      {activities.length > 0 && (
+        <ul className="task-activities clean-list">
+          {activities.map((activity) => {
+            return (
+              <Activity
+                key={activity.id}
+                activity={activity}
+                profileSize={"lg"}
+              />
+            )
+          })}
+        </ul>
+      )}
     </section>
   )
 }

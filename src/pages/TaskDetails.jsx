@@ -183,9 +183,16 @@ export function TaskDetails() {
                   onUpdateTask={onUpdateTask}
                 />
               )}
+
               <TaskDetailsActivities
                 task={task}
                 boardMembers={board.members}
+                // filter board activities by task
+                activities={
+                  board?.activities.filter(
+                    (activity) => activity?.task?.id === task.id
+                  ) || []
+                }
                 onRemoveComment={onRemoveComment}
                 onAddComment={onAddComment}
                 onUpdateComment={onUpdateComment}

@@ -241,6 +241,7 @@ export const DEMO_BOARD_LIST = [
           fullname: "Abi Abambi",
           imgUrl: "http://some-img",
         },
+
         task: {
           id: "t101",
           title: "Replace Logo",
@@ -369,10 +370,11 @@ export const DEMO_BOARD_LIST = [
         byMember: {
           _id: "u101",
           fullname: "Abi Abambi",
-          imgUrl: "http://some-img",
+          imgUrl:
+            "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
         },
         task: {
-          id: "t101",
+          id: "t115",
           title: "Replace Logo",
         },
       },
