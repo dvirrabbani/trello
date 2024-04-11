@@ -7,12 +7,17 @@ export const UPDATE_BOARD = "UPDATE_BOARD"
 export const UNDO_REMOVE_BOARD = "UNDO_REMOVE_BOARD"
 export const TOGGLE_LABELS = "TOGGLE_LABELS"
 export const BOARD_ADD_ACTIVITY = "BOARD_ADD_ACTIVITY"
+export const SET_BOARD_FILTER = "SET_BOARD_FILTER"
 
 const initialState = {
   boards: [],
   board: null,
   lastRemovedBoard: null,
   labelsExpand: true,
+  boardFilterBy: {
+    labels: ["l101"],
+    members: [],
+  },
 }
 
 export function boardReducer(state = initialState, action) {
@@ -53,6 +58,8 @@ export function boardReducer(state = initialState, action) {
     case TOGGLE_LABELS:
       newState = { ...state, labelsExpand: !state.labelsExpand }
       break
+    case SET_BOARD_FILTER:
+      newState = { ...state, boardFilterBy: action.filterBy }
   }
   return newState
 }

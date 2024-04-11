@@ -14,6 +14,7 @@ export const boardService = {
   getEmptyBoard,
   addBoardMsg,
   updateBoard,
+  filteredBoard,
 }
 window.cs = boardService
 
@@ -76,4 +77,8 @@ function updateBoard(board, groupId, taskId, { key, value }, activity) {
 // TODO
 function getEmptyBoard() {
   return {}
+}
+
+function filteredBoard(board, filterBy) {
+  //filter board tasks by filterBy
 }

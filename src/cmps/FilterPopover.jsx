@@ -1,9 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "./Button"
 import SvgIcon from "./SvgIcon"
+import { store } from "../store/store"
 
 export function FilterPopover({ members, labels, onClose, filterBy }) {
   const [filter, setFilter] = useState(filterBy)
+
+  useEffect(() => {
+    store.dispatch({ type: "SET_BOARD_FILTER", filterBy: filter })
+  }, [filter])
 
   const handleFilterChange = (e) => {
     const { type, name, value, checked } = e.currentTarget
