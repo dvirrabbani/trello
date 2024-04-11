@@ -6,6 +6,7 @@ export const SET_BOARD = "SET_BOARD"
 export const UPDATE_BOARD = "UPDATE_BOARD"
 export const UNDO_REMOVE_BOARD = "UNDO_REMOVE_BOARD"
 export const TOGGLE_LABELS = "TOGGLE_LABELS"
+export const BOARD_ADD_ACTIVITY = "BOARD_ADD_ACTIVITY"
 
 const initialState = {
   boards: [],
@@ -43,6 +44,9 @@ export function boardReducer(state = initialState, action) {
     case UPDATE_BOARD:
       newState = {
         ...state,
+        boards: state.boards?.map((board) =>
+          board._id === action.board._id ? action.board : board
+        ),
         board: { ...action.board },
       }
       break

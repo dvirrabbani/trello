@@ -1,5 +1,6 @@
 // import { storageService } from "./http.service.js";
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
+import { activityService } from "./acitivity.service.js"
 import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
 
@@ -65,22 +66,11 @@ function updateBoard(board, groupId, taskId, { key, value }, activity) {
   }
 
   if (activity) {
-    console.log("update activity", activity)
-    board.activities = [addActivity(activity), ...board.activities]
+    activityService.addActivity(activity)
   }
 
   save(board)
   return board
-}
-
-function addActivity(activity) {
-  activity.id = utilService.makeId()
-  activity.createdAt = new Date().getTime()
-  if (activity?.task) {
-    activity.byMember = { ...activity.task?.byMember }
-    activity.taskId = activity.task.id
-  }
-  return activity
 }
 
 // TODO

@@ -10,16 +10,10 @@ export function TaskDatesPopover({ task, onUpdateTask, onClose }) {
 
   function onSaveTaskDate() {
     const TaskDueDate = new Date(duetDate)
-    onUpdateTask(
-      {
-        key: "dueDate",
-        value: TaskDueDate,
-      },
-      {
-        txt: `Update this task due date to ${formatDate(TaskDueDate)} `,
-        task,
-      }
-    )
+    onUpdateTask({
+      key: "dueDate",
+      value: TaskDueDate,
+    })
     onClose()
   }
 

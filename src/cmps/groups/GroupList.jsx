@@ -4,6 +4,7 @@ import { utilService } from "../../services/util.service"
 import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
 import { GroupPreview } from "./GroupPreview"
+import { activityService } from "../../services/acitivity.service"
 
 export function GroupList({ groups }) {
   const [displayAddItem, setDisplayAddItem] = useState(false)
@@ -17,10 +18,17 @@ export function GroupList({ groups }) {
       title: inputVal,
     }
     const updateGroups = [...groups, group]
-    updateCurrentBoard(null, null, {
-      key: "groups",
-      value: updateGroups,
-    })
+    updateCurrentBoard(
+      null,
+      null,
+      {
+        key: "groups",
+        value: updateGroups,
+      },
+      {
+        type: activityService.activityTypes.addGroup,
+      }
+    )
     setDisplayAddItem(false)
   }
 

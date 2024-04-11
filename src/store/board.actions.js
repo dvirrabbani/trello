@@ -97,7 +97,6 @@ export function updateBoard(board, { key, value }, activity) {
   )
 
   store.dispatch(getActionUpdateBoard(updateBoard))
-  store.dispatch(getActionUpdateBoards(updateBoard))
 }
 
 export async function loadBoards() {
