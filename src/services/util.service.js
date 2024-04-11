@@ -118,7 +118,6 @@ function calculateDueDateStatus(dueDate) {
 
   // if the task is due in less than 24 hours
   if (now < due) {
-    // if the due date didn't pass
     return {
       status: "Not due yet",
       style: null,
@@ -126,13 +125,11 @@ function calculateDueDateStatus(dueDate) {
   } else if (diffInHours <= 24) {
     return { status: "Due soon", style: { backgroundColor: "#e2b203" } }
   } else if (diffInHours <= 36) {
-    // if the task is due in less than 36 hours
     return {
       status: "overdue",
       style: { backgroundColor: "#c9372c", color: "white" },
     }
   } else {
-    // if the task is overdue
     return {
       status: "overdue",
       style: { backgroundColor: "#ffd2cc", color: "#ae2a19" },
