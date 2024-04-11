@@ -5,6 +5,7 @@ import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
 import { GroupActions } from "./GroupActions"
 import { TaskList } from "./tasks/TaskList"
+import { activityService } from "../../services/acitivity.service"
 
 export function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
@@ -30,10 +31,17 @@ export function GroupPreview({ group, deleteGroup }) {
       title: inputVal,
     }
     const tasks = [...group.tasks, task]
-    updateCurrentBoard(group.id, null, {
-      key: "tasks",
-      value: tasks,
-    })
+    updateCurrentBoard(
+      group.id,
+      null,
+      {
+        key: "tasks",
+        value: tasks,
+      },
+      {
+        type: activityService.activityTypes.addCard,
+      }
+    )
     setDisplayAddItem(false)
   }
 

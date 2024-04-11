@@ -4,7 +4,8 @@ import { utilService } from "./util.service"
 import { store } from "../store/store"
 
 const activityTypes = {
-  addGroup: "addGroup",
+  addGroup: "Add Group",
+  addCard: "addCard",
 }
 
 export const activityService = {
@@ -18,7 +19,10 @@ function addActivity(activity) {
   activity.byMember = DEMO_USER
   switch (activity.type) {
     case activityTypes.addGroup:
-      activity.txt = "Add Group"
+      activity.txt = `${DEMO_USER.fullname} add new Group`
+      break
+    case activityTypes.addCard:
+      activity.txt = `${DEMO_USER.fullname} add new card`
       break
     default:
       break
