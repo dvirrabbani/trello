@@ -190,4 +190,6 @@ function _isTaskMatchDates(task, filter) {
     nextMonth.setMonth(nextMonth.getMonth() + 1)
     return due < nextMonth && due > Date.now()
   }
+
+  return true
 }
