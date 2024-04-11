@@ -1,0 +1,68 @@
+.board-sidebar {
+  ul {
+    padding-top: rem(12px);
+    display: grid;
+    grid-template-columns: auto;
+    .board-sidebar-list-header {
+      padding: rem(4px) 0 rem(4px) rem(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .title {
+        font-size: rem(14px);
+        font-weight: 600;
+        line-height: rem(24px);
+      }
+      button {
+        background-color: transparent;
+        color: inherit;
+        @include btn();
+        width: fit-content;
+        padding: rem(4px);
+        margin: 0 rem(6px);
+        &:hover {
+          background-color: $background-button-hovered;
+        }
+      }
+    }
+    .board-sidebar-item {
+      padding: rem(6px) rem(12px);
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.16);
+      }
+
+      &:has(a.active),
+      &:active {
+        background-color: hsla(0, 0%, 100%, 0.3);
+      }
+
+      img {
+        width: rem(24px);
+        height: rem(20px);
+      }
+
+      a {
+        font-size: rem(14px);
+        line-height: rem(20px);
+        display: inline-flex;
+        align-items: center;
+        gap: rem(8px);
+        color: $clr8;
+      }
+
+      .button {
+        padding: 0;
+        color: inherit;
+        background-color: transparent;
+      }
+      .svg-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -263,6 +263,7 @@ export const DEMO_BOARD_LIST = [
         "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
     },
     style: {
+      backgroundColor: "#395e63",
       bgImage:
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/964891d63f67d6c53a74b8908fc8c3d5/photo-1711139299064-f60e2753163f.jpg",
     },

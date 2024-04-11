@@ -8,10 +8,12 @@ import { eventBus } from "../services/event-bus.service"
 import { TaskQuickEdit } from "../cmps/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
 import { FilterPopover } from "../cmps/FilterPopover"
+import { BoardSidebar } from "../cmps/BoardSidebar"
 
 export function BoardDetails() {
   const params = useParams()
   const board = useSelector((storeState) => storeState.boardModule.board)
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [displayFilter, setDisplayFilter] = useState(false)
   const filterBy = {
@@ -49,7 +51,7 @@ export function BoardDetails() {
           filterBy={filterBy}
         />
       )}
-      <div className="board-sidebar">Sidebar</div>
+      <BoardSidebar boards={boards} />
       <div
         className="board-main-content flex column"
         style={{ backgroundImage: `url(${board.style.bgImage})` }}
