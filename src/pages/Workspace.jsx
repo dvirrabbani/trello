@@ -1,6 +1,5 @@
-import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { addBoard, loadBoards } from "../store/board.actions.js"
+import { addBoard } from "../store/board.actions.js"
 import { BoardList } from "../cmps/BoardList.jsx"
 import SvgIcon from "../cmps/SvgIcon.jsx"
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
@@ -16,9 +15,6 @@ export function Workspace() {
     delete boardToSave._id
     await addBoard(boardToSave)
   }
-  useEffect(() => {
-    loadBoards()
-  }, [])
 
   return (
     <div className="workspace-container">

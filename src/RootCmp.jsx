@@ -1,11 +1,17 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Routes, Route, Navigate } from "react-router"
 import { Workspace } from "./pages/Workspace"
 import { BoardDetails } from "./pages/BoardDetails"
 import { TaskDetails } from "./pages/TaskDetails"
 import { AppHeader } from "./cmps/AppHeader"
+import { loadBoards } from "./store/board.actions"
 
 export function RootCmp() {
+  // TODO: Remove load board when redirect to workspace from login page
+  useEffect(() => {
+    loadBoards()
+  }, [])
+
   return (
     <div className="main-app">
       <AppHeader />
