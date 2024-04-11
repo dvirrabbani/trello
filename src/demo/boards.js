@@ -46,6 +46,7 @@ export const DEMO_BOARD_LIST = [
             description: "description",
             memberIds: ["u101"],
             labelIds: ["l102"],
+            dueDate: "2024-04-17T21:00:00.000Z",
             checklists: [
               {
                 id: "checklist1",

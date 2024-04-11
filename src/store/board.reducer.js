@@ -18,6 +18,11 @@ const initialState = {
     txt: "",
     labels: [],
     members: [],
+    noDates: false,
+    overdue: false,
+    dueNextDay: false,
+    dueNextWeek: false,
+    dueNextMonth: false,
   },
 }
 

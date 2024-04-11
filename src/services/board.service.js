@@ -83,6 +83,11 @@ function getEmptyBoard() {
 //   txt: "",
 //   labels: [],
 //   members: [],
+// noDates: false,
+// overdue: false,
+// dueNextDay: false,
+// dueNextWeek: false,
+// dueNextMonth: false,
 // },
 function filteredBoard(board, filterBy) {
   //filter board tasks by filterBy
@@ -93,7 +98,8 @@ function filteredBoard(board, filterBy) {
       return (
         _isTaskMatchLabels(task, filterBy) &&
         _isTaskMatchMembers(task, filterBy) &&
-        _isTaskMatchTxt(task, filterBy)
+        _isTaskMatchTxt(task, filterBy) &&
+        _isTaskMatchDates(task, filterBy)
       )
     })
     return { ...group, tasks }
@@ -141,4 +147,39 @@ function _isTaskMatchTxt(task, filter) {
   }
 
   return task.title.toLowerCase().includes(txt.toLowerCase())
+}
+
+function _isTaskMatchDates(task, filter) {
+  const { noDates, overdue, dueNextDay, dueNextWeek, dueNextMonth } = filter
+
+  if (!noDates && !overdue && !dueNextDay && !dueNextWeek && !dueNextMonth) {
+    // no date-related filtering
+    return true
+  }
+
+  if (noDates) {
+    return !task.dueDate
+  }
+
+  if (overdue) {
+    return task.dueDate && task.dueDate < Date.now()
+  }
+
+  if (dueNextDay) {
+    const nextDay = new Date()
+    nextDay.setDate(nextDay.getDate() + 1)
+    return task.dueDate && task.dueDate < nextDay
+  }
+
+  if (dueNextWeek) {
+    const nextWeek = new Date()
+    nextWeek.setDate(nextWeek.getDate() + 7)
+    return task.dueDate && task.dueDate < nextWeek
+  }
+
+  if (dueNextMonth) {
+    const nextMonth = new Date()
+    nextMonth.setMonth(nextMonth.getMonth() + 1)
+    return task.dueDate && task.dueDate < nextMonth
+  }
 }

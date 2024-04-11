@@ -15,14 +15,18 @@ export function FilterPopover({ members, labels, onClose, filterBy }) {
     setFilter((prevFilter) => {
       let updatedFilter = { ...prevFilter }
       if (type === "checkbox") {
-        if (checked) {
-          // Add the value if checkbox is checked
-          updatedFilter[name] = [...(updatedFilter[name] || []), value]
+        if (name === "members" || name === "labels") {
+          if (checked) {
+            // Add the value if checkbox is checked
+            updatedFilter[name] = [...(updatedFilter[name] || []), value]
+          } else {
+            // Remove the value if checkbox is unchecked
+            updatedFilter[name] = (updatedFilter[name] || []).filter(
+              (v) => v !== value
+            )
+          }
         } else {
-          // Remove the value if checkbox is unchecked
-          updatedFilter[name] = (updatedFilter[name] || []).filter(
-            (v) => v !== value
-          )
+          updatedFilter[name] = checked
         }
       } else {
         updatedFilter[name] = value
@@ -92,6 +96,81 @@ export function FilterPopover({ members, labels, onClose, filterBy }) {
                   </label>
                 )
               })}
+            </ul>
+          </section>
+          <section className="filter-section">
+            <h3>Due date</h3>
+            <ul className="clean-list task-label-list">
+              <li className="">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="noDates"
+                    value="none"
+                    checked={filter.noDates}
+                    onChange={handleFilterChange}
+                  />
+                  <div className="button label-button variant-text shape-regular">
+                    <span>no dates</span>
+                  </div>
+                </label>
+              </li>
+              <li className="">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="overdue"
+                    value="none"
+                    checked={filter.overdue}
+                    onChange={handleFilterChange}
+                  />
+                  <div className="button label-button variant-text shape-regular">
+                    <span>overdue</span>
+                  </div>
+                </label>
+              </li>
+              <li className="">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="dueNextDay"
+                    value="none"
+                    checked={filter.dueNextDay}
+                    onChange={handleFilterChange}
+                  />
+                  <div className="button label-button variant-text shape-regular">
+                    <span>due next day</span>
+                  </div>
+                </label>
+              </li>
+              <li className="">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="dueNextWeek"
+                    value="none"
+                    checked={filter.dueNextWeek}
+                    onChange={handleFilterChange}
+                  />
+                  <div className="button label-button variant-text shape-regular">
+                    <span>do nex week</span>
+                  </div>
+                </label>
+              </li>
+              <li className="">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="dueNextMonth"
+                    value="none"
+                    checked={filter.dueNextMonth}
+                    onChange={handleFilterChange}
+                  />
+                  <div className="button label-button variant-text shape-regular">
+                    <span>due next month</span>
+                  </div>
+                </label>
+              </li>
             </ul>
           </section>
           <section className="filter-section">
