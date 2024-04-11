@@ -9,17 +9,20 @@ import { TaskQuickEdit } from "../cmps/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
 import { FilterPopover } from "../cmps/FilterPopover"
 import { BoardSidebar } from "../cmps/BoardSidebar"
+import { boardService } from "../services/board.service"
 
 export function BoardDetails() {
   const params = useParams()
-  const board = useSelector((storeState) => storeState.boardModule.board)
+  // const board = useSelector((storeState) => storeState.boardModule.board)
+  const initialBoard = useSelector((storeState) => storeState.boardModule.board)
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [displayFilter, setDisplayFilter] = useState(false)
   const filterBy = useSelector(
     (storeState) => storeState.boardModule.boardFilterBy
   )
-  // const boardFiltered = filteredBoard(board, filterBy)
+  console.log("initialBoard", initialBoard)
+  const board = boardService.filteredBoard(initialBoard, filterBy)
 
   useEffect(() => {
     const unsubscribe = eventBus.on("quickEditTask", (data) => {

@@ -15,7 +15,8 @@ const initialState = {
   lastRemovedBoard: null,
   labelsExpand: true,
   boardFilterBy: {
-    labels: ["l101"],
+    txt: "",
+    labels: [],
     members: [],
   },
 }

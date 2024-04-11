@@ -1,5 +1,6 @@
 // import { storageService } from "./http.service.js";
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
+import { store } from "../store/store.js"
 import { activityService } from "./acitivity.service.js"
 import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
@@ -81,4 +82,29 @@ function getEmptyBoard() {
 
 function filteredBoard(board, filterBy) {
   //filter board tasks by filterBy
+  if (!board) return
+
+  const groups = board.groups.map((group) => {
+    const tasks = group.tasks.filter((task) => {
+      return _isTaskMatchLabels(task, filterBy)
+    })
+    return { ...group, tasks }
+  })
+
+  return { ...board, groups }
+}
+
+function _isTaskMatchLabels(task, filter) {
+  const { labels } = filter
+
+  if (!labels || !labels.length) {
+    // no labels-related filtering
+    return true
+  }
+
+  if (!task.labelIds || !task.labelIds.length) {
+    return labels.includes("none")
+  }
+
+  return task.labelIds.some((id) => labels.includes(id))
 }
