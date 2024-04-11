@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom"
 import SvgIcon from "./SvgIcon"
 import { updateBoard } from "../store/board.actions"
+import { BoardNavLink } from "./BoardNavLink"
 
 export function BoardSidebar({ boards }) {
   function onToggleBoardStarred(ev, board) {
@@ -22,10 +22,7 @@ export function BoardSidebar({ boards }) {
         {boards?.map((board) => {
           return (
             <li className="board-sidebar-item" key={board._id}>
-              <NavLink to={`/board/${board._id}`}>
-                <img src={board.style.bgImage} alt="" />
-                <span>{board.title} </span>
-              </NavLink>
+              <BoardNavLink board={board} />
               <SvgIcon
                 onClick={(ev) => onToggleBoardStarred(ev, board)}
                 iconName={board.isStarred ? "starFill" : "star"}

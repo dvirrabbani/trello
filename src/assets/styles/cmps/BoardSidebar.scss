@@ -41,20 +41,6 @@
         background-color: hsla(0, 0%, 100%, 0.3);
       }
 
-      img {
-        width: rem(24px);
-        height: rem(20px);
-      }
-
-      a {
-        font-size: rem(14px);
-        line-height: rem(20px);
-        display: inline-flex;
-        align-items: center;
-        gap: rem(8px);
-        color: $clr8;
-      }
-
       .button {
         padding: 0;
         color: inherit;

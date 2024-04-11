@@ -1,0 +1,13 @@
+.board-nav-link {
+  font-size: rem(14px);
+  line-height: rem(20px);
+  display: grid;
+  gap: rem(8px);
+  grid-template-columns: auto 1fr;
+  color: inherit;
+  background-color: $background-button-hovered;
+  img.thumbnail {
+    width: rem(24px);
+    height: rem(20px);
+  }
+}
