@@ -104,6 +104,12 @@ export const DEMO_BOARD_LIST = [
                 "https://trello.com/1/cards/6610204c2098dfd601dd64f0/attachments/6610204c2098dfd601dd6517/previews/6610204c2098dfd601dd651b/download/shutterstock_88924612.jpg",
             },
           },
+          {
+            archivedAt: null,
+            id: "tNdoGn5",
+            title: "new task",
+            dueDate: "2024-04-25T21:00:00.000Z",
+          },
         ],
         style: undefined,
       },

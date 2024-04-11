@@ -114,7 +114,6 @@ function calculateDueDateStatus(dueDate) {
   const now = new Date()
   const due = new Date(dueDate)
   const diffInHours = Math.abs(now - due) / 36e5
-  console.log("diffInHours:", diffInHours)
 
   // if the task is due in less than 24 hours
   if (now < due) {

@@ -162,24 +162,32 @@ function _isTaskMatchDates(task, filter) {
   }
 
   if (overdue) {
-    return task.dueDate && task.dueDate < Date.now()
+    if (!task.dueDate) return false
+    const due = new Date(task.dueDate)
+    return due < Date.now()
   }
 
   if (dueNextDay) {
+    if (!task.dueDate) return false
+    const due = new Date(task.dueDate)
     const nextDay = new Date()
     nextDay.setDate(nextDay.getDate() + 1)
-    return task.dueDate && task.dueDate < nextDay
+    return due <= nextDay
   }
 
   if (dueNextWeek) {
+    if (!task.dueDate) return false
+    const due = new Date(task.dueDate)
     const nextWeek = new Date()
     nextWeek.setDate(nextWeek.getDate() + 7)
-    return task.dueDate && task.dueDate < nextWeek
+    return due < nextWeek && due > Date.now()
   }
 
   if (dueNextMonth) {
+    if (!task.dueDate) return false
+    const due = new Date(task.dueDate)
     const nextMonth = new Date()
     nextMonth.setMonth(nextMonth.getMonth() + 1)
-    return task.dueDate && task.dueDate < nextMonth
+    return due < nextMonth && due > Date.now()
   }
 }
