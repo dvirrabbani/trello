@@ -79,14 +79,21 @@ function updateBoard(board, groupId, taskId, { key, value }, activity) {
 function getEmptyBoard() {
   return {}
 }
-
+// boardFilterBy: {
+//   txt: "",
+//   labels: [],
+//   members: [],
+// },
 function filteredBoard(board, filterBy) {
   //filter board tasks by filterBy
   if (!board) return
 
   const groups = board.groups.map((group) => {
     const tasks = group.tasks.filter((task) => {
-      return _isTaskMatchLabels(task, filterBy)
+      return (
+        _isTaskMatchLabels(task, filterBy) &&
+        _isTaskMatchMembers(task, filterBy)
+      )
     })
     return { ...group, tasks }
   })
@@ -107,4 +114,19 @@ function _isTaskMatchLabels(task, filter) {
   }
 
   return task.labelIds.some((id) => labels.includes(id))
+}
+
+function _isTaskMatchMembers(task, filter) {
+  const { members } = filter
+
+  if (!members || !members.length) {
+    // no members-related filtering
+    return true
+  }
+
+  if (!task.memberIds || !task.memberIds.length) {
+    return members.includes("none")
+  }
+
+  return task.memberIds.some((id) => members.includes(id))
 }

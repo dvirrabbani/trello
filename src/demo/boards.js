@@ -44,6 +44,8 @@ export const DEMO_BOARD_LIST = [
             id: "t101",
             title: "Replace logo",
             description: "description",
+            memberIds: ["u101"],
+            labelIds: ["l102"],
             checklists: [
               {
                 id: "checklist1",
@@ -94,6 +96,7 @@ export const DEMO_BOARD_LIST = [
             id: "t102",
             title: "Add Samples",
             description: "description",
+            memberIds: ["u101", "u102"],
             style: {
               isFull: false,
               background:
@@ -112,6 +115,8 @@ export const DEMO_BOARD_LIST = [
             title: "Do that",
             description: "description",
             archivedAt: 1589983468418,
+            memberIds: ["u101"],
+            labelIds: ["l101"],
             dueDate: 1649358748000,
             style: {
               isFull: true,

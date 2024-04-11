@@ -21,7 +21,7 @@ export function BoardDetails() {
   const filterBy = useSelector(
     (storeState) => storeState.boardModule.boardFilterBy
   )
-  console.log("initialBoard", initialBoard)
+
   const board = boardService.filteredBoard(initialBoard, filterBy)
 
   useEffect(() => {
