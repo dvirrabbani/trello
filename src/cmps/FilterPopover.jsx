@@ -43,9 +43,33 @@ export function FilterPopover({ members, labels, onClose, filterBy }) {
       </div>
       <div className="popover-content">
         <form className="filter-form">
+          <section>
+            <h3>Keyword</h3>
+            <input
+              type="text"
+              name="txt"
+              value={filter.txt}
+              onChange={handleFilterChange}
+              placeholder="Enter a keyword..."
+            />
+          </section>
           <section className="filter-section">
             <h3>Members</h3>
             <ul className="clean-list flex column">
+              <li className="">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="members"
+                    value="none"
+                    checked={filter.members?.includes("none")}
+                    onChange={handleFilterChange}
+                  />
+                  <div className="button label-button variant-text shape-regular">
+                    <span>no members</span>
+                  </div>
+                </label>
+              </li>
               {members?.map((m) => {
                 return (
                   <label key={m._id}>
@@ -73,6 +97,20 @@ export function FilterPopover({ members, labels, onClose, filterBy }) {
           <section className="filter-section">
             <h3>Labels</h3>
             <ul className="clean-list task-label-list">
+              <li className="">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="labels"
+                    value="none"
+                    checked={filter.labels?.includes("none")}
+                    onChange={handleFilterChange}
+                  />
+                  <div className="button label-button variant-text shape-regular">
+                    <span>no labels</span>
+                  </div>
+                </label>
+              </li>
               {labels?.map((lb) => {
                 return (
                   <li key={lb.id} className="">

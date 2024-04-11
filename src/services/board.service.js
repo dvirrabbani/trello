@@ -92,7 +92,8 @@ function filteredBoard(board, filterBy) {
     const tasks = group.tasks.filter((task) => {
       return (
         _isTaskMatchLabels(task, filterBy) &&
-        _isTaskMatchMembers(task, filterBy)
+        _isTaskMatchMembers(task, filterBy) &&
+        _isTaskMatchTxt(task, filterBy)
       )
     })
     return { ...group, tasks }
@@ -129,4 +130,15 @@ function _isTaskMatchMembers(task, filter) {
   }
 
   return task.memberIds.some((id) => members.includes(id))
+}
+
+function _isTaskMatchTxt(task, filter) {
+  const { txt } = filter
+
+  if (!txt) {
+    // no txt-related filtering
+    return true
+  }
+
+  return task.title.toLowerCase().includes(txt.toLowerCase())
 }
