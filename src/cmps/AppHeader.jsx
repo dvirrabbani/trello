@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import SvgIcon from "./SvgIcon"
 import { NotificationBell } from "./NotificationBell"
+import { BoardSearchInput } from "./BoardSearchInput"
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -12,6 +13,7 @@ export function AppHeader() {
         <SvgIcon iconName={"logo"} size={"lg"} />
       </Link>
 
+      <BoardSearchInput />
       <div className="pref">
         <NotificationBell />
         <SvgIcon iconName={"profile"} size={"md"} />
