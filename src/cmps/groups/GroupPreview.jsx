@@ -64,7 +64,7 @@ export function GroupPreview({ group, deleteGroup }) {
             {groupToEdit.title}
           </textarea>
           <button
-            className="group-edit icon-btn"
+            className="button group-edit-btn"
             onClick={() => setGroupActions(true)}
           >
             <SvgIcon iconName="more" className="svg-icon" />
@@ -85,18 +85,18 @@ export function GroupPreview({ group, deleteGroup }) {
               setDisplayAddItem={setDisplayAddItem}
             />
           ) : (
-            <div>
+            <>
               <button
-                className="add-task-btn full"
+                className="button add-task-btn"
                 onClick={() => setDisplayAddItem(true)}
               >
                 <SvgIcon iconName="plus" />
                 <span>Add a card</span>
               </button>
-              <button className="icon-btn">
+              <button className="button icon-btn">
                 <SvgIcon iconName="taskTemplate" />
               </button>
-            </div>
+            </>
           )}
         </div>
       </div>

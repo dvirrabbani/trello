@@ -25,14 +25,20 @@
 }
 
 /* Typography mixins */
-@mixin typography(
-  $fontSize: rem(14px),
-  $lineHeight: rem(20px),
-  $fontWeight: 400
-) {
-  font-size: $fontSize;
-  line-height: $lineHeight;
-  font-weight: $fontWeight;
+@mixin typography($type: "h1") {
+  @if $type == "h1" {
+    font-size: rem(18px);
+    line-height: rem(32px);
+    font-weight: 700;
+  } @else if $type == "h2" {
+    font-size: rem(14px);
+    line-height: rem(20px);
+    font-weight: 600;
+  } @else if $type == "txt" {
+    font-size: rem(14px);
+    line-height: rem(20px);
+    font-weight: 400;
+  }
 }
 
 @mixin btn($bg-color: unset, $width: unset, $borderRadius: 0, $padding: 6px) {

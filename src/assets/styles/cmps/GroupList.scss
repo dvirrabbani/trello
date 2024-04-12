@@ -18,50 +18,38 @@
     position: relative;
     height: min-content;
 
-    button {
-      @include btn;
+    .button {
       border-radius: rem(8px);
-
-      &:hover {
-        background-color: $background-neutral-hovered;
-      }
     }
-
-    .icon-btn {
-      padding: rem(8px);
-    }
-
-    .add-task-btn {
-      justify-content: flex-start;
-      padding: rem(6px) rem(12px) rem(6px) rem(8px);
-      gap: rem(8px);
-    }
-
     .group-header {
       height: rem(32px);
     }
 
+    .add-task-btn {
+      gap: rem(8px);
+      font-size: (14px);
+      width: 100%;
+    }
+
     .group-title {
-      font-size: rem(14px);
-      font-weight: 600;
-      line-height: rem(20px);
+      @include typography($type: "h2");
       padding: rem(6px) rem(8px) rem(6px) rem(12px);
       white-space: normal;
       border-radius: rem(8px);
+      color: $color-txt-primary;
       cursor: pointer;
     }
 
-    .group-footer {
-      gap: rem(4px);
-    }
-
     .group-actions {
-      position: absolute;
-      background: white;
-      z-index: 1;
-      right: 0;
+      padding: 0;
       top: rem(40px);
+      left: unset;
+      right: 0;
       transform: translateX(calc(100% - rem(32px)));
+
+      .popover-header {
+        padding: rem(8px);
+      }
     }
   }
 
@@ -72,13 +60,25 @@
       $borderRadius: rem(12px),
       $padding: rem(12px)
     );
-    @include typography(
-      $fontSize: rem(14px),
-      $lineHeight: rem(20px),
-      $fontWeight: 500
-    );
+    @include typography($type: "h2");
+    font-weight: 500;
     color: $color-txt-primary;
     height: fit-content;
+
+    &:hover {
+      background-color: $background-neutral-hovered;
+    }
+  }
+
+  .delete-group-btn {
+    @include btn(
+      $bg-color: transparent,
+      $width: 100%,
+      $padding: rem(6px) rem(12px)
+    );
+    @include typography($type: "txt");
+    color: $color-txt-primary;
+
     &:hover {
       background-color: $background-neutral-hovered;
     }

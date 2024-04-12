@@ -7,6 +7,7 @@
   left: 0;
   top: 0;
   z-index: 999;
+  box-shadow: $shadow-overlay;
 
   .popover-header {
     display: flex;
