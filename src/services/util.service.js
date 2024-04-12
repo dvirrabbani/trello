@@ -115,23 +115,25 @@ function calculateDueDateStatus(dueDate) {
   const due = new Date(dueDate)
   const diffInHours = Math.abs(now - due) / 36e5
 
-  // if the task is due in less than 24 hours
   if (now < due) {
     return {
       status: "Not due yet",
-      style: null,
+      className: "",
     }
   } else if (diffInHours <= 24) {
-    return { status: "Due soon", style: { backgroundColor: "#e2b203" } }
+    return {
+      status: "Due soon",
+      className: "due-soon",
+    }
   } else if (diffInHours <= 36) {
     return {
       status: "overdue",
-      style: { backgroundColor: "#c9372c", color: "white" },
+      className: "recently-overdue",
     }
   } else {
     return {
       status: "overdue",
-      style: { backgroundColor: "#ffd2cc", color: "#ae2a19" },
+      className: "past-overdue",
     }
   }
 }

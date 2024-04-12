@@ -124,7 +124,8 @@ export function TaskPreview({
 }
 
 function DueDateBadge({ dueDate }) {
-  const dueDateObj = new Date(dueDate)
+  const { date, isCompleted } = dueDate
+  const dueDateObj = new Date(date)
   let dueDateStr = dueDateObj.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -142,9 +143,10 @@ function DueDateBadge({ dueDate }) {
     })
   }
 
-  const { status, style } = utilService.calculateDueDateStatus(dueDate)
+  const { status, className } = utilService.calculateDueDateStatus(date)
+
   return (
-    <div className="action-badge" style={style}>
+    <div className={`action-badge ${className}`}>
       <SvgIcon iconName="clock" />
       <span>{dueDateStr}</span>
     </div>
