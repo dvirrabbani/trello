@@ -1,21 +1,21 @@
 .task-list {
-  gap: 8px;
-  padding: 8px 0;
+  gap: rem(8px);
+  padding: rem(8px) 0;
 
   .task-preview {
     background-color: $task-background;
-    border-radius: 8px;
+    border-radius: rem(8px);
     box-shadow: $task-shadow;
     color: $color-txt-primary;
-    min-height: 36px;
+    min-height: rem(36px);
     width: 100%;
     display: block;
     overflow: hidden;
     overflow-wrap: break-word;
     white-space: normal;
-    font-size: em(14px);
+    font-size: rem(14px);
     font-weight: 400;
-    line-height: em(20px);
+    line-height: rem(20px);
     position: relative;
     cursor: pointer;
 
@@ -23,7 +23,7 @@
       outline-color: $border-focused;
       outline-color: -webkit-focus-ring-color;
       outline-style: solid;
-      outline-width: 2px;
+      outline-width: rem(2px);
     }
 
     &:hover .task-edit-btn {
@@ -39,26 +39,28 @@
 
     .task-preview-main {
       display: grid;
-      row-gap: 4px;
-      padding: 8px 12px;
+      row-gap: rem(4px);
+      padding: rem(8px) rem(12px);
     }
     .task-members {
       display: flex;
-      gap: 4px;
+      gap: rem(4px);
+      float: right;
 
       .task-member {
-        width: 24px;
-        height: 24px;
+        width: rem(24px);
+        height: rem(24px);
         background-size: contain;
         background-repeat: no-repeat;
+        border-radius: 100%;
       }
     }
 
     .task-edit-btn {
       display: none;
       position: absolute;
-      top: 2px;
-      right: 2px;
+      top: rem(2px);
+      right: rem(2px);
       background-color: $task-background;
 
       &:hover {
@@ -69,31 +71,31 @@
     .task-actions-badges {
       flex-wrap: wrap;
       float: left;
-      column-gap: 4px;
+      column-gap: rem(4px);
       max-width: 100%;
     }
 
     .task-actions-badges {
-      & > * {
+      .action-badge {
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
-        border-radius: 3px;
-        padding: 2px;
-        margin-bottom: 4px;
+        border-radius: rem(3px);
+        padding: rem(2px);
+        margin-bottom: rem(4px);
         width: -moz-fit-content;
         width: fit-content;
         max-width: 100%;
-        height: 24px;
+        height: rem(24px);
         color: $color-text-subtle;
-        font-size: 12px;
+        font-size: rem(12px);
         box-sizing: border-box;
       }
 
       .action-badge > span {
-        padding-right: 4px;
-        padding-left: 2px;
+        padding-right: rem(4px);
+        padding-left: rem(2px);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -113,7 +115,8 @@
         color: $txt-accent-red;
       }
 
-      .dueDate-badge.complete {
+      .dueDate-badge.complete,
+      .action-badge.complete {
         background-color: $bg-success;
         color: white;
       }
@@ -134,16 +137,16 @@
     .task-labels {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: rem(4px);
     }
 
     .task-labels .task-label {
-      min-height: 8px;
+      min-height: rem(8px);
       transition: 0.1s ease-in, height 0.1s ease-in 0.15s;
       display: inline-block;
-      border-radius: 4px;
-      line-height: 16px;
-      font-size: 12px;
+      border-radius: rem(4px);
+      line-height: rem(16px);
+      font-size: rem(12px);
       font-weight: 500;
       text-align: left;
       vertical-align: middle;
@@ -152,15 +155,15 @@
       white-space: nowrap;
 
       &.expand {
-        min-width: 56px;
+        min-width: rem(56px);
         max-width: 100%;
-        height: 16px;
-        padding: 0 8px;
+        height: rem(16px);
+        padding: 0 rem(8px);
       }
       &.collapsed {
-        min-width: 40px;
-        max-width: 40px;
-        height: 8px;
+        min-width: rem(40px);
+        max-width: rem(40px);
+        height: rem(8px);
         color: transparent;
       }
     }

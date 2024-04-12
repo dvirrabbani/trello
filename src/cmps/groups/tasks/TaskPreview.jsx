@@ -105,7 +105,7 @@ export function TaskPreview({
           <div className="task-title">{task.title}</div>
         )}
 
-        <div className="task-preview-footer flex justify-between">
+        <div className="task-preview-footer">
           <div className="task-actions-badges flex">
             {task.dueDate && (
               <DueDateBadge
@@ -118,14 +118,14 @@ export function TaskPreview({
                 <SvgIcon iconName="description" />
               </div>
             )}
-            {task.checklists && (
-              <ChecklistsBadge checklists={task.checklists} />
-            )}
             {task.attachments && (
               <div className="action-badge">
                 <SvgIcon iconName="attachment" />
                 <span>{task.attachments.length}</span>
               </div>
+            )}
+            {task.checklists && (
+              <ChecklistsBadge checklists={task.checklists} />
             )}
           </div>
           {task.memberIds && <TaskMembers memberIds={task.memberIds} />}
@@ -192,7 +192,7 @@ function ChecklistsBadge({ checklists }) {
     return accumulator + checklist.todos.filter((todo) => todo.isDone).length
   }, 0)
 
-  const allTasksDone = totalTodos === totalDoneTodos
+  const allTasksDone = totalTodos === totalDoneTodos && totalTodos !== 0
   const badgeClassName = allTasksDone ? "complete" : ""
 
   return (
