@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
-import { toggleLabels } from "../../../store/board.actions"
+import { toggleLabels, updateCurrentBoard } from "../../../store/board.actions"
 import SvgIcon from "../../SvgIcon"
 
 export function TaskPreview({
@@ -59,6 +59,13 @@ export function TaskPreview({
     setTitleToEdit(value)
   }
 
+  async function onUpdateTask({ key, value }) {
+    updateCurrentBoard(groupId, task.id, {
+      key,
+      value,
+    })
+  }
+
   return (
     <div
       className="task-preview"
@@ -100,7 +107,12 @@ export function TaskPreview({
 
         <div className="task-preview-footer flex justify-between">
           <div className="task-actions-badges flex">
-            {task.dueDate && <DueDateBadge dueDate={task.dueDate} />}
+            {task.dueDate && (
+              <DueDateBadge
+                dueDate={task.dueDate}
+                onUpdateTask={onUpdateTask}
+              />
+            )}
             {task.description && (
               <div className="action-badge">
                 <SvgIcon iconName="description" />
@@ -123,7 +135,7 @@ export function TaskPreview({
   )
 }
 
-function DueDateBadge({ dueDate }) {
+function DueDateBadge({ dueDate, onUpdateTask }) {
   const { date, isCompleted } = dueDate
   const dueDateObj = new Date(date)
   let dueDateStr = dueDateObj.toLocaleDateString("en-US", {
@@ -143,11 +155,29 @@ function DueDateBadge({ dueDate }) {
     })
   }
 
-  const { status, className } = utilService.calculateDueDateStatus(date)
+  const { status, className } = utilService.calculateDueDateStatus(
+    date,
+    isCompleted
+  )
+
+  function onClickDueDate(e) {
+    e.stopPropagation()
+    onUpdateTask({ key: "dueDate", value: { date, isCompleted: !isCompleted } })
+  }
 
   return (
-    <div className={`action-badge ${className}`}>
-      <SvgIcon iconName="clock" />
+    <div
+      className={`action-badge dueDate-badge ${className}`}
+      onClick={onClickDueDate}
+    >
+      <span className="dueDate-icon-container">
+        <span className="icon-clock">
+          <SvgIcon iconName="clock" />
+        </span>
+        <span className="icon-checkbox">
+          <SvgIcon iconName={isCompleted ? "checkbox" : "unChecked"} />
+        </span>
+      </span>
       <span>{dueDateStr}</span>
     </div>
   )

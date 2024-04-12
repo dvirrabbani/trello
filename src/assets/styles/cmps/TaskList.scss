@@ -99,23 +99,35 @@
         white-space: nowrap;
       }
 
-      .action-badge.due-soon {
+      .dueDate-badge.due-soon {
         background-color: $bg-warning;
       }
 
-      .action-badge.recently-overdue {
+      .dueDate-badge.recently-overdue {
         background-color: $bg-danger;
         color: white;
       }
 
-      .action-badge.past-overdue {
+      .dueDate-badge.past-overdue {
         background-color: $bg-accent-red;
         color: $txt-accent-red;
       }
 
-      .action-badge.complete {
+      .dueDate-badge.complete {
         background-color: $bg-success;
         color: white;
+      }
+
+      .dueDate-badge {
+        .icon-checkbox {
+          display: none;
+        }
+        &:hover .icon-clock {
+          display: none;
+        }
+        &:hover .icon-checkbox {
+          display: block;
+        }
       }
     }
 

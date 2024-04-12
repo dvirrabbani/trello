@@ -110,7 +110,7 @@ function getAssetSrc(name) {
 }
 
 // calculate the time difference between two dates
-function calculateDueDateStatus(dueDate) {
+function calculateDueDateStatus(dueDate, isCompleted) {
   const now = new Date()
   const due = new Date(dueDate)
   const diffInHours = Math.abs(now - due) / 36e5
@@ -129,6 +129,11 @@ function calculateDueDateStatus(dueDate) {
     return {
       status: "overdue",
       className: "recently-overdue",
+    }
+  } else if (isCompleted) {
+    return {
+      status: "completed",
+      className: "complete",
     }
   } else {
     return {
