@@ -11,6 +11,7 @@ import {
   UPDATE_BOARD,
   UPDATE_BOARDS,
   TOGGLE_LABELS,
+  UPDATE_CURRENT_BOARD,
 } from "./board.reducer.js"
 
 // Action Creators:
@@ -31,6 +32,12 @@ export function getActionAddBoard(board) {
 export function getActionUpdateBoard(board) {
   return {
     type: UPDATE_BOARD,
+    board,
+  }
+}
+export function getActionUpdateCurrentBoard(board) {
+  return {
+    type: UPDATE_CURRENT_BOARD,
     board,
   }
 }
@@ -84,7 +91,7 @@ export function updateCurrentBoard(groupId, taskId, { key, value }, activity) {
     { key, value },
     activity
   )
-  store.dispatch(getActionUpdateBoard(updateBoard))
+  store.dispatch(getActionUpdateCurrentBoard(updateBoard))
 }
 
 export function updateBoard(board, { key, value }, activity) {
