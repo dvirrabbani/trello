@@ -1,4 +1,5 @@
 // import { storageService } from "./http.service.js";
+import { is } from "date-fns/locale"
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
 import { store } from "../store/store.js"
 import { activityService } from "./acitivity.service.js"
@@ -151,45 +152,49 @@ function _isTaskMatchTxt(task, filter) {
 
 function _isTaskMatchDates(task, filter) {
   const { noDates, overdue, dueNextDay, dueNextWeek, dueNextMonth } = filter
+  const due = new Date(task.dueDate)
 
   if (!noDates && !overdue && !dueNextDay && !dueNextWeek && !dueNextMonth) {
     // no date-related filtering
     return true
   }
 
+  let isMatchNoDates = false
+  let isMatchOverdue = false
+  let isMatchDueNextDay = false
+  let isMatchDueNextWeek = false
+  let isMatchDueNextMonth = false
+
   if (noDates) {
-    return !task.dueDate
+    isMatchNoDates = !task.dueDate
   }
 
   if (overdue) {
-    if (!task.dueDate) return false
-    const due = new Date(task.dueDate)
-    return due < Date.now()
+    isMatchOverdue = due < Date.now()
   }
 
   if (dueNextDay) {
-    if (!task.dueDate) return false
-    const due = new Date(task.dueDate)
-    const nextDay = new Date()
-    nextDay.setDate(nextDay.getDate() + 1)
-    return due <= nextDay
+    const nextDay = new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours from now
+    isMatchDueNextDay = due < nextDay && due > Date.now()
   }
 
   if (dueNextWeek) {
-    if (!task.dueDate) return false
-    const due = new Date(task.dueDate)
     const nextWeek = new Date()
     nextWeek.setDate(nextWeek.getDate() + 7)
-    return due < nextWeek && due > Date.now()
+    isMatchDueNextWeek = due < nextWeek && due > Date.now()
   }
 
   if (dueNextMonth) {
-    if (!task.dueDate) return false
-    const due = new Date(task.dueDate)
     const nextMonth = new Date()
     nextMonth.setMonth(nextMonth.getMonth() + 1)
-    return due < nextMonth && due > Date.now()
+    isMatchDueNextMonth = due < nextMonth && due > Date.now()
   }
 
-  return true
+  return (
+    isMatchNoDates ||
+    isMatchOverdue ||
+    isMatchDueNextDay ||
+    isMatchDueNextWeek ||
+    isMatchDueNextMonth
+  )
 }
