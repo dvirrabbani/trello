@@ -4,23 +4,23 @@
 
   .group-li {
     height: 100%;
-    padding: 0 6px;
+    padding: 0 rem(6px);
   }
 
   .group-preview {
     background-color: $group-background;
     box-shadow: $group-shadow;
     color: $color-txt-primary;
-    border-radius: 12px;
-    min-width: 272px;
-    width: 272px;
-    padding: 8px;
+    border-radius: rem(12px);
+    min-width: rem(272px);
+    width: rem(272px);
+    padding: rem(8px);
     position: relative;
     height: min-content;
 
     button {
       @include btn;
-      border-radius: 8px;
+      border-radius: rem(8px);
 
       &:hover {
         background-color: $background-neutral-hovered;
@@ -28,31 +28,31 @@
     }
 
     .icon-btn {
-      padding: 8px;
+      padding: rem(8px);
     }
 
     .add-task-btn {
       justify-content: flex-start;
-      padding: 6px 12px 6px 8px;
-      gap: 8px;
+      padding: rem(6px) rem(12px) rem(6px) rem(8px);
+      gap: rem(8px);
     }
 
     .group-header {
-      height: 32px;
+      height: rem(32px);
     }
 
     .group-title {
-      font-size: 14px;
+      font-size: rem(14px);
       font-weight: 600;
-      line-height: 20px;
-      padding: 6px 8px 6px 12px;
+      line-height: rem(20px);
+      padding: rem(6px) rem(8px) rem(6px) rem(12px);
       white-space: normal;
-      border-radius: 8px;
+      border-radius: rem(8px);
       cursor: pointer;
     }
 
     .group-footer {
-      gap: 4px;
+      gap: rem(4px);
     }
 
     .group-actions {
@@ -60,13 +60,27 @@
       background: white;
       z-index: 1;
       right: 0;
-      top: 40px;
-      transform: translateX(calc(100% - 32px));
+      top: rem(40px);
+      transform: translateX(calc(100% - rem(32px)));
     }
   }
 
   .add-group-btn {
-    @include btn;
+    @include btn(
+      $bg-color: #ffffff3d,
+      $width: $group-width,
+      $borderRadius: rem(12px),
+      $padding: rem(12px)
+    );
+    @include typography(
+      $fontSize: rem(14px),
+      $lineHeight: rem(20px),
+      $fontWeight: 500
+    );
+    color: $color-txt-primary;
     height: fit-content;
+    &:hover {
+      background-color: $background-neutral-hovered;
+    }
   }
 }
