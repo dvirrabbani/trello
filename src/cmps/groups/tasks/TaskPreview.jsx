@@ -206,7 +206,7 @@ function TaskLabels({ labelIds }) {
       {labelIds.map((labelId) => {
         const label = boardLabels.find((label) => label.id == labelId)
         return (
-          <TaskLabel key={label.id} color={label.color} title={label.title} />
+          <TaskLabel key={label.id} color={label.bgColor} title={label.title} />
         )
       })}
     </div>

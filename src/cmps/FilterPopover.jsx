@@ -91,7 +91,7 @@ export function FilterPopover({ members, labels, onClose, filterBy }) {
                         src={m.imgUrl}
                         alt=""
                       />
-                      <span>{m.fullname}</span>
+                      <span>{m.fullName}</span>
                     </div>
                   </label>
                 )
@@ -203,7 +203,7 @@ export function FilterPopover({ members, labels, onClose, filterBy }) {
                       />
                       <div
                         className="button label-button variant-text shape-regular"
-                        style={{ backgroundColor: lb.color }}
+                        style={{ backgroundColor: lb.bgColor }}
                       >
                         {lb.title && <span>{lb.title}</span>}
                       </div>

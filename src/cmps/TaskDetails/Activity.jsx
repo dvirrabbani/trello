@@ -9,7 +9,7 @@ export function Activity({ activity, profileSize }) {
       </aside>
       <div className="activity-content">
         <header className="header">
-          <span className="activity-title">{activity.byMember.fullname}</span>
+          <span className="activity-title">{activity.byMember.fullName}</span>
           <span className="activity-sub-title">{activity.txt}</span>
         </header>
         <article className="activity-date">

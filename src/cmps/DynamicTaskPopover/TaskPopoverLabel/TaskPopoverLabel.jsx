@@ -46,7 +46,7 @@ export function TaskPopoverLabel({ task, onUpdateTask, onClose }) {
   }
 
   function onUpdateLabel(label) {
-    label.color = updateLabel?.color || label.color
+    label.bgColor = updateLabel?.bgColor || label.bgColor
     const updateLabelIds = [...task.labelIds]
     const lIdx = task.labelIds.findIndex((lId) => lId === label.id)
     if (updateLabel && label.id !== updateLabel?.id) {
@@ -89,7 +89,7 @@ export function TaskPopoverLabel({ task, onUpdateTask, onClose }) {
                 }
               />
               <LabelButton
-                color={lb.color}
+                color={lb.bgColor}
                 title={lb.title}
                 onClick={() =>
                   updateTaskLabels(lb.id, task?.labelIds, onUpdateTask)

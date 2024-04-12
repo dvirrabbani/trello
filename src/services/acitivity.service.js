@@ -19,10 +19,10 @@ function addActivity(activity) {
   activity.byMember = DEMO_USER
   switch (activity.type) {
     case activityTypes.addGroup:
-      activity.txt = `${DEMO_USER.fullname} add new Group`
+      activity.txt = `${DEMO_USER.fullName} add new Group`
       break
     case activityTypes.addCard:
-      activity.txt = `${DEMO_USER.fullname} add new card`
+      activity.txt = `${DEMO_USER.fullName} add new card`
       break
     default:
       break

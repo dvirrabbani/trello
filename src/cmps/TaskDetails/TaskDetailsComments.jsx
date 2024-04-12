@@ -109,7 +109,7 @@ export function TaskDetailsComments({
                     {
                       boardMembers.find(
                         (boardMember) => boardMember.id === comment.byMember.id
-                      ).fullname
+                      ).fullName
                     }
                   </span>
                   <span className="comment-date">

@@ -39,7 +39,7 @@ export function TaskPopoverLabelEdit({
         <div
           className="label"
           style={{
-            backgroundColor: updateLabel?.color || label.color,
+            backgroundColor: updateLabel?.bgcolor || label.bgcolor,
           }}
         ></div>
       </div>
@@ -59,7 +59,7 @@ export function TaskPopoverLabelEdit({
               <div
                 key={label.id}
                 className="label"
-                style={{ backgroundColor: label.color, cursor: "pointer" }}
+                style={{ backgroundColor: label.bgColor, cursor: "pointer" }}
                 onClick={() => setUpdateLabel(label)}
               ></div>
             )

@@ -1,6 +1,6 @@
 export const DEMO_USER = {
   _id: "u101",
-  fullname: "Tal Tarablus",
+  fullName: "Tal Tarablus",
   username: "abi@ababmi.com",
   password: "aBambi123",
   imgUrl:

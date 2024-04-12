@@ -41,7 +41,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
               return (
                 <LabelButton
                   key={lt.id}
-                  color={labels.board.find((lb) => lb.id === lt.id).color}
+                  color={labels.board.find((lb) => lb.id === lt.id).bgColor}
                   title={lt.title}
                   onClick={() => setIsLabelPopOverOpen((prev) => !prev)}
                 />

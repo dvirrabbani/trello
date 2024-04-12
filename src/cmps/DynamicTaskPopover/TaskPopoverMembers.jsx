@@ -29,7 +29,7 @@ export function TaskPopoverMembers({ task, onUpdateTask }) {
                   src={m.imgUrl}
                   alt=""
                 />
-                <span>{m.fullname}</span>
+                <span>{m.fullName}</span>
               </Button>
             )
           })}
@@ -50,7 +50,7 @@ export function TaskPopoverMembers({ task, onUpdateTask }) {
                 src={m.imgUrl}
                 alt=""
               />
-              <span>{m.fullname}</span>
+              <span>{m.fullName}</span>
             </Button>
           )
         })}

@@ -40,7 +40,7 @@ export function BoardDetails() {
   if (!board) return <div>Loading..</div>
 
   const boardStyle = {
-    backgroundColor: board.style.backgroundColor,
+    backgroundColor: board.style.bgColor,
     color: "white",
   }
 
@@ -57,7 +57,7 @@ export function BoardDetails() {
       <BoardSidebar boards={boards} />
       <div
         className="board-main-content flex column"
-        style={{ backgroundImage: `url(${board.style.bgImage})` }}
+        style={{ backgroundImage: `url(${board.style.bgImg})` }}
       >
         <BoardDetailsHeader
           title={board.title}
