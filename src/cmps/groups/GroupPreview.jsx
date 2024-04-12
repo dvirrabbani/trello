@@ -26,7 +26,6 @@ export function GroupPreview({ group, deleteGroup }) {
 
   function onAddTask(inputVal) {
     const task = {
-      archivedAt: null,
       id: `t${utilService.makeId()}`,
       title: inputVal,
     }
