@@ -18,7 +18,7 @@
     position: relative;
     height: min-content;
 
-    .button {
+    .button:not(.shape-circle) {
       border-radius: rem(8px);
     }
     .group-header {

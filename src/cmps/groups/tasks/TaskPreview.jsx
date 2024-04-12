@@ -69,7 +69,10 @@ export function TaskPreview({
       }
       onClick={isQuickEditParent ? null : onTaskClick}
     >
-      <button className="task-edit" onClick={onQuickEditTask}>
+      <button
+        className="button shape-circle task-edit-btn"
+        onClick={onQuickEditTask}
+      >
         <SvgIcon iconName="edit" />
       </button>
       {task.style?.background && (

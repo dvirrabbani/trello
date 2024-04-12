@@ -20,11 +20,13 @@
     cursor: pointer;
 
     &:hover {
+      outline-color: $border-focused;
       outline-color: -webkit-focus-ring-color;
-      outline: 2px solid $border-focused;
+      outline-style: solid;
+      outline-width: 2px;
     }
 
-    &:hover .task-edit {
+    &:hover .task-edit-btn {
       display: block;
     }
 
@@ -52,18 +54,15 @@
       }
     }
 
-    .task-edit {
-      position: absolute;
+    .task-edit-btn {
       display: none;
+      position: absolute;
       top: 2px;
       right: 2px;
-      border-radius: 16px;
-      padding: 6px 8px;
-      z-index: 10;
       background-color: $task-background;
 
       &:hover {
-        background-color: #f1f2f4;
+        background-color: $group-background;
       }
     }
 
