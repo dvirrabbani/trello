@@ -43,12 +43,10 @@ export function GroupList({ groups }) {
   return (
     <div>
       <ol className="group-list clean-list flex">
-        {groups.map((group) => (
-          <GroupPreview
-            key={group.id}
-            group={group}
-            deleteGroup={deleteGroup}
-          />
+        {groups.map((group, index) => (
+          <li className="group-li" key={group.id}>
+            <GroupPreview group={group} deleteGroup={deleteGroup} />
+          </li>
         ))}
         {displayAddItem ? (
           <AddItemForm

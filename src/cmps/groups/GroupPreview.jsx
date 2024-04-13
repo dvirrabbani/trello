@@ -50,57 +50,55 @@ export function GroupPreview({ group, deleteGroup }) {
   }
 
   return (
-    <li className="group-li">
-      <div className="group-preview">
-        <div className="group-header flex justify-between">
-          <textarea
-            value={groupToEdit.title}
-            onChange={handleChange}
-            className="group-title full"
-            spellCheck="false"
-            name="title"
-            onBlur={onFocusOut}
-            onFocus={(e) => e.currentTarget.select()}
-          >
-            {groupToEdit.title}
-          </textarea>
-          <button
-            className="button group-edit-btn"
-            onClick={() => setGroupActions(true)}
-          >
-            <SvgIcon iconName="more" className="svg-icon" />
-          </button>
-          {groupActions && (
-            <GroupActions
-              groupId={group.id}
-              onDeleteGroup={onDeleteGroup}
-              setGroupActions={setGroupActions}
-            />
-          )}
-        </div>
-        <TaskList group={group} />
-        <div className="group-footer flex justify-between">
-          {displayAddItem ? (
-            <AddItemForm
-              onAddItem={onAddTask}
-              setDisplayAddItem={setDisplayAddItem}
-            />
-          ) : (
-            <>
-              <button
-                className="button add-task-btn"
-                onClick={() => setDisplayAddItem(true)}
-              >
-                <SvgIcon iconName="plus" />
-                <span>Add a card</span>
-              </button>
-              <button className="button icon-btn">
-                <SvgIcon iconName="taskTemplate" />
-              </button>
-            </>
-          )}
-        </div>
+    <div className="group-preview">
+      <div className="group-header flex justify-between">
+        <textarea
+          value={groupToEdit.title}
+          onChange={handleChange}
+          className="group-title full"
+          spellCheck="false"
+          name="title"
+          onBlur={onFocusOut}
+          onFocus={(e) => e.currentTarget.select()}
+        >
+          {groupToEdit.title}
+        </textarea>
+        <button
+          className="button group-edit-btn"
+          onClick={() => setGroupActions(true)}
+        >
+          <SvgIcon iconName="more" className="svg-icon" />
+        </button>
+        {groupActions && (
+          <GroupActions
+            groupId={group.id}
+            onDeleteGroup={onDeleteGroup}
+            setGroupActions={setGroupActions}
+          />
+        )}
       </div>
-    </li>
+      <TaskList group={group} />
+      <div className="group-footer flex justify-between">
+        {displayAddItem ? (
+          <AddItemForm
+            onAddItem={onAddTask}
+            setDisplayAddItem={setDisplayAddItem}
+          />
+        ) : (
+          <>
+            <button
+              className="button add-task-btn"
+              onClick={() => setDisplayAddItem(true)}
+            >
+              <SvgIcon iconName="plus" />
+              <span>Add a card</span>
+            </button>
+            <button className="button icon-btn">
+              <SvgIcon iconName="taskTemplate" />
+            </button>
+          </>
+        )}
+      </div>
+    </div>
   )
 }
