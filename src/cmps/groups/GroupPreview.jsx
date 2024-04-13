@@ -60,6 +60,7 @@ export function GroupPreview({ group, deleteGroup }) {
             spellCheck="false"
             name="title"
             onBlur={onFocusOut}
+            onFocus={(e) => e.currentTarget.select()}
           >
             {groupToEdit.title}
           </textarea>

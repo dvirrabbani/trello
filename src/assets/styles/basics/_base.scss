@@ -57,6 +57,11 @@ textarea:focus {
   box-shadow: inset 0 0 0 2px $border-focused;
 }
 
+::selection {
+  background-color: #cce0ff;
+  color: inherit;
+}
+
 .main-app {
   min-height: 100dvh;
   display: grid;

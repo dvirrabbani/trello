@@ -98,6 +98,7 @@ export function TaskPreview({
             onChange={handleChange}
             autoFocus
             disabled={!isQuickEditParent}
+            onFocus={(e) => e.currentTarget.select()}
           >
             {titleToEdit}
           </textarea>
