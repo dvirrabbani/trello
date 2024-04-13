@@ -10,26 +10,36 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
             iconName: "profile",
             type: "Members",
             title: "Members",
+            popoverTitle: "Members",
+            popoverId: "popover-members-id",
           },
           {
             iconName: "label",
             type: "Labels",
             title: "Labels",
+            popoverTitle: "Labels",
+            popoverId: "popover-labels-id",
           },
           {
             iconName: "checkbox",
             type: "CheckList",
             title: "CheckList",
+            popoverTitle: "CheckList",
+            popoverId: "popover-checklist-id",
           },
           {
             iconName: "clock",
             type: "Dates",
             title: "Dates",
+            popoverTitle: "Dates",
+            popoverId: "popover-dates-id",
           },
           {
             iconName: "taskWindow",
             type: "Cover",
             title: "Cover",
+            popoverTitle: "Cover",
+            popoverId: "popover-cover-id",
           },
         ]}
         task={task}

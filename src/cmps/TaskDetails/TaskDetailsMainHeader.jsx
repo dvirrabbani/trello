@@ -1,13 +1,31 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
 import dayjs from "dayjs"
-import { LabelButton } from "../LabelButton"
+import { Popover } from "../Popover"
 
 export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
-  const [isLabelPopOverOpen, setIsLabelPopOverOpen] = useState(false)
-  const [isDatePopoverOpen, setIsDatePopoverOpen] = useState(false)
+  const [datePopover, setDatePopover] = useState(null)
+  const [labelPopover, setLabelPopover] = useState(null)
+  const elListLabelRef = useRef(null)
+
+  function openLabelPopover() {
+    setLabelPopover(elListLabelRef.current)
+  }
+
+  function closeLabelPopover() {
+    setLabelPopover(null)
+  }
+
+  function openDatesPopover(ev) {
+    setDatePopover(ev.currentTarget)
+  }
+
+  function closeDatesPopover() {
+    setDatePopover(null)
+  }
+
   return (
     <section className="task-details-main-header flex">
       {/* Task Members */}
@@ -36,51 +54,63 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
       {labels?.task?.length > 0 && (
         <div className="main-header-card">
           <h4 className="h4">Labels</h4>
-          <div className="labels-list flex">
+          <div className="labels-list" ref={elListLabelRef}>
             {labels?.task.map((lt) => {
               return (
-                <LabelButton
+                <Button
                   key={lt.id}
-                  color={labels.board.find((lb) => lb.id === lt.id).bgColor}
-                  title={lt.title}
-                  onClick={() => setIsLabelPopOverOpen((prev) => !prev)}
-                />
+                  onClick={openLabelPopover}
+                  style={{
+                    backgroundColor: labels.board.find((lb) => lb.id === lt.id)
+                      .bgColor,
+                  }}
+                >
+                  {lt.title && <span>{lt.title}</span>}
+                </Button>
               )
             })}
+            <Popover
+              id={Boolean(labelPopover) ? "popover-labels-id" : undefined}
+              open={Boolean(labelPopover)}
+              anchorEl={labelPopover}
+              onClose={closeLabelPopover}
+              title={"Labels"}
+            >
+              <DynamicTaskPopover
+                type={"Labels"}
+                task={task}
+                onClose={closeLabelPopover}
+                onUpdateTask={onUpdateTask}
+              />
+            </Popover>
             <Button variant={"contained"} shape={"circle"}>
               <SvgIcon iconName="plus" />
             </Button>
           </div>
-          {isLabelPopOverOpen && (
-            <DynamicTaskPopover
-              type={"Labels"}
-              title={"Labels"}
-              task={task}
-              onClose={() => setIsLabelPopOverOpen(false)}
-              onUpdateTask={onUpdateTask}
-            />
-          )}
         </div>
       )}
       {/* Dates */}
       {task?.dueDate && (
         <div className="main-header-card">
           <h4 className="h4">Due Dates</h4>
-          <Button
-            variant="contained"
-            onClick={() => setIsDatePopoverOpen((prev) => !prev)}
-          >
+          <Button onClick={openDatesPopover} variant="contained">
             {dayjs(task?.dueDate).format("MMM D YYYY [at] h:mm A")}
           </Button>
-          {isDatePopoverOpen && (
+          <Popover
+            id={Boolean(datePopover) ? "popover-dates-id" : undefined}
+            open={Boolean(datePopover)}
+            anchorEl={datePopover}
+            onClose={closeDatesPopover}
+            title={"Labels"}
+          >
             <DynamicTaskPopover
               type={"Dates"}
               title={"Dates"}
               task={task}
-              onClose={() => setIsDatePopoverOpen(false)}
+              onClose={closeDatesPopover}
               onUpdateTask={onUpdateTask}
             />
-          )}
+          </Popover>
         </div>
       )}
       {/* Notifications */}

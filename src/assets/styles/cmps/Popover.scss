@@ -1,4 +1,11 @@
-.dynamic-task-popover {
+.popover {
+  box-shadow: $shadow-overlay;
+  .popover-content {
+    background-color: $clr8;
+    padding: rem(8px);
+    min-width: rem(304px);
+    border-radius: rem(8px);
+  }
   .popover-header {
     display: flex;
     font-size: rem(14px);

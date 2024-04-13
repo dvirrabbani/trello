@@ -1,6 +1,17 @@
 .task-details-main-header {
   display: flex;
   gap: 8px;
+  .labels-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    .button {
+      min-width: rem(32px);
+      min-height: rem(32px);
+    }
+  }
+
   .main-header-card {
     position: relative;
 

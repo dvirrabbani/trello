@@ -20,16 +20,22 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
       iconName: "profile",
       type: "Members",
       title: "Members",
+      popoverTitle: "Members",
+      popoverId: "popover-members-id",
     },
     {
       iconName: "label",
       type: "Labels",
       title: "Labels",
+      popoverTitle: "Members",
+      popoverId: "popover-labels-id",
     },
     {
       iconName: "clock",
       type: "Dates",
       title: "Dates",
+      popoverTitle: "Members",
+      popoverId: "popover-dates-id",
     },
   ]
 
