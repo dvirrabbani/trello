@@ -1,3 +1,5 @@
+import { da } from "date-fns/locale"
+
 export const DEMO_BOARD_LIST = [
   {
     _id: "b101",
@@ -355,6 +357,309 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u103"],
+            labelIds: [],
+            dueDate: null,
+            byMember: {
+              _id: "u103",
+              fullName: "Tal Amit",
+              imgUrl:
+                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+            },
+            style: {
+              bgColor: "#53A8E2",
+              bgImg: null,
+              isCoverFull: true,
+            },
+          },
+          {
+            id: "t105",
+            title: "set project goals",
+            description: "",
+            comments: [
+              {
+                id: "FgHij",
+                txt: "This code looks good to me. Nice job, @Tal!",
+                createdAt: 1591003217436,
+                byMember: {
+                  _id: "u103",
+                  fullName: "Tal Amit",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+                },
+              },
+              {
+                id: "KlMno",
+                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
+                createdAt: 1591004117436,
+                byMember: {
+                  _id: "u102",
+                  fullName: "Yuval Mor",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                },
+              },
+            ],
+            checklists: [],
+            attachments: [
+              {
+                id: "at01",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
+              },
+              {
+                id: "at02",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
+              },
+            ],
+            memberIds: [],
+            labelIds: [],
+            dueDate: { date: 1713005433158, isCompleted: false },
+            byMember: {
+              _id: "u103",
+              fullName: "Tal Amit",
+              imgUrl:
+                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+            },
+            style: {
+              bgColor: "#53A8E2",
+              bgImg: null,
+              isCoverFull: true,
+            },
+          },
+          {
+            id: "t106",
+            title: "Define project scope",
+            description: "",
+            comments: [
+              {
+                id: "FgHij",
+                txt: "This code looks good to me. Nice job, @Tal!",
+                createdAt: 1591003217436,
+                byMember: {
+                  _id: "u103",
+                  fullName: "Tal Amit",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+                },
+              },
+              {
+                id: "KlMno",
+                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
+                createdAt: 1591004117436,
+                byMember: {
+                  _id: "u102",
+                  fullName: "Yuval Mor",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                },
+              },
+            ],
+            checklists: [],
+            attachments: [
+              {
+                id: "at01",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
+              },
+              {
+                id: "at02",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
+              },
+            ],
+            memberIds: [],
+            labelIds: [],
+            dueDate: null,
+            byMember: {
+              _id: "u103",
+              fullName: "Tal Amit",
+              imgUrl:
+                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+            },
+            style: {
+              bgColor: "#53A8E2",
+              bgImg: null,
+              isCoverFull: true,
+            },
+          },
+          {
+            id: "t107",
+            title: "Create project timeline",
+            description: "with milestones and deadlines",
+            comments: [
+              {
+                id: "FgHij",
+                txt: "This code looks good to me. Nice job, @Tal!",
+                createdAt: 1591003217436,
+                byMember: {
+                  _id: "u103",
+                  fullName: "Tal Amit",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+                },
+              },
+              {
+                id: "KlMno",
+                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
+                createdAt: 1591004117436,
+                byMember: {
+                  _id: "u102",
+                  fullName: "Yuval Mor",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                },
+              },
+            ],
+            checklists: [],
+            attachments: [
+              {
+                id: "at01",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
+              },
+              {
+                id: "at02",
+                imgUrl:
+                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
+              },
+            ],
+            memberIds: [],
+            labelIds: [],
+            dueDate: null,
+            byMember: {
+              _id: "u103",
+              fullName: "Tal Amit",
+              imgUrl:
+                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+            },
+            style: {
+              bgColor: "#53A8E2",
+              bgImg: null,
+              isCoverFull: true,
+            },
+          },
+          {
+            id: "t108",
+            title: "Create project timeline",
+            description: "with milestones and deadlines",
+            comments: [
+              {
+                id: "FgHij",
+                txt: "This code looks good to me. Nice job, @Tal!",
+                createdAt: 1591003217436,
+                byMember: {
+                  _id: "u103",
+                  fullName: "Tal Amit",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+                },
+              },
+              {
+                id: "KlMno",
+                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
+                createdAt: 1591004117436,
+                byMember: {
+                  _id: "u102",
+                  fullName: "Yuval Mor",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                },
+              },
+            ],
+            checklists: [],
+            attachments: [],
+            memberIds: [],
+            labelIds: [],
+            dueDate: null,
+            byMember: {
+              _id: "u103",
+              fullName: "Tal Amit",
+              imgUrl:
+                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+            },
+            style: {
+              bgColor: "#53A8E2",
+              bgImg: null,
+              isCoverFull: true,
+            },
+          },
+          {
+            id: "t109",
+            title: "Create project timeline",
+            description: "with milestones and deadlines",
+            comments: [
+              {
+                id: "FgHij",
+                txt: "This code looks good to me. Nice job, @Tal!",
+                createdAt: 1591003217436,
+                byMember: {
+                  _id: "u103",
+                  fullName: "Tal Amit",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+                },
+              },
+              {
+                id: "KlMno",
+                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
+                createdAt: 1591004117436,
+                byMember: {
+                  _id: "u102",
+                  fullName: "Yuval Mor",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                },
+              },
+            ],
+            checklists: [],
+            attachments: [],
+            memberIds: [],
+            labelIds: [],
+            dueDate: null,
+            byMember: {
+              _id: "u103",
+              fullName: "Tal Amit",
+              imgUrl:
+                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+            },
+            style: {
+              bgColor: "#53A8E2",
+              bgImg: null,
+              isCoverFull: true,
+            },
+          },
+          {
+            id: "t110",
+            title: "Create project timeline",
+            description: "with milestones and deadlines",
+            comments: [
+              {
+                id: "FgHij",
+                txt: "This code looks good to me. Nice job, @Tal!",
+                createdAt: 1591003217436,
+                byMember: {
+                  _id: "u103",
+                  fullName: "Tal Amit",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+                },
+              },
+              {
+                id: "KlMno",
+                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
+                createdAt: 1591004117436,
+                byMember: {
+                  _id: "u102",
+                  fullName: "Yuval Mor",
+                  imgUrl:
+                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                },
+              },
+            ],
+            checklists: [],
+            attachments: [],
+            memberIds: [],
             labelIds: [],
             dueDate: null,
             byMember: {

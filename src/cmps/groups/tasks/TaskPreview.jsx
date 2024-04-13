@@ -119,13 +119,13 @@ export function TaskPreview({
                 <SvgIcon iconName="description" />
               </div>
             )}
-            {task.attachments && (
+            {task.attachments?.length > 0 && (
               <div className="action-badge">
                 <SvgIcon iconName="attachment" />
                 <span>{task.attachments.length}</span>
               </div>
             )}
-            {task.checklists && (
+            {task.checklists?.length > 0 && (
               <ChecklistsBadge checklists={task.checklists} />
             )}
           </div>
