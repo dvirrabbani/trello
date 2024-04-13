@@ -6,10 +6,18 @@ import { updateCurrentBoard } from "../../../store/board.actions"
 export function TaskList({ group }) {
   const [tasks, setTasks] = useState(group.tasks)
   function handleDragEnd(result) {
-    if (!result.destination) return
+    const { source, destination } = result
+    if (!destination) return
+
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
+    )
+      return
+
     const items = Array.from(tasks)
-    const [reorderedItem] = items.splice(result.source.index, 1)
-    items.splice(result.destination.index, 0, reorderedItem)
+    const [reorderedItem] = items.splice(source.index, 1)
+    items.splice(destination.index, 0, reorderedItem)
     setTasks(items)
     updateCurrentBoard(group.id, null, {
       key: "tasks",
@@ -28,11 +36,12 @@ export function TaskList({ group }) {
             {tasks.map((task, index) => {
               return (
                 <Draggable key={task.id} draggableId={task.id} index={index}>
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <li
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
+                      className={snapshot.isDragging ? "dragging" : ""}
                     >
                       <TaskPreview groupId={group.id} task={task} />
                     </li>
