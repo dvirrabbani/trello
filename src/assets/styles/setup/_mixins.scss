@@ -25,7 +25,8 @@
 }
 
 /* Typography mixins */
-@mixin typography($type: "h1") {
+@mixin typography($type: "h1", $color: $color-txt-primary) {
+  color: $color;
   @if $type == "h1" {
     font-size: rem(18px);
     line-height: rem(32px);

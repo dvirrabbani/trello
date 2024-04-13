@@ -50,6 +50,7 @@
   }
 
   &.variant-group {
+    background-color: $group-background;
     &:hover {
       background-color: $group-background;
     }

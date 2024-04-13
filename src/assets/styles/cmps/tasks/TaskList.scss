@@ -1,0 +1,13 @@
+.task-list {
+  gap: rem(8px);
+  flex: 1 1 auto;
+  margin: 0 rem(4px);
+  padding: rem(2px) rem(4px);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
+  scrollbar-color: $background-neutral-hovered $group-background;
+  scrollbar-width: thin;
+}

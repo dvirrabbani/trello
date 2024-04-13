@@ -1,0 +1,57 @@
+.task-quick-edit {
+  position: absolute;
+
+  &:hover .task-preview {
+    outline: none;
+  }
+
+  &:hover .task-edit-btn {
+    display: none;
+  }
+
+  .task-preview {
+    width: $task-width;
+  }
+
+  textarea {
+    @include typography("txt");
+    height: rem(56px);
+    padding: 0;
+    outline: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .task-quick-edit-menu {
+    display: grid;
+    gap: rem(4px);
+    justify-items: flex-start;
+    position: absolute;
+    top: 0;
+    right: rem(-8px);
+    transform: translateX(100%);
+
+    .task-side-btn-actions {
+      display: grid;
+      gap: rem(4px);
+      justify-items: flex-start;
+    }
+
+    button {
+      background-color: $group-background;
+
+      &:hover {
+        background-color: $background-accent-gray-subtle;
+      }
+    }
+  }
+
+  .save-btn {
+    margin-top: rem(8px);
+    font-size: rem(14px);
+    line-height: rem(20px);
+    padding: rem(6px) rem(12px);
+  }
+}
