@@ -1,9 +1,17 @@
 .group-list {
-  height: 100%;
-  flex-wrap: nowrap;
+  top: rem(-2px);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: rem(8px);
+  padding-bottom: rem(8px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: absolute;
+  scrollbar-color: #fff6 #00000026;
+  scrollbar-width: auto;
 
   .group-li {
-    height: 100%;
     padding: 0 rem(6px);
   }
 
@@ -13,16 +21,19 @@
     color: $color-txt-primary;
     border-radius: rem(12px);
     min-width: rem(272px);
-    width: rem(272px);
-    padding: rem(8px);
+    display: flex;
+    justify-content: space-between;
+    max-height: 100%;
+    flex-direction: column;
     position: relative;
-    height: min-content;
+    scroll-margin: rem(8px);
+    width: rem(272px);
 
     .button:not(.shape-circle) {
       border-radius: rem(8px);
     }
     .group-header {
-      height: rem(32px);
+      padding: rem(8px);
     }
 
     .add-task-btn {
@@ -37,6 +48,7 @@
       white-space: normal;
       border-radius: rem(8px);
       color: $color-txt-primary;
+      height: rem(32px);
       cursor: pointer;
     }
 
@@ -51,6 +63,10 @@
         padding: rem(8px);
       }
     }
+
+    .group-footer {
+      padding: rem(8px);
+    }
   }
 
   .add-group-btn {
@@ -64,7 +80,7 @@
     font-weight: 500;
     color: $color-txt-primary;
     height: fit-content;
-
+    min-width: $group-width;
     &:hover {
       background-color: $background-neutral-hovered;
     }

@@ -41,25 +41,31 @@ export function GroupList({ groups }) {
   }
 
   return (
-    <ol className="group-list clean-list flex">
-      {groups.map((group) => (
-        <GroupPreview key={group.id} group={group} deleteGroup={deleteGroup} />
-      ))}
-      {displayAddItem ? (
-        <AddItemForm
-          onAddItem={onAddGroup}
-          setDisplayAddItem={setDisplayAddItem}
-          className="group-preview"
-        />
-      ) : (
-        <button
-          className="add-group-btn"
-          onClick={() => setDisplayAddItem(true)}
-        >
-          <SvgIcon iconName="plus" />
-          <span>Add another group</span>
-        </button>
-      )}
-    </ol>
+    <div>
+      <ol className="group-list clean-list flex">
+        {groups.map((group) => (
+          <GroupPreview
+            key={group.id}
+            group={group}
+            deleteGroup={deleteGroup}
+          />
+        ))}
+        {displayAddItem ? (
+          <AddItemForm
+            onAddItem={onAddGroup}
+            setDisplayAddItem={setDisplayAddItem}
+            className="group-preview"
+          />
+        ) : (
+          <button
+            className="add-group-btn"
+            onClick={() => setDisplayAddItem(true)}
+          >
+            <SvgIcon iconName="plus" />
+            <span>Add another group</span>
+          </button>
+        )}
+      </ol>
+    </div>
   )
 }
