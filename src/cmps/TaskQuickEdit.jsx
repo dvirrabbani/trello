@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { TaskPreview } from "./groups/tasks/TaskPreview"
 import { updateCurrentBoard } from "../store/board.actions"
 import { TaskSideBtnActions } from "./TaskSideBtnActions"
+import SvgIcon from "./SvgIcon"
 
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
@@ -69,7 +70,8 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
       />
       <div className="task-quick-edit-menu">
         <button className="button" onClick={onOpenTask}>
-          open card
+          <SvgIcon iconName="task" />
+          Open card
         </button>
         <TaskSideBtnActions
           btnPopoverDataList={btnPopoverDataList}
@@ -77,7 +79,12 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
           onUpdateTask={onUpdateTask}
         />
       </div>
-      <button onClick={onSaveTitleTask}>Save</button>
+      <button
+        className="save-btn button variant-primary"
+        onClick={onSaveTitleTask}
+      >
+        Save
+      </button>
     </div>
   )
 }

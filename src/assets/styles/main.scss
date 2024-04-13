@@ -18,14 +18,18 @@
 @import "views/TaskDetails.scss";
 
 // Components
+
+//tasks
+@import "cmps/tasks/TaskList.scss";
+@import "cmps/tasks/TaskPreview.scss";
+@import "cmps/tasks/TaskQuickEdit.scss";
+
 @import "cmps/AppHeader";
 @import "cmps/BoardList.scss";
 @import "cmps/BoardPreview.scss";
 @import "cmps/BoardDetailsHeader.scss";
 @import "cmps/svg-icon.scss";
 @import "cmps/GroupList.scss";
-@import "cmps/TaskList.scss";
-@import "cmps/TaskPreview.scss";
 @import "cmps/Button.scss";
 @import "cmps/TaskDetailsHeader.scss";
 @import "cmps/TaskDetailsMain.scss";
@@ -38,7 +42,6 @@
 @import "cmps/TaskPopoverLabelEdit.scss";
 @import "cmps/TaskCoverPopover.scss";
 @import "cmps/TaskPopoverChecklist.scss";
-@import "cmps/TaskQuickEdit.scss";
 @import "cmps/Modal.scss";
 @import "cmps/LabelButton.scss";
 @import "cmps/ProfileImg.scss";

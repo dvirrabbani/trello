@@ -69,9 +69,7 @@
     float: left;
     column-gap: rem(4px);
     max-width: 100%;
-  }
 
-  .task-actions-badges {
     .action-badge {
       display: flex;
       justify-content: center;
@@ -95,6 +93,10 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+
+    .dueDate-badge:hover {
+      filter: saturate(85%) brightness(85%);
     }
 
     .dueDate-badge.due-soon {
