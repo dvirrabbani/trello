@@ -5,14 +5,16 @@ import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
 import { GroupPreview } from "./GroupPreview"
 import { activityService } from "../../services/acitivity.service"
-import { DragDropContext } from "react-beautiful-dnd"
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { de } from "date-fns/locale"
 
 export function GroupList({ groups }) {
   const [displayAddItem, setDisplayAddItem] = useState(false)
 
   function onDragEnd(result) {
-    const { destination, source, draggableId } = result
+    const { destination, source, draggableId, type } = result
+    //TODO - handle the case of dragging a group
+    if (type == "group") return
 
     // dropped outside the list
     if (!destination) return
@@ -96,28 +98,46 @@ export function GroupList({ groups }) {
   return (
     <div>
       <DragDropContext onDragEnd={onDragEnd}>
-        <ol className="group-list clean-list flex">
-          {groups.map((group, index) => (
-            <li className="group-li" key={group.id}>
-              <GroupPreview group={group} deleteGroup={deleteGroup} />
-            </li>
-          ))}
-          {displayAddItem ? (
-            <AddItemForm
-              onAddItem={onAddGroup}
-              setDisplayAddItem={setDisplayAddItem}
-              className="group-preview"
-            />
-          ) : (
-            <button
-              className="add-group-btn"
-              onClick={() => setDisplayAddItem(true)}
+        <Droppable droppableId="all-groups" direction="horizontal" type="group">
+          {(provided) => (
+            <ol
+              className="group-list clean-list flex"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
             >
-              <SvgIcon iconName="plus" />
-              <span>Add another group</span>
-            </button>
+              {groups.map((group, index) => (
+                <Draggable key={group.id} draggableId={group.id} index={index}>
+                  {(provided) => (
+                    <li
+                      className="group-li"
+                      key={group.id}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                    >
+                      <GroupPreview group={group} deleteGroup={deleteGroup} />
+                    </li>
+                  )}
+                </Draggable>
+              ))}
+              {displayAddItem ? (
+                <AddItemForm
+                  onAddItem={onAddGroup}
+                  setDisplayAddItem={setDisplayAddItem}
+                  className="group-preview"
+                />
+              ) : (
+                <button
+                  className="add-group-btn"
+                  onClick={() => setDisplayAddItem(true)}
+                >
+                  <SvgIcon iconName="plus" />
+                  <span>Add another group</span>
+                </button>
+              )}
+            </ol>
           )}
-        </ol>
+        </Droppable>
       </DragDropContext>
     </div>
   )
