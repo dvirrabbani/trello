@@ -99,7 +99,6 @@ function getEmptyBoard() {
 // dueNextMonth: false,
 // },
 function filteredBoard(board, filterBy) {
-  //filter board tasks by filterBy
   if (!board) return
 
   const groups = board.groups.map((group) => {
@@ -205,4 +204,9 @@ function _isTaskMatchDates(task, filter) {
     isMatchDueNextWeek ||
     isMatchDueNextMonth
   )
+}
+
+// TODO
+function getEmptyBoard() {
+  return {}
 }
