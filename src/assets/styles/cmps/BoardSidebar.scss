@@ -33,12 +33,15 @@
       align-items: center;
       width: 100%;
       &:hover {
-        background-color: hsla(0, 0%, 100%, 0.16);
+        background-color: $dynamic-nav-button-background-color-hovered;
       }
 
+      .thumbnail {
+        opacity: 0.7;
+      }
       &:has(a.active),
       &:active {
-        background-color: hsla(0, 0%, 100%, 0.3);
+        background-color: $dynamic-nav-button-background-color-pressed;
       }
 
       .button {

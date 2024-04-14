@@ -16,8 +16,8 @@ export function AppHeader() {
         </Link>
         <AddBoardButton />
       </div>
+      <BoardSearchInput />
       <div className="pref">
-        <BoardSearchInput />
         <NotificationBell />
         <SvgIcon iconName={"profile"} size={"md"} />
       </div>

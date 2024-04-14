@@ -2,15 +2,19 @@
   position: relative;
   margin-inline-start: auto;
 
+  &:has(input:focus) {
+    flex: 1;
+    max-width: rem(548px);
+  }
+
   > .form-group {
     padding: rem(8px);
     border-radius: rem(8px);
-    background-color: black; //TODO change background
+    background-color: $clr1; //TODO change background
     display: flex;
     gap: rem(4px);
     align-items: center;
-    color: white;
-    border: 1px solid white;
+    color: $clr8;
     input {
       color: inherit;
       border: none;
@@ -21,14 +25,34 @@
       }
     }
   }
+  .search-title {
+    padding: rem(4px) rem(12px);
+    font-size: rem(12px);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
   .search-options {
+    padding-bottom: rem(8px);
     width: 100%;
+    margin-top: rem(11px);
     left: 0;
-    border: 1px solid black;
+    top: 100%;
     position: absolute;
-    background-color: white;
+    background-color: $clr8;
     display: grid;
     align-content: start;
     z-index: 9;
+    border-radius: rem(4px);
+    box-shadow: $box-shadow-overlay;
+    .search-option {
+      font-size: rem(14px);
+      font-weight: 600;
+      color: $color-txt-primary;
+      border-radius: rem(4px);
+      padding: rem(8px) rem(12px);
+      &:hover {
+        background-color: $background-neutral;
+      }
+    }
   }
 }
