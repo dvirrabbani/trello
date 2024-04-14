@@ -3,12 +3,13 @@ import SvgIcon from "./SvgIcon"
 import { useState } from "react"
 import { Button } from "./Button"
 import Popover from "@mui/material/Popover"
-import { ActivitiesPopover } from "./ActivitiesPopover"
+import { Activity } from "./TaskDetails/Activity"
 
 export function NotificationBell() {
-  const board = useSelector((storeState) => storeState.boardModule.board)
+  const activities = useSelector(
+    (storeState) => storeState.boardModule?.board?.activities
+  )
   const [anchorEl, setAnchorEl] = useState(null)
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -37,9 +38,17 @@ export function NotificationBell() {
         }}
       >
         <div className="content">
-          {board?.activities.length > 0 && (
-            <ActivitiesPopover activities={board?.activities} />
-          )}
+          <ul className="activities-popover clean-list">
+            {activities?.map((activity) => {
+              return (
+                <Activity
+                  key={activity.id}
+                  activity={activity}
+                  profileSize={"lg"}
+                />
+              )
+            })}
+          </ul>
         </div>
       </Popover>
     </div>

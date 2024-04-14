@@ -1,8 +1,11 @@
 import SvgIcon from "./SvgIcon"
 import { updateBoard } from "../store/board.actions"
 import { BoardNavLink } from "./BoardNavLink"
+import { useSelector } from "react-redux"
 
-export function BoardSidebar({ boards }) {
+export function BoardSidebar() {
+  const boards = useSelector((storeState) => storeState.boardModule.boards)
+
   function onToggleBoardStarred(ev, board) {
     ev.preventDefault()
     updateBoard(board, {

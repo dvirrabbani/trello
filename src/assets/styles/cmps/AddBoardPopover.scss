@@ -1,0 +1,44 @@
+#add-board-popover-id {
+  .popover-content {
+    min-width: 100%;
+    width: rem(304px);
+  }
+  .add-board-popover-content {
+    padding: 0 rem(12px);
+    .preview-container {
+      @include flex-center;
+      .preview {
+        @include flex-center;
+        width: rem(200px);
+        height: rem(120px);
+        img {
+          width: rem(180px);
+          height: rem(100px);
+        }
+      }
+    }
+    .bg-img-list {
+      padding-bottom: rem(8px);
+      display: flex;
+      gap: rem(8px);
+      button {
+        width: rem(64px);
+        height: rem(40px);
+      }
+    }
+    .bg-svg-list {
+      padding-bottom: rem(8px);
+      display: flex;
+      gap: rem(8px);
+      button {
+        width: rem(40px);
+        height: rem(32px);
+      }
+    }
+    > .button {
+      margin: rem(16px) 0;
+      display: block;
+      width: 100%;
+    }
+  }
+}

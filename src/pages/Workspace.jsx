@@ -15,21 +15,23 @@ export function Workspace() {
     delete boardToSave._id
     await addBoard(boardToSave)
   }
-
   return (
     <div className="workspace-container">
       <div className="board-list-header">
         <SvgIcon iconName={"profile"} size={"md"} />
         <span>Starred Boards</span>
       </div>
-      <BoardList boards={boards.filter((board) => board.isStarred)} />
+      <BoardList
+        key={"starred"}
+        boards={boards.filter((board) => board.isStarred)}
+      />
       <div className="board-list-header all-boards">
         <SvgIcon iconName={"profile"} size={"md"} />
         <span>Your Boards</span>
       </div>
-      <BoardList boards={boards}>
+      <BoardList key={"all-boards"} boards={[...boards]}>
         <li className="board-item">
-          <Button className="contained" onClick={onAddBoard}>
+          <Button variant="contained" onClick={onAddBoard}>
             <span>Create new board</span>
           </Button>
         </li>

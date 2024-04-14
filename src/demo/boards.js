@@ -1,5 +1,3 @@
-import { da } from "date-fns/locale"
-
 export const DEMO_BOARD_LIST = [
   {
     _id: "b101",

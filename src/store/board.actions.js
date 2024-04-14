@@ -13,6 +13,7 @@ import {
   TOGGLE_LABELS,
   UPDATE_CURRENT_BOARD,
 } from "./board.reducer.js"
+import { activityService } from "../services/acitivity.service.js"
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -72,9 +73,12 @@ export function getActionUndoRemoveBoard() {
 // Actions
 export async function addBoard(board) {
   try {
+    const activity = activityService.createActivity({
+      type: activityService.activityTypes.addBoard,
+    })
+    board.activities = [activity]
     const savedBoard = await boardService.save(board)
-    console.log("Added Board", savedBoard)
-    store.dispatch(getActionAddBoard(board))
+    await store.dispatch(getActionAddBoard(savedBoard))
     return savedBoard
   } catch (err) {
     console.log("Cannot add board", err)

@@ -15,7 +15,6 @@ export function BoardDetails() {
   const params = useParams()
   // const board = useSelector((storeState) => storeState.boardModule.board)
   const initialBoard = useSelector((storeState) => storeState.boardModule.board)
-  const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [displayFilter, setDisplayFilter] = useState(false)
   const filterBy = useSelector(
@@ -54,7 +53,7 @@ export function BoardDetails() {
           filterBy={filterBy}
         />
       )}
-      <BoardSidebar boards={boards} />
+      <BoardSidebar />
       <div
         className="board-main-content flex column"
         style={{ backgroundImage: `url(${board.style.bgImg})` }}
