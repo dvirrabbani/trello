@@ -24,9 +24,7 @@ export function GroupList({ groups }) {
       return
 
     if (type === "board") {
-      const newGroups = Array.from(groups)
-      const [reorderedGroup] = newGroups.splice(source.index, 1)
-      newGroups.splice(destination.index, 0, reorderedGroup)
+      const newGroups = handleDragInsideDroppable(groups, source, destination)
       updateCurrentBoard(null, null, {
         key: "groups",
         value: newGroups,
@@ -43,9 +41,11 @@ export function GroupList({ groups }) {
     }
 
     if (startGroup === endGroup) {
-      const newTaskIds = Array.from(startGroup.tasks)
-      const [reorderedTasks] = newTaskIds.splice(source.index, 1)
-      newTaskIds.splice(destination.index, 0, reorderedTasks)
+      const newTaskIds = handleDragInsideDroppable(
+        startGroup.tasks,
+        source,
+        destination
+      )
       updateCurrentBoard(startGroup.id, null, {
         key: "tasks",
         value: newTaskIds,
@@ -72,6 +72,13 @@ export function GroupList({ groups }) {
       key: "groups",
       value: updateGroups,
     })
+  }
+
+  function handleDragInsideDroppable(items, source, destination) {
+    const newItems = Array.from(items)
+    const [reorderedItems] = newItems.splice(source.index, 1)
+    newItems.splice(destination.index, 0, reorderedItems)
+    return newItems
   }
 
   function onAddGroup(inputVal) {
