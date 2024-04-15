@@ -33,9 +33,12 @@ export function GroupList({ groups }) {
     }
 
     const startGroup = groups.find((group) => group.id === source.droppableId)
+    const startTaskIds = Array.from(startGroup.tasks)
     const endGroup = groups.find(
       (group) => group.id === destination.droppableId
     )
+    const endTaskIds = Array.from(endGroup.tasks)
+
     const taskToMove = {
       ...startGroup.tasks.find((task) => task.id === draggableId),
     }
@@ -54,11 +57,9 @@ export function GroupList({ groups }) {
     }
 
     //moving from one list to another
-    const startTaskIds = Array.from(startGroup.tasks)
     startTaskIds.splice(source.index, 1)
     const updateStartGroup = { ...startGroup, tasks: startTaskIds }
 
-    const endTaskIds = Array.from(endGroup.tasks)
     endTaskIds.splice(destination.index, 0, taskToMove)
     const updateEndGroup = { ...endGroup, tasks: endTaskIds }
 
