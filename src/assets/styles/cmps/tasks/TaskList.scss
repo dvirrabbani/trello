@@ -9,4 +9,9 @@
   z-index: 1;
   scrollbar-color: $background-neutral-hovered $group-background;
   scrollbar-width: thin;
+
+  & .dragging .task-preview {
+    transform: rotate(5deg);
+    opacity: 0.5;
+  }
 }

@@ -125,9 +125,11 @@ export function GroupList({ groups }) {
             >
               {groups.map((group, index) => (
                 <Draggable key={group.id} draggableId={group.id} index={index}>
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <li
-                      className="group-li"
+                      className={`group-li ${
+                        snapshot.isDragging ? "dragging" : ""
+                      }`}
                       key={group.id}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
