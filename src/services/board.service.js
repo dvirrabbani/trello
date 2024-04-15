@@ -84,10 +84,6 @@ function getDefaultLabels() {
   return BOARD_LABELS.slice(6, 12)
 }
 
-// TODO
-function getEmptyBoard() {
-  return {}
-}
 // boardFilterBy: {
 //   txt: "",
 //   labels: [],

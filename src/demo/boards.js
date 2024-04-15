@@ -220,7 +220,7 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u101", "u102"],
-            labelIds: ["l101", "l104", "l106"],
+            labelIds: ["l108", "l109", "l106"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
               _id: "u101",
@@ -767,7 +767,7 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u101", "u102", "u103"],
-            labelIds: ["l101", "l102", "l103", "l104", "l105", "l106"],
+            labelIds: ["l106", "l107", "l108", "l109", "l1010", "l1011"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
               _id: "u101",
@@ -851,7 +851,7 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u101", "u102"],
-            labelIds: ["l101", "l104", "l106"],
+            labelIds: ["l1010", "l107", "l106"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
               _id: "u101",
@@ -930,7 +930,7 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u101", "u102"],
-            labelIds: ["l101", "l104", "l106"],
+            labelIds: ["l107", "l109", "l106"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
               _id: "u101",
@@ -1016,7 +1016,7 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u101", "u102", "u103"],
-            labelIds: ["l101", "l102", "l103", "l104", "l105", "l106"],
+            labelIds: ["l106", "l107", "l108", "l109", "l1010", "l1011"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
               _id: "u101",
@@ -1088,7 +1088,7 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u101", "u102"],
-            labelIds: ["l101", "l104", "l106"],
+            labelIds: ["l106", "l107", "l108"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
               _id: "u101",
@@ -1207,7 +1207,7 @@ export const DEMO_BOARD_LIST = [
               },
             ],
             memberIds: ["u101", "u102", "u103"],
-            labelIds: ["l101", "l102", "l103", "l104", "l105", "l106"],
+            labelIds: ["l106", "l107", "l108", "l109", "l1010", "l1011"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
               _id: "u101",
