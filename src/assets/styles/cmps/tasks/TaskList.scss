@@ -6,12 +6,17 @@
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 1;
+  // z-index: 1;
   scrollbar-color: $background-neutral-hovered $group-background;
   scrollbar-width: thin;
 
-  & .dragging .task-preview {
-    transform: rotate(5deg);
-    opacity: 0.5;
+  li {
+    &.dragging {
+      z-index: 60000 !important;
+    }
+    &.dragging .task-preview {
+      transform: rotate(5deg);
+      opacity: 0.5;
+    }
   }
 }
