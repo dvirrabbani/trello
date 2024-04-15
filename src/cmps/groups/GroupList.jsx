@@ -11,10 +11,58 @@ import { de } from "date-fns/locale"
 export function GroupList({ groups }) {
   const [displayAddItem, setDisplayAddItem] = useState(false)
 
+  // function onDragEnd(result) {
+  //   const { destination, source, draggableId, type } = result
+
+  //   // dropped outside the list
+  //   if (!destination) return
+  //   // dropped in the same place
+  //   if (
+  //     destination.droppableId === source.droppableId &&
+  //     destination.index === source.index
+  //   )
+  //     return
+  //   const startGroup = groups.find((group) => group.id === source.droppableId)
+  //   const endGroup = groups.find(
+  //     (group) => group.id === destination.droppableId
+  //   )
+  //   const taskToMove = {
+  //     ...startGroup.tasks.find((task) => task.id === draggableId),
+  //   }
+
+  //   if (startGroup === endGroup) {
+  //     const newTaskIds = Array.from(startGroup.tasks)
+  //     const [reorderedTasks] = newTaskIds.splice(source.index, 1)
+  //     newTaskIds.splice(destination.index, 0, reorderedTasks)
+  //     updateCurrentBoard(startGroup.id, null, {
+  //       key: "tasks",
+  //       value: newTaskIds,
+  //     })
+  //     return
+  //   }
+
+  //   //moving from one list to another
+  //   const startTaskIds = Array.from(startGroup.tasks)
+  //   startTaskIds.splice(source.index, 1)
+  //   const updateStartGroup = { ...startGroup, tasks: startTaskIds }
+
+  //   const endTaskIds = Array.from(endGroup.tasks)
+  //   endTaskIds.splice(destination.index, 0, taskToMove)
+  //   const updateEndGroup = { ...endGroup, tasks: endTaskIds }
+
+  //   const updateGroups = groups.map((group) => {
+  //     if (group.id === startGroup.id) return updateStartGroup
+  //     if (group.id === endGroup.id) return updateEndGroup
+  //     return group
+  //   })
+
+  //   updateCurrentBoard(null, null, {
+  //     key: "groups",
+  //     value: updateGroups,
+  //   })
+  // }
   function onDragEnd(result) {
     const { destination, source, draggableId, type } = result
-    //TODO - handle the case of dragging a group
-    if (type == "group") return
 
     // dropped outside the list
     if (!destination) return
@@ -24,6 +72,18 @@ export function GroupList({ groups }) {
       destination.index === source.index
     )
       return
+
+    if (type === "board") {
+      const newGroups = Array.from(groups)
+      const [reorderedGroup] = newGroups.splice(source.index, 1)
+      newGroups.splice(destination.index, 0, reorderedGroup)
+      updateCurrentBoard(null, null, {
+        key: "groups",
+        value: newGroups,
+      })
+      return
+    }
+
     const startGroup = groups.find((group) => group.id === source.droppableId)
     const endGroup = groups.find(
       (group) => group.id === destination.droppableId
@@ -98,7 +158,7 @@ export function GroupList({ groups }) {
   return (
     <div>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="all-groups" direction="horizontal" type="group">
+        <Droppable droppableId="board" direction="horizontal" type="board">
           {(provided) => (
             <ol
               className="group-list clean-list flex"

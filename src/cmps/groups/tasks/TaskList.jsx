@@ -1,11 +1,9 @@
 import { TaskPreview } from "./TaskPreview"
 import { Droppable, Draggable } from "react-beautiful-dnd"
-import { useState } from "react"
-import { updateCurrentBoard } from "../../../store/board.actions"
 
 export function TaskList({ group }) {
   return (
-    <Droppable droppableId={group.id}>
+    <Droppable droppableId={group.id} type="group">
       {(provided, snapshot) => (
         <ol
           className={`clean-list flex column task-list`}
