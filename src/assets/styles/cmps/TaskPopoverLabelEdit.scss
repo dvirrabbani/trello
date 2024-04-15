@@ -1,29 +1,43 @@
 .task-popover-label-edit {
-  position: absolute;
   width: 100%;
   background-color: $clr8;
   top: 0;
   left: 0;
   z-index: 999;
-
+  padding: rem(12px);
+  min-width: rem(304px);
   .edit-label-preview {
-    padding: 32px;
+    padding: rem(32px);
     background-color: $group-background;
+    .label {
+      height: rem(32px);
+      span {
+        display: inline-block;
+        padding: 0 rem(8px);
+        font-size: rem(14px);
+        font-weight: 500;
+        line-height: rem(32px);
+      }
+    }
   }
-
+  .board-label {
+    border-radius: rem(3px);
+    cursor: pointer;
+    min-width: rem(32px);
+    min-height: rem(32px);
+    border-radius: rem(3px);
+  }
   .edit-label-main {
-    padding: 12px;
-    min-height: 100px;
-  }
-
-  .label {
-    height: 32px;
+    min-height: rem(100px);
   }
 
   .label-grid {
     display: grid;
-    padding: 8px;
     grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
+    gap: rem(4px);
+  }
+
+  .actions {
+    padding-top: 24px;
   }
 }

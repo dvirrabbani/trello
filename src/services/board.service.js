@@ -1,7 +1,5 @@
-// import { storageService } from "./http.service.js";
-import { is } from "date-fns/locale"
+import { BOARD_LABELS } from "../const/label.js"
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
-import { store } from "../store/store.js"
 import { activityService } from "./acitivity.service.js"
 import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
@@ -17,6 +15,8 @@ export const boardService = {
   addBoardMsg,
   updateBoard,
   filteredBoard,
+  getLabels,
+  getDefaultLabels,
 }
 window.cs = boardService
 
@@ -74,6 +74,14 @@ function updateBoard(board, groupId, taskId, { key, value }, activity) {
 
   save(board)
   return board
+}
+
+function getLabels() {
+  return BOARD_LABELS
+}
+
+function getDefaultLabels() {
+  return BOARD_LABELS.slice(6, 12)
 }
 
 // TODO

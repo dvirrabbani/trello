@@ -2,7 +2,7 @@
   box-shadow: $shadow-overlay;
   .popover-content {
     background-color: $clr8;
-    padding: rem(8px);
+    padding: 0 rem(12px) rem(12px);
     min-width: rem(304px);
     border-radius: rem(8px);
   }
