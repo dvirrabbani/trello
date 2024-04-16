@@ -4,6 +4,7 @@ import SvgIcon from "../SvgIcon"
 import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
 import dayjs from "dayjs"
 import { Popover } from "../Popover"
+import { ProfileImg } from "../ProfileImg"
 
 export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
   const [datePopover, setDatePopover] = useState(null)
@@ -33,16 +34,9 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
         <div className="main-header-card">
           <h4 className="h4">Members</h4>
           <div className="member-list flex">
-            {members.task?.map((m) => {
-              return (
-                <img
-                  style={{ width: "32px" }}
-                  key={m._id}
-                  src={m.imgUrl}
-                  alt=""
-                />
-              )
-            })}
+            {members.task?.map((member) => (
+              <ProfileImg key={member._id} imgUrl={member.imgUrl} size={"lg"} />
+            ))}
             <Button variant={"contained"} shape={"circle"}>
               <SvgIcon iconName="plus" />
             </Button>
@@ -83,7 +77,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
                 onUpdateTask={onUpdateTask}
               />
             </Popover>
-            <Button variant={"contained"} shape={"circle"}>
+            <Button variant={"contained"}>
               <SvgIcon iconName="plus" />
             </Button>
           </div>
