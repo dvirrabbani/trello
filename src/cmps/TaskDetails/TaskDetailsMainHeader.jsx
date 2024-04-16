@@ -5,6 +5,7 @@ import { DynamicTaskPopover } from "../DynamicTaskPopover/DynamicTaskPopover"
 import dayjs from "dayjs"
 import { Popover } from "../Popover"
 import { ProfileImg } from "../ProfileImg"
+import { ButtonDynamicTaskPopover } from "../ButtonDynamicTaskPopover"
 
 export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
   const [datePopover, setDatePopover] = useState(null)
@@ -37,9 +38,16 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
             {members.task?.map((member) => (
               <ProfileImg key={member._id} imgUrl={member.imgUrl} size={"lg"} />
             ))}
-            <Button variant={"contained"} shape={"circle"}>
-              <SvgIcon iconName="plus" />
-            </Button>
+            <ButtonDynamicTaskPopover
+              variant={"contained"}
+              iconName={"plus"}
+              shape={"circle"}
+              type={"Members"}
+              onUpdateTask={onUpdateTask}
+              task={task}
+              popoverId={"labels-popover-id"}
+              popoverTitle={"Members"}
+            />
           </div>
         </div>
       )}
@@ -78,7 +86,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
                 onUpdateTask={onUpdateTask}
               />
             </Popover>
-            <Button variant={"contained"}>
+            <Button variant={"contained"} onClick={openLabelPopover}>
               <SvgIcon iconName="plus" />
             </Button>
           </div>
