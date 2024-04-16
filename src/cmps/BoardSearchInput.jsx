@@ -38,6 +38,7 @@ export function BoardSearchInput() {
           <span className="search-title">Recent boards</span>
           {filterBoardByText?.map((board) => (
             <Button
+              key={board._id}
               className="search-option"
               onClick={() => onSelectBoard(board._id)}
             >
