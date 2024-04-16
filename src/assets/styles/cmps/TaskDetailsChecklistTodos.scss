@@ -1,0 +1,35 @@
+.task-details-checklist-sub-items {
+  .checklist-progress-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: rem(8px);
+    .progress-bar {
+      transition: width 0.3s ease-in;
+      height: rem(8px);
+      border-radius: rem(4px);
+      background: $progress-bar-background;
+      width: 100%;
+
+      .progress-bar-complete {
+        border-radius: rem(4px);
+        height: 100%;
+        background-color: $progress-bar-current-background;
+      }
+    }
+    .checklist-progress-percentage {
+      font-size: rem(11px);
+    }
+  }
+
+  .preview {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    gap: rem(8px);
+    font-size: rem(14px);
+    input[type="checkbox"] {
+      @include size(16px);
+    }
+  }
+}

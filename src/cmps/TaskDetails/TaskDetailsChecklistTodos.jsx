@@ -14,9 +14,29 @@ export function TaskDetailsChecklistTodos({
   const [fields, , handleChange] = useForm({
     title: "",
   })
+  const progressValue = todos.length
+    ? todos.filter((todo) => todo.isDone).length
+    : 0
+  const progressMax = todos.length || 0
+
+  const progressPercentage = (progressValue / progressMax || 0) * 100
   return (
     <div className="task-details-checklist-sub-items">
       <ul className="clean-list">
+        <div className="checklist-progress-container">
+          <div className="checklist-progress-percentage">
+            {progressPercentage.toFixed()}%
+          </div>
+          <div className="progress-bar">
+            <div
+              className="progress-bar-complete"
+              style={{
+                width: `${progressPercentage}%`,
+                transition: "width 0.3s ease-in-out",
+              }}
+            ></div>
+          </div>
+        </div>
         {/* Checklist sub items */}
         {todos?.map((todo) => {
           return (
@@ -34,7 +54,13 @@ export function TaskDetailsChecklistTodos({
                     })
                   }
                 />
-                <span>{todo.title}</span>
+                <span
+                  className={`${
+                    todo.isDone ? "text-decoration-line-through" : ""
+                  }`}
+                >
+                  {todo.title}
+                </span>
               </div>
               <Button
                 variant="contained"
