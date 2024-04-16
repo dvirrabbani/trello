@@ -2,6 +2,7 @@ import SvgIcon from "./SvgIcon"
 import { updateBoard } from "../store/board.actions"
 import { BoardNavLink } from "./BoardNavLink"
 import { useSelector } from "react-redux"
+import { AddBoardButton } from "./AddBoardButton"
 
 export function BoardSidebar() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
@@ -18,9 +19,7 @@ export function BoardSidebar() {
       <ul className="board-sidebar-list clean-list flex column">
         <div className="board-sidebar-list-header">
           <span className="title">Your boards</span>
-          <button>
-            <SvgIcon iconName="plus" />
-          </button>
+          <AddBoardButton iconName={"plus"} />
         </div>
         {boards?.map((board) => {
           return (

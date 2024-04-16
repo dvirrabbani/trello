@@ -14,7 +14,7 @@ export function AppHeader() {
         <Link to={"/workspace"}>
           <SvgIcon iconName={"logo"} size={"lg"} />
         </Link>
-        <AddBoardButton />
+        <AddBoardButton variant={"primary"} title={"Create"} />
       </div>
       <BoardSearchInput />
       <div className="pref">

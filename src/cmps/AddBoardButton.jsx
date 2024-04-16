@@ -6,8 +6,9 @@ import { useForm } from "../customHooks/useForm"
 import { addBoard } from "../store/board.actions"
 import { DEMO_USER } from "../demo/user"
 import { boardService } from "../services/board.service"
+import SvgIcon from "./SvgIcon"
 
-export function AddBoardButton() {
+export function AddBoardButton({ iconName, title, variant }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const navigate = useNavigate()
   const [fields, setFields, handleChange, resetForm] = useForm({
@@ -94,7 +95,7 @@ export function AddBoardButton() {
       createdBy: DEMO_USER,
     }
     const savedBoard = await addBoard(boardToAdd)
-    navigate(`board/${savedBoard._id}`)
+    navigate(`/board/${savedBoard._id}`)
     resetForm()
   }
 
@@ -111,8 +112,9 @@ export function AddBoardButton() {
 
   return (
     <article className="add-board-button">
-      <Button variant="primary" onClick={handleClick}>
-        <span>Create</span>
+      <Button variant={variant} onClick={handleClick}>
+        {iconName && <SvgIcon iconName={iconName} />}
+        {title && <span>{title}</span>}
       </Button>
       <Popover
         id={popoverId}
