@@ -63,8 +63,16 @@ export function TaskPopoverLabelEdit({
   }
 
   function onUpdateBoardLabels() {
+    const newBoardLabelId = utilService.makeId()
+
+    const labelToUpdate = {
+      id: newBoardLabelId,
+      bgColor: fields.bgColor,
+      title: fields.title,
+    }
+
     const boardLabelsEdit = board.labels.map((boardLabel) =>
-      boardLabel.id === initialLabel.id ? fields : boardLabel
+      boardLabel.id === initialLabel.id ? labelToUpdate : boardLabel
     )
 
     updateCurrentBoard(null, null, {
