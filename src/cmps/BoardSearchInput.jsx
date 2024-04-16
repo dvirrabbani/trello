@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux"
 import SvgIcon from "./SvgIcon"
-import { BoardNavLink } from "./BoardNavLink"
 import { useState } from "react"
+import { Button } from "./Button"
+import { useNavigate } from "react-router"
 
 export function BoardSearchInput() {
+  const navigate = useNavigate()
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [searchBy, setSearchBy] = useState("")
   const [isOptionsOpen, setIsOptionsOpen] = useState(false)
@@ -11,7 +13,8 @@ export function BoardSearchInput() {
     board.title.toLowerCase().includes(searchBy.toLowerCase())
   )
 
-  function onBlur() {
+  function onSelectBoard(boardId) {
+    navigate(`/board/${boardId}`)
     setIsOptionsOpen(false)
     setSearchBy("")
   }
@@ -21,7 +24,6 @@ export function BoardSearchInput() {
       <div className="form-group flex">
         <SvgIcon iconName={"search"} />
         <input
-          onBlur={onBlur}
           value={searchBy}
           type="text"
           placeholder="Search"
@@ -35,15 +37,17 @@ export function BoardSearchInput() {
         <section className="search-options">
           <span className="search-title">Recent boards</span>
           {filterBoardByText?.map((board) => (
-            <div
+            <Button
               className="search-option"
-              key={board._id}
-              onClick={() => {
-                setIsOptionsOpen(false)
-              }}
+              onClick={() => onSelectBoard(board._id)}
             >
-              <BoardNavLink board={board} />
-            </div>
+              <img
+                className="thumbnail"
+                src={board.style.bgImg}
+                alt="board image"
+              />
+              <span>{board.title}</span>
+            </Button>
           ))}
         </section>
       )}

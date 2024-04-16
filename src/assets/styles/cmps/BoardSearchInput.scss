@@ -2,11 +2,6 @@
   position: relative;
   margin-inline-start: auto;
 
-  &:has(input:focus) {
-    flex: 1;
-    max-width: rem(548px);
-  }
-
   > .form-group {
     padding: rem(8px);
     border-radius: rem(8px);
@@ -50,6 +45,17 @@
       color: $color-txt-primary;
       border-radius: rem(4px);
       padding: rem(8px) rem(12px);
+      line-height: rem(20px);
+      display: grid;
+      gap: rem(8px);
+      grid-template-columns: auto 1fr;
+
+      .thumbnail {
+        border-radius: rem(2px);
+        width: rem(24px);
+        height: rem(20px);
+      }
+
       &:hover {
         background-color: $background-neutral;
       }
