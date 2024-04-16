@@ -13,6 +13,11 @@
 
   .group-li {
     padding: 0 rem(6px);
+
+    &.dragging .group-preview {
+      transform: rotate(5deg);
+      opacity: 0.5;
+    }
   }
 
   .group-preview {
