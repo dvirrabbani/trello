@@ -54,6 +54,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
                 <Button
                   key={lt.id}
                   onClick={openLabelPopover}
+                  className={"label-list-button"}
                   style={{
                     backgroundColor: labels.board.find((lb) => lb.id === lt.id)
                       .bgColor,
@@ -87,7 +88,11 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
       {task?.dueDate && (
         <div className="main-header-card">
           <h4 className="h4">Due Dates</h4>
-          <Button onClick={openDatesPopover} variant="contained">
+          <Button
+            className={"main-header-card-due-date-button"}
+            onClick={openDatesPopover}
+            variant="contained"
+          >
             {dayjs(task?.dueDate).format("MMM D YYYY [at] h:mm A")}
           </Button>
           <Popover

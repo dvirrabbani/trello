@@ -1,14 +1,20 @@
 .task-details-main-header {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   .labels-list {
     display: flex;
-    flex-wrap: wrap;
     gap: 4px;
 
     .button {
+      &.label-list-button {
+        min-width: rem(48px);
+      }
       min-width: rem(32px);
       min-height: rem(32px);
+    }
+    .main-header-card-due-date-button {
+      white-space: nowrap;
     }
   }
 
