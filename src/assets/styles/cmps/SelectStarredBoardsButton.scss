@@ -1,0 +1,42 @@
+#starred-board-popover-id {
+  .search-options {
+    width: rem(304px);
+    padding: rem(12px);
+    left: 0;
+    top: 100%;
+    background-color: $clr8;
+    display: grid;
+    align-content: start;
+    border-radius: rem(4px);
+    box-shadow: $box-shadow-overlay;
+
+    .search-option {
+      font-size: rem(14px);
+      font-weight: 600;
+      color: $color-txt-primary;
+      border-radius: rem(8px);
+      padding: rem(4px) rem(8px) rem(4px) rem(4px);
+      line-height: rem(20px);
+      display: grid;
+      gap: rem(8px);
+      margin: rem(2px) 0 rem(4px) 0;
+      grid-template-columns: auto 1fr auto;
+      text-align: left;
+      overflow-x: hidden;
+      overflow-y: auto;
+      .thumbnail {
+        border-radius: rem(2px);
+        width: rem(40px);
+        height: rem(32px);
+      }
+
+      .svg-icon {
+        color: $icon-star-color;
+      }
+
+      &:hover {
+        background-color: $background-neutral;
+      }
+    }
+  }
+}

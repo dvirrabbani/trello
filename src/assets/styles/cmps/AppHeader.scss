@@ -6,6 +6,12 @@
   border-bottom: rem(1px) solid $clr16;
   padding: em(8px);
 
+  .buttons-list {
+    display: grid;
+    gap: rem(12px);
+    grid-auto-flow: column;
+  }
+
   .pref {
     display: flex;
     align-items: center;
