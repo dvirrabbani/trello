@@ -22,38 +22,35 @@ export function TaskDetailsChecklistTodos({
   const progressPercentage = (progressValue / progressMax || 0) * 100
   return (
     <div className="task-details-checklist-sub-items">
-      <ul className="clean-list">
-        <div className="checklist-progress-container">
-          <div className="checklist-progress-percentage">
-            {progressPercentage.toFixed()}%
-          </div>
-          <div className="progress-bar">
-            <div
-              className="progress-bar-complete"
-              style={{
-                width: `${progressPercentage}%`,
-                transition: "width 0.3s ease-in-out",
-              }}
-            ></div>
-          </div>
+      <div className="checklist-progress-container">
+        <div className="checklist-progress-percentage">
+          {progressPercentage.toFixed()}%
         </div>
-        {/* Checklist sub items */}
+        <div className="progress-bar">
+          <div
+            className="progress-bar-complete"
+            style={{
+              width: `${progressPercentage}%`,
+              transition: "width 0.3s ease-in-out",
+            }}
+          ></div>
+        </div>
+      </div>
+      {/* Checklist sub items */}
+      <ul className="clean-list task-details-checklist-item-list">
         {todos?.map((todo) => {
           return (
-            <li
-              className="task-details-checklist-item flex justify-between"
-              key={todo.id}
-            >
+            <li className="task-details-checklist-item" key={todo.id}>
+              <input
+                type="checkbox"
+                checked={todo.isDone}
+                onChange={() =>
+                  onUpdateCheckListTodo(checklistsId, todo.id, {
+                    isDone: !todo.isDone,
+                  })
+                }
+              />
               <div className="preview">
-                <input
-                  type="checkbox"
-                  checked={todo.isDone}
-                  onChange={() =>
-                    onUpdateCheckListTodo(checklistsId, todo.id, {
-                      isDone: !todo.isDone,
-                    })
-                  }
-                />
                 <span
                   className={`${
                     todo.isDone ? "text-decoration-line-through" : ""
@@ -61,17 +58,20 @@ export function TaskDetailsChecklistTodos({
                 >
                   {todo.title}
                 </span>
+                <div className="checklist-item-controls">
+                  {/*TODO replace with icon Delete icon */}
+                  <Button
+                    shape="circle"
+                    variant="contained"
+                    onClick={() => onRemoveCheckListTodo(checklistsId, todo.id)}
+                  >
+                    D
+                  </Button>
+                </div>
               </div>
-              <Button
-                variant="contained"
-                onClick={() => onRemoveCheckListTodo(checklistsId, todo.id)}
-              >
-                Delete
-              </Button>
             </li>
           )
         })}
-
         {/* Show Task Todo From  */}
         {isTodoFormOpen && (
           <TaskDetailTodoForm

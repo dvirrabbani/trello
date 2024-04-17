@@ -22,14 +22,41 @@
     }
   }
 
-  .preview {
+  .task-details-checklist-item {
     display: grid;
-    align-items: center;
     grid-template-columns: auto 1fr;
+    align-items: center;
+    cursor: pointer;
     gap: rem(8px);
-    font-size: rem(14px);
     input[type="checkbox"] {
       @include size(16px);
+    }
+
+    .preview {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr auto;
+      padding: rem(6px) rem(8px);
+      border-radius: rem(12px);
+      word-break: break-word;
+      font-size: rem(14px);
+
+      &:hover {
+        background-color: $background-neutral;
+        .checklist-item-controls {
+          visibility: visible;
+        }
+      }
+      .checklist-item-controls {
+        visibility: hidden;
+        .button {
+          display: flex;
+          justify-content: center;
+          padding: rem(4px);
+          width: rem(20px);
+          height: rem(20px);
+        }
+      }
     }
   }
 }
