@@ -58,11 +58,7 @@ export function BoardDetails() {
         className="board-main-content flex column"
         style={{ backgroundImage: `url(${board.style.bgImg})` }}
       >
-        <BoardDetailsHeader
-          title={board.title}
-          members={board.members}
-          setDisplayFilter={setDisplayFilter}
-        />
+        <BoardDetailsHeader board={board} setDisplayFilter={setDisplayFilter} />
         <div className="board-groups-container full">
           <GroupList groups={board.groups} />
         </div>

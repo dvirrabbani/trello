@@ -7,6 +7,34 @@
   backdrop-filter: blur(4px);
   background: $clr18;
   color: $clr8;
+  .board-details-title {
+    background: transparent;
+    font-size: rem(18px);
+    font-weight: bold;
+    line-height: rem(32px);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 100%;
+    color: var(--dynamic-text);
+    padding: 0 rem(10px);
+  }
+
+  .board-topbar-end {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .board-topbar-start {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: rem(4px);
+    .svg-icon {
+      color: $clr8;
+    }
+  }
 
   .member-list {
     padding: 0;
