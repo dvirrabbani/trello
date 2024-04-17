@@ -4,10 +4,15 @@ import SvgIcon from "../SvgIcon"
 export function TaskDetailsHeader({ params, task }) {
   return (
     <div className="task-details-header">
-      {task?.style?.background && (
+      {task?.style && (
         <div
           className="task-cover"
-          style={{ background: task.style.background }}
+          style={{
+            backgroundColor: task.style?.bgColor || "",
+            backgroundImage: task.style?.bgImg
+              ? `url(${task.style.bgImg})`
+              : "",
+          }}
         >
           <Link
             className="close-button button shape-circle "

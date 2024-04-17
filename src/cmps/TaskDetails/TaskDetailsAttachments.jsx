@@ -1,13 +1,18 @@
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 
-export function TaskDetailsAttachments({ attachments, onUpdateTask }) {
+export function TaskDetailsAttachments({
+  attachments,
+  onUpdateTask,
+  onUpdateCover,
+}) {
   function onRemoveAttachment(attachmentId) {
     onUpdateTask({
       key: "attachments",
       value: attachments.filter((a) => a.id !== attachmentId),
     })
   }
+
   return (
     <section className="task-details-attachments">
       <div className="task-detail-header-section">
@@ -22,6 +27,12 @@ export function TaskDetailsAttachments({ attachments, onUpdateTask }) {
               style={{ backgroundImage: `url(${attachment.imgUrl})` }}
             ></div>
             <div className="actions">
+              <Button
+                variant="link"
+                onClick={() => onUpdateCover({ bgImg: attachment.imgUrl })}
+              >
+                Make cover
+              </Button>
               <Button
                 variant="link"
                 onClick={() => onRemoveAttachment(attachment.id)}

@@ -146,9 +146,16 @@ export function TaskDetails() {
     })
   }
 
-  if (!task) {
-    return <div className="task-details">loading</div>
+  function onUpdateCover({ bgImg }) {
+    onUpdateTask({
+      key: "style",
+      // TODO customize background color(bgColor)
+      value: { bgColor: "#fff", bgImg },
+    })
   }
+
+  console.log(task?.style)
+
   const labels = { board: board.labels, task: getTaskLabels() }
   const members = { board: board.members, task: getTaskMembers() }
 
@@ -186,6 +193,7 @@ export function TaskDetails() {
                 <TaskDetailsAttachments
                   attachments={task.attachments}
                   onUpdateTask={onUpdateTask}
+                  onUpdateCover={onUpdateCover}
                 />
               )}
 

@@ -28,7 +28,7 @@ export function TaskCoverPopover({ task, onUpdateTask }) {
               onClick={() =>
                 onUpdateTask({
                   key: "style",
-                  value: { ...task.style, background: color },
+                  value: { bgColor: color },
                 })
               }
             />

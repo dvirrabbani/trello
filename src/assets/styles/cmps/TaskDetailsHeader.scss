@@ -1,20 +1,24 @@
 .task-details-header {
   overflow: hidden;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
+  border-top-right-radius: rem(8px);
+  border-top-left-radius: rem(8px);
   .task-header {
     padding: rem(8px) rem(8px) rem(8px) rem(16px);
     width: 100%;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 8px;
+    gap: rem(8px);
   }
+
   .task-cover {
     padding: rem(8px) rem(8px) rem(8px) rem(16px);
     display: grid;
     justify-content: end;
     align-content: baseline;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: rem(160px);
   }
 
   align-items: center;
@@ -22,6 +26,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: rem(3px);
   }
 }
