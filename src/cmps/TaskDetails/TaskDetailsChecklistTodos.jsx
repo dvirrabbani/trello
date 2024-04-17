@@ -85,12 +85,14 @@ export function TaskDetailsChecklistTodos({
         )}
         {/* Add Todo Item */}
         {!isTodoFormOpen && (
-          <Button
-            variant="contained"
-            onClick={() => setIsTodoFormOpen(() => true)}
-          >
-            Add Item
-          </Button>
+          <div className="add-todo-item">
+            <Button
+              variant="contained"
+              onClick={() => setIsTodoFormOpen(() => true)}
+            >
+              Add an Item
+            </Button>
+          </div>
         )}
       </ul>
     </div>

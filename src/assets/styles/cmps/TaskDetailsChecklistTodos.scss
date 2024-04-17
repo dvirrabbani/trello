@@ -59,4 +59,12 @@
       }
     }
   }
+
+  .add-todo-item {
+    margin: rem(12px) 0 0 rem(40px);
+
+    .button {
+      padding: rem(6px) rem(12px);
+    }
+  }
 }
