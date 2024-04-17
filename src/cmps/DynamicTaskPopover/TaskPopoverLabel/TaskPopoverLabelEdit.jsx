@@ -79,6 +79,20 @@ export function TaskPopoverLabelEdit({
       key: "labels",
       value: boardLabelsEdit,
     })
+
+    // update tasks label ids when task already associated with the selected label
+    const taskLabelIdx = task.labelIds.findIndex(
+      (labelId) => labelId === initialLabel.id
+    )
+
+    if (taskLabelIdx > 0) {
+      task.labelIds[taskLabelIdx] = labelToUpdate.id
+      updateCurrentBoard(params.groupId, params.taskId, {
+        key: "labelIds",
+        value: task.labelIds,
+      })
+    }
+
     setSelectedLabel(null)
     onBack()
   }
@@ -106,7 +120,7 @@ export function TaskPopoverLabelEdit({
   }
 
   function onSelectNewBoardLabel(label) {
-    setFields(label)
+    setFields((prevFields) => ({ ...prevFields, bgColor: label.bgColor }))
   }
 
   return (
