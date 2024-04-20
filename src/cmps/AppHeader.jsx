@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, matchRoutes, useLocation } from "react-router-dom"
 import SvgIcon from "./SvgIcon"
 import { NotificationBell } from "./NotificationBell"
 import { BoardSearchInput } from "./BoardSearchInput"
@@ -8,6 +8,12 @@ import { SelectStarredBoardsButton } from "./SelectStarredBoardsButton"
 
 export function AppHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
+  // hide component on specific route
+  const location = useLocation()
+  const hideRoutes = [{ path: "/login" }]
+  if (matchRoutes(hideRoutes, location)) {
+    return null
+  }
 
   return (
     <header className="app-header">

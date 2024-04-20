@@ -48,12 +48,13 @@ $clr14: #091e42, opacity 6%;
 $clr15: #091e42, opacity 14%;
 $clr16: #dadde2;
 $clr18: #0000003d;
+$clr19: #fafbfc;
 
 //shadow
 $group-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px 0px;
 $task-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
 $shadow-overlay: 0px 8px 12px #091e4226, 0px 0px 1px #091e424f;
-
+$login-card-shadow: rgba(0, 0, 0, 0.1) rem(0px) rem(0px) rem(10px);
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
