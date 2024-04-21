@@ -2,25 +2,30 @@ import { useState } from "react"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar"
+import dayjs from "dayjs"
 import { Button } from "../Button"
-import { formatDate } from "../../services/util.service"
 
 export function TaskDatesPopover({ task, onUpdateTask, onClose }) {
-  const [duetDate, setDuetDate] = useState(null)
+  const [dueDate, setDueDate] = useState(dayjs(task?.dueDate?.date || null))
 
   function onSaveTaskDate() {
-    const TaskDueDate = new Date(duetDate)
+    const dueDateToSave = {
+      isComplete: task.dueDate.isComplete || false,
+      date: new Date(dueDate.$d).getTime(),
+    }
+
     onUpdateTask({
       key: "dueDate",
-      value: TaskDueDate,
+      value: dueDateToSave,
     })
+
     onClose()
   }
 
   return (
     <div className="task-dates-popover">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DateCalendar onChange={(value) => setDuetDate(value)} />
+        <DateCalendar value={dueDate} onChange={(value) => setDueDate(value)} />
       </LocalizationProvider>
       <Button variant="primary" onClick={onSaveTaskDate}>
         Save
