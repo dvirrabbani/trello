@@ -1,0 +1,21 @@
+.add-item-form {
+  width: 100%;
+  height: fit-content;
+
+  textarea {
+    width: 100%;
+
+    &::placeholder {
+      color: $color-text-subtle;
+    }
+  }
+
+  .group-preview {
+    padding: rem(8px);
+  }
+
+  .add-item-actions {
+    margin-top: rem(8px);
+    gap: rem(4px);
+  }
+}

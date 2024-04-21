@@ -1,29 +1,45 @@
 import { useState } from "react"
+import SvgIcon from "./SvgIcon"
 
-export function AddItemForm({ onAddItem, setDisplayAddItem, className }) {
+export function AddItemForm({ onAddItem, setDisplayAddItem, type }) {
   const [inputVal, setInputVal] = useState("")
 
   function handleChange({ target }) {
     let { value, type, name } = target
     setInputVal(value)
   }
-  const style = {
-    height: "32px",
-  }
+
+  const placeholder =
+    type === "task" ? "Enter a title for this card..." : "Enter list title..."
+
   return (
-    <form className={className}>
-      <textarea
-        style={style}
-        name="title"
-        spellCheck="false"
-        value={inputVal}
-        onChange={handleChange}
-        autoFocus
-      ></textarea>
-      <div className="add-item-actions">
-        <button onClick={() => onAddItem(inputVal)}>Add</button>
-        <button onClick={() => setDisplayAddItem(false)}>X</button>
-      </div>
-    </form>
+    <div className="add-item-form">
+      <form className={`${type == "group" ? "group-preview" : ""}`}>
+        <div className={`flex ${type == "task" ? "task-preview" : ""}`}>
+          <textarea
+            name="title"
+            spellCheck="false"
+            value={inputVal}
+            onChange={handleChange}
+            placeholder={placeholder}
+            autoFocus
+          ></textarea>
+        </div>
+        <div className="add-item-actions flex">
+          <button
+            className="button variant-primary"
+            onClick={() => onAddItem(inputVal)}
+          >
+            {`Add ${type == "task" ? "card" : "list"}`}
+          </button>
+          <button
+            className="button variant-text shape-regular"
+            onClick={() => setDisplayAddItem(false)}
+          >
+            <SvgIcon iconName="close" />
+          </button>
+        </div>
+      </form>
+    </div>
   )
 }

@@ -83,6 +83,7 @@ export function GroupPreview({ group, deleteGroup }) {
           <AddItemForm
             onAddItem={onAddTask}
             setDisplayAddItem={setDisplayAddItem}
+            type="task"
           />
         ) : (
           <>

@@ -144,7 +144,7 @@ export function GroupList({ groups }) {
                 <AddItemForm
                   onAddItem={onAddGroup}
                   setDisplayAddItem={setDisplayAddItem}
-                  className="group-preview"
+                  type="group"
                 />
               ) : (
                 <button
