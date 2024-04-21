@@ -93,7 +93,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
         </div>
       )}
       {/* Dates */}
-      {task?.dueDate && (
+      {task?.dueDate?.date && (
         <div className="main-header-card">
           <h4 className="h4">Due Dates</h4>
           <Button
@@ -101,7 +101,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
             onClick={openDatesPopover}
             variant="contained"
           >
-            {dayjs(task?.dueDate).format("MMM D YYYY [at] h:mm A")}
+            {dayjs(task.dueDate.date).format("MMM D YYYY [at] h:mm A")}
           </Button>
           <Popover
             id={Boolean(datePopover) ? "popover-dates-id" : undefined}
