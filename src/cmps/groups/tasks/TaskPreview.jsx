@@ -66,8 +66,10 @@ export function TaskPreview({
 
   return (
     <div
-      style={isCoverFull ? fullCoverStyle() : {}}
-      className={`task-preview ${isCoverFull ? "full-cover" : ""}`}
+      style={isCoverFull && !isQuickEditParent ? fullCoverStyle() : {}}
+      className={`task-preview ${
+        isCoverFull && !isQuickEditParent ? "full-cover" : ""
+      }`}
       onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button
@@ -76,7 +78,9 @@ export function TaskPreview({
       >
         <SvgIcon iconName="edit" />
       </button>
-      {task.style && !isCoverFull && <SemiCover style={task.style} />}
+      {task.style && (!isCoverFull || isQuickEditParent) && (
+        <SemiCover style={task.style} />
+      )}
       <div className="task-preview-main">
         {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
         {isQuickEditParent ? (
