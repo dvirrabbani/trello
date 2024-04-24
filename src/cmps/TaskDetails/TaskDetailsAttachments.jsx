@@ -1,15 +1,41 @@
+import { Link } from "react-router-dom"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
+import dayjs from "dayjs"
 
-export function TaskDetailsAttachments({
-  attachments,
-  onUpdateTask,
-  onUpdateCover,
-}) {
+export function TaskDetailsAttachments({ task, onUpdateTask }) {
   function onRemoveAttachment(attachmentId) {
     onUpdateTask({
       key: "attachments",
-      value: attachments.filter((a) => a.id !== attachmentId),
+      value: task.attachments.filter((a) => a.id !== attachmentId),
+    })
+
+    if (
+      task.attachments.find((attachment) => attachment.id === attachmentId)
+        .imgUrl === task.style.bgImg
+    ) {
+      onUpdateTask({
+        key: "style",
+        value: {},
+      })
+    }
+  }
+
+  function minimizeImgUrl(imgUrl) {
+    const urlSeparatedBySlash = imgUrl.split("/")
+    return urlSeparatedBySlash[urlSeparatedBySlash.length - 1]
+  }
+
+  function onUpdateTaskCover(attachmentImgUrl) {
+    const taskStyleToUpdate = {}
+    // remove attachment cover
+    if (attachmentImgUrl !== task?.style?.bgImg) {
+      taskStyleToUpdate.bgImg = attachmentImgUrl
+    }
+
+    onUpdateTask({
+      key: "style",
+      value: taskStyleToUpdate,
     })
   }
 
@@ -19,26 +45,37 @@ export function TaskDetailsAttachments({
         <SvgIcon size={"md"} iconName="attachment" />
         <h3 className="title"> Attachments</h3>
       </div>
-      <ul className="clean-list">
-        {attachments.map((attachment) => (
+      <ul className="attachment-list clean-list">
+        {task.attachments.map((attachment) => (
           <li className="attachment-item" key={attachment.id}>
             <div
               className="thumbnail"
               style={{ backgroundImage: `url(${attachment.imgUrl})` }}
             ></div>
-            <div className="actions">
-              <Button
-                variant="link"
-                onClick={() => onUpdateCover({ bgImg: attachment.imgUrl })}
-              >
-                Make cover
-              </Button>
-              <Button
-                variant="link"
-                onClick={() => onRemoveAttachment(attachment.id)}
-              >
-                Delete
-              </Button>
+            <div className="attachment-details">
+              <Link to={attachment.imgUrl} target="_blank">
+                {minimizeImgUrl(attachment.imgUrl)}
+              </Link>
+              <article className="actions">
+                <span>
+                  Added{" "}
+                  {dayjs(attachment.createdAt).format("MMM D YYYY [at] h:mm A")}
+                </span>
+                <Button onClick={() => onRemoveAttachment(attachment.id)}>
+                  <span>Delete</span>
+                </Button>
+                <Button
+                  variant="link"
+                  onClick={() => onUpdateTaskCover(attachment.imgUrl)}
+                >
+                  <SvgIcon iconName={"cover"} />
+                  <span>
+                    {attachment.imgUrl !== task?.style?.bgImg
+                      ? "Make cover"
+                      : "Remove cover"}{" "}
+                  </span>
+                </Button>
+              </article>
             </div>
           </li>
         ))}

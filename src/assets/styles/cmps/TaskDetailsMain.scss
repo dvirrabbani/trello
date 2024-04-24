@@ -7,8 +7,13 @@
   .task-detail-header-section {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    gap: 8px;
+    gap: rem(8px);
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: rem(16px);
+    h3 {
+      font-weight: 600;
+      font-size: rem(16px);
+      line-height: rem(20px);
+    }
   }
 }

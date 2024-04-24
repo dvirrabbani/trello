@@ -1,18 +1,74 @@
 .task-details-attachments {
   display: grid;
+  .attachment-list {
+    display: grid;
+    margin-inline-start: rem(40px);
+    gap: rem(8px);
+  }
   .attachment-item {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    margin-top: 16px;
+    gap: rem(8px);
+    padding: rem(8px) rem(8px) rem(8px) 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $progress-bar-background;
+    }
+
     .thumbnail {
-      border-radius: 3px;
+      border-radius: rem(3px);
       background-position: 50%;
       background-repeat: no-repeat;
       background-size: cover;
-      border-radius: 3px;
-      height: 80px;
-      width: 112px;
+      border-radius: rem(3px);
+      height: rem(80px);
+      width: rem(112px);
+    }
+
+    .attachment-details {
+      > a {
+        font-size: rem(14px);
+        line-height: rem(20px);
+        font-weight: 700;
+        text-wrap: wrap;
+        word-wrap: break-word;
+        color: $color-txt-primary;
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: rem(4px);
+        & > span {
+          display: block;
+          font-size: rem(14px);
+          font-weight: 400;
+          line-height: rem(20px);
+          color: $color-text-subtle;
+        }
+
+        .button {
+          font-size: rem(14px);
+          color: $color-text-subtle;
+          font-weight: 400;
+          line-height: rem(20px);
+          padding: 0;
+          text-decoration: none;
+          gap: rem(4px);
+          &::before {
+            content: "•";
+            text-decoration: none;
+          }
+          span {
+            text-decoration: underline;
+          }
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
     }
   }
 }

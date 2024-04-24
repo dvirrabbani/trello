@@ -154,8 +154,6 @@ export function TaskDetails() {
     })
   }
 
-  console.log(task?.style)
-
   const labels = { board: board.labels, task: getTaskLabels() }
   const members = { board: board.members, task: getTaskMembers() }
 
@@ -191,9 +189,8 @@ export function TaskDetails() {
 
               {task?.attachments && (
                 <TaskDetailsAttachments
-                  attachments={task.attachments}
+                  task={task}
                   onUpdateTask={onUpdateTask}
-                  onUpdateCover={onUpdateCover}
                 />
               )}
 
