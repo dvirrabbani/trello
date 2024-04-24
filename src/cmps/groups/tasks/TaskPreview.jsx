@@ -14,30 +14,30 @@ export function TaskPreview({
 }) {
   const navigate = useNavigate()
 
-  function coverStyle(isFull, background) {
-    const isUrl =
-      background.startsWith("http://") || background.startsWith("https://")
+  function coverStyle(style) {
+    const { bgColor, bgImg, isCoverFull } = style
+
     let coverStyle = {}
 
     switch (true) {
-      case isFull && isUrl:
+      case isCoverFull && bgImg:
         coverStyle = { height: "150px" }
         break
-      case !isFull && isUrl:
-        coverStyle = { height: "200px", backgroundImage: `url(${background})` }
+      case !isCoverFull && bgImg:
+        coverStyle = { height: "200px", backgroundImage: `url(${bgImg})` }
         break
-      case !isUrl:
-        coverStyle = { height: "36px", backgroundColor: background }
+      case !bgImg:
+        coverStyle = { height: "36px", backgroundColor: bgColor }
     }
     return coverStyle
   }
 
-  function cardStyle(background) {
-    const isUrl =
-      background.startsWith("http://") || background.startsWith("https://")
-    return isUrl
-      ? { backgroundImage: `url(${background})` }
-      : { backgroundColor: background }
+  function cardStyle(style) {
+    const { bgColor, bgImg, isCoverFull } = style
+
+    return bgImg
+      ? { backgroundImage: `url(${bgImg})` }
+      : { backgroundColor: bgColor }
   }
 
   function onQuickEditTask(e) {
@@ -69,11 +69,7 @@ export function TaskPreview({
   return (
     <div
       className="task-preview"
-      style={
-        task.style?.background && task?.style?.isFull
-          ? cardStyle(task.style.background)
-          : {}
-      }
+      style={task.style?.isFull ? cardStyle(task.style) : {}}
       onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button
@@ -82,10 +78,10 @@ export function TaskPreview({
       >
         <SvgIcon iconName="edit" />
       </button>
-      {task.style?.background && (
+      {task.style && (
         <div
           className="task-preview-cover"
-          style={coverStyle(task.style.isFull, task.style.background)}
+          style={coverStyle(task.style)}
         ></div>
       )}
       <div className="task-preview-main">
