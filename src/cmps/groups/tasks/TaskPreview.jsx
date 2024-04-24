@@ -4,7 +4,7 @@ import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
 import { toggleLabels, updateCurrentBoard } from "../../../store/board.actions"
 import SvgIcon from "../../SvgIcon"
-import { bg, el } from "date-fns/locale"
+import { useEffect, useState } from "react"
 
 export function TaskPreview({
   groupId,
@@ -14,7 +14,16 @@ export function TaskPreview({
   isQuickEditParent,
 }) {
   const navigate = useNavigate()
+  const [imgDimension, setImgDimension] = useState({})
   const isCoverFull = task.style?.isCoverFull
+
+  useEffect(() => {
+    if (task.style?.bgImg) {
+      utilService
+        .getImageMetaData(task.style.bgImg)
+        .then((imgDimension) => setImgDimension(imgDimension))
+    }
+  }, [])
 
   function onQuickEditTask(e) {
     e.stopPropagation()
@@ -42,9 +51,23 @@ export function TaskPreview({
     })
   }
 
+  function fullCoverStyle() {
+    const { bgColor, bgImg } = task.style
+    let style = {
+      backgroundColor: bgColor,
+    }
+
+    if (bgImg) {
+      style.backgroundImage = `url(${bgImg})`
+      style.height = 256 / imgDimension.aspectRatio || 0
+    }
+    return style
+  }
+
   return (
     <div
-      className="task-preview"
+      style={isCoverFull ? fullCoverStyle() : {}}
+      className={`task-preview ${isCoverFull ? "full-cover" : ""}`}
       onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button
@@ -53,7 +76,7 @@ export function TaskPreview({
       >
         <SvgIcon iconName="edit" />
       </button>
-      {!isCoverFull && <SemiCover style={task.style} />}
+      {task.style && !isCoverFull && <SemiCover style={task.style} />}
       <div className="task-preview-main">
         {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
         {isQuickEditParent ? (
@@ -241,6 +264,7 @@ function TaskLabel({ color, title }) {
 
 function SemiCover({ style }) {
   const { bgColor, bgImg } = style
+  console.log(style)
   return (
     <div className="semi-cover flex" style={{ backgroundColor: bgColor }}>
       {bgImg && <img src={bgImg} width={300} alt="" />}
