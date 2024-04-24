@@ -35,7 +35,7 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
             popoverId: "popover-dates-id",
           },
           {
-            iconName: "taskWindow",
+            iconName: "cover",
             type: "Cover",
             title: "Cover",
             popoverTitle: "Cover",
