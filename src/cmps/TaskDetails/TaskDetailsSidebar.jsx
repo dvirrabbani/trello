@@ -2,7 +2,7 @@ import { TaskSideBtnActions } from "../TaskSideBtnActions"
 
 export function TaskDetailsSidebar({ task, onUpdateTask }) {
   return (
-    <section className="task-details-sidebar">
+    <menu className="task-details-sidebar">
       <h4 className="h4">Add to card</h4>
       <TaskSideBtnActions
         btnPopoverDataList={[
@@ -35,7 +35,14 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
             popoverId: "popover-dates-id",
           },
           {
-            iconName: "taskWindow",
+            iconName: "attachment",
+            type: "Attachments",
+            title: "Attachment",
+            popoverTitle: "Attach",
+            popoverId: "popover-attachment-id",
+          },
+          {
+            iconName: "cover",
             type: "Cover",
             title: "Cover",
             popoverTitle: "Cover",
@@ -45,6 +52,6 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
         task={task}
         onUpdateTask={onUpdateTask}
       />
-    </section>
+    </menu>
   )
 }

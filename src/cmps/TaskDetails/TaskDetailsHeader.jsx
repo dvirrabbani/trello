@@ -28,7 +28,7 @@ export function TaskDetailsHeader({ params, task }) {
           <h2>{task.title}</h2>
           <div className="task-sub-title">{/*TODO*/}</div>
         </div>
-        {!task?.style?.background && (
+        {!task?.style?.bgColor && (
           <Link
             className="close-button button shape-circle "
             to={`/board/${params.boardId}`}

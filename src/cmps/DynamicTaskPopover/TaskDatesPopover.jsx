@@ -10,7 +10,7 @@ export function TaskDatesPopover({ task, onUpdateTask, onClose }) {
 
   function onSaveTaskDate() {
     const dueDateToSave = {
-      isComplete: task.dueDate.isComplete || false,
+      isCompleted: task.dueDate.isCompleted || false,
       date: new Date(dueDate.$d).getTime(),
     }
 
