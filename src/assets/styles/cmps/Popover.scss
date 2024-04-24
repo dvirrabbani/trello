@@ -9,6 +9,7 @@
   .popover-header {
     display: flex;
     font-size: rem(14px);
+    padding: rem(4px) rem(8px);
     font-weight: 600;
     height: rem(40px);
     justify-content: space-between;
@@ -16,6 +17,9 @@
     color: $color-text-subtle;
     .popover-title {
       margin: 0 auto;
+    }
+    .popover-close .button {
+      border-radius: rem(8px);
     }
   }
 }

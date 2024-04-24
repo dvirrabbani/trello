@@ -1,3 +1,4 @@
+import { TaskAttachmentPopover } from "./TaskAttachmentPopover"
 import { TaskCoverPopover } from "./TaskCoverPopover"
 import { TaskDatesPopover } from "./TaskDatesPopover"
 import { TaskPopoverCheckList } from "./TaskPopoverCheckList"
@@ -17,6 +18,8 @@ export function DynamicTaskPopover(props) {
         return <TaskDatesPopover {...props} />
       case "Cover":
         return <TaskCoverPopover {...props} />
+      case "Attachments":
+        return <TaskAttachmentPopover {...props} />
       default:
         return
     }
