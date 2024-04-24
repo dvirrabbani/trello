@@ -4,6 +4,7 @@ import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
 import { toggleLabels, updateCurrentBoard } from "../../../store/board.actions"
 import SvgIcon from "../../SvgIcon"
+import { useEffect, useState } from "react"
 
 export function TaskPreview({
   groupId,
@@ -13,32 +14,16 @@ export function TaskPreview({
   isQuickEditParent,
 }) {
   const navigate = useNavigate()
+  const [imgDimension, setImgDimension] = useState({})
+  const isCoverFull = task.style?.isCoverFull
 
-  function coverStyle(isFull, background) {
-    const isUrl =
-      background.startsWith("http://") || background.startsWith("https://")
-    let coverStyle = {}
-
-    switch (true) {
-      case isFull && isUrl:
-        coverStyle = { height: "150px" }
-        break
-      case !isFull && isUrl:
-        coverStyle = { height: "200px", backgroundImage: `url(${background})` }
-        break
-      case !isUrl:
-        coverStyle = { height: "36px", backgroundColor: background }
+  useEffect(() => {
+    if (task.style?.bgImg) {
+      utilService
+        .getImageMetaData(task.style.bgImg)
+        .then((imgDimension) => setImgDimension(imgDimension))
     }
-    return coverStyle
-  }
-
-  function cardStyle(background) {
-    const isUrl =
-      background.startsWith("http://") || background.startsWith("https://")
-    return isUrl
-      ? { backgroundImage: `url(${background})` }
-      : { backgroundColor: background }
-  }
+  }, [])
 
   function onQuickEditTask(e) {
     e.stopPropagation()
@@ -66,14 +51,25 @@ export function TaskPreview({
     })
   }
 
+  function fullCoverStyle() {
+    const { bgColor, bgImg } = task.style
+    let style = {
+      backgroundColor: bgColor,
+    }
+
+    if (bgImg) {
+      style.backgroundImage = `url(${bgImg})`
+      style.height = 256 / imgDimension.aspectRatio || 0
+    }
+    return style
+  }
+
   return (
     <div
-      className="task-preview"
-      style={
-        task.style?.background && task?.style?.isFull
-          ? cardStyle(task.style.background)
-          : {}
-      }
+      style={isCoverFull && !isQuickEditParent ? fullCoverStyle() : {}}
+      className={`task-preview ${
+        isCoverFull && !isQuickEditParent ? "full-cover" : ""
+      }`}
       onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button
@@ -82,11 +78,8 @@ export function TaskPreview({
       >
         <SvgIcon iconName="edit" />
       </button>
-      {task.style?.background && (
-        <div
-          className="task-preview-cover"
-          style={coverStyle(task.style.isFull, task.style.background)}
-        ></div>
+      {task.style && (!isCoverFull || isQuickEditParent) && (
+        <SemiCover style={task.style} />
       )}
       <div className="task-preview-main">
         {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
@@ -270,5 +263,15 @@ function TaskLabel({ color, title }) {
     >
       {title}
     </span>
+  )
+}
+
+function SemiCover({ style }) {
+  const { bgColor, bgImg } = style
+  console.log(style)
+  return (
+    <div className="semi-cover flex" style={{ backgroundColor: bgColor }}>
+      {bgImg && <img src={bgImg} width={300} alt="" />}
+    </div>
   )
 }

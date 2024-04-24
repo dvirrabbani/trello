@@ -10,6 +10,7 @@ export const utilService = {
   loadFromStorage,
   getAssetSrc,
   calculateDueDateStatus,
+  getImageMetaData,
 }
 
 function makeId(length = 6) {
@@ -145,4 +146,38 @@ function calculateDueDateStatus(dueDate, isCompleted) {
 
 export function formatDate(date) {
   return format(new Date(date).getTime(), "MMM d yyyy 'at' h:mm aa")
+}
+
+function getImageMetaData(imageUrl) {
+  return new Promise(function (resolve, reject) {
+    // Create a new image object
+    var img = new Image()
+
+    // Set the src attribute to the image URL
+    img.src = imageUrl
+
+    // When the image is loaded, resolve the promise with its metadata
+    img.onload = function () {
+      var width = this.width // Image width
+      var height = this.height // Image height
+
+      // Calculate the aspect ratio
+      var aspectRatio = width / height
+
+      // Create an object with image metadata
+      var metaData = {
+        width: width,
+        height: height,
+        aspectRatio: aspectRatio,
+      }
+
+      // Resolve the promise with the metadata
+      resolve(metaData)
+    }
+
+    // If there's an error loading the image, reject the promise
+    img.onerror = function () {
+      reject(new Error("Failed to load image"))
+    }
+  })
 }

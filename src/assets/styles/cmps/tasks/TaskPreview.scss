@@ -26,11 +26,19 @@
     display: block;
   }
 
-  .task-cover {
-    width: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  &.full-cover {
+    min-height: rem(56px);
+    display: flex;
+    align-items: flex-end;
+
+    .task-labels,
+    .task-preview-footer {
+      display: none;
+    }
+  }
+
+  .semi-cover {
+    min-height: rem(36px);
   }
 
   .task-preview-main {
