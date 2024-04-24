@@ -136,7 +136,7 @@ export const DEMO_BOARD_LIST = [
             style: {
               bgColor: "#53A8E2",
               bgImg: null,
-              isCoverFull: true,
+              isCoverFull: false,
             },
           },
           {

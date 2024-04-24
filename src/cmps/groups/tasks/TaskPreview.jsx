@@ -4,6 +4,7 @@ import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
 import { toggleLabels, updateCurrentBoard } from "../../../store/board.actions"
 import SvgIcon from "../../SvgIcon"
+import { bg, el } from "date-fns/locale"
 
 export function TaskPreview({
   groupId,
@@ -13,32 +14,7 @@ export function TaskPreview({
   isQuickEditParent,
 }) {
   const navigate = useNavigate()
-
-  function coverStyle(style) {
-    const { bgColor, bgImg, isCoverFull } = style
-
-    let coverStyle = {}
-
-    switch (true) {
-      case isCoverFull && bgImg:
-        coverStyle = { height: "150px" }
-        break
-      case !isCoverFull && bgImg:
-        coverStyle = { height: "200px", backgroundImage: `url(${bgImg})` }
-        break
-      case !bgImg:
-        coverStyle = { height: "36px", backgroundColor: bgColor }
-    }
-    return coverStyle
-  }
-
-  function cardStyle(style) {
-    const { bgColor, bgImg, isCoverFull } = style
-
-    return bgImg
-      ? { backgroundImage: `url(${bgImg})` }
-      : { backgroundColor: bgColor }
-  }
+  const isCoverFull = task.style?.isCoverFull
 
   function onQuickEditTask(e) {
     e.stopPropagation()
@@ -69,7 +45,6 @@ export function TaskPreview({
   return (
     <div
       className="task-preview"
-      style={task.style?.isFull ? cardStyle(task.style) : {}}
       onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button
@@ -78,12 +53,7 @@ export function TaskPreview({
       >
         <SvgIcon iconName="edit" />
       </button>
-      {task.style && (
-        <div
-          className="task-preview-cover"
-          style={coverStyle(task.style)}
-        ></div>
-      )}
+      {!isCoverFull && <SemiCover style={task.style} />}
       <div className="task-preview-main">
         {task.labelIds && <TaskLabels labelIds={task.labelIds} />}
         {isQuickEditParent ? (
@@ -266,5 +236,14 @@ function TaskLabel({ color, title }) {
     >
       {title}
     </span>
+  )
+}
+
+function SemiCover({ style }) {
+  const { bgColor, bgImg } = style
+  return (
+    <div className="semi-cover flex" style={{ backgroundColor: bgColor }}>
+      {bgImg && <img src={bgImg} width={300} alt="" />}
+    </div>
   )
 }

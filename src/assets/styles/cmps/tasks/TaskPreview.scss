@@ -26,11 +26,8 @@
     display: block;
   }
 
-  .task-cover {
-    width: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  .semi-cover {
+    min-height: rem(36px);
   }
 
   .task-preview-main {
