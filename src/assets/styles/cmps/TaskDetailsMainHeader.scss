@@ -1,10 +1,10 @@
 .task-details-main-header {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: rem(8px);
   .labels-list {
     display: flex;
-    gap: 4px;
+    gap: rem(4px);
 
     .button {
       &.label-list-button {
@@ -22,12 +22,30 @@
     position: relative;
 
     > *.flex {
-      gap: 4px;
+      gap: rem(4px);
     }
 
+    h4 {
+      margin-bottom: rem(4px);
+    }
+
+    & > .button {
+      font-size: rem(14px);
+      line-height: rem(20px);
+      font-weight: 500;
+    }
     .member-img {
       width: rem(30px);
       height: rem(30px);
+    }
+    .due-date-badge {
+      display: inline-block;
+      color: $clr8;
+      background-color: $bg-success;
+      font-size: rem(12px);
+      line-height: rem(16px);
+      padding: 0 rem(4px);
+      border-radius: rem(2px);
     }
   }
 }

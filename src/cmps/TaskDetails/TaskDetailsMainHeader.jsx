@@ -28,6 +28,13 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
     setDatePopover(null)
   }
 
+  function onToggleIsDueDateCompleted() {
+    onUpdateTask({
+      key: "dueDate",
+      value: { ...task.dueDate, isCompleted: !task.dueDate.isCompleted },
+    })
+  }
+
   return (
     <section className="task-details-main-header flex">
       {/* Task Members */}
@@ -52,7 +59,6 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
         </div>
       )}
       {/* Labels */}
-
       {labels?.task?.length > 0 && (
         <div className="main-header-card">
           <h4 className="h4">Labels</h4>
@@ -93,31 +99,44 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
         </div>
       )}
       {/* Dates */}
+      {console.log("due date", task?.dueDate)}
       {task?.dueDate?.date && (
         <div className="main-header-card">
-          <h4 className="h4">Due Dates</h4>
-          <Button
-            className={"main-header-card-due-date-button"}
-            onClick={openDatesPopover}
-            variant="contained"
-          >
-            {dayjs(task.dueDate.date).format("MMM D YYYY [at] h:mm A")}
-          </Button>
-          <Popover
-            id={Boolean(datePopover) ? "popover-dates-id" : undefined}
-            open={Boolean(datePopover)}
-            anchorEl={datePopover}
-            onClose={closeDatesPopover}
-            title={"Labels"}
-          >
-            <DynamicTaskPopover
-              type={"Dates"}
-              title={"Dates"}
-              task={task}
-              onClose={closeDatesPopover}
-              onUpdateTask={onUpdateTask}
+          <h4 className="h4">Due date</h4>
+
+          <div className="flex align-center">
+            <input
+              type="checkbox"
+              checked={task.dueDate.isCompleted}
+              onChange={onToggleIsDueDateCompleted}
             />
-          </Popover>
+            <Button
+              className={"main-header-card-due-date-button"}
+              onClick={openDatesPopover}
+              variant="contained"
+            >
+              {dayjs(task.dueDate.date).format("MMM D YYYY [at] h:mm A")}
+              {task.dueDate.isCompleted && (
+                <span className="due-date-badge">Complete</span>
+              )}
+              <SvgIcon iconName={"arrow"} />
+            </Button>
+            <Popover
+              id={Boolean(datePopover) ? "popover-dates-id" : undefined}
+              open={Boolean(datePopover)}
+              anchorEl={datePopover}
+              onClose={closeDatesPopover}
+              title={"Dates"}
+            >
+              <DynamicTaskPopover
+                type={"Dates"}
+                title={"Dates"}
+                task={task}
+                onClose={closeDatesPopover}
+                onUpdateTask={onUpdateTask}
+              />
+            </Popover>
+          </div>
         </div>
       )}
       {/* Notifications */}
