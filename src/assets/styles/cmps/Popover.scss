@@ -1,12 +1,12 @@
 .popover {
   .MuiPopover-paper {
     box-shadow: $shadow-overlay;
+    border-radius: rem(8px);
   }
   .popover-content {
     background-color: $clr8;
     padding: 0 rem(12px) rem(12px);
     min-width: rem(304px);
-    border-radius: rem(8px);
 
     .group-actions-list {
       margin: 0 -12px;

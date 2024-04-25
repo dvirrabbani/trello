@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { store } from "../store/store"
 
-export function FilterPopover({ members, labels, filterBy }) {
+export function BoardFilter({ members, labels, filterBy }) {
   const [filter, setFilter] = useState(filterBy)
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export function FilterPopover({ members, labels, filterBy }) {
   }
 
   return (
-    <div className="popover-content">
+    <div className="board-filter">
       <form className="filter-form">
         <section>
           <h3>Keyword</h3>
@@ -75,7 +75,7 @@ export function FilterPopover({ members, labels, filterBy }) {
                   />
                   <div className="button label-button variant-text shape-regular">
                     <img
-                      style={{ width: "30px" }}
+                      className="profile-img profile-img-size-lg"
                       key={m._id}
                       src={m.imgUrl}
                       alt=""

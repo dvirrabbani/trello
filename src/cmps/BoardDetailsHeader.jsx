@@ -3,7 +3,7 @@ import { updateCurrentBoard } from "../store/board.actions"
 import { Button } from "./Button"
 import SvgIcon from "./SvgIcon"
 import { Popover } from "./Popover"
-import { FilterPopover } from "./FilterPopover"
+import { BoardFilter } from "./BoardFilter"
 
 export function BoardDetailsHeader({ board, filterBy }) {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -47,7 +47,7 @@ export function BoardDetailsHeader({ board, filterBy }) {
           onClose={handleClose}
           title="Filter"
         >
-          <FilterPopover
+          <BoardFilter
             members={board.members}
             labels={board.labels}
             filterBy={filterBy}

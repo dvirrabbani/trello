@@ -1,0 +1,5 @@
+.board-filter {
+  width: rem(384px);
+  max-height: calc(100vh - rem(170px));
+  overflow: auto;
+}
