@@ -55,18 +55,6 @@
       cursor: pointer;
     }
 
-    .group-actions {
-      padding: 0;
-      top: rem(40px);
-      left: unset;
-      right: 0;
-      transform: translateX(calc(100% - rem(32px)));
-
-      .popover-header {
-        padding: rem(8px);
-      }
-    }
-
     .group-footer {
       padding: rem(8px);
 
@@ -95,20 +83,6 @@
     color: $color-txt-primary;
     height: fit-content;
     min-width: $group-width;
-    &:hover {
-      background-color: $background-neutral-hovered;
-    }
-  }
-
-  .delete-group-btn {
-    @include btn(
-      $bg-color: transparent,
-      $width: 100%,
-      $padding: rem(6px) rem(12px)
-    );
-    @include typography($type: "txt");
-    color: $color-txt-primary;
-
     &:hover {
       background-color: $background-neutral-hovered;
     }

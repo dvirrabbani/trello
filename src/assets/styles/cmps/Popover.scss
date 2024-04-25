@@ -1,10 +1,29 @@
 .popover {
-  box-shadow: $shadow-overlay;
+  .MuiPopover-paper {
+    box-shadow: $shadow-overlay;
+  }
   .popover-content {
     background-color: $clr8;
     padding: 0 rem(12px) rem(12px);
     min-width: rem(304px);
     border-radius: rem(8px);
+
+    .group-actions-list {
+      margin: 0 -12px;
+      li > button {
+        @include btn(
+          $bg-color: transparent,
+          $width: 100%,
+          $padding: rem(6px) rem(12px)
+        );
+        @include typography($type: "txt");
+        color: $color-txt-primary;
+
+        &:hover {
+          background-color: $background-neutral-hovered;
+        }
+      }
+    }
   }
   .popover-header {
     display: flex;

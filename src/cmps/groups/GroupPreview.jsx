@@ -5,13 +5,25 @@ import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
 import { GroupActions } from "./GroupActions"
 import { TaskList } from "./tasks/TaskList"
+import { Popover } from "../Popover"
 import { activityService } from "../../services/acitivity.service"
 import { boardService } from "../../services/board.service"
 
 export function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
-  const [groupActions, setGroupActions] = useState(false)
   const [displayAddItem, setDisplayAddItem] = useState(false)
+
+  const [anchorEl, setAnchorEl] = useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const isPopoverOpen = Boolean(anchorEl)
 
   function handleChange({ target }) {
     let { value, type, name } = target
@@ -45,7 +57,6 @@ export function GroupPreview({ group, deleteGroup }) {
 
   function onDeleteGroup(groupId) {
     deleteGroup(groupId)
-    setGroupActions(false)
   }
 
   return (
@@ -62,19 +73,18 @@ export function GroupPreview({ group, deleteGroup }) {
         >
           {groupToEdit.title}
         </textarea>
-        <button
-          className="button group-edit-btn"
-          onClick={() => setGroupActions(true)}
-        >
+        <button className="button group-edit-btn" onClick={handleClick}>
           <SvgIcon iconName="more" className="svg-icon" />
         </button>
-        {groupActions && (
-          <GroupActions
-            groupId={group.id}
-            onDeleteGroup={onDeleteGroup}
-            setGroupActions={setGroupActions}
-          />
-        )}
+        <Popover
+          id={isPopoverOpen ? "groupActions" : undefined}
+          open={isPopoverOpen}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          title="List actions"
+        >
+          <GroupActions groupId={group.id} onDeleteGroup={onDeleteGroup} />
+        </Popover>
       </div>
       <TaskList group={group} />
       <div className="group-footer flex justify-between">
