@@ -17,10 +17,12 @@ export const boardService = {
   filteredBoard,
   getLabels,
   getDefaultLabels,
+  createNewGroup,
+  createNewTask,
 }
 window.cs = boardService
 
-async function query(filterBy = { txt: "" }) {
+async function query() {
   let boards = utilService.loadFromStorage(STORAGE_KEY)
   if (!boards || !boards.length)
     utilService.saveToStorage(STORAGE_KEY, DEMO_BOARD_LIST)
@@ -84,16 +86,6 @@ function getDefaultLabels() {
   return BOARD_LABELS.slice(6, 12)
 }
 
-// boardFilterBy: {
-//   txt: "",
-//   labels: [],
-//   members: [],
-// noDates: false,
-// overdue: false,
-// dueNextDay: false,
-// dueNextWeek: false,
-// dueNextMonth: false,
-// },
 function filteredBoard(board, filterBy) {
   if (!board) return
 
@@ -200,6 +192,32 @@ function _isTaskMatchDates(task, filter) {
     isMatchDueNextWeek ||
     isMatchDueNextMonth
   )
+}
+
+function createNewGroup() {
+  return {
+    id: `g${utilService.makeId()}`,
+    archivedAt: null,
+    title: "",
+    tasks: [],
+  }
+}
+
+function createNewTask() {
+  return {
+    id: `t${utilService.makeId()}`,
+    title: "",
+    description: "",
+    comments: [],
+    checklists: [],
+    attachments: [],
+    memberIds: [],
+    labelIds: [],
+    dueDate: null,
+    //TODO: get logged in user
+    byMember: {},
+    style: null,
+  }
 }
 
 // TODO

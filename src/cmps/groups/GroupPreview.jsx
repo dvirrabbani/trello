@@ -6,6 +6,7 @@ import { AddItemForm } from "../AddItemForm"
 import { GroupActions } from "./GroupActions"
 import { TaskList } from "./tasks/TaskList"
 import { activityService } from "../../services/acitivity.service"
+import { boardService } from "../../services/board.service"
 
 export function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
@@ -25,10 +26,8 @@ export function GroupPreview({ group, deleteGroup }) {
   }
 
   function onAddTask(inputVal) {
-    const task = {
-      id: `t${utilService.makeId()}`,
-      title: inputVal,
-    }
+    const task = boardService.createNewTask()
+    task.title = inputVal
     const tasks = [...group.tasks, task]
     updateCurrentBoard(
       group.id,

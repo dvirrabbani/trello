@@ -13,7 +13,6 @@ import { boardService } from "../services/board.service"
 
 export function BoardDetails() {
   const params = useParams()
-  // const board = useSelector((storeState) => storeState.boardModule.board)
   const initialBoard = useSelector((storeState) => storeState.boardModule.board)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [displayFilter, setDisplayFilter] = useState(false)

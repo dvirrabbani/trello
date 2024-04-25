@@ -7,6 +7,7 @@ import { GroupPreview } from "./GroupPreview"
 import { activityService } from "../../services/acitivity.service"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { de } from "date-fns/locale"
+import { boardService } from "../../services/board.service"
 
 export function GroupList({ groups }) {
   const [displayAddItem, setDisplayAddItem] = useState(false)
@@ -83,13 +84,9 @@ export function GroupList({ groups }) {
   }
 
   function onAddGroup(inputVal) {
-    const group = {
-      archivedAt: null,
-      id: `g${utilService.makeId()}`,
-      style: {},
-      tasks: [],
-      title: inputVal,
-    }
+    const group = boardService.createNewGroup()
+    group.title = inputVal
+
     const updateGroups = [...groups, group]
     updateCurrentBoard(
       null,
