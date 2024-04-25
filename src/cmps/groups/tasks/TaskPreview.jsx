@@ -64,12 +64,24 @@ export function TaskPreview({
     return style
   }
 
+  function taskClasses() {
+    let classes = "task-preview"
+
+    if (isCoverFull && !isQuickEditParent) {
+      classes += " full-cover"
+
+      if (task.style?.bgImg) {
+        classes += " full-cover-img"
+      }
+    }
+
+    return classes
+  }
+
   return (
     <div
       style={isCoverFull && !isQuickEditParent ? fullCoverStyle() : {}}
-      className={`task-preview ${
-        isCoverFull && !isQuickEditParent ? "full-cover" : ""
-      }`}
+      className={taskClasses()}
       onClick={isQuickEditParent ? null : onTaskClick}
     >
       <button
@@ -268,7 +280,6 @@ function TaskLabel({ color, title }) {
 
 function SemiCover({ style }) {
   const { bgColor, bgImg } = style
-  console.log(style)
   return (
     <div className="semi-cover flex" style={{ backgroundColor: bgColor }}>
       {bgImg && <img src={bgImg} width={300} alt="" />}
