@@ -4,7 +4,7 @@ import SvgIcon from "../SvgIcon"
 export function TaskDetailsHeader({ params, task }) {
   return (
     <div className="task-details-header">
-      {task?.style && (
+      {(task?.style?.bgImg || task?.style?.bgColor) && (
         <div
           className="task-cover"
           style={{
@@ -28,7 +28,7 @@ export function TaskDetailsHeader({ params, task }) {
           <h2>{task.title}</h2>
           <div className="task-sub-title">{/*TODO*/}</div>
         </div>
-        {!task?.style?.bgColor && (
+        {!task?.style?.bgImg && !task?.style?.bgColor && (
           <Link
             className="close-button button shape-circle "
             to={`/board/${params.boardId}`}

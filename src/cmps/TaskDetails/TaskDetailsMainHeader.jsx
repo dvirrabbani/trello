@@ -99,7 +99,6 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
         </div>
       )}
       {/* Dates */}
-      {console.log("due date", task?.dueDate)}
       {task?.dueDate?.date && (
         <div className="main-header-card">
           <h4 className="h4">Due date</h4>

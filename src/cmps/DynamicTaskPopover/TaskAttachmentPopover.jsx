@@ -11,6 +11,7 @@ export function TaskAttachmentPopover({ task, onUpdateTask, onClose }) {
     const attachmentToAdd = {
       id: utilService.makeId(),
       imgUrl: fields.imgUrl,
+      createdAt: Date.now(),
     }
     onUpdateTask({
       key: "attachments",
