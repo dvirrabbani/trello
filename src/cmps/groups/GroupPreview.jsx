@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { updateCurrentBoard } from "../../store/board.actions"
-import { utilService } from "../../services/util.service"
 import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
 import { GroupActions } from "./GroupActions"
@@ -12,8 +11,8 @@ import { boardService } from "../../services/board.service"
 export function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
   const [displayAddItem, setDisplayAddItem] = useState(false)
-
   const [anchorEl, setAnchorEl] = useState(null)
+  const isPopoverOpen = Boolean(anchorEl)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -22,8 +21,6 @@ export function GroupPreview({ group, deleteGroup }) {
   const handleClose = () => {
     setAnchorEl(null)
   }
-
-  const isPopoverOpen = Boolean(anchorEl)
 
   function handleChange({ target }) {
     let { value, type, name } = target
