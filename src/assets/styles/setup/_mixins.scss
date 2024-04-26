@@ -35,9 +35,17 @@
     font-size: rem(14px);
     line-height: rem(20px);
     font-weight: 600;
+  } @else if $type == "h3" {
+    font-size: rem(12px);
+    line-height: rem(16px);
+    font-weight: 600;
   } @else if $type == "txt" {
     font-size: rem(14px);
     line-height: rem(20px);
+    font-weight: 400;
+  } @else if $type == "sub-txt" {
+    font-size: rem(11px);
+    line-height: rem(14px);
     font-weight: 400;
   }
 }

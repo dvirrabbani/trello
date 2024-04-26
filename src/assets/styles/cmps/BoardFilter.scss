@@ -2,4 +2,77 @@
   width: rem(384px);
   max-height: calc(100vh - rem(170px));
   overflow: auto;
+
+  .section-title {
+    @include typography($type: "h3", $color: $color-text-subtle);
+    margin-top: rem(16px);
+    margin-bottom: rem(8px);
+  }
+
+  .input-text {
+    box-shadow: inset 0 0 0 rem(1px) $background-neutral-hovered;
+    &::placeholder {
+      color: $color-txt-primary;
+    }
+  }
+
+  .sub-txt {
+    @include typography($type: "sub-txt");
+    margin-top: rem(8px);
+    margin-bottom: rem(4px);
+  }
+  .form-group {
+    input {
+      display: none;
+    }
+
+    label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      position: relative;
+      display: block;
+      border-radius: rem(2px);
+      height: rem(16px);
+      width: rem(16px);
+      overflow: hidden;
+      white-space: nowrap;
+      transition: all 0.2s ease-in-out;
+      background-color: $input-background;
+      box-shadow: inset 0 0 0 rem(1px) $border-input;
+    }
+
+    &:hover input ~ .checkmark {
+      background-color: $input-hovered;
+      box-shadow: inset 0 0 0 rem(1px) $border-input;
+    }
+
+    input:checked ~ .checkmark {
+      background-color: $background-brand-bold;
+      box-shadow: inset 0 0 0 rem(1px) $background-brand-bold;
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .checkmark:after {
+      display: block;
+      left: rem(6px);
+      top: rem(2px);
+      width: rem(4px);
+      height: rem(8px);
+      border: solid $input-background;
+      border-width: 0 rem(1px) rem(1px) 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
 }

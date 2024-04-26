@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { store } from "../store/store"
+import SvgIcon from "./SvgIcon"
 
 export function BoardFilter({ members, labels, filterBy }) {
   const [filter, setFilter] = useState(filterBy)
@@ -37,19 +38,21 @@ export function BoardFilter({ members, labels, filterBy }) {
     <div className="board-filter">
       <form className="filter-form">
         <section>
-          <h3>Keyword</h3>
+          <h3 className="section-title">Keyword</h3>
           <input
+            className="input-text"
             type="text"
             name="txt"
             value={filter.txt}
             onChange={handleFilterChange}
             placeholder="Enter a keyword..."
           />
+          <p className="sub-txt">Search cards, members, labels, and more.</p>
         </section>
         <section className="filter-section">
-          <h3>Members</h3>
+          <h3 className="section-title">Members</h3>
           <ul className="clean-list flex column">
-            <li className="">
+            <li className="form-group">
               <label>
                 <input
                   type="checkbox"
@@ -58,39 +61,46 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.members?.includes("none")}
                   onChange={handleFilterChange}
                 />
-                <div className="button label-button variant-text shape-regular">
+                <span class="checkmark"></span>
+                <div>
+                  <span>
+                    <SvgIcon iconName="member" />
+                  </span>
                   <span>no members</span>
                 </div>
               </label>
             </li>
             {members?.map((m) => {
               return (
-                <label key={m._id}>
-                  <input
-                    type="checkbox"
-                    name="members"
-                    value={m._id}
-                    checked={filter.members?.includes(m._id)}
-                    onChange={handleFilterChange}
-                  />
-                  <div className="button label-button variant-text shape-regular">
-                    <img
-                      className="profile-img profile-img-size-lg"
-                      key={m._id}
-                      src={m.imgUrl}
-                      alt=""
+                <li className="form-group">
+                  <label key={m._id}>
+                    <input
+                      type="checkbox"
+                      name="members"
+                      value={m._id}
+                      checked={filter.members?.includes(m._id)}
+                      onChange={handleFilterChange}
                     />
-                    <span>{m.fullName}</span>
-                  </div>
-                </label>
+                    <span class="checkmark"></span>
+                    <div>
+                      <img
+                        className="profile-img profile-img-size-lg"
+                        key={m._id}
+                        src={m.imgUrl}
+                        alt=""
+                      />
+                      <span>{m.fullName}</span>
+                    </div>
+                  </label>
+                </li>
               )
             })}
           </ul>
         </section>
         <section className="filter-section">
-          <h3>Due date</h3>
+          <h3 className="section-title">Due date</h3>
           <ul className="clean-list task-label-list">
-            <li className="">
+            <li className="form-group">
               <label>
                 <input
                   type="checkbox"
@@ -99,12 +109,13 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.noDates}
                   onChange={handleFilterChange}
                 />
-                <div className="button label-button variant-text shape-regular">
+                <span class="checkmark"></span>
+                <div>
                   <span>no dates</span>
                 </div>
               </label>
             </li>
-            <li className="">
+            <li className="form-group">
               <label>
                 <input
                   type="checkbox"
@@ -113,12 +124,13 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.overdue}
                   onChange={handleFilterChange}
                 />
-                <div className="button label-button variant-text shape-regular">
+                <span class="checkmark"></span>
+                <div>
                   <span>overdue</span>
                 </div>
               </label>
             </li>
-            <li className="">
+            <li className="form-group">
               <label>
                 <input
                   type="checkbox"
@@ -127,12 +139,13 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.dueNextDay}
                   onChange={handleFilterChange}
                 />
-                <div className="button label-button variant-text shape-regular">
+                <span class="checkmark"></span>
+                <div>
                   <span>due next day</span>
                 </div>
               </label>
             </li>
-            <li className="">
+            <li className="form-group">
               <label>
                 <input
                   type="checkbox"
@@ -141,12 +154,13 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.dueNextWeek}
                   onChange={handleFilterChange}
                 />
-                <div className="button label-button variant-text shape-regular">
+                <span class="checkmark"></span>
+                <div>
                   <span>do nex week</span>
                 </div>
               </label>
             </li>
-            <li className="">
+            <li className="form-group">
               <label>
                 <input
                   type="checkbox"
@@ -155,7 +169,8 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.dueNextMonth}
                   onChange={handleFilterChange}
                 />
-                <div className="button label-button variant-text shape-regular">
+                <span class="checkmark"></span>
+                <div>
                   <span>due next month</span>
                 </div>
               </label>
@@ -163,9 +178,9 @@ export function BoardFilter({ members, labels, filterBy }) {
           </ul>
         </section>
         <section className="filter-section">
-          <h3>Labels</h3>
+          <h3 className="section-title">Labels</h3>
           <ul className="clean-list task-label-list">
-            <li className="">
+            <li className="form-group">
               <label>
                 <input
                   type="checkbox"
@@ -174,14 +189,15 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.labels?.includes("none")}
                   onChange={handleFilterChange}
                 />
-                <div className="button label-button variant-text shape-regular">
+                <span class="checkmark"></span>
+                <div>
                   <span>no labels</span>
                 </div>
               </label>
             </li>
             {labels?.map((lb) => {
               return (
-                <li key={lb.id} className="">
+                <li key={lb.id} className="form-group">
                   <label>
                     <input
                       type="checkbox"
@@ -190,10 +206,8 @@ export function BoardFilter({ members, labels, filterBy }) {
                       checked={filter.labels?.includes(lb.id)}
                       onChange={handleFilterChange}
                     />
-                    <div
-                      className="button label-button variant-text shape-regular"
-                      style={{ backgroundColor: lb.bgColor }}
-                    >
+                    <span class="checkmark"></span>
+                    <div style={{ backgroundColor: lb.bgColor }}>
                       {lb.title && <span>{lb.title}</span>}
                     </div>
                   </label>
