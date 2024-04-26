@@ -62,8 +62,8 @@ export function BoardFilter({ members, labels, filterBy }) {
                   onChange={handleFilterChange}
                 />
                 <span class="checkmark"></span>
-                <div>
-                  <span>
+                <div className="filter-txt">
+                  <span className="filter-icon">
                     <SvgIcon iconName="member" />
                   </span>
                   <span>no members</span>
@@ -82,13 +82,15 @@ export function BoardFilter({ members, labels, filterBy }) {
                       onChange={handleFilterChange}
                     />
                     <span class="checkmark"></span>
-                    <div>
-                      <img
-                        className="profile-img profile-img-size-lg"
-                        key={m._id}
-                        src={m.imgUrl}
-                        alt=""
-                      />
+                    <div className="filter-txt">
+                      <span className="filter-icon">
+                        <img
+                          className="profile-img"
+                          key={m._id}
+                          src={m.imgUrl}
+                          alt=""
+                        />
+                      </span>
                       <span>{m.fullName}</span>
                     </div>
                   </label>
@@ -110,7 +112,10 @@ export function BoardFilter({ members, labels, filterBy }) {
                   onChange={handleFilterChange}
                 />
                 <span class="checkmark"></span>
-                <div>
+                <div className="filter-txt">
+                  <span className="filter-icon">
+                    <SvgIcon iconName="calendar" />
+                  </span>
                   <span>no dates</span>
                 </div>
               </label>
@@ -125,7 +130,10 @@ export function BoardFilter({ members, labels, filterBy }) {
                   onChange={handleFilterChange}
                 />
                 <span class="checkmark"></span>
-                <div>
+                <div className="filter-txt">
+                  <span className="filter-icon overdue">
+                    <SvgIcon iconName="clock" />
+                  </span>
                   <span>overdue</span>
                 </div>
               </label>
@@ -140,7 +148,10 @@ export function BoardFilter({ members, labels, filterBy }) {
                   onChange={handleFilterChange}
                 />
                 <span class="checkmark"></span>
-                <div>
+                <div className="filter-txt">
+                  <span className="filter-icon due-soon">
+                    <SvgIcon iconName="clock" />
+                  </span>
                   <span>due next day</span>
                 </div>
               </label>
@@ -155,8 +166,11 @@ export function BoardFilter({ members, labels, filterBy }) {
                   onChange={handleFilterChange}
                 />
                 <span class="checkmark"></span>
-                <div>
-                  <span>do nex week</span>
+                <div className="filter-txt">
+                  <span className="filter-icon">
+                    <SvgIcon iconName="clock" />
+                  </span>
+                  <span>do next week</span>
                 </div>
               </label>
             </li>
@@ -170,7 +184,10 @@ export function BoardFilter({ members, labels, filterBy }) {
                   onChange={handleFilterChange}
                 />
                 <span class="checkmark"></span>
-                <div>
+                <div className="filter-txt">
+                  <span className="filter-icon">
+                    <SvgIcon iconName="clock" />
+                  </span>
                   <span>due next month</span>
                 </div>
               </label>
@@ -190,7 +207,10 @@ export function BoardFilter({ members, labels, filterBy }) {
                   onChange={handleFilterChange}
                 />
                 <span class="checkmark"></span>
-                <div>
+                <div className="filter-txt">
+                  <span className="filter-icon">
+                    <SvgIcon iconName="label" />
+                  </span>
                   <span>no labels</span>
                 </div>
               </label>
@@ -207,7 +227,10 @@ export function BoardFilter({ members, labels, filterBy }) {
                       onChange={handleFilterChange}
                     />
                     <span class="checkmark"></span>
-                    <div style={{ backgroundColor: lb.bgColor }}>
+                    <div
+                      className="button label-button variant-text shape-regular"
+                      style={{ backgroundColor: lb.bgColor }}
+                    >
                       {lb.title && <span>{lb.title}</span>}
                     </div>
                   </label>
