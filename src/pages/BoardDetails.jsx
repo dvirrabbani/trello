@@ -33,6 +33,11 @@ export function BoardDetails() {
     loadBoard(params.boardId)
   }, [params.boardId])
 
+  //change document title
+  useEffect(() => {
+    if (board) document.title = board.title
+  }, [board])
+
   if (!board) return <div>Loading..</div>
 
   const boardStyle = {
