@@ -1,7 +1,22 @@
 .board-filter {
-  width: rem(352px);
+  width: rem(372px);
   max-height: calc(100vh - rem(170px));
   overflow: auto;
+  margin-right: -12px;
+  padding-right: 12px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--ds-background-accent-gray-subtle, #dcdfe4);
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: var(--ds-background-neutral, #091e420f);
+  }
 
   .section-title {
     @include typography($type: "h3", $color: $color-text-subtle);
