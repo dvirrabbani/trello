@@ -14,7 +14,7 @@ export function RootCmp() {
   }, [])
 
   return (
-    <div className="main-app">
+    <div className="main-app bg-image-cover">
       <AppHeader />
       <Routes>
         <Route

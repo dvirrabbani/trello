@@ -12,7 +12,7 @@ export const DEMO_BOARD_LIST = [
     },
     style: {
       bgImg: "https://images.unsplash.com/photo-1699116548123-73affe0987b7",
-      bgColor: "#7A57D1",
+      bgColor: "rgb(38, 52, 53)",
     },
     labels: [
       { id: "l106", bgColor: "#4bce97", title: "" },

@@ -9,6 +9,9 @@ import { TaskQuickEdit } from "../cmps/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardSidebar"
 import { boardService } from "../services/board.service"
+import { el } from "date-fns/locale"
+import { green } from "@mui/material/colors"
+import { utilService } from "../services/util.service"
 
 export function BoardDetails() {
   const params = useParams()
@@ -33,25 +36,44 @@ export function BoardDetails() {
     loadBoard(params.boardId)
   }, [params.boardId])
 
-  //change document title
+  //set document title and dynamic style
   useEffect(() => {
-    if (board) document.title = board.title
+    if (board) {
+      document.title = board.title
+      setDynamicStyle()
+    }
+    // reset dynamic style on unmount
+    return () => {
+      const elMainContent = document.querySelector(".main-app")
+      const elHeader = document.querySelector(".app-header")
+
+      elMainContent.style.backgroundImage = "none"
+      elHeader.style.backgroundColor = "white"
+    }
   }, [board])
+
+  function setDynamicStyle() {
+    const elMainContent = document.querySelector(".main-app")
+    const elHeader = document.querySelector(".app-header")
+    const elSidebar = document.querySelector(".board-sidebar")
+
+    elMainContent.style.backgroundImage = `url(${board.style.bgImg})`
+    elSidebar.style.backgroundColor = utilService.addOpacityToRGB(
+      board.style.bgColor,
+      0.9
+    )
+    elHeader.style.backgroundColor = utilService.addOpacityToRGB(
+      board.style.bgColor,
+      0.95
+    )
+  }
 
   if (!board) return <div>Loading..</div>
 
-  const boardStyle = {
-    backgroundColor: board.style.bgColor,
-    color: "white",
-  }
-
   return (
-    <div className="board-details-container" style={boardStyle}>
+    <div className="board-details-container">
       <BoardSidebar />
-      <div
-        className="board-main-content flex column"
-        style={{ backgroundImage: `url(${board.style.bgImg})` }}
-      >
+      <div className="board-main-content flex column">
         <BoardDetailsHeader board={board} filterBy={filterBy} />
         <div className="board-groups-container full">
           <GroupList groups={board.groups} />

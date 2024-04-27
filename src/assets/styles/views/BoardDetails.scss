@@ -3,6 +3,12 @@
   grid-template-columns: rem(260px) 1fr;
   height: 100%;
 
+  .board-sidebar {
+    backdrop-filter: blur(6px);
+    background-color: white;
+    color: white;
+  }
+
   .board-main-content {
     background-repeat: no-repeat;
     background-size: cover;
