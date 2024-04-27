@@ -61,7 +61,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.members?.includes("none")}
                   onChange={handleFilterChange}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <div className="filter-txt">
                   <span className="filter-icon">
                     <SvgIcon iconName="member" />
@@ -72,8 +72,8 @@ export function BoardFilter({ members, labels, filterBy }) {
             </li>
             {members?.map((m) => {
               return (
-                <li className="form-group">
-                  <label key={m._id}>
+                <li key={m._id} className="form-group">
+                  <label>
                     <input
                       type="checkbox"
                       name="members"
@@ -81,7 +81,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                       checked={filter.members?.includes(m._id)}
                       onChange={handleFilterChange}
                     />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                     <div className="filter-txt">
                       <span className="filter-icon">
                         <img
@@ -111,7 +111,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.noDates}
                   onChange={handleFilterChange}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <div className="filter-txt">
                   <span className="filter-icon">
                     <SvgIcon iconName="calendar" />
@@ -129,7 +129,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.overdue}
                   onChange={handleFilterChange}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <div className="filter-txt">
                   <span className="filter-icon overdue">
                     <SvgIcon iconName="clock" />
@@ -147,7 +147,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.dueNextDay}
                   onChange={handleFilterChange}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <div className="filter-txt">
                   <span className="filter-icon due-soon">
                     <SvgIcon iconName="clock" />
@@ -165,7 +165,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.dueNextWeek}
                   onChange={handleFilterChange}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <div className="filter-txt">
                   <span className="filter-icon">
                     <SvgIcon iconName="clock" />
@@ -183,12 +183,27 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.dueNextMonth}
                   onChange={handleFilterChange}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <div className="filter-txt">
                   <span className="filter-icon">
                     <SvgIcon iconName="clock" />
                   </span>
                   <span>due next month</span>
+                </div>
+              </label>
+            </li>
+            <li className="form-group">
+              <label>
+                <input
+                  type="checkbox"
+                  name="isCompleted"
+                  value="none"
+                  checked={filter.isCompleted}
+                  onChange={handleFilterChange}
+                />
+                <span className="checkmark"></span>
+                <div className="filter-txt">
+                  <span>Marked as completed</span>
                 </div>
               </label>
             </li>
@@ -206,7 +221,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                   checked={filter.labels?.includes("none")}
                   onChange={handleFilterChange}
                 />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
                 <div className="filter-txt">
                   <span className="filter-icon">
                     <SvgIcon iconName="label" />
@@ -226,7 +241,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                       checked={filter.labels?.includes(lb.id)}
                       onChange={handleFilterChange}
                     />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                     <div
                       className="button label-button variant-text shape-regular"
                       style={{ backgroundColor: lb.bgColor }}

@@ -1,3 +1,4 @@
+import { is } from "date-fns/locale"
 import { BOARD_LABELS } from "../const/label.js"
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
 import { activityService } from "./acitivity.service.js"
@@ -146,10 +147,25 @@ function _isTaskMatchTxt(task, filter) {
 }
 
 function _isTaskMatchDates(task, filter) {
-  const { noDates, overdue, dueNextDay, dueNextWeek, dueNextMonth } = filter
-  const due = new Date(task.dueDate)
+  const {
+    noDates,
+    overdue,
+    dueNextDay,
+    dueNextWeek,
+    dueNextMonth,
+    isCompleted,
+  } = filter
 
-  if (!noDates && !overdue && !dueNextDay && !dueNextWeek && !dueNextMonth) {
+  const due = new Date(task.dueDate?.date)
+
+  if (
+    !noDates &&
+    !overdue &&
+    !dueNextDay &&
+    !dueNextWeek &&
+    !dueNextMonth &&
+    !isCompleted
+  ) {
     // no date-related filtering
     return true
   }
@@ -159,6 +175,7 @@ function _isTaskMatchDates(task, filter) {
   let isMatchDueNextDay = false
   let isMatchDueNextWeek = false
   let isMatchDueNextMonth = false
+  let isMatchIsCompleted = false
 
   if (noDates) {
     isMatchNoDates = !task.dueDate
@@ -185,12 +202,17 @@ function _isTaskMatchDates(task, filter) {
     isMatchDueNextMonth = due < nextMonth && due > Date.now()
   }
 
+  if (isCompleted) {
+    isMatchIsCompleted = task.dueDate?.isCompleted
+  }
+
   return (
     isMatchNoDates ||
     isMatchOverdue ||
     isMatchDueNextDay ||
     isMatchDueNextWeek ||
-    isMatchDueNextMonth
+    isMatchDueNextMonth ||
+    isMatchIsCompleted
   )
 }
 

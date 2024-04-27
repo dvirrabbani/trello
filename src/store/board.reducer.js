@@ -24,6 +24,7 @@ const initialState = {
     dueNextDay: false,
     dueNextWeek: false,
     dueNextMonth: false,
+    isCompleted: false,
   },
 }
 
