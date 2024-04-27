@@ -1272,7 +1272,7 @@ export const DEMO_BOARD_LIST = [
     style: {
       bgImg:
         "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
-      bgColor: "#5841ae",
+      bgColor: "rgb(88, 65, 174)",
     },
     labels: [
       { id: "l106", bgColor: "#4bce97", title: "" },
