@@ -1,0 +1,58 @@
+.task-dates-popover {
+  label {
+    font-size: rem(12px);
+    font-weight: 700;
+    line-height: rem(16px);
+    margin-bottom: rem(4px);
+    color: $color-text-subtle;
+  }
+
+  .form-group {
+    display: grid;
+    justify-content: start;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: rem(6px);
+
+    input[type="checkbox"] {
+      margin: 0;
+      width: rem(16px);
+      height: rem(16px);
+    }
+
+    > *:not(input[type="checkbox"]) {
+      outline: none;
+      border: none;
+      width: rem(90px);
+      padding: 0;
+      background-color: $clr8;
+      box-shadow: inset 0 0 0 rem(2px) $border-focused;
+      border-radius: rem(3px);
+      > * {
+        padding: 0;
+      }
+      // MUI date picker input
+      input,
+      input::placeholder {
+        padding: rem(6px);
+        font-size: rem(14px);
+        line-height: rem(20px);
+        font-weight: 400;
+      }
+      &:disabled {
+        background-color: $background-disabled;
+        box-shadow: none;
+        color: $color-text-disabled;
+        cursor: not-allowed;
+        user-select: none;
+      }
+    }
+  }
+
+  > button {
+    width: 100%;
+    height: rem(32px);
+    justify-content: center;
+    margin-top: rem(8px);
+  }
+}
