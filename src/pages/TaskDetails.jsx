@@ -146,14 +146,6 @@ export function TaskDetails() {
     })
   }
 
-  function onUpdateCover({ bgImg }) {
-    onUpdateTask({
-      key: "style",
-      // TODO customize background color(bgColor)
-      value: { bgColor: "#fff", bgImg },
-    })
-  }
-
   const labels = { board: board.labels, task: getTaskLabels() }
   const members = { board: board.members, task: getTaskMembers() }
 
@@ -165,9 +157,13 @@ export function TaskDetails() {
     <div className="task-details-container">
       <div className="task-detail-wrapper">
         <div className="task-details">
-          <TaskDetailsHeader params={params} task={task} />
+          <TaskDetailsHeader
+            params={params}
+            task={task}
+            onUpdateTask={onUpdateTask}
+          />
           <div className="flex task-details-main-container">
-            <div className="task-details-main full">
+            <main className="task-details-main full">
               <TaskDetailsMainHeader
                 task={task}
                 labels={labels}
@@ -207,7 +203,7 @@ export function TaskDetails() {
                 onAddComment={onAddComment}
                 onUpdateComment={onUpdateComment}
               />
-            </div>
+            </main>
             <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
           </div>
         </div>
