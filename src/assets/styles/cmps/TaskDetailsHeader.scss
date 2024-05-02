@@ -4,10 +4,40 @@
   border-top-left-radius: rem(8px);
 
   .task-cover {
-    height: rem(160px);
+    height: rem(116px);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+    &.task-cover-img {
+      height: rem(160px);
+    }
+    menu {
+      margin: 0;
+      display: flex;
+      justify-content: flex-end;
+      padding: rem(12px);
+      width: 100%;
+      margin: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      .button {
+        display: flex;
+        gap: rem(6px);
+        padding: rem(6px) rem(12px) rem(6px) rem(6px);
+        color: currentColor;
+        span {
+          font-size: rem(14px);
+          font-weight: 400;
+          line-height: rem(20px);
+        }
+
+        svg {
+          fill: currentColor;
+        }
+      }
+    }
   }
 
   .task-header {
