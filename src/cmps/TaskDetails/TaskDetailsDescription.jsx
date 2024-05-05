@@ -1,17 +1,31 @@
+import { useEffect, useRef, useState } from "react"
 import SvgIcon from "../SvgIcon"
 import { Button } from "../Button"
-import { TaskDetailDescriptionForm } from "./TaskDetailDescriptionForm"
-import { useState } from "react"
-import { useForm } from "../../customHooks/useForm"
 
 export function TaskDetailsDescription({
   description,
   onUpdateTaskDescription,
 }) {
-  const [isFormOpen, setIsFormOpen] = useState(false)
-  const [fields, , handleChange] = useForm({
-    description: description || "",
-  })
+  const [isEditDescriptionOpen, setIsEditDescriptionOpen] = useState(false)
+  const descriptionRef = useRef()
+
+  function onSaveDescription() {
+    const txt = descriptionRef.current.innerText.trim()
+    onUpdateTaskDescription(txt)
+    setIsEditDescriptionOpen(false)
+  }
+
+  function onFocusDescription() {
+    setIsEditDescriptionOpen(true)
+    descriptionRef.current.focus()
+  }
+
+  useEffect(() => {
+    if (isEditDescriptionOpen) {
+      descriptionRef.current.focus()
+      descriptionRef.current.innerText = description
+    }
+  }, [isEditDescriptionOpen])
 
   return (
     <section className="task-details-description">
@@ -19,30 +33,54 @@ export function TaskDetailsDescription({
         <SvgIcon size={"md"} iconName="description" />
         <h3 className="task-description-title">Description</h3>
         {/* Edit Button */}
-        {!isFormOpen && (
-          <Button variant="contained" onClick={() => setIsFormOpen(true)}>
+        {!isEditDescriptionOpen && description && (
+          <Button
+            variant="group"
+            onClick={() => setIsEditDescriptionOpen(true)}
+          >
             Edit
           </Button>
         )}
       </div>
+      <main>
+        {!isEditDescriptionOpen && !description && (
+          <Button
+            variant="contained"
+            onClick={() => setIsEditDescriptionOpen(true)}
+          >
+            Add a more details description...{" "}
+          </Button>
+        )}
 
-      {/* Description is empty */}
-      {!isFormOpen && !fields.description && (
-        <Button onClick={() => setIsFormOpen(true)}>
-          Add a more details description...{" "}
-        </Button>
-      )}
-      {/* Description has value and from is not open */}
-      {!isFormOpen && fields.description && <div>{fields.description}</div>}
-      {/* User clicks on Edit Description */}
-      {isFormOpen && (
-        <TaskDetailDescriptionForm
-          handleChange={handleChange}
-          onUpdateTaskDescription={onUpdateTaskDescription}
-          description={fields.description}
-          setIsFormOpen={setIsFormOpen}
-        />
-      )}
+        {!isEditDescriptionOpen && description && (
+          <pre onClick={onFocusDescription}>{description}</pre>
+        )}
+
+        <div
+          className="task-detail-description-edit"
+          style={{ display: !isEditDescriptionOpen ? "none" : "" }}
+        >
+          {/* Editable description  */}
+          <pre
+            autoFocus={true}
+            ref={descriptionRef}
+            className="input-text"
+            suppressContentEditableWarning={true}
+            contentEditable={true}
+          >
+            {description}
+          </pre>
+
+          <div className="actions">
+            <Button variant="primary" onClick={onSaveDescription}>
+              Save
+            </Button>
+            <Button onClick={() => setIsEditDescriptionOpen(false)}>
+              Cancel
+            </Button>
+          </div>
+        </div>
+      </main>
     </section>
   )
 }

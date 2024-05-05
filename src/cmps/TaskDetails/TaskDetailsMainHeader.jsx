@@ -36,7 +36,7 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
   }
 
   return (
-    <section className="task-details-main-header flex">
+    <section className="task-details-main-header">
       {/* Task Members */}
       {members?.task?.length > 0 && (
         <div className="main-header-card">

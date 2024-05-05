@@ -30,6 +30,46 @@
         border-bottom-left-radius: rem(8px);
         border-bottom-right-radius: rem(8px);
       }
+
+      .task-details-description {
+        pre {
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+            "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", fantasy;
+        }
+
+        main {
+          margin-inline-start: rem(40px);
+          display: grid;
+          & > .button {
+            display: flex;
+            align-items: baseline;
+            height: rem(60px);
+            flex: 1;
+            padding: rem(8px) rem(12px);
+          }
+
+          > pre {
+            cursor: pointer;
+          }
+
+          .task-detail-description-edit {
+            pre {
+              min-height: rem(275px);
+            }
+            .actions {
+              display: flex;
+              gap: rem(6px);
+              margin-top: rem(8px);
+
+              .button {
+                height: rem(32px);
+                padding: rem(6px) rem(12px);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
