@@ -1,13 +1,23 @@
-import { useState } from "react"
-import { updateCurrentBoard } from "../store/board.actions"
-import { Button } from "./Button"
-import SvgIcon from "./SvgIcon"
-import { Popover } from "./Popover"
+import { useEffect, useState } from "react"
+import { updateCurrentBoard } from "../../store/board.actions"
+import { Button } from "../Button"
+import SvgIcon from "../SvgIcon"
+import { Popover } from "../Popover"
 import { BoardFilter } from "./BoardFilter"
+import { FilterCount } from "./FilterCount"
+import { store } from "../../store/store"
+import { boardService } from "../../services/board.service"
 
 export function BoardDetailsHeader({ board, filterBy }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const isPopoverOpen = Boolean(anchorEl)
+  const isFilterEmpty = Object.values(filterBy).every((val) => {
+    if (Array.isArray(val)) return val.length === 0
+    return !val
+  })
+  const tasksCount = board.groups.reduce((acc, group) => {
+    return acc + group.tasks.length
+  }, 0)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -24,6 +34,13 @@ export function BoardDetailsHeader({ board, filterBy }) {
     })
   }
 
+  function onClearFilter() {
+    store.dispatch({
+      type: "SET_BOARD_FILTER",
+      filterBy: boardService.getDefaultFilter(),
+    })
+  }
+
   return (
     <section className="board-details-header">
       <div className="board-topbar-start">
@@ -36,10 +53,18 @@ export function BoardDetailsHeader({ board, filterBy }) {
         </Button>
       </div>
       <div className="board-topbar-end">
-        <button className="button" onClick={handleClick}>
-          <SvgIcon iconName="filter" />
-          Filters
-        </button>
+        <span>
+          <button className="filter-btn button" onClick={handleClick}>
+            <SvgIcon iconName="filter" />
+            Filters
+            {!isFilterEmpty && <FilterCount tasksCount={tasksCount} />}
+          </button>
+          {!isFilterEmpty && (
+            <button className="clear-filter-btn button" onClick={onClearFilter}>
+              Clear All
+            </button>
+          )}
+        </span>
         <Popover
           id={isPopoverOpen ? "filter-popover" : undefined}
           open={isPopoverOpen}

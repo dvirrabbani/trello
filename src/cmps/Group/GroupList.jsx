@@ -1,12 +1,10 @@
 import { useState } from "react"
 import { updateCurrentBoard } from "../../store/board.actions"
-import { utilService } from "../../services/util.service"
 import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
 import { GroupPreview } from "./GroupPreview"
 import { activityService } from "../../services/acitivity.service"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
-import { de } from "date-fns/locale"
 import { boardService } from "../../services/board.service"
 
 export function GroupList({ groups }) {
