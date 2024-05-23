@@ -41,6 +41,7 @@ export function TaskDetailsHeader({ params, task, onUpdateTask }) {
             <ButtonDynamicTaskPopover
               title={"Cover"}
               iconName={"cover"}
+              task={task}
               onUpdateTask={onUpdateTask}
               type={"Cover"}
               popoverTitle={"Cover"}

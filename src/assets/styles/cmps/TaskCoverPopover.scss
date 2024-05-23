@@ -3,5 +3,82 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: rem(4px) 0 0;
+  }
+
+  .cover-size-edit {
+    .label {
+      font-weight: 600;
+    }
+
+    .cover-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: rem(8px);
+      padding: rem(4px);
+      margin: 0 rem(-4px);
+      overflow-x: hidden;
+    }
+
+    .cover {
+      background-color: $clr19;
+      border: rem(1px) solid var(--ds-border, #091e4224);
+      height: rem(62px);
+      border-radius: rem(3px);
+      cursor: pointer;
+      position: relative;
+      &.active {
+        box-shadow: 0 0 0 rem(2px) $clr19, 0 0 0 rem(4px) $clr3;
+      }
+    }
+
+    .cover.size-full {
+      .skeleton-card {
+        position: absolute;
+        bottom: rem(4px);
+      }
+    }
+
+    .cover-background {
+      height: rem(28px);
+    }
+
+    .skeleton-card {
+      padding: rem(6px) rem(4px) rem(4px) rem(6px);
+
+      .skeleton {
+        background-color: $background-accent-gray-subtle;
+        &.skeleton-line {
+          height: rem(4px);
+          border-radius: rem(2px);
+          width: rem(122px);
+        }
+        &.skeleton-line-2 {
+          width: rem(98px);
+          margin-top: rem(4px);
+        }
+        &.skeleton-btn {
+          width: rem(16px);
+          height: rem(6px);
+          border-radius: rem(2px);
+          margin-right: rem(2px);
+        }
+      }
+
+      .skeleton-card-row {
+        display: flex;
+        margin-top: rem(6px);
+      }
+
+      .skeleton-circle {
+        position: absolute;
+        width: rem(10px);
+        height: rem(10px);
+        right: rem(4px);
+        bottom: rem(4px);
+        background-color: $background-accent-gray-subtle;
+        border-radius: rem(5px);
+      }
+    }
   }
 }
