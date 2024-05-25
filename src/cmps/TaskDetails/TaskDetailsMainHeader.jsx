@@ -7,7 +7,7 @@ import { Popover } from "../Popover"
 import { ProfileImg } from "../ProfileImg"
 import { ButtonDynamicTaskPopover } from "../ButtonDynamicTaskPopover"
 
-export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
+export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
   const [datePopover, setDatePopover] = useState(null)
   const [labelPopover, setLabelPopover] = useState(null)
   const elListLabelRef = useRef(null)
@@ -38,12 +38,12 @@ export function TaskDetailsMainHeader({ task, members, labels, onUpdateTask }) {
   return (
     <section className="task-details-main-header">
       {/* Task Members */}
-      {members?.task?.length > 0 && (
+      {task?.members.length > 0 && (
         <div className="main-header-card">
           <h4 className="h4">Members</h4>
           <div className="member-list flex">
-            {members.task?.map((member) => (
-              <ProfileImg key={member._id} imgUrl={member.imgUrl} size={"lg"} />
+            {task?.members?.map((member) => (
+              <ProfileImg key={member.id} imgUrl={member.imgUrl} size={"lg"} />
             ))}
             <ButtonDynamicTaskPopover
               variant={"contained"}

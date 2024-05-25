@@ -1,27 +1,25 @@
 import { useSelector } from "react-redux"
 import { Button } from "../Button"
-import { updateTaskMemberIds } from "../../store/board.actions"
+import { updateTaskMembers } from "../../store/board.actions"
 import { ProfileImg } from "../ProfileImg"
 
 export function TaskPopoverMembers({ task, onUpdateTask }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
-  const taskMembers = board.members?.filter((obj) =>
-    task?.memberIds?.includes(obj._id)
-  )
-  function onUpdateTaskMembers(memberId) {
-    updateTaskMemberIds(memberId, task?.memberIds, onUpdateTask)
+
+  function onUpdateTaskMembers(member) {
+    updateTaskMembers(member, task.members, onUpdateTask)
   }
 
   return (
     <div className="task-popover-members">
-      {taskMembers.length > 0 && (
+      {task.members.length > 0 && (
         <ul className="clean-list flex column">
           <h4 className="title h4">Card Members</h4>
-          {taskMembers?.map((member) => {
+          {task.members.map((member) => {
             return (
               <Button
-                key={member._id}
-                onClick={() => onUpdateTaskMembers(member._id)}
+                key={member.id}
+                onClick={() => onUpdateTaskMembers(member)}
               >
                 <ProfileImg imgUrl={member.imgUrl} size={"lg"} />
                 <span>{member.fullName}</span>
@@ -34,10 +32,7 @@ export function TaskPopoverMembers({ task, onUpdateTask }) {
       <ul className="clean-list flex column">
         {board?.members.map((member) => {
           return (
-            <Button
-              key={member._id}
-              onClick={() => onUpdateTaskMembers(member._id)}
-            >
+            <Button key={member.id} onClick={() => onUpdateTaskMembers(member)}>
               <ProfileImg imgUrl={member.imgUrl} size={"lg"} />
               <span>{member.fullName}</span>
             </Button>

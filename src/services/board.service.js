@@ -126,16 +126,17 @@ function _isTaskMatchLabels(task, filter) {
 function _isTaskMatchMembers(task, filter) {
   const { members } = filter
 
+  // TODO change members to memberIds
   if (!members || !members.length) {
     // no members-related filtering
     return true
   }
 
-  if (!task.memberIds || !task.memberIds.length) {
+  if (!task.members || !task.members.length) {
     return members.includes("none")
   }
-
-  return task.memberIds.some((id) => members.includes(id))
+  const taskMemberIds = task.members.map((m) => m.id)
+  return taskMemberIds.some((taskMemberId) => members.includes(taskMemberId))
 }
 
 function _isTaskMatchTxt(task, filter) {
@@ -236,7 +237,7 @@ function createNewTask() {
     comments: [],
     checklists: [],
     attachments: [],
-    memberIds: [],
+    members: [],
     labelIds: [],
     dueDate: null,
     //TODO: get logged in user

@@ -103,10 +103,6 @@ export function TaskDetails() {
     })
   }
 
-  function getTaskMembers() {
-    return board.members?.filter((obj) => task?.memberIds?.includes(obj._id))
-  }
-
   function getTaskLabels() {
     return board.labels?.filter((obj) => task?.labelIds?.includes(obj.id))
   }
@@ -128,7 +124,7 @@ export function TaskDetails() {
           txt: comment.txt,
           // TODO replace with the current loggedIn user
           byMember: {
-            _id: "u101",
+            id: "u101",
             fullName: "Tal Tarablus",
             imgUrl:
               "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
@@ -147,7 +143,6 @@ export function TaskDetails() {
   }
 
   const labels = { board: board.labels, task: getTaskLabels() }
-  const members = { board: board.members, task: getTaskMembers() }
 
   if (!task) {
     return "loading..."
@@ -167,7 +162,6 @@ export function TaskDetails() {
               <TaskDetailsMainHeader
                 task={task}
                 labels={labels}
-                members={members}
                 onUpdateTask={onUpdateTask}
               />
               <TaskDetailsDescription

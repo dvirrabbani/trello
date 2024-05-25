@@ -1,5 +1,5 @@
 export const DEMO_USER = {
-  _id: "u101",
+  id: "u101",
   fullName: "Tal Tarablus",
   username: "abi@ababmi.com",
   password: "aBambi123",

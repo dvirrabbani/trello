@@ -72,13 +72,13 @@ export function BoardFilter({ members, labels, filterBy }) {
             </li>
             {members?.map((m) => {
               return (
-                <li key={m._id} className="form-group">
+                <li key={m.id} className="form-group">
                   <label>
                     <input
                       type="checkbox"
                       name="members"
-                      value={m._id}
-                      checked={filter.members?.includes(m._id)}
+                      value={m.id}
+                      checked={filter.members?.includes(m.id)}
                       onChange={handleFilterChange}
                     />
                     <span className="checkmark"></span>
@@ -86,7 +86,7 @@ export function BoardFilter({ members, labels, filterBy }) {
                       <span className="filter-icon">
                         <img
                           className="profile-img"
-                          key={m._id}
+                          key={m.id}
                           src={m.imgUrl}
                           alt=""
                         />

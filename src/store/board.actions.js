@@ -36,6 +36,7 @@ export function getActionUpdateBoard(board) {
     board,
   }
 }
+
 export function getActionUpdateCurrentBoard(board) {
   return {
     type: UPDATE_CURRENT_BOARD,
@@ -151,27 +152,24 @@ export async function loadTask(boardId) {
     throw err
   }
 }
-export async function updateTaskMemberIds(
-  memberId,
-  taskMembersIds,
-  onUpdateTask
-) {
+
+export async function updateTaskMembers(member, taskMembers, onUpdateTask) {
   try {
-    let membersIdsToEdit = []
+    let membersToEdit = []
     // dose not have members
-    if (!taskMembersIds) {
-      membersIdsToEdit = [memberId]
+    if (!taskMembers) {
+      membersToEdit = [member]
       // have members
     } else {
-      const taskMember = taskMembersIds.find((mIdx) => mIdx === memberId)
-      membersIdsToEdit = taskMember
-        ? taskMembersIds.filter((mIdx) => mIdx !== memberId)
-        : [...taskMembersIds, memberId]
+      const taskMember = taskMembers.find((m) => m.id === member.id)
+      membersToEdit = taskMember
+        ? taskMembers.filter((m) => m.id !== member.id)
+        : [...taskMembers, member]
     }
 
     onUpdateTask({
-      key: "memberIds",
-      value: membersIdsToEdit,
+      key: "members",
+      value: membersToEdit,
     })
   } catch (err) {
     console.log("Cannot update member", err)
@@ -186,9 +184,9 @@ export async function updateTaskLabels(labelId, taskLabelsIds, onUpdateTask) {
     labelIdsToEdit = [labelId]
     // have labels
   } else {
-    const taskLabel = taskLabelsIds.find((mIdx) => mIdx === labelId)
+    const taskLabel = taskLabelsIds.find((lIdx) => lIdx === labelId)
     labelIdsToEdit = taskLabel
-      ? taskLabelsIds.filter((mIdx) => mIdx !== labelId)
+      ? taskLabelsIds.filter((lIdx) => lIdx !== labelId)
       : [...taskLabelsIds, labelId]
   }
 

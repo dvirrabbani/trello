@@ -25,16 +25,16 @@ export function TaskPreview({
     }
   }, [])
 
-  function onDropMember(groupId, taskId, e) {
-    const memberId = e.dataTransfer.getData("text")
-    const memberIds = task.memberIds || []
+  function onDropMember(groupId, task, e) {
+    const member = e.dataTransfer.getData("text")
+    const members = task.members || []
 
-    if (!memberId) return
-    if (memberIds.includes(memberId)) return
+    if (!member) return
+    if (members.some((member) => member.id === member)) return
 
-    updateCurrentBoard(groupId, taskId, {
-      key: "memberIds",
-      value: [...memberIds, memberId],
+    updateCurrentBoard(groupId, task.id, {
+      key: "members",
+      value: [...members, member],
     })
   }
 
@@ -96,7 +96,7 @@ export function TaskPreview({
       style={isCoverFull && !isQuickEditParent ? fullCoverStyle() : {}}
       className={taskClasses()}
       onClick={isQuickEditParent ? null : onTaskClick}
-      onDrop={(e) => onDropMember(groupId, task.id, e)}
+      onDrop={(e) => onDropMember(groupId, task, e)}
       onDragOver={(e) => e.preventDefault()}
     >
       <button
@@ -149,7 +149,7 @@ export function TaskPreview({
               <ChecklistsBadge checklists={task.checklists} />
             )}
           </div>
-          {task.memberIds && <TaskMembers memberIds={task.memberIds} />}
+          {task.members.length > 0 && <TaskMembers members={task.members} />}
         </div>
       </div>
     </div>
@@ -224,25 +224,25 @@ function ChecklistsBadge({ checklists }) {
   )
 }
 
-function TaskMembers({ memberIds }) {
+function TaskMembers({ members }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
   const boardMembers = board.members
   return (
     <div className="task-members">
-      {memberIds.map((memberId) => (
+      {members.map((member) => (
         <TaskMember
-          key={memberId}
+          key={member.id}
           boardMembers={boardMembers}
-          memberId={memberId}
+          member={member}
         />
       ))}
     </div>
   )
 }
 
-function TaskMember({ boardMembers, memberId }) {
+function TaskMember({ boardMembers, member }) {
   const memberImg = boardMembers.find(
-    (member) => member._id === memberId
+    (boardMember) => boardMember.id === member.id
   ).imgUrl
   const style = {
     backgroundImage: `url(${memberImg})`,

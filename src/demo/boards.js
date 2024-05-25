@@ -5,7 +5,7 @@ export const DEMO_BOARD_LIST = [
     isStarred: false,
     archivedAt: null,
     createdBy: {
-      _id: "u101",
+      id: "u101",
       fullName: "Dvir Rabbani",
       imgUrl:
         "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -25,19 +25,19 @@ export const DEMO_BOARD_LIST = [
     ],
     members: [
       {
-        _id: "u101",
+        id: "u101",
         fullName: "Dvir Rabbani",
         imgUrl:
           "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
       },
       {
-        _id: "u102",
+        id: "u102",
         fullName: "Yuval Mor",
         imgUrl:
           "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
       },
       {
-        _id: "u103",
+        id: "u103",
         fullName: "Tal Amit",
         imgUrl:
           "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -50,381 +50,6 @@ export const DEMO_BOARD_LIST = [
         archivedAt: null,
         tasks: [
           {
-            id: "t101",
-            title: "Assign project tasks",
-            description:
-              "Project tasks should be assigned to team members based on their skills and availability.",
-            comments: [
-              {
-                id: "ZdPnm",
-                txt: "also @yaronb please CR this",
-                createdAt: 1590999817436,
-                byMember: {
-                  _id: "u101",
-                  fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-                },
-              },
-              {
-                id: "AbCde",
-                txt: "@Dvir, great work on this! Would you mind addressing the edge case mentioned in line 54?",
-                createdAt: 1591002317436,
-                byMember: {
-                  _id: "u102",
-                  fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
-                },
-              },
-              {
-                id: "FgHij",
-                txt: "This code looks good to me. Nice job, @Tal!",
-                createdAt: 1591003217436,
-                byMember: {
-                  _id: "u103",
-                  fullName: "Tal Amit",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
-                },
-              },
-            ],
-            checklists: [
-              {
-                id: "checklist1",
-                title: "Daily Tasks",
-                todos: [
-                  {
-                    id: "todo1a",
-                    title: "Complete morning workout",
-                    isDone: true,
-                  },
-                  {
-                    id: "todo2q",
-                    title: "Prepare breakfast",
-                    isDone: true,
-                  },
-                  {
-                    id: "todo3w",
-                    title: "Attend team meeting",
-                    isDone: false,
-                  },
-                ],
-              },
-            ],
-            attachments: [
-              {
-                id: "at01",
-                imgUrl:
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
-              },
-              {
-                id: "at02",
-                imgUrl:
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
-              },
-            ],
-            memberIds: ["u101", "u102", "u103"],
-            labelIds: ["l106"],
-            dueDate: { date: 1712602448965, isCompleted: true },
-            byMember: {
-              _id: "u101",
-              fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
-            },
-            style: {
-              bgColor: "#53A8E2",
-              bgImg: null,
-              isCoverFull: false,
-            },
-          },
-          {
-            id: "t102",
-            title: "Define project scope",
-            description:
-              "scenarios, use cases, features, and functions that characterize a project's value.",
-            comments: [
-              {
-                id: "ZdPnm",
-                txt: "also @yaronb please CR this",
-                createdAt: 1590999817436,
-                byMember: {
-                  _id: "u101",
-                  fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-                },
-              },
-              {
-                id: "FgHij",
-                txt: "This code looks good to me. Nice job, @Tal!",
-                createdAt: 1591003217436,
-                byMember: {
-                  _id: "u103",
-                  fullName: "Tal Amit",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
-                },
-              },
-            ],
-            checklists: [
-              {
-                id: "checklist1",
-                title: "Project Scope Tasks",
-                todos: [
-                  {
-                    id: "todo1s",
-                    title: "Identify project requirements",
-                    isDone: false,
-                  },
-                  {
-                    id: "todo2w",
-                    title: "Define project boundaries",
-                    isDone: false,
-                  },
-                  {
-                    id: "todo3e",
-                    title: "Identify project deliverables",
-                    isDone: false,
-                  },
-                ],
-              },
-              {
-                id: "checklist2",
-                title: "Scope Verification Tasks",
-                todos: [
-                  {
-                    id: "todo1d",
-                    title: "Verify project scope",
-                    isDone: false,
-                  },
-                  {
-                    id: "todo2e",
-                    title: "Confirm project boundaries",
-                    isDone: false,
-                  },
-                  {
-                    id: "todo3r",
-                    title: "Validate project deliverables",
-                    isDone: false,
-                  },
-                ],
-              },
-            ],
-            attachments: [
-              {
-                id: "at01",
-                imgUrl:
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
-              },
-            ],
-            memberIds: ["u101", "u102"],
-            labelIds: ["l108", "l109", "l106"],
-            dueDate: { date: 1712602448965, isCompleted: true },
-            byMember: {
-              _id: "u101",
-              fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
-            },
-            style: {
-              bgColor: "#53A8E2",
-              bgImg: null,
-              isCoverFull: true,
-            },
-          },
-          {
-            id: "t103",
-            title: "Identify project stakeholders",
-            description:
-              "stakeholders are individuals or groups who have an interest in the success of a project.",
-            comments: [
-              {
-                id: "ZdPnm",
-                txt: "also @yaronb please CR this",
-                createdAt: 1590999817436,
-                byMember: {
-                  _id: "u101",
-                  fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-                },
-              },
-              {
-                id: "FgHij",
-                txt: "This code looks good to me. Nice job, @Tal!",
-                createdAt: 1591003217436,
-                byMember: {
-                  _id: "u103",
-                  fullName: "Tal Amit",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
-                },
-              },
-              {
-                id: "KlMno",
-                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
-                createdAt: 1591004117436,
-                byMember: {
-                  _id: "u102",
-                  fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
-                },
-              },
-            ],
-            checklists: [
-              {
-                id: "checklist1",
-                title: "Stakeholder Identification Tasks",
-                todos: [
-                  {
-                    id: "todo1f",
-                    title: "Identify project sponsors",
-                    isDone: true,
-                  },
-                  {
-                    id: "todo2r",
-                    title: "Identify project customers",
-                    isDone: true,
-                  },
-                  {
-                    id: "todo3t",
-                    title: "Identify project users",
-                    isDone: false,
-                  },
-                ],
-              },
-            ],
-            attachments: [],
-            memberIds: [],
-            labelIds: [],
-            dueDate: { date: 1712602448965, isCompleted: true },
-            byMember: {
-              _id: "u102",
-              fullName: "Yuval Mor",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
-            },
-            style: {
-              bgColor: "black",
-              bgImg:
-                "https://res.cloudinary.com/dviyyjlac/image/upload/v1680503351/siibq2pbkrmx4ljme0ih.webp",
-              isCoverFull: false,
-            },
-          },
-          {
-            id: "t104",
-            title: "Create project timeline",
-            description: "",
-            comments: [
-              {
-                id: "FgHij",
-                txt: "This code looks good to me. Nice job, @Tal!",
-                createdAt: 1591003217436,
-                byMember: {
-                  _id: "u103",
-                  fullName: "Tal Amit",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
-                },
-              },
-              {
-                id: "KlMno",
-                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
-                createdAt: 1591004117436,
-                byMember: {
-                  _id: "u102",
-                  fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
-                },
-              },
-            ],
-            checklists: [],
-            attachments: [
-              {
-                id: "at01",
-                imgUrl:
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
-              },
-              {
-                id: "at02",
-                imgUrl:
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
-              },
-            ],
-            memberIds: ["u103"],
-            labelIds: [],
-            dueDate: null,
-            byMember: {
-              _id: "u103",
-              fullName: "Tal Amit",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
-            },
-            style: {
-              bgColor: "#53A8E2",
-              bgImg:
-                "https://res.cloudinary.com/dviyyjlac/image/upload/v1680503351/siibq2pbkrmx4ljme0ih.webp",
-
-              isCoverFull: true,
-            },
-          },
-          {
-            id: "t105",
-            title: "set project goals",
-            description: "",
-            comments: [
-              {
-                id: "FgHij",
-                txt: "This code looks good to me. Nice job, @Tal!",
-                createdAt: 1591003217436,
-                byMember: {
-                  _id: "u103",
-                  fullName: "Tal Amit",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
-                },
-              },
-              {
-                id: "KlMno",
-                txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
-                createdAt: 1591004117436,
-                byMember: {
-                  _id: "u102",
-                  fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
-                },
-              },
-            ],
-            checklists: [],
-            attachments: [
-              {
-                id: "at01",
-                imgUrl:
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
-              },
-              {
-                id: "at02",
-                imgUrl:
-                  "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
-              },
-            ],
-            memberIds: [],
-            labelIds: [],
-            dueDate: { date: 1713005433158, isCompleted: false },
-            byMember: {
-              _id: "u103",
-              fullName: "Tal Amit",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
-            },
-            style: null,
-          },
-          {
             id: "t106",
             title: "Define project scope",
             description: "",
@@ -434,7 +59,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "This code looks good to me. Nice job, @Tal!",
                 createdAt: 1591003217436,
                 byMember: {
-                  _id: "u103",
+                  id: "u103",
                   fullName: "Tal Amit",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -445,7 +70,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -465,11 +90,30 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: [],
+            members: [
+              {
+                id: "u101",
+                fullName: "Dvir Rabbani",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              },
+              {
+                id: "u102",
+                fullName: "Yuval Mor",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+              },
+              {
+                id: "u103",
+                fullName: "Tal Amit",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+              },
+            ],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u103",
+              id: "u103",
               fullName: "Tal Amit",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -490,7 +134,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "This code looks good to me. Nice job, @Tal!",
                 createdAt: 1591003217436,
                 byMember: {
-                  _id: "u103",
+                  id: "u103",
                   fullName: "Tal Amit",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -501,7 +145,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -521,11 +165,30 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: [],
+            members: [
+              {
+                id: "u101",
+                fullName: "Dvir Rabbani",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              },
+              {
+                id: "u102",
+                fullName: "Yuval Mor",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+              },
+              {
+                id: "u103",
+                fullName: "Tal Amit",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
+              },
+            ],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u103",
+              id: "u103",
               fullName: "Tal Amit",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -542,7 +205,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "This code looks good to me. Nice job, @Tal!",
                 createdAt: 1591003217436,
                 byMember: {
-                  _id: "u103",
+                  id: "u103",
                   fullName: "Tal Amit",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -553,7 +216,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -562,11 +225,11 @@ export const DEMO_BOARD_LIST = [
             ],
             checklists: [],
             attachments: [],
-            memberIds: [],
+            members: [],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u103",
+              id: "u103",
               fullName: "Tal Amit",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -583,7 +246,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "This code looks good to me. Nice job, @Tal!",
                 createdAt: 1591003217436,
                 byMember: {
-                  _id: "u103",
+                  id: "u103",
                   fullName: "Tal Amit",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -594,7 +257,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -603,11 +266,24 @@ export const DEMO_BOARD_LIST = [
             ],
             checklists: [],
             attachments: [],
-            memberIds: [],
+            members: [
+              {
+                id: "u101",
+                fullName: "Dvir Rabbani",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              },
+              {
+                id: "u102",
+                fullName: "Yuval Mor",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+              },
+            ],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u103",
+              id: "u103",
               fullName: "Tal Amit",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -624,7 +300,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "This code looks good to me. Nice job, @Tal!",
                 createdAt: 1591003217436,
                 byMember: {
-                  _id: "u103",
+                  id: "u103",
                   fullName: "Tal Amit",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -635,7 +311,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -644,11 +320,18 @@ export const DEMO_BOARD_LIST = [
             ],
             checklists: [],
             attachments: [],
-            memberIds: [],
+            members: [
+              {
+                id: "u101",
+                fullName: "Dvir Rabbani",
+                imgUrl:
+                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              },
+            ],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u103",
+              id: "u103",
               fullName: "Tal Amit",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -673,7 +356,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "also @yaronb please CR this",
                 createdAt: 1590999817436,
                 byMember: {
-                  _id: "u101",
+                  id: "u101",
                   fullName: "Tal Tarablus",
                   imgUrl:
                     "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
@@ -684,7 +367,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "@Dvir, great work on this! Would you mind addressing the edge case mentioned in line 54?",
                 createdAt: 1591002317436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -695,7 +378,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "This code looks good to me. Nice job, @Tal!",
                 createdAt: 1591003217436,
                 byMember: {
-                  _id: "u103",
+                  id: "u103",
                   fullName: "Tal Amit",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -706,7 +389,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -748,11 +431,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: ["u101", "u102", "u103"],
+            members: [],
             labelIds: ["l106", "l107", "l108", "l109", "l1010", "l1011"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -774,7 +457,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "also @yaronb please CR this",
                 createdAt: 1590999817436,
                 byMember: {
-                  _id: "u101",
+                  id: "u101",
                   fullName: "Tal Tarablus",
                   imgUrl:
                     "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
@@ -832,11 +515,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
               },
             ],
-            memberIds: ["u101", "u102"],
+            members: [],
             labelIds: ["l1010", "l107", "l106"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -907,11 +590,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
               },
             ],
-            memberIds: ["u101", "u102"],
+            members: [],
             labelIds: ["l107", "l109", "l106"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -936,7 +619,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "also @yaronb please CR this",
                 createdAt: 1590999817436,
                 byMember: {
-                  _id: "u101",
+                  id: "u101",
                   fullName: "Tal Tarablus",
                   imgUrl:
                     "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
@@ -947,7 +630,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -989,11 +672,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: ["u101", "u102", "u103"],
+            members: [],
             labelIds: ["l106", "l107", "l108", "l109", "l1010", "l1011"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1057,11 +740,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
               },
             ],
-            memberIds: ["u101", "u102"],
+            members: [],
             labelIds: ["l106", "l107", "l108"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1086,11 +769,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: ["u103"],
+            members: [],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u103",
+              id: "u103",
               fullName: "Tal Amit",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -1115,7 +798,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "also @yaronb please CR this",
                 createdAt: 1590999817436,
                 byMember: {
-                  _id: "u101",
+                  id: "u101",
                   fullName: "Tal Tarablus",
                   imgUrl:
                     "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
@@ -1126,7 +809,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "@Dvir, great work on this! Would you mind addressing the edge case mentioned in line 54?",
                 createdAt: 1591002317436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -1168,11 +851,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: ["u101", "u102", "u103"],
+            members: [],
             labelIds: ["l106", "l107", "l108", "l109", "l1010", "l1011"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1197,11 +880,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: ["u103"],
+            members: [],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u103",
+              id: "u103",
               fullName: "Tal Amit",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -1217,7 +900,7 @@ export const DEMO_BOARD_LIST = [
         txt: "Dvir Rabbani add new Group Apr 12 2024 at 12:12 PM",
         createdAt: 154514,
         byMember: {
-          _id: "u101",
+          id: "u101",
           fullName: "Dvir Rabbani",
           imgUrl:
             "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1228,7 +911,7 @@ export const DEMO_BOARD_LIST = [
         txt: "Dvir Rabbani add new Task Apr 12 2024 at 12:12 PM",
         createdAt: 1591002317436,
         byMember: {
-          _id: "u101",
+          id: "u101",
           fullName: "Dvir Rabbani",
           imgUrl:
             "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1239,7 +922,7 @@ export const DEMO_BOARD_LIST = [
         txt: "Yuval Mor add new Task Apr 12 2024 at 12:12 PM",
         createdAt: 1591003217436,
         byMember: {
-          _id: "u102",
+          id: "u102",
           fullName: "Yuval Mor",
           imgUrl:
             "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -1250,7 +933,7 @@ export const DEMO_BOARD_LIST = [
         txt: "Tal Amit add new Task Apr 12 2024 at 12:12 PM",
         createdAt: 1591004117436,
         byMember: {
-          _id: "u103",
+          id: "u103",
           fullName: "Tal Amit",
           imgUrl:
             "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -1264,7 +947,7 @@ export const DEMO_BOARD_LIST = [
     isStarred: false,
     archivedAt: null,
     createdBy: {
-      _id: "u102",
+      id: "u102",
       fullName: "Yuval Mor",
       imgUrl:
         "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -1285,19 +968,19 @@ export const DEMO_BOARD_LIST = [
     ],
     members: [
       {
-        _id: "u101",
+        id: "u101",
         fullName: "Dvir Rabbani",
         imgUrl:
           "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
       },
       {
-        _id: "u102",
+        id: "u102",
         fullName: "Yuval Mor",
         imgUrl:
           "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
       },
       {
-        _id: "u103",
+        id: "u103",
         fullName: "Tal Amit",
         imgUrl:
           "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -1350,11 +1033,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: ["u103"],
+            members: [],
             labelIds: ["l106", "l107"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1418,11 +1101,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/320x480/b420ee2efc41c440a164050b877028d5/photo-1711619034404-665a4bc6dcd3.jpg",
               },
             ],
-            memberIds: [],
+            members: [],
             labelIds: ["l106"],
             dueDate: { date: 1712602448965, isCompleted: true },
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1447,7 +1130,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "also @yaronb please CR this",
                 createdAt: 1590999817436,
                 byMember: {
-                  _id: "u101",
+                  id: "u101",
                   fullName: "Tal Tarablus",
                   imgUrl:
                     "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
@@ -1458,7 +1141,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "@Dvir, great work on this! Would you mind addressing the edge case mentioned in line 54?",
                 createdAt: 1591002317436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -1469,7 +1152,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "This code looks good to me. Nice job, @Tal!",
                 createdAt: 1591003217436,
                 byMember: {
-                  _id: "u103",
+                  id: "u103",
                   fullName: "Tal Amit",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
@@ -1480,7 +1163,7 @@ export const DEMO_BOARD_LIST = [
                 txt: "I agree with @Yuval's suggestion. It's important to handle that edge case properly. @Dvir, could you take a look?",
                 createdAt: 1591004117436,
                 byMember: {
-                  _id: "u102",
+                  id: "u102",
                   fullName: "Yuval Mor",
                   imgUrl:
                     "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -1522,11 +1205,11 @@ export const DEMO_BOARD_LIST = [
                   "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/641x960/186f5d8012576ac86104adbc9d5b8d75/photo-1712148910821-8fe718c418af.jpg",
               },
             ],
-            memberIds: ["u101", "u102", "u103"],
+            members: [],
             labelIds: [],
             dueDate: null,
             byMember: {
-              _id: "u101",
+              id: "u101",
               fullName: "Dvir Rabbani",
               imgUrl:
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1546,7 +1229,7 @@ export const DEMO_BOARD_LIST = [
         txt: "Dvir Rabbani add new Task Apr 12 2024 at 12:12 PM",
         createdAt: 1591002317436,
         byMember: {
-          _id: "u101",
+          id: "u101",
           fullName: "Dvir Rabbani",
           imgUrl:
             "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
@@ -1557,7 +1240,7 @@ export const DEMO_BOARD_LIST = [
         txt: "Yuval Mor add new Task Apr 12 2024 at 12:12 PM",
         createdAt: 1591003217436,
         byMember: {
-          _id: "u102",
+          id: "u102",
           fullName: "Yuval Mor",
           imgUrl:
             "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
@@ -1568,7 +1251,7 @@ export const DEMO_BOARD_LIST = [
         txt: "Tal Amit add new Task Apr 12 2024 at 12:12 PM",
         createdAt: 1591004117436,
         byMember: {
-          _id: "u103",
+          id: "u103",
           fullName: "Tal Amit",
           imgUrl:
             "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
