@@ -1,16 +1,11 @@
-import { useForm } from "../../customHooks/useForm"
 import { utilService } from "../../services/util.service"
-import { Button } from "../Button"
+import { BtnImgUploader } from "../btn/BtnImgUpload"
 
 export function TaskAttachmentPopover({ task, onUpdateTask, onClose }) {
-  const [fields, , handleChange] = useForm({
-    imgUrl: "",
-  })
-
-  function onAddAttachmentImgUrl() {
+  function onAddAttachmentImgUrl(imgUrl) {
     const attachmentToAdd = {
       id: utilService.makeId(),
-      imgUrl: fields.imgUrl,
+      imgUrl,
       createdAt: Date.now(),
     }
     onUpdateTask({
@@ -21,23 +16,11 @@ export function TaskAttachmentPopover({ task, onUpdateTask, onClose }) {
   }
   return (
     <div className="task-attachment-popover">
-      <label className="h3" htmlFor="task-popover-attachment-input">
-        Paste a link
-      </label>
-      <input
-        id="task-popover-attachment-input"
-        name="imgUrl"
-        className="input-text"
-        placeholder="Paste a new link"
-        value={fields.imgUrl}
-        onChange={handleChange}
+      <h3 className="h3">Attach a file from your computer</h3>
+      <BtnImgUploader
+        title={"Choose a file"}
+        onUploaded={onAddAttachmentImgUrl}
       />
-      <footer className="flex justify-end align-center">
-        <Button onClick={onClose}>Cancel</Button>
-        <Button variant="primary" onClick={onAddAttachmentImgUrl}>
-          Insert
-        </Button>
-      </footer>
     </div>
   )
 }

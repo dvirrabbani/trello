@@ -1,9 +1,16 @@
 .task-attachment-popover {
-  label {
+  padding-top: rem(8px);
+  .h3 {
+    text-align: center;
     margin-bottom: rem(4px);
   }
-  footer {
-    gap: rem(4px);
+
+  .button {
     margin-top: rem(16px);
+    width: 100%;
+    justify-content: center;
+    font-size: rem(14px);
+    line-height: rem(20px);
+    font-weight: 500;
   }
 }
