@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { store } from "../store/store"
-import SvgIcon from "./SvgIcon"
+import { store } from "../../store/store"
+import SvgIcon from "../SvgIcon"
 
 export function BoardFilter({ members, labels, filterBy }) {
   const [filter, setFilter] = useState(filterBy)

@@ -1,8 +1,8 @@
-import SvgIcon from "./SvgIcon"
-import { updateBoard } from "../store/board.actions"
-import { BoardNavLink } from "./BoardNavLink"
+import SvgIcon from "../SvgIcon"
+import { updateBoard } from "../../store/board.actions"
+import { BoardNavLink } from "../BoardNavLink"
 import { useSelector } from "react-redux"
-import { AddBoardButton } from "./AddBoardButton"
+import { AddBoardButton } from "../AddBoardButton"
 
 export function BoardSidebar() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)

@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { TaskPreview } from "./groups/tasks/TaskPreview"
-import { updateCurrentBoard } from "../store/board.actions"
-import { TaskSideBtnActions } from "./TaskSideBtnActions"
-import SvgIcon from "./SvgIcon"
+import { TaskPreview } from "../Group/Task/TaskPreview"
+import { updateCurrentBoard } from "../../store/board.actions"
+import { TaskSideBtnActions } from "../TaskSideBtnActions"
+import SvgIcon from "../SvgIcon"
 
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)

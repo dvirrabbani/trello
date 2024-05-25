@@ -20,6 +20,7 @@ export const boardService = {
   getDefaultLabels,
   createNewGroup,
   createNewTask,
+  getDefaultFilter,
 }
 window.cs = boardService
 
@@ -85,6 +86,20 @@ function getLabels() {
 
 function getDefaultLabels() {
   return BOARD_LABELS.slice(6, 12)
+}
+
+function getDefaultFilter() {
+  return {
+    txt: "",
+    labels: [],
+    members: [],
+    noDates: false,
+    overdue: false,
+    dueNextDay: false,
+    dueNextWeek: false,
+    dueNextMonth: false,
+    isCompleted: false,
+  }
 }
 
 function filteredBoard(board, filterBy) {

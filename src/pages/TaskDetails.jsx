@@ -181,6 +181,7 @@ export function TaskDetails() {
                 onAddCheckListTodo={onAddCheckListTodo}
                 onRemoveCheckListTodo={onRemoveCheckListTodo}
                 onUpdateCheckListTodo={onUpdateCheckListTodo}
+                onUpdateTask={onUpdateTask}
               />
 
               {task?.attachments && (

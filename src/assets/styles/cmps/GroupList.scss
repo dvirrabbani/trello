@@ -15,6 +15,10 @@
   .group-li {
     padding: 0 rem(6px);
 
+    &[data-rbd-draggable-context-id] {
+      cursor: auto;
+    }
+
     &.dragging .group-preview {
       transform: rotate(5deg);
       opacity: 0.5;
@@ -45,14 +49,24 @@
       width: 100%;
     }
 
-    textarea {
-      @include typography($type: "h2");
-      padding: rem(6px) rem(8px) rem(6px) rem(12px);
-      white-space: normal;
-      border-radius: rem(8px);
-      color: $color-txt-primary;
-      height: rem(32px);
-      cursor: pointer;
+    .group-title-container {
+      position: relative;
+      width: -webkit-fill-available;
+
+      .group-title {
+        @include typography($type: "h2");
+        padding: rem(6px) rem(8px) rem(6px) rem(12px);
+        white-space: normal;
+        border-radius: rem(8px);
+        height: rem(32px);
+        cursor: pointer;
+        position: absolute;
+        width: 100%;
+      }
+
+      .group-title.hide {
+        z-index: -1;
+      }
     }
 
     .group-footer {

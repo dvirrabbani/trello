@@ -1,3 +1,5 @@
+import { boardService } from "../services/board.service"
+
 export const SET_BOARDS = "SET_BOARDS"
 export const UPDATE_BOARDS = "UPDATE_BOARDS"
 export const REMOVE_BOARD = "REMOVE_BOARD"
@@ -15,17 +17,7 @@ const initialState = {
   board: null,
   lastRemovedBoard: null,
   labelsExpand: true,
-  boardFilterBy: {
-    txt: "",
-    labels: [],
-    members: [],
-    noDates: false,
-    overdue: false,
-    dueNextDay: false,
-    dueNextWeek: false,
-    dueNextMonth: false,
-    isCompleted: false,
-  },
+  boardFilterBy: boardService.getDefaultFilter(),
 }
 
 export function boardReducer(state = initialState, action) {
