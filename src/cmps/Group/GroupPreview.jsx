@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { updateCurrentBoard } from "../../store/board.actions"
 import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
@@ -12,6 +12,8 @@ export function GroupPreview({ group, deleteGroup }) {
   const [groupToEdit, setGroupToEdit] = useState(group)
   const [displayAddItem, setDisplayAddItem] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
+  const groupTitleH3 = useRef(null)
+  const groupTitleTextarea = useRef(null)
   const isPopoverOpen = Boolean(anchorEl)
 
   const handleClick = (event) => {
@@ -27,11 +29,20 @@ export function GroupPreview({ group, deleteGroup }) {
     setGroupToEdit((prevGroup) => ({ ...prevGroup, [name]: value }))
   }
 
-  function onFocusOut() {
+  function onFocusOut(e) {
     updateCurrentBoard(group.id, null, {
       key: "title",
       value: groupToEdit.title,
     })
+
+    groupTitleH3.current.classList.remove("hide")
+    groupTitleTextarea.current.classList.add("hide")
+  }
+
+  function handleMouseUp(e) {
+    groupTitleH3.current.classList.add("hide")
+    groupTitleTextarea.current.classList.remove("hide")
+    groupTitleTextarea.current.focus()
   }
 
   function onAddTask(inputVal) {
@@ -59,17 +70,27 @@ export function GroupPreview({ group, deleteGroup }) {
   return (
     <div className="group-preview">
       <div className="group-header flex justify-between">
-        <textarea
-          value={groupToEdit.title}
-          onChange={handleChange}
-          className="group-title full"
-          spellCheck="false"
-          name="title"
-          onBlur={onFocusOut}
-          onFocus={(e) => e.currentTarget.select()}
-        >
-          {groupToEdit.title}
-        </textarea>
+        <div className="group-title-container">
+          <h3
+            className="group-title"
+            onMouseUp={handleMouseUp}
+            ref={groupTitleH3}
+          >
+            {groupToEdit.title}
+          </h3>
+          <textarea
+            value={groupToEdit.title}
+            onChange={handleChange}
+            className="group-title hide"
+            spellCheck="false"
+            name="title"
+            onBlur={onFocusOut}
+            onFocus={(e) => e.currentTarget.select()}
+            ref={groupTitleTextarea}
+          >
+            {groupToEdit.title}
+          </textarea>
+        </div>
         <button className="button group-edit-btn" onClick={handleClick}>
           <SvgIcon iconName="more" className="svg-icon" />
         </button>
