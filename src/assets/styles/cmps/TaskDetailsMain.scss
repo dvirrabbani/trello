@@ -17,4 +17,11 @@
       line-height: rem(20px);
     }
   }
+
+  .task-details-checklist.dragging {
+    background-color: $background-neutral;
+    border-radius: 12px;
+    cursor: grabbing;
+    opacity: 0.85;
+  }
 }

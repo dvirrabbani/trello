@@ -1,5 +1,7 @@
+import { ta } from "date-fns/locale"
 import { TaskPreview } from "./TaskPreview"
 import { Droppable, Draggable } from "react-beautiful-dnd"
+import { updateCurrentBoard } from "../../../store/board.actions"
 
 export function TaskList({ group }) {
   return (

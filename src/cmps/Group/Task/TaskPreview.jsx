@@ -25,6 +25,19 @@ export function TaskPreview({
     }
   }, [])
 
+  function onDropMember(groupId, taskId, e) {
+    const memberId = e.dataTransfer.getData("text")
+    const memberIds = task.memberIds || []
+
+    if (!memberId) return
+    if (memberIds.includes(memberId)) return
+
+    updateCurrentBoard(groupId, taskId, {
+      key: "memberIds",
+      value: [...memberIds, memberId],
+    })
+  }
+
   function onQuickEditTask(e) {
     e.stopPropagation()
     const taskInfo = {
@@ -83,6 +96,8 @@ export function TaskPreview({
       style={isCoverFull && !isQuickEditParent ? fullCoverStyle() : {}}
       className={taskClasses()}
       onClick={isQuickEditParent ? null : onTaskClick}
+      onDrop={(e) => onDropMember(groupId, task.id, e)}
+      onDragOver={(e) => e.preventDefault()}
     >
       <button
         className="button shape-circle task-edit-btn"
