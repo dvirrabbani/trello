@@ -1,0 +1,10 @@
+.btn-img-uploader {
+  input[type="file"] {
+    display: none;
+  }
+
+  .loader {
+    display: block;
+    margin: 0 auto;
+  }
+}
