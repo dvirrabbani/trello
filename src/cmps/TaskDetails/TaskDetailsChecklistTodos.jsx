@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useForm } from "../../customHooks/useForm"
 import { TaskDetailTodoForm } from "./TaskDetailTodoForm"
 import { Button } from "../Button"
+import { Draggable, Droppable } from "react-beautiful-dnd"
 
 export function TaskDetailsChecklistTodos({
   checklistsId,
@@ -37,64 +38,84 @@ export function TaskDetailsChecklistTodos({
         </div>
       </div>
       {/* Checklist sub items */}
-      <ul className="clean-list task-details-checklist-item-list">
-        {todos?.map((todo) => {
-          return (
-            <li className="task-details-checklist-item" key={todo.id}>
-              <input
-                type="checkbox"
-                checked={todo.isDone}
-                onChange={() =>
-                  onUpdateCheckListTodo(checklistsId, todo.id, {
-                    isDone: !todo.isDone,
-                  })
-                }
+      <Droppable droppableId={checklistsId} type="checklist-container">
+        {(provided) => (
+          <ul
+            className="clean-list task-details-checklist-item-list"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {todos?.map((todo, index) => {
+              return (
+                <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                  {(provided) => (
+                    <li
+                      className="task-details-checklist-item"
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={todo.isDone}
+                        onChange={() =>
+                          onUpdateCheckListTodo(checklistsId, todo.id, {
+                            isDone: !todo.isDone,
+                          })
+                        }
+                      />
+                      <div className="preview">
+                        <span
+                          className={`${
+                            todo.isDone ? "text-decoration-line-through" : ""
+                          }`}
+                        >
+                          {todo.title}
+                        </span>
+                        <div className="checklist-item-controls">
+                          {/*TODO replace with icon Delete icon */}
+                          <Button
+                            shape="circle"
+                            variant="contained"
+                            onClick={() =>
+                              onRemoveCheckListTodo(checklistsId, todo.id)
+                            }
+                          >
+                            D
+                          </Button>
+                        </div>
+                      </div>
+                    </li>
+                  )}
+                </Draggable>
+              )
+            })}
+            {provided.placeholder}
+            {/* Show Task Todo From  */}
+            {isTodoFormOpen && (
+              <TaskDetailTodoForm
+                fields={fields}
+                checklistId={checklistsId}
+                title={fields.title}
+                handleChange={handleChange}
+                setIsFormOpen={setIsTodoFormOpen}
+                onAddCheckListTodo={onAddCheckListTodo}
               />
-              <div className="preview">
-                <span
-                  className={`${
-                    todo.isDone ? "text-decoration-line-through" : ""
-                  }`}
+            )}
+            {/* Add Todo Item */}
+            {!isTodoFormOpen && (
+              <div className="add-todo-item">
+                <Button
+                  variant="contained"
+                  onClick={() => setIsTodoFormOpen(() => true)}
                 >
-                  {todo.title}
-                </span>
-                <div className="checklist-item-controls">
-                  {/*TODO replace with icon Delete icon */}
-                  <Button
-                    shape="circle"
-                    variant="contained"
-                    onClick={() => onRemoveCheckListTodo(checklistsId, todo.id)}
-                  >
-                    D
-                  </Button>
-                </div>
+                  Add an Item
+                </Button>
               </div>
-            </li>
-          )
-        })}
-        {/* Show Task Todo From  */}
-        {isTodoFormOpen && (
-          <TaskDetailTodoForm
-            fields={fields}
-            checklistId={checklistsId}
-            title={fields.title}
-            handleChange={handleChange}
-            setIsFormOpen={setIsTodoFormOpen}
-            onAddCheckListTodo={onAddCheckListTodo}
-          />
+            )}
+          </ul>
         )}
-        {/* Add Todo Item */}
-        {!isTodoFormOpen && (
-          <div className="add-todo-item">
-            <Button
-              variant="contained"
-              onClick={() => setIsTodoFormOpen(() => true)}
-            >
-              Add an Item
-            </Button>
-          </div>
-        )}
-      </ul>
+      </Droppable>
     </div>
   )
 }
