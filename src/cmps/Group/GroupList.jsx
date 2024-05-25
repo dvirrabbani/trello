@@ -135,6 +135,7 @@ export function GroupList({ groups }) {
                   )}
                 </Draggable>
               ))}
+              {provided.placeholder}
               {displayAddItem ? (
                 <AddItemForm
                   onAddItem={onAddGroup}
