@@ -41,6 +41,10 @@ export function BoardDetailsHeader({ board, filterBy }) {
     })
   }
 
+  function handleMemberDragStart(e, memberId) {
+    e.dataTransfer.setData("text", memberId)
+  }
+
   return (
     <section className="board-details-header">
       <div className="board-topbar-start">
@@ -82,7 +86,12 @@ export function BoardDetailsHeader({ board, filterBy }) {
         <ul className="member-list">
           {board.members.map((member) => {
             return (
-              <li key={member._id} className="member-item">
+              <li
+                key={member._id}
+                className="member-item"
+                draggable="true"
+                onDragStart={(e) => handleMemberDragStart(e, member._id)}
+              >
                 <img src={member.imgUrl} alt="member image" />
               </li>
             )
