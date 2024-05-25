@@ -28,6 +28,15 @@
     align-items: center;
     cursor: pointer;
     gap: rem(8px);
+
+    &.dragging {
+      cursor: grabbing;
+      .preview {
+        opacity: 0.85;
+        background-color: $background-neutral;
+      }
+    }
+
     input[type="checkbox"] {
       @include size(16px);
     }

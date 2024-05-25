@@ -48,9 +48,11 @@ export function TaskDetailsChecklistTodos({
             {todos?.map((todo, index) => {
               return (
                 <Draggable key={todo.id} draggableId={todo.id} index={index}>
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <li
-                      className="task-details-checklist-item"
+                      className={`task-details-checklist-item ${
+                        snapshot.isDragging ? "dragging" : ""
+                      }`}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
