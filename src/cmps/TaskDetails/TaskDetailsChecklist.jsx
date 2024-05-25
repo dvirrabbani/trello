@@ -34,9 +34,58 @@ export function TaskDetailsChecklist({
         key: "checklists",
         value: newChecklists,
       })
-      console.log("newChecklists", newChecklists)
       return
     }
+
+    const startChecklist = checklists.find(
+      (checklist) => checklist.id === source.droppableId
+    )
+    const startTodoIds = Array.from(startChecklist.todos)
+    const endChecklist = checklists.find(
+      (checklist) => checklist.id === destination.droppableId
+    )
+    const endTodoIds = Array.from(endChecklist.todos)
+
+    const todoToMove = {
+      ...startChecklist.todos.find((todo) => todo.id === draggableId),
+    }
+
+    if (startChecklist === endChecklist) {
+      const newTodoIds = handleDragInsideDroppable(
+        startChecklist.todos,
+        source,
+        destination
+      )
+      const updatedChecklists = checklists.map((checklist) => {
+        if (checklist.id === startChecklist.id) {
+          return { ...checklist, todos: newTodoIds }
+        }
+        return checklist
+      })
+      onUpdateTask({
+        key: "checklists",
+        value: updatedChecklists,
+      })
+      return
+    }
+
+    //moving from one list to another
+    startTodoIds.splice(source.index, 1)
+    const updateStartChecklist = { ...startChecklist, todos: startTodoIds }
+
+    endTodoIds.splice(destination.index, 0, todoToMove)
+    const updateEndChecklist = { ...endChecklist, todos: endTodoIds }
+
+    const updateChecklists = checklists.map((checklist) => {
+      if (checklist.id === startChecklist.id) return updateStartChecklist
+      if (checklist.id === endChecklist.id) return updateEndChecklist
+      return checklist
+    })
+
+    onUpdateTask({
+      key: "checklists",
+      value: updateChecklists,
+    })
   }
 
   function handleDragInsideDroppable(items, source, destination) {
