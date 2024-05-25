@@ -1,8 +1,8 @@
 import { utilService } from "../../services/util.service"
-import { COVER_COLORS_lIST } from "../../const/label"
 import { LabelButton } from "../LabelButton"
 import { Button } from "../Button"
 import { BtnImgUploader } from "../btn/BtnImgUpload"
+import { uiService } from "../../services/ui.service"
 
 export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
   const { bgColor = "", bgImg = "", isCoverFull = false } = task?.style
@@ -121,7 +121,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
       {/* Update Cover Color */}
       <h4 className="label">Colors</h4>
       <ul className="clean-list colors-palette-grid">
-        {COVER_COLORS_lIST.map((color) => {
+        {uiService.getCoverColors.map((color) => {
           return (
             <LabelButton
               key={color}

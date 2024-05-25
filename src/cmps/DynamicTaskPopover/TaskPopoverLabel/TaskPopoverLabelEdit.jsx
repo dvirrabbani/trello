@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux"
 import { useForm } from "../../../customHooks/useForm"
-import { boardService } from "../../../services/board.service"
 import { Button } from "../../Button"
 import SvgIcon from "../../SvgIcon"
 import { updateCurrentBoard } from "../../../store/board.actions"
 import { useParams } from "react-router"
 import { utilService } from "../../../services/util.service"
+import { uiService } from "../../../services/ui.service"
 
 export function TaskPopoverLabelEdit({
   initialLabel,
@@ -18,8 +18,8 @@ export function TaskPopoverLabelEdit({
   const board = useSelector((storeState) => storeState.boardModule.board)
   const boardLabelsIds = board.labels.map((label) => label.id)
 
-  const boardNewLabel = boardService
-    .getLabels()
+  const boardNewLabel = uiService
+    .getBoardLabels()
     .find((label) => !boardLabelsIds.includes(label.id))
 
   const [fields, setFields, handleChange] = useForm({
@@ -163,7 +163,7 @@ export function TaskPopoverLabelEdit({
         <h3 className="h4">Select a color</h3>
         <ul className="clean-list colors-palette-grid">
           {/* Label Color Grid */}
-          {boardService.getLabels().map((label) => {
+          {uiService.getBoardLabels().map((label) => {
             return (
               <article
                 key={label.id}

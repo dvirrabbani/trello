@@ -5,8 +5,8 @@ import { Button } from "./Button"
 import { useForm } from "../customHooks/useForm"
 import { addBoard } from "../store/board.actions"
 import { DEMO_USER } from "../demo/user"
-import { boardService } from "../services/board.service"
 import SvgIcon from "./SvgIcon"
+import { uiService } from "../services/ui.service"
 
 export function AddBoardButton({ iconName, title, variant }) {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -88,7 +88,7 @@ export function AddBoardButton({ iconName, title, variant }) {
       },
       members: [DEMO_USER],
       groups: [],
-      labels: boardService.getDefaultLabels(),
+      labels: uiService.getDefaultBoardLabels(),
       activities: [],
       isStarred: false,
       archivedAt: null,

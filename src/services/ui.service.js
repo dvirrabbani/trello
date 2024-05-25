@@ -1,4 +1,4 @@
-export const BOARD_LABELS = [
+const BOARD_LABELS = [
   { id: "l101", bgColor: "#baf3db", title: "" },
   { id: "l102", bgColor: "#f8e6a0", title: "" },
   { id: "l103", bgColor: "#ffe2bd", title: "" },
@@ -31,7 +31,7 @@ export const BOARD_LABELS = [
   { id: "l1030", bgColor: "#ae4787", title: "" },
 ]
 
-export const COVER_COLORS_lIST = [
+const COVER_COLORS = [
   "#4bce97",
   "#e2b203",
   "#faa53d",
@@ -43,3 +43,21 @@ export const COVER_COLORS_lIST = [
   "#ca3521",
   "#6e5dc6",
 ]
+
+export const uiService = {
+  getBoardLabels,
+  getDefaultBoardLabels,
+  getCoverColors,
+}
+
+function getBoardLabels() {
+  return BOARD_LABELS
+}
+
+function getCoverColors() {
+  return COVER_COLORS
+}
+
+function getDefaultBoardLabels() {
+  return BOARD_LABELS.slice(6, 12)
+}

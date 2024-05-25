@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react"
 import SvgIcon from "../../SvgIcon"
 import { updateTaskLabels } from "../../../store/board.actions"
 import { LabelButton } from "../../LabelButton"
-import { boardService } from "../../../services/board.service"
 import { Popover } from "@mui/material"
 import { TaskPopoverLabelEdit } from "./TaskPopoverLabelEdit"
+import { uiService } from "../../../services/ui.service"
 
 export function TaskPopoverLabel({ task, onUpdateTask, onClose }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
@@ -19,8 +19,8 @@ export function TaskPopoverLabel({ task, onUpdateTask, onClose }) {
   }
 
   const boardLabelsIds = board.labels.map((label) => label.id)
-  const boardNewLabel = boardService
-    .getLabels()
+  const boardNewLabel = uiService
+    .getBoardLabels()
     .find((label) => !boardLabelsIds.includes(label.id))
 
   function onOpenAddBoardLabelPopover() {
