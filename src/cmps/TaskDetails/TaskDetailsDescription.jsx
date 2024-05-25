@@ -53,7 +53,7 @@ export function TaskDetailsDescription({
         )}
 
         {!isEditDescriptionOpen && description && (
-          <pre onClick={onFocusDescription}>{description}</pre>
+          <p onClick={onFocusDescription}>{description}</p>
         )}
 
         <div
@@ -61,7 +61,7 @@ export function TaskDetailsDescription({
           style={{ display: !isEditDescriptionOpen ? "none" : "" }}
         >
           {/* Editable description  */}
-          <pre
+          <p
             autoFocus={true}
             ref={descriptionRef}
             className="input-text"
@@ -69,7 +69,7 @@ export function TaskDetailsDescription({
             contentEditable={true}
           >
             {description}
-          </pre>
+          </p>
 
           <div className="actions">
             <Button variant="primary" onClick={onSaveDescription}>

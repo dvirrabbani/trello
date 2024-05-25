@@ -162,7 +162,7 @@ export function TaskDetails() {
             task={task}
             onUpdateTask={onUpdateTask}
           />
-          <div className="flex task-details-main-container">
+          <div className="task-details-main-container">
             <main className="task-details-main full">
               <TaskDetailsMainHeader
                 task={task}
