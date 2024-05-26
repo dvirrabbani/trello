@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { json, useNavigate } from "react-router-dom"
 import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
 import { toggleLabels, updateCurrentBoard } from "../../../store/board.actions"
 import SvgIcon from "../../SvgIcon"
 import { useEffect, useState } from "react"
+import { ProfileImg } from "../../ProfileImg"
 
 export function TaskPreview({
   groupId,
@@ -26,7 +27,7 @@ export function TaskPreview({
   }, [])
 
   function onDropMember(groupId, task, e) {
-    const member = e.dataTransfer.getData("text")
+    const member = JSON.parse(e.dataTransfer.getData("member"))
     const members = task.members || []
 
     if (!member) return
@@ -225,29 +226,15 @@ function ChecklistsBadge({ checklists }) {
 }
 
 function TaskMembers({ members }) {
-  const board = useSelector((storeState) => storeState.boardModule.board)
-  const boardMembers = board.members
   return (
     <div className="task-members">
       {members.map((member) => (
-        <TaskMember
-          key={member.id}
-          boardMembers={boardMembers}
-          member={member}
-        />
+        <div key={member.id} className="task-member">
+          <ProfileImg imgUrl={member.imgUrl} />
+        </div>
       ))}
     </div>
   )
-}
-
-function TaskMember({ boardMembers, member }) {
-  const memberImg = boardMembers.find(
-    (boardMember) => boardMember.id === member.id
-  ).imgUrl
-  const style = {
-    backgroundImage: `url(${memberImg})`,
-  }
-  return <div className="task-member" style={style}></div>
 }
 
 function TaskLabels({ labelIds }) {

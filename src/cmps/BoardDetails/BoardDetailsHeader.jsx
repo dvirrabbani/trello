@@ -42,7 +42,7 @@ export function BoardDetailsHeader({ board, filterBy }) {
   }
 
   function handleMemberDragStart(e, member) {
-    e.dataTransfer.setData("text", member)
+    e.dataTransfer.setData("member", JSON.stringify(member))
   }
 
   return (
