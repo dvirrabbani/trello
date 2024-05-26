@@ -5,7 +5,9 @@ import { BtnImgUploader } from "../btn/BtnImgUpload"
 import { uiService } from "../../services/ui.service"
 
 export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
-  const { bgColor = "", bgImg = "", isCoverFull = false } = task?.style
+  const bgColor = task?.style?.bgColor || ""
+  const bgImg = task?.style?.bgImg || ""
+  const isCoverFull = task?.style?.isCoverFull || null
 
   function onChangeCoverSize(coverSizeToUpdate) {
     if (coverSizeToUpdate === isCoverFull) {
@@ -75,7 +77,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
           {/* Cover Normal Size */}
           <li
             className={`cover size-normal ${
-              bgImg && !isCoverFull ? "active" : ""
+              isCoverFull === false ? "active" : ""
             }
              ${bgImg ? "has-bg-img" : ""}`}
             onClick={() => onChangeCoverSize(false)}
@@ -95,7 +97,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
           {/* Cover Full Size */}
           <li
             className={`cover size-full ${
-              bgImg && isCoverFull ? "active" : ""
+              isCoverFull === true ? "active" : ""
             } ${bgImg ? "has-bg-img" : ""}`}
             onClick={() => onChangeCoverSize(true)}
           >
@@ -121,7 +123,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
       {/* Update Cover Color */}
       <h4 className="label">Colors</h4>
       <ul className="clean-list colors-palette-grid">
-        {uiService.getCoverColors.map((color) => {
+        {uiService.getCoverColors().map((color) => {
           return (
             <LabelButton
               key={color}

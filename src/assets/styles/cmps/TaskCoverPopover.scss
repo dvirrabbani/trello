@@ -31,7 +31,7 @@
       &.active {
         box-shadow: 0 0 0 rem(2px) $clr19, 0 0 0 rem(4px) $clr3;
       }
-      background: $background-accent-gray-subtle;
+      background-color: $background-accent-gray-subtle;
       &.has-bg-img {
         .cover-background {
           height: rem(28px);
@@ -45,6 +45,7 @@
     .cover.size-normal {
       border: 1px solid $background-neutral;
       .cover-background {
+        height: 100%;
         background-size: cover;
       }
       .skeleton-card {
@@ -65,7 +66,6 @@
       }
       .cover-background {
         height: 100%;
-        filter: brightness(0.9);
         background-size: cover;
         background-position: center;
       }
