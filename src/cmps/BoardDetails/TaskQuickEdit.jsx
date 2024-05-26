@@ -8,9 +8,7 @@ import SvgIcon from "../SvgIcon"
 export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
   const navigate = useNavigate()
-  //TODO - Check X position
-  // console.log("boundaries", boundaries)
-  // console.log("task", task)
+
   const style = {
     top: boundaries.y,
     left: boundaries.x,
@@ -61,6 +59,11 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
     navigate(`${groupId}/${task.id}`)
   }
 
+  function onArchiveTask() {
+    onUpdateTask({ key: "archivedAt", value: Date.now() })
+    setTaskQuickEdit(null)
+  }
+
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -84,6 +87,10 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
           task={task}
           onUpdateTask={onUpdateTask}
         />
+        <button className="button" onClick={onArchiveTask}>
+          <SvgIcon iconName="archive" />
+          Archive
+        </button>
       </div>
       <button
         className="save-btn button variant-primary"

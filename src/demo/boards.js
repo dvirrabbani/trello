@@ -337,6 +337,7 @@ export const DEMO_BOARD_LIST = [
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
             },
             style: null,
+            archivedAt: 1716666184963,
           },
         ],
       },
