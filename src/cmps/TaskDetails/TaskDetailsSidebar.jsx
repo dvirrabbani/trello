@@ -41,6 +41,17 @@ export function TaskDetailsSidebar({ task, onUpdateTask }) {
             popoverTitle: "Attach",
             popoverId: "popover-attachment-id",
           },
+          ...(!(task.style?.bgColor || task.style?.bgImg)
+            ? [
+                {
+                  iconName: "cover",
+                  type: "Cover",
+                  title: "Cover",
+                  popoverTitle: "Cover",
+                  popoverId: "popover-cover-id",
+                },
+              ]
+            : []),
         ]}
         task={task}
         onUpdateTask={onUpdateTask}
