@@ -7,6 +7,7 @@ import { BoardFilter } from "./BoardFilter"
 import { FilterCount } from "./FilterCount"
 import { store } from "../../store/store"
 import { boardService } from "../../services/board.service"
+import { ProfileImg } from "../ProfileImg"
 
 export function BoardDetailsHeader({ board, filterBy }) {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -57,7 +58,11 @@ export function BoardDetailsHeader({ board, filterBy }) {
         </Button>
       </div>
       <div className="board-topbar-end">
-        <span>
+        <span
+          className={`filter-btns-container flex ${
+            !isFilterEmpty || isPopoverOpen ? "active" : ""
+          }`}
+        >
           <button className="filter-btn button" onClick={handleClick}>
             <SvgIcon iconName="filter" />
             Filters
@@ -92,11 +97,11 @@ export function BoardDetailsHeader({ board, filterBy }) {
                 draggable="true"
                 onDragStart={(e) => handleMemberDragStart(e, member)}
               >
-                <img src={member.imgUrl} alt="member image" />
+                <ProfileImg imgUrl={member.imgUrl} size={"md"} />
               </li>
             )
           })}
-        </ul>{" "}
+        </ul>
       </div>
     </section>
   )

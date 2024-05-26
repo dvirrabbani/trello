@@ -3,7 +3,7 @@
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
-  padding: rem(12px) rem(16px);
+  padding: rem(12px) rem(10px) rem(12px) rem(16px);
   backdrop-filter: blur(4px);
   background: $clr18;
   color: $clr8;
@@ -51,6 +51,53 @@
       height: rem(28px);
       border-radius: 50%;
       overflow: hidden;
+    }
+  }
+
+  .divider {
+    border-left: rem(1px) solid hsla(0, 0%, 100%, 0.16);
+    height: rem(16px);
+    margin: rem(8px) rem(4px);
+  }
+
+  .filter-btns-container {
+    &.active {
+      border-radius: rem(3px);
+      overflow: auto;
+
+      .button {
+        background-color: $background-accent-gray-subtle;
+        color: $color-txt-primary;
+        border-radius: 0;
+
+        &:hover {
+          background-color: white;
+        }
+      }
+    }
+
+    .filter-btn {
+      font-size: rem(14px);
+      line-height: rem(20px);
+    }
+
+    .filter-count {
+      border-radius: rem(20px);
+      padding-right: rem(6px);
+      padding-left: rem(4px);
+      background-color: white;
+      color: $color-txt-primary;
+      display: flex;
+      align-items: center;
+      gap: rem(6px);
+
+      .countIcon {
+        display: block;
+        width: rem(12px);
+        height: rem(12px);
+        border-radius: 50%;
+        background-color: $background-brand-bold;
+      }
     }
   }
 }
