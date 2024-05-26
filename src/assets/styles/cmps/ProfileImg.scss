@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: rem(10px);
   }
 
   @include size(24px);
