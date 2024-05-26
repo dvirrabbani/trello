@@ -43,7 +43,7 @@ export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
           <h4 className="h4">Members</h4>
           <div className="member-list flex">
             {task?.members?.map((member) => (
-              <ProfileImg key={member.id} imgUrl={member.imgUrl} size={"lg"} />
+              <ProfileImg key={member.id} member={member} size={"lg"} />
             ))}
             <ButtonDynamicTaskPopover
               variant={"contained"}

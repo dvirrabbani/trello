@@ -230,7 +230,7 @@ function TaskMembers({ members }) {
     <div className="task-members">
       {members.map((member) => (
         <div key={member.id} className="task-member">
-          <ProfileImg imgUrl={member.imgUrl} />
+          <ProfileImg member={member} />
         </div>
       ))}
     </div>

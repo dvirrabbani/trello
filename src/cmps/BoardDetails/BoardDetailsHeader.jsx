@@ -97,7 +97,7 @@ export function BoardDetailsHeader({ board, filterBy }) {
                 draggable="true"
                 onDragStart={(e) => handleMemberDragStart(e, member)}
               >
-                <ProfileImg imgUrl={member.imgUrl} size={"md"} />
+                <ProfileImg member={member} size={"md"} />
               </li>
             )
           })}
