@@ -5,7 +5,7 @@ import SvgIcon from "../cmps/SvgIcon.jsx"
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
 import { Button } from "../cmps/Button.jsx"
 
-export function Workspace() {
+export function BoardIndex() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
 
   async function onAddBoard() {
@@ -16,7 +16,7 @@ export function Workspace() {
     await addBoard(boardToSave)
   }
   return (
-    <div className="workspace-container">
+    <div className="board-index">
       <div className="board-list-header">
         <SvgIcon iconName={"profile"} size={"md"} />
         <span>Starred Boards</span>

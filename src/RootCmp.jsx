@@ -1,35 +1,24 @@
-import React, { useEffect } from "react"
-import { Routes, Route, Navigate } from "react-router"
-import { Workspace } from "./pages/Workspace"
+import { Routes, Route } from "react-router"
+// Pages
+import { Home } from "./pages/Home"
+import { Login } from "./pages/Login"
+import { BoardIndex } from "./pages/BoardIndex"
 import { BoardDetails } from "./pages/BoardDetails"
 import { TaskDetails } from "./pages/TaskDetails"
-import { AppHeader } from "./cmps/AppHeader"
-import { loadBoards } from "./store/board.actions"
-import { Login } from "./pages/Login"
+// Layouts
+import { BoardLayout } from "./layout/board/BoardLayout"
 
 export function RootCmp() {
-  // TODO: Remove load board when redirect to workspace from login page
-  useEffect(() => {
-    loadBoards()
-  }, [])
-
   return (
-    <div className="main-app bg-image-cover">
-      <AppHeader />
+    <div className="main-app">
       <Routes>
-        <Route
-          exact={true}
-          path={"/"}
-          element={<Navigate to={"/workspace"} />}
-        />
+        <Route exact={true} path={"/"} element={<Home />} />
         <Route exact={true} path={"/login"} element={<Login />} />
-        <Route exact={true} path={"/workspace"} element={<Workspace />}></Route>
-        <Route exact={true} path={"/board/:boardId"} element={<BoardDetails />}>
-          <Route
-            exact={true}
-            path={"/board/:boardId/:groupId/:taskId"}
-            element={<TaskDetails />}
-          />
+        <Route path="board" element={<BoardLayout />}>
+          <Route index element={<BoardIndex />} />
+          <Route path=":boardId" element={<BoardDetails />}>
+            <Route path=":groupId/:taskId" element={<TaskDetails />} />
+          </Route>
         </Route>
       </Routes>
     </div>

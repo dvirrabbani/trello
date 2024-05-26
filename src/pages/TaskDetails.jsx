@@ -25,7 +25,7 @@ export function TaskDetails() {
     try {
       const group = board.groups?.find((g) => g.id === groupId)
       const task = group.tasks?.find((t) => t.id === taskId)
-      setTask(() => task)
+      setTask(task)
     } catch (err) {
       console.log("Cannot load Task", err)
       throw err

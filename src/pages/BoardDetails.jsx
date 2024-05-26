@@ -44,8 +44,8 @@ export function BoardDetails() {
     }
     // reset dynamic style on unmount
     return () => {
-      const elMainContent = document.querySelector(".main-app")
-      const elHeader = document.querySelector(".app-header")
+      const elMainContent = document.querySelector(".board-layout")
+      const elHeader = document.querySelector(".board-header")
 
       elMainContent.style.backgroundImage = "none"
       elHeader.style.backgroundColor = "white"
@@ -53,8 +53,8 @@ export function BoardDetails() {
   }, [board])
 
   function setDynamicStyle() {
-    const elMainContent = document.querySelector(".main-app")
-    const elHeader = document.querySelector(".app-header")
+    const elMainContent = document.querySelector(".board-layout")
+    const elHeader = document.querySelector(".board-header")
     const elSidebar = document.querySelector(".board-sidebar")
 
     elMainContent.style.backgroundImage = `url(${board.style.bgImg})`
