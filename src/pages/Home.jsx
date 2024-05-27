@@ -12,7 +12,7 @@ export function Home() {
   ]
   return (
     <div className="home">
-      <header className="home-header">
+      <header className="home-header home-section">
         <nav className="home-nav">
           <ul className="clean-list flex justify-between">
             <li className="logo">
@@ -60,7 +60,8 @@ export function Home() {
             <p>
               Simple, flexible, and powerful. All it takes are boards, lists,
               and cards to get a clear view of who’s doing what and what needs
-              to get done. Learn more in our <a>guide for getting started</a>.
+              to get done. Learn more in our{" "}
+              <span className="link">guide for getting started</span>.
             </p>
           </header>
           <div className="board-preview-container">
@@ -97,6 +98,76 @@ export function Home() {
           </div>
         </div>
       </section>
+      <footer className="home-section footer">
+        <div className="container">
+          <div className="row">
+            <nav className="clean-list">
+              <li className="link-item logo-footer">
+                <SvgIcon iconName={"logoFooter"} />
+                <div className="title">Log in</div>
+              </li>
+              <li className="link-item">
+                <div className="title">About Trello</div>
+                <div className="link-desc">What’s behind the boards.</div>
+              </li>
+              <li className="link-item">
+                <div className="title">Jobs</div>
+                <div className="link-desc">
+                  Learn about open roles on the Trello team.
+                </div>
+              </li>
+              <li className="link-item">
+                <div className="title">Apps</div>
+                <div className="link-desc">
+                  Download the Trello App for your Desktop or Mobile devices.
+                </div>
+              </li>
+              <li className="link-item">
+                <div className="title">Contact us</div>
+                <div className="link-desc">
+                  Need anything? Get in touch and we can help.
+                </div>
+              </li>
+            </nav>
+          </div>
+        </div>
+        <div className="line-separator"></div>
+        <div className="container">
+          <div className="row">
+            <nav className="clean-list">
+              <li className="link-item">
+                <div className="link-desc">Your Privacy Choices</div>
+              </li>
+              <li className="link-item">
+                <div className="link-desc">Privacy Policy</div>
+              </li>
+              <li className="link-item">
+                <div className="link-desc">Terms</div>
+              </li>
+              <li className="link-item">
+                <div className="link-desc">Copyright © 2024 Atlassian</div>
+              </li>
+            </nav>
+            <nav className="social">
+              <Link>
+                <SvgIcon iconName={"instagram"} />
+              </Link>
+              <Link>
+                <SvgIcon iconName={"facebook"} />
+              </Link>
+              <Link>
+                <SvgIcon iconName={"linkedin"} />
+              </Link>
+              <Link>
+                <SvgIcon iconName={"twitter"} />
+              </Link>
+              <Link>
+                <SvgIcon iconName={"youtube"} />
+              </Link>
+            </nav>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
