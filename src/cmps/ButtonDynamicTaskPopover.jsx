@@ -16,6 +16,7 @@ export function ButtonDynamicTaskPopover({
   disabled,
   task,
   onUpdateTask,
+  groupId,
 }) {
   const [anchorEl, setAnchorEl] = useState(null)
 
@@ -52,6 +53,7 @@ export function ButtonDynamicTaskPopover({
           type={type}
           task={task}
           onUpdateTask={onUpdateTask}
+          groupId={groupId}
           onClose={handleClose}
         />
       </Popover>
