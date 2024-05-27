@@ -1,15 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
 import SvgIcon from "../cmps/SvgIcon"
+// import Swiper styles
+import "swiper/css"
 
 export function Home() {
-  const previews = [
-    {
-      id: "preview-1",
-      imgUrl:
-        "https://images.ctfassets.net/rz1oowkt5gyp/3N2U3C71rApm61cGFxnc2E/970b010002488a09a420282df5e7b43a/Carousel_Image_Boards_2x.png?w=1140&fm=webp",
-    },
-  ]
+  const [activePreviewIdx, setActivePreviewIdx] = useState(0)
+  const [swiper, setSwiper] = useState()
+
+  function onSlideTo(idx) {
+    setActivePreviewIdx(idx)
+    swiper.slideTo(idx)
+  }
   return (
     <div className="home">
       <header className="home-header home-section">
@@ -66,7 +69,10 @@ export function Home() {
           </header>
           <div className="board-preview-container">
             <ul className="clean-list preview-list">
-              <button className="active">
+              <button
+                className={`${activePreviewIdx === 0 ? "active" : ""}`}
+                onClick={() => onSlideTo(0)}
+              >
                 <h3>Boards</h3>
                 <p>
                   Trello boards keep tasks organized and work moving forward. In
@@ -74,8 +80,10 @@ export function Home() {
                   did it!”
                 </p>
               </button>
-
-              <button>
+              <button
+                className={`${activePreviewIdx === 1 ? "active" : ""}`}
+                onClick={() => onSlideTo(1)}
+              >
                 <h3>Lists</h3>
                 <p>
                   The different stages of a task. Start as simple as To Do,
@@ -83,7 +91,10 @@ export function Home() {
                   needs. There’s no wrong way to Trello.
                 </p>
               </button>
-              <button>
+              <button
+                className={`${activePreviewIdx === 2 ? "active" : ""}`}
+                onClick={() => onSlideTo(2)}
+              >
                 <h3>Cards</h3>
                 <p>
                   Cards represent tasks and ideas and hold all the information
@@ -93,7 +104,38 @@ export function Home() {
               </button>
             </ul>
             <section className="carousel-preview">
-              <img src={previews[0].imgUrl} alt="" />
+              <Swiper
+                slidesPerView={1}
+                onSwiper={setSwiper}
+                onSlideChange={(swiper) => {
+                  onSlideTo(swiper.realIndex)
+                }}
+              >
+                <SwiperSlide>
+                  <img
+                    src={
+                      "https://images.ctfassets.net/rz1oowkt5gyp/3N2U3C71rApm61cGFxnc2E/970b010002488a09a420282df5e7b43a/Carousel_Image_Boards_2x.png?w=1140&fm=webp"
+                    }
+                    alt=""
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src={
+                      "https://images.ctfassets.net/rz1oowkt5gyp/4U0VUZYX2tQmB5KVGxBabp/7321ac088fe8ec39dbe3069c47d7df99/Carousel_Image_Lists_2x.png?w=1536&fm=webp"
+                    }
+                    alt=""
+                  />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <img
+                    src={
+                      "https://images.ctfassets.net/rz1oowkt5gyp/26CA6JZeRgoOK4nuRHnIlY/060702a80cf7c3be3651d9297d196267/Carousel_Image_Cards_2x.png?w=1140&fm=webp"
+                    }
+                    alt=""
+                  />
+                </SwiperSlide>
+              </Swiper>
             </section>
           </div>
         </div>
