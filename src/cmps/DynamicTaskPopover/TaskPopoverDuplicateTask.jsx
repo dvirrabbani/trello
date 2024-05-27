@@ -2,7 +2,7 @@ import { useForm } from "../../customHooks/useForm"
 import { activityService } from "../../services/acitivity.service"
 import { eventBus } from "../../services/event-bus.service"
 import { utilService } from "../../services/util.service"
-import { addTaskCheckList, updateCurrentBoard } from "../../store/board.actions"
+import { updateCurrentBoard } from "../../store/board.actions"
 import { store } from "../../store/store"
 import { Button } from "../Button"
 
@@ -45,6 +45,8 @@ export function TaskPopoverDuplicateTask({ task, onClose, groupId }) {
           type="text"
           value={fields.title || ""}
           onChange={handleChange}
+          autoFocus
+          onFocus={(e) => e.currentTarget.select()}
         ></textarea>
       </div>
       <Button variant="primary" onClick={onDuplicateTask}>

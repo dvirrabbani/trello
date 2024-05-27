@@ -1,17 +1,26 @@
 .task-popover-check-list {
   display: grid;
-  gap: 16px;
+  gap: rem(16px);
 
   .form-group {
     display: flex;
     flex-direction: column;
   }
   .title {
-    font-size: 12px;
-    line-height: 16px;
+    font-size: rem(12px);
+    line-height: rem(16px);
     font-weight: 700;
   }
   .button {
     width: fit-content;
+  }
+
+  textarea {
+    border-radius: rem(3px);
+    padding: rem(8px) rem(12px);
+    border: 1px solid $border-input;
+    &:focus {
+      border: none;
+    }
   }
 }
