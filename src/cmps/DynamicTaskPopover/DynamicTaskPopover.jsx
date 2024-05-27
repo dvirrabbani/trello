@@ -2,6 +2,7 @@ import { TaskAttachmentPopover } from "./TaskAttachmentPopover"
 import { TaskCoverPopover } from "./TaskCoverPopover"
 import { TaskDatesPopover } from "./TaskDatesPopover"
 import { TaskPopoverCheckList } from "./TaskPopoverCheckList"
+import { TaskPopoverDuplicateTask } from "./TaskPopoverDuplicateTask"
 import { TaskPopoverLabel } from "./TaskPopoverLabel/TaskPopoverLabel"
 import { TaskPopoverMembers } from "./TaskPopoverMembers"
 
@@ -20,6 +21,8 @@ export function DynamicTaskPopover(props) {
         return <TaskCoverPopover {...props} />
       case "Attachments":
         return <TaskAttachmentPopover {...props} />
+      case "Duplicate":
+        return <TaskPopoverDuplicateTask {...props} />
       default:
         return
     }

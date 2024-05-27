@@ -21,7 +21,7 @@ export function TaskPopoverMembers({ task, onUpdateTask }) {
                 key={member.id}
                 onClick={() => onUpdateTaskMembers(member)}
               >
-                <ProfileImg imgUrl={member.imgUrl} size={"lg"} />
+                <ProfileImg member={member} size={"lg"} />
                 <span>{member.fullName}</span>
               </Button>
             )
@@ -33,7 +33,7 @@ export function TaskPopoverMembers({ task, onUpdateTask }) {
         {board?.members.map((member) => {
           return (
             <Button key={member.id} onClick={() => onUpdateTaskMembers(member)}>
-              <ProfileImg imgUrl={member.imgUrl} size={"lg"} />
+              <ProfileImg member={member} size={"lg"} />
               <span>{member.fullName}</span>
             </Button>
           )

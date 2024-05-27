@@ -86,7 +86,7 @@ export function BoardDetails() {
             groupId={taskQuickEdit.groupId}
             task={taskQuickEdit.task}
             boundaries={taskQuickEdit.boundaries}
-            setTaskQuickEdit={setTaskQuickEdit}
+            closeQuickEdit={() => setTaskQuickEdit(null)}
           />
         </Modal>
       )}

@@ -2,6 +2,7 @@ import { useState } from "react"
 import dayjs from "dayjs"
 import { Button } from "../Button"
 import { useForm } from "../../customHooks/useForm"
+import { ProfileImg } from "../ProfileImg"
 
 export function TaskDetailsComments({
   comments,
@@ -83,7 +84,7 @@ export function TaskDetailsComments({
           <li key={comment.id} className="comment-item">
             <div className="aside">
               <Button shape={"circle"}>
-                <img src={comment.byMember.imgUrl} />
+                <ProfileImg member={comment.byMember} size={"lg"} />
               </Button>
             </div>
             {selectedEditCommentId === comment.id ? (

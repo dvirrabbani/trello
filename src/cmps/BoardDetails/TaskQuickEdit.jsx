@@ -4,13 +4,12 @@ import { TaskPreview } from "../Group/Task/TaskPreview"
 import { updateCurrentBoard } from "../../store/board.actions"
 import { TaskSideBtnActions } from "../TaskSideBtnActions"
 import SvgIcon from "../SvgIcon"
+import { ButtonDynamicTaskPopover } from "../ButtonDynamicTaskPopover"
 
-export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
+export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
   const navigate = useNavigate()
-  //TODO - Check X position
-  // console.log("boundaries", boundaries)
-  // console.log("task", task)
+
   const style = {
     top: boundaries.y,
     left: boundaries.x,
@@ -45,8 +44,7 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
       key: "title",
       value: titleToEdit,
     })
-
-    setTaskQuickEdit(null)
+    closeQuickEdit()
   }
 
   async function onUpdateTask({ key, value }) {
@@ -57,8 +55,13 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
   }
 
   function onOpenTask() {
-    setTaskQuickEdit(null)
+    closeQuickEdit()
     navigate(`${groupId}/${task.id}`)
+  }
+
+  function onArchiveTask() {
+    onUpdateTask({ key: "archivedAt", value: Date.now() })
+    closeQuickEdit()
   }
 
   return (
@@ -84,6 +87,20 @@ export function TaskQuickEdit({ groupId, task, boundaries, setTaskQuickEdit }) {
           task={task}
           onUpdateTask={onUpdateTask}
         />
+        <ButtonDynamicTaskPopover
+          iconName={"duplicate"}
+          title={"Copy"}
+          variant={"contained"}
+          popoverId="popover-cover-id"
+          popoverTitle={"Copy card"}
+          type={"Duplicate"}
+          task={task}
+          groupId={groupId}
+        />
+        <button className="button" onClick={onArchiveTask}>
+          <SvgIcon iconName="archive" />
+          Archive
+        </button>
       </div>
       <button
         className="save-btn button variant-primary"

@@ -5,7 +5,7 @@ export function Activity({ activity, profileSize }) {
   return (
     <div className="activity">
       <aside className="aside">
-        <ProfileImg imgUrl={activity.byMember.imgUrl} size={profileSize} />
+        <ProfileImg member={activity.byMember} size={profileSize} />
       </aside>
       <div className="activity-content">
         <header className="header">
