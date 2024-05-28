@@ -8,7 +8,7 @@ import { DEMO_USER } from "../demo/user"
 import SvgIcon from "./SvgIcon"
 import { uiService } from "../services/ui.service"
 
-export function AddBoardButton({ iconName, title, variant }) {
+export function AddBoardButton({ iconName, title, variant, className }) {
   const [anchorEl, setAnchorEl] = useState(null)
   const navigate = useNavigate()
   const [fields, setFields, handleChange, resetForm] = useForm({
@@ -111,7 +111,11 @@ export function AddBoardButton({ iconName, title, variant }) {
   const popoverId = isPopoverOpen ? "add-board-popover-id" : undefined
 
   return (
-    <article className="add-board-button">
+    <article
+      className={`${
+        className ? `add-board-button ${className}` : "add-board-button"
+      }`}
+    >
       <Button variant={variant} onClick={handleClick}>
         {iconName && <SvgIcon iconName={iconName} />}
         {title && <span>{title}</span>}

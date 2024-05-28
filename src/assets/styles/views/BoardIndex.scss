@@ -5,10 +5,17 @@
     color: $color-txt-primary;
     font-weight: bold;
     display: flex;
-    gap: 12px;
+    gap: rem(12px);
   }
 
   .all-boards {
     margin-top: rem(55px);
+  }
+
+  .add-board-button button {
+    width: 100%;
+    height: 100%;
+    font-weight: 400;
+    justify-content: center;
   }
 }
