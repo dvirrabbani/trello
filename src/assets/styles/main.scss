@@ -12,11 +12,14 @@
 @import "basics/forms";
 
 // Views
-@import "views/HomePage";
-@import "views/Workspace.scss";
+@import "views/Home.scss";
+@import "views/Login.scss";
+@import "views/BoardIndex.scss";
 @import "views/BoardDetails.scss";
 @import "views/TaskDetails.scss";
-@import "views/Login.scss";
+
+// Layout
+@import "layout/boardLayout.scss";
 
 // Components
 
@@ -25,7 +28,7 @@
 @import "cmps/tasks/TaskPreview.scss";
 @import "cmps/tasks/TaskQuickEdit.scss";
 
-@import "cmps/AppHeader";
+@import "cmps/BoardHeader.scss";
 @import "cmps/BoardList.scss";
 @import "cmps/BoardPreview.scss";
 @import "cmps/BoardDetailsHeader.scss";

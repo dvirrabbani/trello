@@ -1,0 +1,69 @@
+.board-index {
+  .container {
+    height: calc(100vh - $board-header-height);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: rem(256px) minmax(288px, 825px);
+    justify-content: center;
+    overflow-y: auto;
+  }
+
+  .board-index-nav {
+    margin-top: rem(40px);
+    height: 70vh;
+    padding: 0 rem(16px);
+    position: sticky;
+    top: rem(40px);
+
+    li {
+      margin-bottom: rem(4px);
+      a {
+        border-radius: rem(8px);
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        gap: rem(8px);
+        min-height: rem(20px);
+        padding: rem(6px) rem(8px);
+        text-decoration: none;
+        transition-property: background-color, border-color, box-shadow;
+        transition-duration: 85ms;
+        transition-timing-function: ease;
+        &:hover {
+          background-color: $border-input;
+        }
+        &.active {
+          background-color: $clr5;
+          color: $clr3;
+        }
+        &:active {
+          color: $color-txt-primary;
+          background-color: $color-text-disabled;
+        }
+      }
+    }
+  }
+
+  .board-list-container {
+    margin: rem(40px) rem(16px) 0;
+    padding-bottom: rem(32px);
+    width: 100%;
+    .board-list-header {
+      color: $color-txt-primary;
+      font-weight: bold;
+      display: flex;
+      gap: rem(12px);
+    }
+
+    .board-list {
+      padding-bottom: rem(55px);
+    }
+
+    .add-board-button button {
+      width: 100%;
+      height: 100%;
+      font-weight: 400;
+      justify-content: center;
+    }
+  }
+}
