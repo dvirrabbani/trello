@@ -99,7 +99,8 @@ function filteredBoard(board, filterBy) {
         _isTaskMatchLabels(task, filterBy) &&
         _isTaskMatchMembers(task, filterBy) &&
         _isTaskMatchTxt(task, filterBy) &&
-        _isTaskMatchDates(task, filterBy)
+        _isTaskMatchDates(task, filterBy) &&
+        !task.archivedAt
       )
     })
     return { ...group, tasks }

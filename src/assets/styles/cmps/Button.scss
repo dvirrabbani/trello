@@ -19,6 +19,15 @@
     border-radius: 50%;
   }
 
+  &.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: rem(32px);
+    height: rem(32px);
+  }
+
   &.variant-link {
     background-color: transparent;
     text-decoration: underline;

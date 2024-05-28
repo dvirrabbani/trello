@@ -30,7 +30,6 @@
     box-shadow: $group-shadow;
     color: $color-txt-primary;
     border-radius: rem(12px);
-    min-width: rem(272px);
     display: flex;
     justify-content: space-between;
     max-height: 100%;
@@ -38,6 +37,37 @@
     position: relative;
     scroll-margin: rem(8px);
     width: rem(272px);
+    // min-width: rem(272px);
+
+    &.collapse {
+      align-items: center;
+      padding: 8px 4px;
+      overflow: hidden;
+      writing-mode: vertical-lr;
+      width: auto;
+      flex-direction: row;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $background-neutral-hovered-solid;
+
+        :hover {
+          background-color: transparent;
+        }
+      }
+
+      .group-title {
+        @include typography($type: "h2");
+        padding: rem(4px);
+      }
+
+      .tasks-count {
+        @include typography($type: "txt");
+        color: $color-text-subtlest;
+        margin-top: rem(4px);
+        margin-bottom: rem(8px);
+      }
+    }
 
     .group-header {
       padding: rem(8px);
@@ -51,7 +81,7 @@
 
     .group-title-container {
       position: relative;
-      width: -webkit-fill-available;
+      flex: 1;
 
       .group-title {
         @include typography($type: "h2");

@@ -4,8 +4,6 @@ import { Droppable, Draggable } from "react-beautiful-dnd"
 import { updateCurrentBoard } from "../../../store/board.actions"
 
 export function TaskList({ group }) {
-  const notArchivedTasks = group.tasks.filter((task) => !task.archivedAt)
-
   return (
     <Droppable droppableId={group.id} type="group">
       {(provided, snapshot) => (
@@ -14,7 +12,7 @@ export function TaskList({ group }) {
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
-          {notArchivedTasks.map((task, index) => {
+          {group.tasks.map((task, index) => {
             return (
               <Draggable key={task.id} draggableId={task.id} index={index}>
                 {(provided, snapshot) => (
