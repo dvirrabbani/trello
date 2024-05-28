@@ -43,11 +43,15 @@ export function BoardIndex() {
           </ul>
         </nav>
         <div className="board-list-container">
-          <div className="board-list-header">
-            <SvgIcon iconName={"star"} size={"md"} />
-            <span>Starred Boards</span>
-          </div>
-          <BoardList key={"starred"} boards={starredBoard} />
+          {starredBoard.length > 0 && (
+            <>
+              <div className="board-list-header">
+                <SvgIcon iconName={"star"} size={"md"} />
+                <span>Starred Boards</span>
+              </div>
+              <BoardList key={"starred"} boards={starredBoard} />
+            </>
+          )}
           <div className="board-list-header all-boards">
             <SvgIcon iconName={"profile"} size={"md"} />
             <span>Your Boards</span>

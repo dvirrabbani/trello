@@ -4,6 +4,7 @@
   justify-content: space-between;
   border-bottom: rem(1px) solid $clr16;
   padding: em(8px);
+  height: $board-header-height;
 
   .buttons-list {
     display: grid;

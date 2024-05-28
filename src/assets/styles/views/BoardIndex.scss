@@ -1,18 +1,18 @@
 .board-index {
   .container {
+    height: calc(100vh - $board-header-height);
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: rem(256px) minmax(288px, 825px);
     justify-content: center;
-    overflow: auto;
+    overflow-y: auto;
   }
 
   .board-index-nav {
-    margin: rem(40px) 0 0;
-    max-height: 90vh;
+    height: 70vh;
     padding: 0 rem(16px);
     position: sticky;
     top: rem(40px);
-    width: rem(256px);
 
     li {
       margin-bottom: rem(4px);
@@ -44,10 +44,8 @@
   }
 
   .board-list-container {
-    height: 100%;
     margin: rem(40px) rem(16px) 0;
-    max-width: rem(825px);
-    min-width: rem(288px);
+    padding-bottom: rem(32px);
     width: 100%;
     .board-list-header {
       color: $color-txt-primary;
