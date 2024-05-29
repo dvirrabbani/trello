@@ -1,3 +1,5 @@
+import dayjs from "dayjs"
+
 const BOARD_LABELS = [
   { id: "l101", bgColor: "#baf3db", title: "" },
   { id: "l102", bgColor: "#f8e6a0", title: "" },
@@ -48,6 +50,7 @@ export const uiService = {
   getBoardLabels,
   getDefaultBoardLabels,
   getCoverColors,
+  getDateStatusAndClassName,
 }
 
 function getBoardLabels() {
@@ -60,4 +63,24 @@ function getCoverColors() {
 
 function getDefaultBoardLabels() {
   return BOARD_LABELS.slice(6, 12)
+}
+
+function getDateStatusAndClassName(timestamp, isCompleted) {
+  const now = dayjs()
+  const dueDate = dayjs(timestamp)
+
+  const overdueRecently = now.subtract(1, "day")
+  const dueSoon = now.add(24, "hour")
+
+  if (isCompleted) {
+    return { status: "completed", className: "completed" }
+  } else if (dueDate.isBefore(overdueRecently)) {
+    return { status: "overdue", className: "past-overdue" }
+  } else if (dueDate.isBefore(now) && dueDate.isAfter(overdueRecently)) {
+    return { status: "overdue", className: "overdue-recently" }
+  } else if (dueDate.isBefore(dueSoon) && dueDate.isAfter(now)) {
+    return { status: "due soon", className: "due-soon" }
+  } else {
+    return { status: "", className: "" }
+  }
 }

@@ -6,6 +6,7 @@ import dayjs from "dayjs"
 import { Popover } from "../Popover"
 import { ProfileImg } from "../ProfileImg"
 import { ButtonDynamicTaskPopover } from "../ButtonDynamicTaskPopover"
+import { uiService } from "../../services/ui.service"
 
 export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
   const [datePopover, setDatePopover] = useState(null)
@@ -33,6 +34,23 @@ export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
       key: "dueDate",
       value: { ...task.dueDate, isCompleted: !task.dueDate.isCompleted },
     })
+  }
+
+  function renderDateBadge(date, isCompleted) {
+    const { status, className } = uiService.getDateStatusAndClassName(
+      date,
+      isCompleted
+    )
+
+    if (!status) {
+      return
+    }
+
+    return (
+      <span className={`due-date-badge due-date-status-${className}`}>
+        {status}
+      </span>
+    )
   }
 
   return (
@@ -115,9 +133,7 @@ export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
               variant="contained"
             >
               {dayjs(task.dueDate.date).format("MMM D YYYY [at] h:mm A")}
-              {task.dueDate.isCompleted && (
-                <span className="due-date-badge">Complete</span>
-              )}
+              {renderDateBadge(task.dueDate.date, task.dueDate.isCompleted)}
               <SvgIcon iconName={"arrow"} />
             </Button>
             <Popover

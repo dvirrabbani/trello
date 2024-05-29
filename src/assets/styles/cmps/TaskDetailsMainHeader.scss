@@ -48,5 +48,32 @@
       padding: 0 rem(4px);
       border-radius: rem(2px);
     }
+
+    .due-date-badge {
+      display: inline-block;
+      font-size: rem(12px);
+      line-height: rem(16px);
+      padding: 0 rem(4px);
+      border-radius: rem(2px);
+
+      &.due-date-status-completed {
+        color: $clr8;
+        background-color: $bg-success;
+      }
+
+      &.due-date-status-past-overdue {
+        background-color: $background-danger-bold;
+        color: $clr19;
+      }
+
+      &.due-date-status-overdue-recently {
+        color: $txt-accent-red;
+        background-color: $background-danger;
+      }
+      &.due-date-status-due-soon {
+        color: $color-txt-primary;
+        background-color: $bg-warning;
+      }
+    }
   }
 }
