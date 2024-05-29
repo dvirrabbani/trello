@@ -10,8 +10,9 @@ import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
 import { saveUserRecentBoards } from "../store/user.actions"
-import { darken, lighten } from "polished"
+import { darken, lighten, opacify } from "polished"
 import { da } from "date-fns/locale"
+import { uiService } from "../services/ui.service"
 
 export function BoardDetails() {
   const params = useParams()
@@ -57,17 +58,25 @@ export function BoardDetails() {
     const elMainContent = document.querySelector(".board-layout")
     const elHeader = document.querySelector(".board-header")
     const elSidebar = document.querySelector(".board-sidebar")
-    const { bgImg, bgColor, themeColor } = board.style
-
-    const secondaryColor =
-      themeColor == "dark" ? darken(0.01, bgColor) : lighten(0.01, bgColor)
+    const { bgImg, colorRgb, themeColor } = board.style
 
     elMainContent.style.backgroundImage = `url(${bgImg})`
-    elSidebar.style.backgroundColor = secondaryColor
-    elHeader.style.backgroundColor = secondaryColor
+    elSidebar.style.backgroundColor = darkenOrLighten(
+      themeColor,
+      `rgba(${colorRgb}, 0.8)`
+    )
+    elHeader.style.backgroundColor = darkenOrLighten(
+      themeColor,
+      `rgb(${colorRgb})`
+    )
+  }
 
-    console.log("color", bgColor)
-    console.log("darken", darken(0.2, bgColor))
+  function darkenOrLighten(themeColor, color) {
+    if (themeColor === "dark") {
+      return lighten(0.01, color)
+    } else {
+      return darken(0.01, color)
+    }
   }
 
   if (!board) return <div>Loading..</div>

@@ -53,7 +53,6 @@ export const uiService = {
   getDateStatusAndClassName,
   isRgbBright,
   getDominantColor,
-  addOpacityToRGB,
 }
 
 function getBoardLabels() {
@@ -119,7 +118,7 @@ function getDominantColor(imageUrl) {
       G = ~~(G / count)
       B = ~~(B / count)
 
-      resolve({ rgb: `${R},${G},${B}` })
+      resolve(`${R},${G},${B}`)
     }
     img.onerror = function () {
       reject("Failed to load image")
@@ -137,14 +136,6 @@ function isRgbBright(rgb) {
 
   const brightness = (r * 299 + g * 587 + b * 114) / 1000
 
-  const res = brightness >= 128 ? true : false
+  const res = brightness >= 155 ? true : false
   return res
-}
-
-function addOpacityToRGB(rgbColor, opacity) {
-  // Convert RGB color to RGBA format
-  const rgbaColor = rgbColor
-    .replace("rgb", "rgba")
-    .replace(")", `, ${opacity})`)
-  return rgbaColor
 }
