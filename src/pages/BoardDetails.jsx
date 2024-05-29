@@ -9,9 +9,8 @@ import { TaskQuickEdit } from "../cmps/BoardDetails/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
-import { el } from "date-fns/locale"
-import { green } from "@mui/material/colors"
 import { utilService } from "../services/util.service"
+import { saveUserRecentBoards } from "../store/user.actions"
 
 export function BoardDetails() {
   const params = useParams()
@@ -34,6 +33,7 @@ export function BoardDetails() {
 
   useEffect(() => {
     loadBoard(params.boardId)
+    saveUserRecentBoards(params.boardId)
   }, [params.boardId])
 
   //set document title and dynamic style

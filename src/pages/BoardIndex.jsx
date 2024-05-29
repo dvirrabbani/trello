@@ -6,15 +6,38 @@ import SvgIcon from "../cmps/SvgIcon.jsx"
 import { AddBoardButton } from "../cmps/AddBoardButton.jsx"
 
 export function BoardIndex() {
+  const userRecentBoards = useSelector(
+    (storeState) => storeState.userModule.user.recentBoards
+  )
+  const [recentBoards, setRecentBoards] = useState([])
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [starredBoard, setStarredBoard] = useState([])
 
   useEffect(() => {
     updateStarredBoards()
+    loadRecentBoards()
   }, [boards])
 
   function updateStarredBoards() {
     boards && setStarredBoard(boards.filter((board) => board.isStarred))
+  }
+
+  function loadRecentBoards() {
+    const recentBoards = []
+    const sortedViewBoards = [...userRecentBoards]
+      .sort((a, b) => b.date - a.date)
+      .slice(0, 4)
+
+    sortedViewBoards.forEach((sortedViewBoard) => {
+      const recentBoard = boards.find(
+        (board) => board._id === sortedViewBoard.id
+      )
+      if (recentBoard) {
+        recentBoards.push(recentBoard)
+      }
+    })
+
+    setRecentBoards(recentBoards)
   }
 
   return (
@@ -50,6 +73,15 @@ export function BoardIndex() {
                 <span>Starred Boards</span>
               </div>
               <BoardList key={"starred"} boards={starredBoard} />
+            </>
+          )}
+          {recentBoards.length > 0 && (
+            <>
+              <div className="board-list-header">
+                <SvgIcon iconName={"clock"} size={"md"} />
+                <span>Recently viewed</span>
+              </div>
+              <BoardList key={"Recently"} boards={recentBoards} />
             </>
           )}
           <div className="board-list-header all-boards">
