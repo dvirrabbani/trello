@@ -76,4 +76,14 @@
       padding: rem(6px) rem(12px);
     }
   }
+
+  .task-detail-todo-form {
+    margin-inline-start: rem(40px);
+    margin-top: rem(12px);
+    .actions {
+      display: flex;
+      gap: rem(4px);
+      margin-top: rem(8px);
+    }
+  }
 }

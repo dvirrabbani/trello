@@ -15,11 +15,16 @@ export function TaskDetailTodoForm({
 
   return (
     <form className="task-detail-todo-form">
-      <input name="title" onChange={handleChange} value={title || ""} />
+      <input
+        name="title"
+        className="input-text"
+        onChange={handleChange}
+        value={title || ""}
+      />
 
       <div className="actions">
         <Button variant="primary" onClick={onSaveTodo}>
-          Save
+          Add
         </Button>
         <Button onClick={() => setIsFormOpen(() => false)}>Cancel</Button>
       </div>
