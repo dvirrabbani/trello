@@ -11,7 +11,6 @@ export const utilService = {
   getAssetSrc,
   calculateDueDateStatus,
   getImageMetaData,
-  addOpacityToRGB,
 }
 
 function makeId(length = 6) {
@@ -181,12 +180,4 @@ function getImageMetaData(imageUrl) {
       reject(new Error("Failed to load image"))
     }
   })
-}
-
-function addOpacityToRGB(rgbColor, opacity) {
-  // Convert RGB color to RGBA format
-  const rgbaColor = rgbColor
-    .replace("rgb", "rgba")
-    .replace(")", `, ${opacity})`)
-  return rgbaColor
 }

@@ -12,7 +12,8 @@ export const DEMO_BOARD_LIST = [
     },
     style: {
       bgImg: "https://images.unsplash.com/photo-1699116548123-73affe0987b7",
-      bgColor: "rgb(38, 52, 53)",
+      bgColor: "rgba(163, 171, 168)",
+      themeColor: "dark",
     },
     labels: [
       { id: "l106", bgColor: "#4bce97", title: "" },
@@ -955,8 +956,9 @@ export const DEMO_BOARD_LIST = [
     },
     style: {
       bgImg:
-        "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
-      bgColor: "rgb(88, 65, 174)",
+        "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg",
+      bgColor: "rgba(168, 103, 192)",
+      themeColor: "dark",
     },
     labels: [
       { id: "l106", bgColor: "#4bce97", title: "" },

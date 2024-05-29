@@ -53,6 +53,7 @@ export const uiService = {
   getDateStatusAndClassName,
   isRgbBright,
   getDominantColor,
+  addOpacityToRGB,
 }
 
 function getBoardLabels() {
@@ -138,4 +139,12 @@ function isRgbBright(rgb) {
 
   const res = brightness >= 128 ? true : false
   return res
+}
+
+function addOpacityToRGB(rgbColor, opacity) {
+  // Convert RGB color to RGBA format
+  const rgbaColor = rgbColor
+    .replace("rgb", "rgba")
+    .replace(")", `, ${opacity})`)
+  return rgbaColor
 }

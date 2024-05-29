@@ -42,7 +42,6 @@ export function BoardDetails() {
     if (board) {
       document.title = board.title
       setDynamicStyle()
-      getCoverColors()
     }
     // reset dynamic style on unmount
     return () => {
@@ -54,25 +53,14 @@ export function BoardDetails() {
     }
   }, [board])
 
-  async function getCoverColors() {
-    const dominantColor = await uiService.getDominantColor(board.style.bgImg)
-    console.log(dominantColor)
-  }
-
   function setDynamicStyle() {
     const elMainContent = document.querySelector(".board-layout")
     const elHeader = document.querySelector(".board-header")
     const elSidebar = document.querySelector(".board-sidebar")
 
     elMainContent.style.backgroundImage = `url(${board.style.bgImg})`
-    elSidebar.style.backgroundColor = utilService.addOpacityToRGB(
-      board.style.bgColor,
-      0.9
-    )
-    elHeader.style.backgroundColor = utilService.addOpacityToRGB(
-      board.style.bgColor,
-      0.95
-    )
+    elSidebar.style.backgroundColor = board.style.bgColor
+    elHeader.style.backgroundColor = board.style.bgColor
   }
 
   if (!board) return <div>Loading..</div>
