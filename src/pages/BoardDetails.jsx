@@ -9,9 +9,9 @@ import { TaskQuickEdit } from "../cmps/BoardDetails/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
-import { utilService } from "../services/util.service"
 import { saveUserRecentBoards } from "../store/user.actions"
-import { uiService } from "../services/ui.service"
+import { darken, lighten } from "polished"
+import { da } from "date-fns/locale"
 
 export function BoardDetails() {
   const params = useParams()
@@ -57,10 +57,17 @@ export function BoardDetails() {
     const elMainContent = document.querySelector(".board-layout")
     const elHeader = document.querySelector(".board-header")
     const elSidebar = document.querySelector(".board-sidebar")
+    const { bgImg, bgColor, themeColor } = board.style
 
-    elMainContent.style.backgroundImage = `url(${board.style.bgImg})`
-    elSidebar.style.backgroundColor = board.style.bgColor
-    elHeader.style.backgroundColor = board.style.bgColor
+    const secondaryColor =
+      themeColor == "dark" ? darken(0.01, bgColor) : lighten(0.01, bgColor)
+
+    elMainContent.style.backgroundImage = `url(${bgImg})`
+    elSidebar.style.backgroundColor = secondaryColor
+    elHeader.style.backgroundColor = secondaryColor
+
+    console.log("color", bgColor)
+    console.log("darken", darken(0.2, bgColor))
   }
 
   if (!board) return <div>Loading..</div>
