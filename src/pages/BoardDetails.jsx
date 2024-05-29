@@ -11,6 +11,7 @@ import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
 import { utilService } from "../services/util.service"
 import { saveUserRecentBoards } from "../store/user.actions"
+import { uiService } from "../services/ui.service"
 
 export function BoardDetails() {
   const params = useParams()
@@ -41,6 +42,7 @@ export function BoardDetails() {
     if (board) {
       document.title = board.title
       setDynamicStyle()
+      getCoverColors()
     }
     // reset dynamic style on unmount
     return () => {
@@ -51,6 +53,11 @@ export function BoardDetails() {
       elHeader.style.backgroundColor = "white"
     }
   }, [board])
+
+  async function getCoverColors() {
+    const dominantColor = await uiService.getDominantColor(board.style.bgImg)
+    console.log(dominantColor)
+  }
 
   function setDynamicStyle() {
     const elMainContent = document.querySelector(".board-layout")
