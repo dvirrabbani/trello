@@ -10,8 +10,6 @@ import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
 import { saveUserRecentBoards } from "../store/user.actions"
-import { da } from "date-fns/locale"
-import { uiService } from "../services/ui.service"
 
 export function BoardDetails() {
   const params = useParams()
@@ -37,10 +35,11 @@ export function BoardDetails() {
     saveUserRecentBoards(params.boardId)
   }, [params.boardId])
 
-  //set document title and dynamic style
+  //set document ui
   useEffect(() => {
     if (board) {
       document.title = board.title
+      document.body.dataset.theme = board.style.themeColor
       boardService.setBoardDynamicStyle(board.style)
     }
     return () => {

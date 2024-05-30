@@ -57,22 +57,10 @@ $clr19: #fafbfc;
 // Dynamic colors
 :root {
   --dynamic-background: "";
-  --dynamic-button: transparent;
-  --dynamic-button-hovered: #a6c5e229;
-  --dynamic-button-pressed: #bfdbf847;
-  --dynamic-button-highlighted: #dcdfe4;
-  --dynamic-button-highlighted-text: #172b4d;
-  --dynamic-button-highlighted-hovered: #ffffff;
-  --dynamic-nav-item: transparent;
-  --dynamic-nav-item-hovered: #a1bdd914;
-  --dynamic-nav-item-pressed: #a6c5e229;
-  --dynamic-icon: #ffffff;
-  --dynamic-text: #ffffff;
-  --dynamic-text-transparent: hsla(0, 0%, 100%, 0.16);
   --dynamic-background-transparent: "";
 }
 
-[theme="light"] {
+[data-theme="light"] {
   --dynamic-button: transparent;
   --dynamic-button-hovered: #a6c5e229;
   --dynamic-button-pressed: #bfdbf847;
@@ -88,7 +76,7 @@ $clr19: #fafbfc;
   --board-header-background-color: #0000003d;
 }
 
-[theme="dark"] {
+[data-theme="dark"] {
   --dynamic-button: transparent;
   --dynamic-button-hovered: #091e4224;
   --dynamic-button-pressed: #091e424f;
