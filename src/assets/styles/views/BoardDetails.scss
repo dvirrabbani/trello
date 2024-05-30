@@ -5,7 +5,10 @@
 
   .board-sidebar {
     backdrop-filter: blur(6px);
-    background-color: white;
+    background-color: var(
+      --dynamic-background-transparent,
+      var(--ds-surface, #ffffff)
+    );
     color: white;
     border-right: 1px solid hsla(0, 0%, 100%, 0.16);
   }

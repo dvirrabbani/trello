@@ -2,6 +2,7 @@ import { DEMO_BOARD_LIST } from "../demo/boards.js"
 import { activityService } from "./acitivity.service.js"
 import { storageService } from "./async-storage.service.js"
 import { utilService } from "./util.service.js"
+import { darken, lighten, opacify } from "polished"
 
 const STORAGE_KEY = "board"
 
@@ -17,6 +18,8 @@ export const boardService = {
   createNewGroup,
   createNewTask,
   getDefaultFilter,
+  setBoardDynamicStyle,
+  resetDynamicStyle,
 }
 window.cs = boardService
 
@@ -245,6 +248,35 @@ function createNewTask() {
     byMember: {},
     style: null,
   }
+}
+
+function setBoardDynamicStyle(boardStyle) {
+  const { colorRgb, themeColor } = boardStyle
+
+  const root = document.documentElement
+  root.style.setProperty(
+    "--dynamic-background-transparent",
+    _darkenOrLightenColor(themeColor, `rgba(${colorRgb}, 0.8)`)
+  )
+  root.style.setProperty(
+    "--dynamic-background",
+    _darkenOrLightenColor(themeColor, `rgb(${colorRgb})`)
+  )
+}
+
+function _darkenOrLightenColor(themeColor, color) {
+  //if theme is dark, lighten the color, else darken it
+  if (themeColor === "dark") {
+    return lighten(0.01, color)
+  } else {
+    return darken(0.01, color)
+  }
+}
+
+function resetDynamicStyle() {
+  const root = document.documentElement
+  root.style.setProperty("--dynamic-background-transparent", "")
+  root.style.setProperty("--dynamic-background", "")
 }
 
 // TODO

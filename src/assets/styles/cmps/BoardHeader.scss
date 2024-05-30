@@ -5,6 +5,7 @@
   border-bottom: rem(1px) solid $clr16;
   padding: em(8px);
   height: $board-header-height;
+  background-color: var(--dynamic-background, #0c66e4);
 
   .buttons-list {
     display: grid;

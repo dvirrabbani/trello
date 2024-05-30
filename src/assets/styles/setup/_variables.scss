@@ -54,6 +54,24 @@ $clr16: #dadde2;
 $clr18: #0000003d;
 $clr19: #fafbfc;
 
+// Dynamic colors
+:root {
+  --dynamic-background: "";
+  --dynamic-button: transparent;
+  --dynamic-button-hovered: #a6c5e229;
+  --dynamic-button-pressed: #bfdbf847;
+  --dynamic-button-highlighted: #dcdfe4;
+  --dynamic-button-highlighted-text: #172b4d;
+  --dynamic-button-highlighted-hovered: #ffffff;
+  --dynamic-nav-item: transparent;
+  --dynamic-nav-item-hovered: #a1bdd914;
+  --dynamic-nav-item-pressed: #a6c5e229;
+  --dynamic-icon: #ffffff;
+  --dynamic-text: #ffffff;
+  --dynamic-text-transparent: hsla(0, 0%, 100%, 0.16);
+  --dynamic-background-transparent: "";
+}
+
 //shadow
 $group-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px 0px;
 $task-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
