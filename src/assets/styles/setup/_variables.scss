@@ -72,6 +72,38 @@ $clr19: #fafbfc;
   --dynamic-background-transparent: "";
 }
 
+[theme="light"] {
+  --dynamic-button: transparent;
+  --dynamic-button-hovered: #a6c5e229;
+  --dynamic-button-pressed: #bfdbf847;
+  --dynamic-button-highlighted: #dcdfe4;
+  --dynamic-button-highlighted-text: #172b4d;
+  --dynamic-button-highlighted-hovered: #ffffff;
+  --dynamic-nav-item: transparent;
+  --dynamic-nav-item-hovered: #a1bdd914;
+  --dynamic-nav-item-pressed: #a6c5e229;
+  --dynamic-icon: #ffffff;
+  --dynamic-text: #ffffff;
+  --dynamic-text-transparent: hsla(0, 0%, 100%, 0.16);
+  --board-header-background-color: #0000003d;
+}
+
+[theme="dark"] {
+  --dynamic-button: transparent;
+  --dynamic-button-hovered: #091e4224;
+  --dynamic-button-pressed: #091e424f;
+  --dynamic-button-highlighted: rgba(0, 0, 0, 0.5);
+  --dynamic-button-highlighted-text: #ffffff;
+  --dynamic-button-highlighted-hovered: rgba(0, 0, 0, 0.6);
+  --dynamic-nav-item: transparent;
+  --dynamic-nav-item-hovered: #091e420f;
+  --dynamic-nav-item-pressed: #091e4224;
+  --dynamic-icon: #42526e;
+  --dynamic-text: #172b4d;
+  --dynamic-text-transparent: hsla(218, 54%, 19.6%, 0.16);
+  --board-header-background-color: #ffffff3d;
+}
+
 //shadow
 $group-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px 0px;
 $task-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;

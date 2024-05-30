@@ -4,8 +4,9 @@
   justify-content: space-between;
   align-items: center;
   padding: rem(12px) rem(10px) rem(12px) rem(16px);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  background: $clr18;
+  background: var(--board-header-background-color);
   color: $clr8;
 
   .board-details-title {
