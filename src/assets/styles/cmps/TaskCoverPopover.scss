@@ -29,7 +29,8 @@
       cursor: pointer;
       position: relative;
       &.active {
-        box-shadow: 0 0 0 rem(2px) $clr19, 0 0 0 rem(4px) $clr3;
+        box-shadow: 0 0 0 2px var(--ds-border-inverse, #ffffff),
+          0 0 0 4px var(--ds-border-brand, #0c66e4);
       }
       background-color: $background-accent-gray-subtle;
       &.has-bg-img {
@@ -51,7 +52,7 @@
       .skeleton-card {
         border-end-start-radius: rem(3px);
         border-end-end-radius: rem(3px);
-        background-color: $clr19;
+        background-color: var(--ds-surface-raised, #ffffff);
         width: 100%;
         position: absolute;
         bottom: 0;

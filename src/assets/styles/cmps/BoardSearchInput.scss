@@ -5,11 +5,11 @@
   > .form-group {
     padding: rem(8px);
     border-radius: rem(8px);
-    background-color: $clr1; //TODO change background
+    background-color: var(--background-color);
     display: flex;
     gap: rem(4px);
     align-items: center;
-    color: $clr8;
+    color: var(--dynamic-text);
     input {
       color: inherit;
       border: none;
@@ -33,7 +33,7 @@
     left: 0;
     top: 100%;
     position: absolute;
-    background-color: $clr8;
+    background-color: var(--ds-surface-overlay, #fff);
     display: grid;
     align-content: start;
     z-index: 9;

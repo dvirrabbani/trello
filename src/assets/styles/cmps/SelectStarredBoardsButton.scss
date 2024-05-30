@@ -4,7 +4,7 @@
     padding: rem(12px);
     left: 0;
     top: 100%;
-    background-color: $clr8;
+    background-color: var(--ds-surface-overlay, #ffffff);
     display: grid;
     align-content: start;
     border-radius: rem(4px);

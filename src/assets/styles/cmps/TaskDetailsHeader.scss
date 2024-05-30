@@ -65,7 +65,7 @@
       &:focus {
         border-radius: rem(4px);
         outline: 0;
-        background-color: $clr8;
+        background-color: var(--ds-background-input, #ffffff);
         box-shadow: inset 0 0 0 rem(2px) $border-focused;
       }
     }

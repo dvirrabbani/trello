@@ -63,7 +63,7 @@
 
       &.due-date-status-past-overdue {
         background-color: $background-danger-bold;
-        color: $clr19;
+        color: var(--ds-text-inverse, #ffffff);
       }
 
       &.due-date-status-overdue-recently {

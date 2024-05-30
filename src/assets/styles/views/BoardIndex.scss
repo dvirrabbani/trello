@@ -33,8 +33,8 @@
           background-color: $border-input;
         }
         &.active {
-          background-color: $clr5;
-          color: $clr3;
+          background-color: var(--ds-background-selected, #e9f2ff);
+          color: var(--ds-text-selected, #0c66e4);
         }
         &:active {
           color: $color-txt-primary;

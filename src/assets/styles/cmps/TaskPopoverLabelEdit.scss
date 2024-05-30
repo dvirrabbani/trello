@@ -1,6 +1,6 @@
 .task-popover-label-edit {
   width: 100%;
-  background-color: $clr8;
+  background-color: var(--ds-surface-overlay, #ffffff);
   top: 0;
   left: 0;
   z-index: 999;
