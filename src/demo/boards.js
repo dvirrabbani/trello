@@ -1,3 +1,5 @@
+import { th } from "date-fns/locale"
+
 export const DEMO_BOARD_LIST = [
   {
     _id: "b101",
@@ -200,10 +202,11 @@ export const DEMO_BOARD_LIST = [
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
             },
             style: {
-              bgColor: "#53A8E2",
+              bgColor: "rgb(137,193,190)",
               bgImg:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717169138/zcw8hqjfj793o3y1ehen.gif",
               isCoverFull: false,
+              themeColor: "dark",
             },
           },
           {
@@ -246,10 +249,11 @@ export const DEMO_BOARD_LIST = [
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
             },
             style: {
-              bgColor: "#53A8E2",
+              bgColor: "rgb(189,186,182)",
               bgImg:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717169431/azbqq53oskw7nlhnd1ck.webp",
               isCoverFull: true,
+              themeColor: "dark",
             },
           },
           {
