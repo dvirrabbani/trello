@@ -26,9 +26,9 @@
   }
 
   .group-preview {
-    background-color: $group-background;
-    box-shadow: $group-shadow;
-    color: $color-txt-primary;
+    background-color: var(--tr-background-list);
+    box-shadow: var(--ds-shadow-raised);
+    color: var(--ds-text-subtle, #44546f);
     border-radius: rem(12px);
     display: flex;
     justify-content: space-between;
@@ -49,7 +49,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: $background-neutral-hovered-solid;
+        background-color: var(--ds-background-neutral-solid, #d4d8dd);
 
         :hover {
           background-color: transparent;
@@ -63,7 +63,7 @@
 
       .tasks-count {
         @include typography($type: "txt");
-        color: $color-text-subtlest;
+        color: var(--ds-text-subtlest, #626f86);
         margin-top: rem(4px);
         margin-bottom: rem(8px);
       }
@@ -124,11 +124,12 @@
     );
     @include typography($type: "h2");
     font-weight: 500;
-    color: $color-txt-primary;
+    color: var(--dynamic-text);
     height: fit-content;
     min-width: $group-width;
     &:hover {
-      background-color: $background-neutral-hovered;
+      background-color: var(--dynamic-button-hovered);
+      color: var(--dynamic-text);
     }
   }
 }

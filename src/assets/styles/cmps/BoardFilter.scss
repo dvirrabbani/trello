@@ -19,15 +19,14 @@
   }
 
   .section-title {
-    @include typography($type: "h3", $color: $color-text-subtle);
+    @include typography($type: "h3", $color: var(--ds-text-subtle, #44546f));
     margin-top: rem(16px);
     margin-bottom: rem(8px);
   }
 
   .input-text {
-    box-shadow: inset 0 0 0 rem(1px) $background-neutral-hovered;
     &::placeholder {
-      color: $color-txt-primary;
+      color: var(--ds-text, #172b4d);
     }
   }
 
@@ -53,7 +52,7 @@
       padding-right: 0;
 
       .filter-txt {
-        @include typography($type: "txt", $color: $color-txt-primary);
+        @include typography($type: "txt", $color: var(--ds-text, #172b4d));
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: auto 1fr;
@@ -68,17 +67,17 @@
         border-radius: 50%;
         width: 24px;
         height: 24px;
-        background-color: $background-neutral;
-        color: $color-text-subtle;
+        background-color: var(--ds-background-neutral, #091e420f);
+        color: var(--ds-text-subtle, #44546f);
 
         &.overdue {
-          background-color: $bg-danger;
-          color: white;
+          background-color: var(--ds-background-danger-bold, #ca3521);
+          color: var(--ds-icon-inverse, #ffffff);
         }
 
         &.due-soon {
-          background-color: $bg-warning-bold;
-          color: white;
+          background-color: var(--ds-background-warning-bold, #f5cd47);
+          color: var(--ds-icon-inverse, #ffffff);
         }
       }
     }
@@ -92,18 +91,18 @@
       overflow: hidden;
       white-space: nowrap;
       transition: all 0.2s ease-in-out;
-      background-color: $input-background;
-      box-shadow: inset 0 0 0 rem(1px) $border-input;
+      background-color: var(--ds-background-input, #ffffff);
+      box-shadow: inset 0 0 0 1px var(--ds-border-input, #091e4224);
     }
 
     &:hover input ~ .checkmark {
-      background-color: $input-hovered;
-      box-shadow: inset 0 0 0 rem(1px) $border-input;
+      background-color: var(--ds-background-input-hovered, #f7f8f9);
+      box-shadow: inset 0 0 0 rem(1px) var(--ds-border-input, #091e4224);
     }
 
     input:checked ~ .checkmark {
-      background-color: $background-brand-bold;
-      box-shadow: inset 0 0 0 rem(1px) $background-brand-bold;
+      background-color: var(--ds-background-selected-bold, #0c66e4);
+      box-shadow: inset 0 0 0 rem(1px) var(--ds-border-selected, #0c66e4);
     }
 
     input:checked ~ .checkmark:after {
@@ -118,7 +117,7 @@
       top: rem(2px);
       width: rem(4px);
       height: rem(8px);
-      border: solid $input-background;
+      border: solid var(--ds-icon-inverse, #ffffff);
       border-width: 0 rem(1px) rem(1px) 0;
       -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);

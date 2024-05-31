@@ -1,6 +1,6 @@
 .task-popover-label-edit {
   width: 100%;
-  background-color: $clr8;
+  background-color: var(--ds-surface-overlay, #ffffff);
   top: 0;
   left: 0;
   z-index: 999;
@@ -8,7 +8,7 @@
   min-width: rem(304px);
   .edit-label-preview {
     padding: rem(32px);
-    background-color: $group-background;
+    background-color: var(--ds-surface-sunken, #f7f8f9);
     .label {
       height: rem(32px);
       span {

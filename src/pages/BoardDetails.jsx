@@ -9,7 +9,6 @@ import { TaskQuickEdit } from "../cmps/BoardDetails/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
-import { utilService } from "../services/util.service"
 import { saveUserRecentBoards } from "../store/user.actions"
 import BoarDashboardView from "../cmps/board/view/BoarDashboardView"
 
@@ -37,40 +36,26 @@ export function BoardDetails() {
     setViewType("board")
   }, [params.boardId])
 
-  //set document title and dynamic style
+  //set document ui
   useEffect(() => {
     if (board) {
       document.title = board.title
-      setDynamicStyle()
+      document.body.dataset.theme = board.style.themeColor
+      boardService.setBoardDynamicStyle(board.style)
     }
-    // reset dynamic style on unmount
     return () => {
-      resetDynamicStyle()
+      boardService.resetDynamicStyle()
     }
   }, [board])
 
-  function setDynamicStyle() {
-    const elMainContent = document.querySelector(".board-layout")
-    const elHeader = document.querySelector(".board-header")
-    const elSidebar = document.querySelector(".board-sidebar")
-
-    elMainContent.style.backgroundImage = `url(${board.style.bgImg})`
-    elSidebar.style.backgroundColor = utilService.addOpacityToRGB(board.style.bgColor, 0.9)
-    elHeader.style.backgroundColor = utilService.addOpacityToRGB(board.style.bgColor, 0.95)
-  }
-
-  function resetDynamicStyle() {
-    const elMainContent = document.querySelector(".board-layout")
-    const elHeader = document.querySelector(".board-header")
-
-    elMainContent.style.backgroundImage = "none"
-    elHeader.style.backgroundColor = "white"
-  }
 
   if (!board) return <div>Loading..</div>
 
   return (
-    <div className="board-details-container">
+    <div
+      className="board-details-container bg-image-cover"
+      style={{ backgroundImage: `url(${board.style.bgImg})` }}
+    >
       <BoardSidebar />
       <div className="board-main-content flex column">
         <BoardDetailsHeader board={board} filterBy={filterBy} viewType={viewType} setViewType={setViewType} />

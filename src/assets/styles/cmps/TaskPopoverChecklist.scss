@@ -18,7 +18,7 @@
   textarea {
     border-radius: rem(3px);
     padding: rem(8px) rem(12px);
-    border: 1px solid $border-input;
+    border: 1px solid var(--ds-border-input);
     &:focus {
       border: none;
     }

@@ -9,7 +9,7 @@ export function BoardLayout() {
   }, [])
 
   return (
-    <div className="board-layout bg-image-cover">
+    <div className="board-layout">
       <BoardHeader />
       {<Outlet />}
     </div>

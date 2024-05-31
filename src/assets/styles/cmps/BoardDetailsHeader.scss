@@ -4,9 +4,14 @@
   justify-content: space-between;
   align-items: center;
   padding: rem(12px) rem(10px) rem(12px) rem(16px);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  background: $clr18;
-  color: $clr8;
+  background: var(--board-header-background-color);
+
+  & button {
+    background-color: var(--dynamic-button);
+    color: var(--dynamic-text);
+  }
 
   .board-details-title {
     background: transparent;
@@ -44,7 +49,7 @@
       }
     }
     .svg-icon {
-      color: $clr8;
+      color: var(--dynamic-icon);
     }
   }
 
@@ -77,12 +82,13 @@
       overflow: auto;
 
       .button {
-        background-color: $background-accent-gray-subtle;
-        color: $color-txt-primary;
+        background-color: var(--dynamic-button-highlighted);
+        color: var(--dynamic-button-highlighted-text);
         border-radius: 0;
 
         &:hover {
-          background-color: white;
+          background: var(--dynamic-button-highlighted-hovered);
+          color: var(--dynamic-button-highlighted-text);
         }
       }
     }
@@ -97,7 +103,7 @@
       padding-right: rem(6px);
       padding-left: rem(4px);
       background-color: white;
-      color: $color-txt-primary;
+      color: var(--ds-text, #172b4d);
       display: flex;
       align-items: center;
       gap: rem(6px);
@@ -107,7 +113,7 @@
         width: rem(12px);
         height: rem(12px);
         border-radius: 50%;
-        background-color: $background-brand-bold;
+        background-color: var(--ds-icon-brand, #0c66e4);
       }
     }
   }

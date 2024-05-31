@@ -1,10 +1,10 @@
 .popover {
   .MuiPopover-paper {
-    box-shadow: $shadow-overlay;
+    box-shadow: var(--ds-shadow-overlay);
     border-radius: rem(8px);
   }
   .popover-content {
-    background-color: $clr8;
+    background-color: var(--ds-surface-overlay, #ffffff);
     padding: 0 rem(12px) rem(12px);
     min-width: rem(304px);
 
@@ -17,10 +17,13 @@
           $padding: rem(6px) rem(12px)
         );
         @include typography($type: "txt");
-        color: $color-txt-primary;
+        color: var(--ds-text, #172b4d);
 
         &:hover {
-          background-color: $background-neutral-hovered;
+          background-color: var(
+            --ds-background-neutral-subtle-hovered,
+            #091e420f
+          );
         }
       }
     }
@@ -33,7 +36,7 @@
     height: rem(40px);
     justify-content: space-between;
     align-items: center;
-    color: $color-text-subtle;
+    color: var(--ds-text-subtle, #44546f);
     .popover-title {
       margin: 0 auto;
     }

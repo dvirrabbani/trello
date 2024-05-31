@@ -4,7 +4,7 @@
     .comment-item {
       display: grid;
       grid-template-columns: auto 1fr;
-      color: $color-text-subtle;
+      color: var(--ds-text-subtle, #44546f);
       .aside {
         img {
           width: rem(32px);
@@ -35,7 +35,7 @@
           0 0 1px #091e424f
         );
         padding: rem(8px) rem(12px);
-        background-color: $clr8;
+        background-color: var(--ds-background-input, #ffffff);
       }
     }
   }

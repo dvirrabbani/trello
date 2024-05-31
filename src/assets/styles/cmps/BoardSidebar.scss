@@ -1,5 +1,6 @@
 .board-sidebar {
   ul {
+    color: var(--dynamic-text);
     padding-top: rem(12px);
     display: grid;
     grid-template-columns: auto;
@@ -21,7 +22,7 @@
         padding: rem(4px);
         margin: 0 rem(6px);
         &:hover {
-          background-color: $background-button-hovered;
+          background-color: var(--dynamic-button-hovered);
         }
       }
     }
@@ -33,7 +34,10 @@
       align-items: center;
       width: 100%;
       &:hover {
-        background-color: $dynamic-nav-button-background-color-hovered;
+        background-color: var(
+          --dynamic-background-transparent,
+          var(--ds-surface, #ffffff)
+        );
       }
 
       .thumbnail {
@@ -41,7 +45,7 @@
       }
       &:has(a.active),
       &:active {
-        background-color: $dynamic-nav-button-background-color-pressed;
+        background-color: var(--dynamic-nav-button-background-color-pressed);
       }
 
       .button {

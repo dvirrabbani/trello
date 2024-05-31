@@ -1,7 +1,7 @@
 .login {
   display: grid;
   height: 100dvh;
-  background-color: $clr19;
+  background-color: #fafbfc;
   background-image: url(https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/trello-left.4f52d13c.svg),
     url(https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/trello-right.3ee60d6f.svg);
   background-repeat: no-repeat, no-repeat;
@@ -10,13 +10,13 @@
   background-position: left bottom, right bottom;
 
   .login-card {
-    background: $clr8;
+    background: var(--ds-surface-overlay, #ffffff);
     width: rem(400px);
-    color: $color-text-subtle;
+    color: var(--ds-text-subtle, #44546f);
     padding: rem(32px) rem(40px);
     border-radius: rem(3px);
     margin: rem(50px) auto rem(15px) auto;
-    box-shadow: $login-card-shadow;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
     text-align: center;
 
     header {
@@ -29,7 +29,7 @@
         font-weight: 600;
         font-size: rem(16px);
         line-height: rem(20px);
-        color: $color-txt-primary;
+        color: var(--ds-text, #172b4d);
       }
     }
 
@@ -52,7 +52,7 @@
   }
 
   @media (max-width: rem(800px)) {
-    background: $clr8;
+    background: #ffffff;
     .login-card {
       box-shadow: none;
     }

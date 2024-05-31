@@ -2,17 +2,11 @@
   box-sizing: border-box;
 }
 
-::selection {
-  background-color: $clr1;
-  color: $clr6;
-}
-
 html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", fantasy;
 
   line-height: 1.6;
-  color: $clr2;
 }
 
 body {
@@ -53,8 +47,8 @@ textarea {
 }
 
 textarea:focus {
-  background-color: $input-background;
-  box-shadow: inset 0 0 0 2px $border-focused;
+  background-color: var(--ds-background-input, #fff);
+  box-shadow: inset 0 0 0 2px var(--ds-border-focused, #388bff);
 }
 
 ::selection {

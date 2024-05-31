@@ -1,8 +1,8 @@
 .task-preview {
-  background-color: $task-background;
+  background-color: var(--ds-surface-raised, #ffffff);
   border-radius: rem(8px);
-  box-shadow: $task-shadow;
-  color: $color-txt-primary;
+  box-shadow: var(--ds-shadow-raised);
+  color: var(--ds-text, #172b4d);
   min-height: rem(36px);
   width: 100%;
   display: block;
@@ -16,7 +16,7 @@
   cursor: pointer;
 
   &:hover {
-    outline-color: $border-focused;
+    outline-color: var(--ds-border-focused, #388bff);
     outline-color: -webkit-focus-ring-color;
     outline-style: solid;
     outline-width: rem(2px);
@@ -102,10 +102,10 @@
     position: absolute;
     top: rem(2px);
     right: rem(2px);
-    background-color: $task-background;
+    background-color: var(--ds-surface-raised, #ffffff);
 
     &:hover {
-      background-color: $group-background;
+      background-color: var(--ds-surface-raised-hovered, #f1f2f4);
     }
   }
 
@@ -127,7 +127,7 @@
       width: fit-content;
       max-width: 100%;
       height: rem(24px);
-      color: $color-text-subtle;
+      color: var(--ds-text-subtle, #44546f);
       font-size: rem(12px);
       box-sizing: border-box;
     }
@@ -145,23 +145,23 @@
     }
 
     .dueDate-badge.due-soon {
-      background-color: $bg-warning;
+      background-color: var(--ds-background-warning-bold, #e2b203);
     }
 
     .dueDate-badge.recently-overdue {
-      background-color: $bg-danger;
-      color: white;
+      background-color: var(--ds-background-danger-bold, #ca3521);
+      color: var(--ds-icon-inverse, #ffffff);
     }
 
     .dueDate-badge.past-overdue {
-      background-color: $bg-accent-red;
-      color: $txt-accent-red;
+      background-color: var(--ds-background-accent-red-subtler, #ffd2cc);
+      color: var(--ds-text-accent-red, #ae2a19);
     }
 
     .dueDate-badge.complete,
     .action-badge.complete {
-      background-color: $bg-success;
-      color: white;
+      background-color: var(--ds-background-success-bold, #1f845a);
+      color: var(--ds-text-inverse, #ffffff);
     }
 
     .dueDate-badge {

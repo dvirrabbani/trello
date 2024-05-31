@@ -12,7 +12,8 @@ export const DEMO_BOARD_LIST = [
     },
     style: {
       bgImg: "https://images.unsplash.com/photo-1699116548123-73affe0987b7",
-      bgColor: "rgb(38, 52, 53)",
+      colorRgb: "163, 171, 168",
+      themeColor: "dark",
     },
     labels: [
       { id: "l106", bgColor: "#4bce97", title: "To Do", name: "Green" },
@@ -944,8 +945,11 @@ export const DEMO_BOARD_LIST = [
         "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
     },
     style: {
-      bgImg: "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
-      bgColor: "rgb(88, 65, 174)",
+      bgImg:
+        "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg",
+      colorRgb: "168, 103, 192",
+      themeColor: "light",
+
     },
     labels: [
       { id: "l106", bgColor: "#4bce97", title: "To Do", name: "Green" },

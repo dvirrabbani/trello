@@ -50,6 +50,9 @@ export const uiService = {
   getBoardLabels,
   getDefaultBoardLabels,
   getCoverColors,
+  getDateStatusAndClassName,
+  isRgbBright,
+  getDominantColor,
   getDueDateStatusAndClassName,
 }
 
@@ -84,6 +87,58 @@ function getDueDateStatusAndClassName(timestamp, isCompleted) {
     return { status: "", className: "" }
   }
 }
+
+function getDominantColor(imageUrl) {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    img.crossOrigin = "Anonymous"
+    img.onload = function () {
+      const canvas = document.createElement("canvas")
+      const ctx = canvas.getContext("2d")
+      canvas.width = this.naturalWidth
+      canvas.height = this.naturalHeight
+      ctx.drawImage(this, 0, 0)
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      const pixelArray = imageData.data
+
+      let R = 0,
+        G = 0,
+        B = 0
+      let count = 0
+      const length = pixelArray.length
+
+      for (let i = 0; i < length; i += 16) {
+        count++
+
+        R += pixelArray[i]
+        G += pixelArray[i + 1]
+        B += pixelArray[i + 2]
+      }
+
+      R = ~~(R / count)
+      G = ~~(G / count)
+      B = ~~(B / count)
+
+      resolve(`${R},${G},${B}`)
+    }
+    img.onerror = function () {
+      reject("Failed to load image")
+    }
+    img.src = imageUrl
+  })
+}
+
+function isRgbBright(rgb) {
+  let rgbColor = `rgb(${rgb})`
+  const colorValues = rgbColor.match(/\d+/g)
+  const r = parseInt(colorValues[0])
+  const g = parseInt(colorValues[1])
+  const b = parseInt(colorValues[2])
+
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000
+
+  const res = brightness >= 155 ? true : false
+  return res
 
 export function getEmptyBoardCard(type) {
   switch (type) {

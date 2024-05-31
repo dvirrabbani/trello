@@ -50,7 +50,7 @@
       position: absolute;
       top: rem(16px);
       svg {
-        fill: $color-text-subtle;
+        fill: var(--ds-icon, #44546f);
       }
     }
 
@@ -65,8 +65,8 @@
       &:focus {
         border-radius: rem(4px);
         outline: 0;
-        background-color: $clr8;
-        box-shadow: inset 0 0 0 rem(2px) $border-focused;
+        background-color: var(--ds-background-input, #ffffff);
+        box-shadow: inset 0 0 0 rem(2px) var(--ds-border-focused, #388bff);
       }
     }
   }

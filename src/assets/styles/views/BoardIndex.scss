@@ -18,6 +18,8 @@
     li {
       margin-bottom: rem(4px);
       a {
+        font-size: rem(14px);
+        color: var(--ds-text, #172b4d);
         border-radius: rem(8px);
         display: flex;
         align-items: center;
@@ -30,15 +32,15 @@
         transition-duration: 85ms;
         transition-timing-function: ease;
         &:hover {
-          background-color: $border-input;
+          background-color: var(--ds-background-neutral-hovered, #091e4224);
         }
         &.active {
-          background-color: $clr5;
-          color: $clr3;
+          background-color: var(--ds-background-selected, #e9f2ff);
+          color: var(--ds-text-selected, #0c66e4);
         }
         &:active {
-          color: $color-txt-primary;
-          background-color: $color-text-disabled;
+          color: var(--ds-text, #172b4d);
+          background-color: var(--ds-background-neutral-pressed, #091e424f);
         }
       }
     }
@@ -49,7 +51,7 @@
     padding-bottom: rem(32px);
     width: 100%;
     .board-list-header {
-      color: $color-txt-primary;
+      color: var(--ds-text, #172b4d);
       font-weight: bold;
       display: flex;
       gap: rem(12px);
