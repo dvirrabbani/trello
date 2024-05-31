@@ -73,6 +73,8 @@ export function TaskPreview({
 
     if (bgImg) {
       style.backgroundImage = `url(${bgImg})`
+      style.backgroundSize = "cover"
+      style.backgroundPosition = "center"
       style.height = 256 / imgDimension.aspectRatio || 0
     }
     return style
