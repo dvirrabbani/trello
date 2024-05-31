@@ -1,6 +1,7 @@
 import { DEMO_BOARD_LIST } from "../demo/boards.js"
 import { activityService } from "./acitivity.service.js"
 import { storageService } from "./async-storage.service.js"
+import { uiService } from "./ui.service.js"
 import { utilService } from "./util.service.js"
 
 const STORAGE_KEY = "board"
@@ -17,13 +18,13 @@ export const boardService = {
   createNewGroup,
   createNewTask,
   getDefaultFilter,
+  getBoardChartsData,
 }
 window.cs = boardService
 
 async function query() {
   let boards = utilService.loadFromStorage(STORAGE_KEY)
-  if (!boards || !boards.length)
-    utilService.saveToStorage(STORAGE_KEY, DEMO_BOARD_LIST)
+  if (!boards || !boards.length) utilService.saveToStorage(STORAGE_KEY, DEMO_BOARD_LIST)
   boards = await storageService.query(STORAGE_KEY)
   return boards
 }
@@ -152,25 +153,11 @@ function _isTaskMatchTxt(task, filter) {
 }
 
 function _isTaskMatchDates(task, filter) {
-  const {
-    noDates,
-    overdue,
-    dueNextDay,
-    dueNextWeek,
-    dueNextMonth,
-    isCompleted,
-  } = filter
+  const { noDates, overdue, dueNextDay, dueNextWeek, dueNextMonth, isCompleted } = filter
 
   const due = new Date(task.dueDate?.date)
 
-  if (
-    !noDates &&
-    !overdue &&
-    !dueNextDay &&
-    !dueNextWeek &&
-    !dueNextMonth &&
-    !isCompleted
-  ) {
+  if (!noDates && !overdue && !dueNextDay && !dueNextWeek && !dueNextMonth && !isCompleted) {
     // no date-related filtering
     return true
   }
@@ -219,6 +206,106 @@ function _isTaskMatchDates(task, filter) {
     isMatchDueNextMonth ||
     isMatchIsCompleted
   )
+}
+
+function getBoardChartsData(board) {
+  let cardsPerList = []
+  let cardsPerDueDate = []
+  let cardsPerLabel = []
+  let cardsPerMember = []
+
+  const mapMemberIdToCountTasks = {}
+  const dueDateCounts = {}
+
+  // Initialize a count object for each label Id
+  const MapBoardLabelToTaskLabelCount = board.labels.reduce((acc, label) => {
+    acc[label.id] = 0
+    return acc
+  }, {})
+
+  board.groups.forEach((group) => {
+    group.tasks.forEach((task) => {
+      // due dates count
+      let dueDateStatus
+      if (task.dueDate) {
+        dueDateStatus =
+          uiService.getDueDateStatusAndClassName(task.dueDate.date, task.dueDate.isCompleted).status || "Due Later"
+      }
+
+      if (!dueDateStatus) {
+        dueDateStatus = "No due date"
+      }
+
+      dueDateCounts[dueDateStatus] = dueDateCounts[dueDateStatus] ? dueDateCounts[dueDateStatus] + 1 : 1
+
+      // Members tasks count
+      if (task.members.length === 0) {
+        mapMemberIdToCountTasks.unassigned = mapMemberIdToCountTasks.unassigned
+          ? mapMemberIdToCountTasks.unassigned + 1
+          : 1
+      }
+
+      task.members.map((member) => {
+        mapMemberIdToCountTasks[member.id] = mapMemberIdToCountTasks[member.id]
+          ? mapMemberIdToCountTasks[member.id] + 1
+          : 1
+      })
+      // Board Label count
+      task.labelIds.forEach((labelId) => {
+        if (MapBoardLabelToTaskLabelCount.hasOwnProperty(labelId)) {
+          MapBoardLabelToTaskLabelCount[labelId]++
+        }
+      })
+    })
+  })
+
+  // Cards Per list
+  cardsPerList = board.groups.map((group) => ({
+    title: group.title,
+    count: group.tasks.length,
+  }))
+
+  // Cards per due date
+  cardsPerDueDate = Object.keys(dueDateCounts).map((dueDate) => ({
+    title: dueDate,
+    count: dueDateCounts[dueDate],
+  }))
+
+  // Cards per member
+  cardsPerMember = board.members.map((member) => {
+    return {
+      title: member.fullName,
+      count: mapMemberIdToCountTasks[member.id] ? mapMemberIdToCountTasks[member.id] : 0,
+    }
+  })
+
+  // Add tasks count to task that not unassigned to a user
+  if (mapMemberIdToCountTasks.unassigned) {
+    cardsPerMember.push({
+      title: "Unassigned",
+      count: mapMemberIdToCountTasks.unassigned,
+    })
+  }
+
+  // // Cards Per Label
+  Object.entries(MapBoardLabelToTaskLabelCount).forEach(([labelId, count]) => {
+    if (count > 0) {
+      const boardLabel = board.labels.find((label) => label.id === labelId)
+      return cardsPerLabel.push({
+        id: boardLabel.id,
+        title: boardLabel.title || boardLabel.name,
+        count,
+        color: boardLabel.bgColor,
+      })
+    }
+  })
+
+  return {
+    cardsPerList,
+    cardsPerDueDate,
+    cardsPerLabel,
+    cardsPerMember,
+  }
 }
 
 function createNewGroup() {

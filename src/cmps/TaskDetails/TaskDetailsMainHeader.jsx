@@ -37,7 +37,7 @@ export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
   }
 
   function renderDateBadge(date, isCompleted) {
-    const { status, className } = uiService.getDateStatusAndClassName(
+    const { status, className } = uiService.getDueDateStatusAndClassName(
       date,
       isCompleted
     )

@@ -32,6 +32,17 @@
     grid-auto-flow: column;
     align-items: center;
     gap: rem(4px);
+
+    .button.button.board-details-header-button {
+      color: var(--dynamic-text, #fff);
+      &.active {
+        background-color: var(--dynamic-button-highlighted-hovered, #fff);
+        color: var(--dynamic-button-highlighted-text, #172b4d);
+        .svg-icon svg {
+          color: var(--dynamic-button-highlighted-text, #172b4d);
+        }
+      }
+    }
     .svg-icon {
       color: $clr8;
     }

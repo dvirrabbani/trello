@@ -15,13 +15,13 @@ export const DEMO_BOARD_LIST = [
       bgColor: "rgb(38, 52, 53)",
     },
     labels: [
-      { id: "l106", bgColor: "#4bce97", title: "" },
-      { id: "l107", bgColor: "#e2b203", title: "" },
-      { id: "l108", bgColor: "#faa53d", title: "" },
-      { id: "l109", bgColor: "#f87462", title: "" },
-      { id: "l1010", bgColor: "#9f8fef", title: "" },
-      { id: "l1011", bgColor: "#1f845a", title: "" },
-      { id: "l1012", bgColor: "#946f00", title: "" },
+      { id: "l106", bgColor: "#4bce97", title: "To Do", name: "Green" },
+      { id: "l107", bgColor: "#e2b203", title: "In Progress", name: "Gold" },
+      { id: "l108", bgColor: "#faa53d", title: "Review", name: "Orange" },
+      { id: "l109", bgColor: "#f87462", title: "Completed", name: "Coral" },
+      { id: "l1010", bgColor: "#9f8fef", title: "Blocked", name: "Purple" },
+      { id: "l1011", bgColor: "#1f845a", title: "On Hold", name: "Dark Green" },
+      { id: "l1012", bgColor: "#946f00", title: "Cancelled", name: "Dark Gold" },
     ],
     members: [
       {
@@ -349,8 +349,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1ssign",
             title: "Assign project tasks",
-            description:
-              "Project tasks should be assigned to team members based on their skills and availability.",
+            description: "Project tasks should be assigned to team members based on their skills and availability.",
             comments: [
               {
                 id: "ZdPnm",
@@ -359,8 +358,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
@@ -450,8 +448,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1efine",
             title: "Define project scope",
-            description:
-              "scenarios, use cases, features, and functions that characterize a project's value.",
+            description: "scenarios, use cases, features, and functions that characterize a project's value.",
             comments: [
               {
                 id: "ZdPnm",
@@ -460,8 +457,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
             ],
@@ -537,8 +533,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1cope",
             title: "Define project scope",
-            description:
-              "scenarios, use cases, features, and functions that characterize a project's value.",
+            description: "scenarios, use cases, features, and functions that characterize a project's value.",
             comments: [],
             checklists: [
               {
@@ -612,8 +607,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1uld",
             title: "Assign project tasks",
-            description:
-              "Project tasks should be assigned to team members based on their skills and availability.",
+            description: "Project tasks should be assigned to team members based on their skills and availability.",
             comments: [
               {
                 id: "ZdPnm",
@@ -622,8 +616,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
@@ -687,8 +680,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t10featu",
             title: "Define project scope",
-            description:
-              "scenarios, use cases, features, and functions that characterize a project's value.",
+            description: "scenarios, use cases, features, and functions that characterize a project's value.",
             comments: [],
             checklists: [
               {
@@ -791,8 +783,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t9ask",
             title: "Assign project tasks",
-            description:
-              "Project tasks should be assigned to team members based on their skills and availability.",
+            description: "Project tasks should be assigned to team members based on their skills and availability.",
             comments: [
               {
                 id: "ZdPnm",
@@ -801,8 +792,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
@@ -954,18 +944,17 @@ export const DEMO_BOARD_LIST = [
         "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
     },
     style: {
-      bgImg:
-        "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
+      bgImg: "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
       bgColor: "rgb(88, 65, 174)",
     },
     labels: [
-      { id: "l106", bgColor: "#4bce97", title: "" },
-      { id: "l107", bgColor: "#e2b203", title: "" },
-      { id: "l108", bgColor: "#faa53d", title: "" },
-      { id: "l109", bgColor: "#f87462", title: "" },
-      { id: "l1010", bgColor: "#9f8fef", title: "" },
-      { id: "l1011", bgColor: "#1f845a", title: "" },
-      { id: "l1012", bgColor: "#946f00", title: "" },
+      { id: "l106", bgColor: "#4bce97", title: "To Do", name: "Green" },
+      { id: "l107", bgColor: "#e2b203", title: "In Progress", name: "Gold" },
+      { id: "l108", bgColor: "#faa53d", title: "Review", name: "Orange" },
+      { id: "l109", bgColor: "#f87462", title: "Completed", name: "Coral" },
+      { id: "l1010", bgColor: "#9f8fef", title: "Blocked", name: "Purple" },
+      { id: "l1011", bgColor: "#1f845a", title: "On Hold", name: "Dark Green" },
+      { id: "l1012", bgColor: "#946f00", title: "Cancelled", name: "Dark Gold" },
     ],
     members: [
       {
@@ -996,8 +985,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1Book",
             title: "Book flight tickets",
-            description:
-              "Book flight tickets to destination and back. Make sure to choose the best seats.",
+            description: "Book flight tickets to destination and back. Make sure to choose the best seats.",
             comments: [],
             checklists: [
               {
@@ -1123,8 +1111,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1gif",
             title: "Buy gifts",
-            description:
-              "Buy gifts for family members. Make sure to choose the best gifts.",
+            description: "Buy gifts for family members. Make sure to choose the best gifts.",
             comments: [
               {
                 id: "ZdPnm",
@@ -1133,8 +1120,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
