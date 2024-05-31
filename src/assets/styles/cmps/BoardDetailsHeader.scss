@@ -8,6 +8,11 @@
   backdrop-filter: blur(4px);
   background: var(--board-header-background-color);
 
+  & button {
+    background-color: var(--dynamic-button);
+    color: var(--dynamic-text);
+  }
+
   .board-details-title {
     background: transparent;
     font-size: rem(18px);

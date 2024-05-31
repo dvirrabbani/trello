@@ -18,6 +18,8 @@
     li {
       margin-bottom: rem(4px);
       a {
+        font-size: rem(14px);
+        color: var(--ds-text, #172b4d);
         border-radius: rem(8px);
         display: flex;
         align-items: center;
