@@ -15,57 +15,71 @@ export function AddBoardButton({ iconName, title, variant, className }) {
     title: "",
     bgImg:
       "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/dbcdcd797bbbabb501ababeb0c947f2c/photo-1496769336828-c522a3a7e33c.jpg",
-    bgColor: "#516a30",
+    colorRgb: "103,143,67",
+    themeColor: "light",
   })
   const bgSvgList = [
     {
-      bgImg: "https://trello.com/assets/707f35bc691220846678.svg",
-      bgColor: "#0d59b8",
+      bgImg:
+        "https://res.cloudinary.com/df0eaacho/image/upload/v1717168551/micn2lc4tvc6ataxwcme.svg",
+      colorRgb: "32,139,211",
+      themeColor: "light",
     },
     {
       bgImg:
-        "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
-      bgColor: "#5841ae",
-    },
-    {
-      bgImg: "https://trello.com/assets/707f35bc691220846678.svg",
-      bgColor: "#0d59b8",
+        "https://res.cloudinary.com/df0eaacho/image/upload/v1717168335/yer4i01erod1gpcvqmff.svg",
+      colorRgb: "168,103,192",
+      themeColor: "light",
     },
     {
       bgImg:
-        "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
-      bgColor: "#5841ae",
-    },
-    {
-      bgImg: "https://trello.com/assets/707f35bc691220846678.svg",
-      bgColor: "#0d59b8",
+        "https://res.cloudinary.com/df0eaacho/image/upload/v1717168551/micn2lc4tvc6ataxwcme.svg",
+      colorRgb: "32,139,211",
+      themeColor: "light",
     },
     {
       bgImg:
-        "https://d2k1ftgv7pobq7.cloudfront.net/images/backgrounds/gradients/rainbow.svg",
-      bgColor: "#5841ae",
+        "https://res.cloudinary.com/df0eaacho/image/upload/v1717168335/yer4i01erod1gpcvqmff.svg",
+      colorRgb: "32,139,211",
+      themeColor: "light",
+    },
+    {
+      bgImg:
+        "https://res.cloudinary.com/df0eaacho/image/upload/v1717168551/micn2lc4tvc6ataxwcme.svg",
+      colorRgb: "32,139,211",
+      themeColor: "light",
+    },
+    {
+      bgImg:
+        "https://res.cloudinary.com/df0eaacho/image/upload/v1717168335/yer4i01erod1gpcvqmff.svg",
+      colorRgb: "32,139,211",
+      themeColor: "light",
     },
   ]
   const bgImgList = [
     {
       bgImg:
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/dbcdcd797bbbabb501ababeb0c947f2c/photo-1496769336828-c522a3a7e33c.jpg",
-      bgColor: "#516a30",
+      colorRgb: "103,143,67",
+      themeColor: "light",
     },
     {
       bgImg:
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/9c05f34757e34207525e730c4b827391/photo-1497436072909-60f360e1d4b1.jpg",
-      bgColor: "#234428",
+      colorRgb: "53,124,121",
+      themeColor: "light",
     },
     {
       bgImg:
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/dbcdcd797bbbabb501ababeb0c947f2c/photo-1496769336828-c522a3a7e33c.jpg",
-      bgColor: "#516a30",
+      colorRgb: "103,143,67",
+      themeColor: "light",
     },
     {
       bgImg:
         "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/9c05f34757e34207525e730c4b827391/photo-1497436072909-60f360e1d4b1.jpg",
-      bgColor: "#234428",
+      colorRgb: "53,124,121",
+      themeColor: "light",
     },
   ]
 
@@ -84,7 +98,8 @@ export function AddBoardButton({ iconName, title, variant, className }) {
       title: fields.title,
       style: {
         bgImg: fields.bgImg,
-        bgColor: fields.bgColor,
+        colorRgb: fields.colorRgb,
+        themeColor: fields.themeColor,
       },
       members: [DEMO_USER],
       groups: [],
@@ -103,7 +118,8 @@ export function AddBoardButton({ iconName, title, variant, className }) {
     setFields((prevFields) => ({
       ...prevFields,
       bgImg: bg.bgImg,
-      bgColor: bg.bgColor,
+      colorRgb: bg.colorRgb,
+      themeColor: bg.themeColor,
     }))
   }
 

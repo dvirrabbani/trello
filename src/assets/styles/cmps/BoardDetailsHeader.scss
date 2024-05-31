@@ -11,6 +11,10 @@
   & button {
     background-color: var(--dynamic-button);
     color: var(--dynamic-text);
+
+    &:hover {
+      background-color: var(--dynamic-button-hovered);
+    }
   }
 
   .board-details-title {
