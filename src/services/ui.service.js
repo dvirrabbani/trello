@@ -50,7 +50,6 @@ export const uiService = {
   getBoardLabels,
   getDefaultBoardLabels,
   getCoverColors,
-  getDateStatusAndClassName,
   isRgbBright,
   getDominantColor,
   getDueDateStatusAndClassName,
@@ -139,6 +138,7 @@ function isRgbBright(rgb) {
 
   const res = brightness >= 155 ? true : false
   return res
+}
 
 export function getEmptyBoardCard(type) {
   switch (type) {
