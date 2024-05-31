@@ -10,14 +10,14 @@ import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
 import { saveUserRecentBoards } from "../store/user.actions"
+import BoarDashboardView from "../cmps/board/view/BoarDashboardView"
 
 export function BoardDetails() {
   const params = useParams()
   const initialBoard = useSelector((storeState) => storeState.boardModule.board)
+  const filterBy = useSelector((storeState) => storeState.boardModule.boardFilterBy)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
-  const filterBy = useSelector(
-    (storeState) => storeState.boardModule.boardFilterBy
-  )
+  const [viewType, setViewType] = useState("board")
 
   const board = boardService.filteredBoard(initialBoard, filterBy)
 
@@ -33,6 +33,7 @@ export function BoardDetails() {
   useEffect(() => {
     loadBoard(params.boardId)
     saveUserRecentBoards(params.boardId)
+    setViewType("board")
   }, [params.boardId])
 
   //set document ui
@@ -47,6 +48,7 @@ export function BoardDetails() {
     }
   }, [board])
 
+
   if (!board) return <div>Loading..</div>
 
   return (
@@ -56,10 +58,12 @@ export function BoardDetails() {
     >
       <BoardSidebar />
       <div className="board-main-content flex column">
-        <BoardDetailsHeader board={board} filterBy={filterBy} />
-        <div className="board-groups-container full">
+        <BoardDetailsHeader board={board} filterBy={filterBy} viewType={viewType} setViewType={setViewType} />
+
+        <div className="board-groups-container full" style={viewType === "dashboard" ? { display: "none" } : undefined}>
           <GroupList groups={board.groups} />
         </div>
+        {viewType === "dashboard" && <BoarDashboardView board={initialBoard} />}
       </div>
       <Outlet />
       {taskQuickEdit && (

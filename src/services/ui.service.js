@@ -1,36 +1,36 @@
 import dayjs from "dayjs"
 
 const BOARD_LABELS = [
-  { id: "l101", bgColor: "#baf3db", title: "" },
-  { id: "l102", bgColor: "#f8e6a0", title: "" },
-  { id: "l103", bgColor: "#ffe2bd", title: "" },
-  { id: "l104", bgColor: "#ffd2cc", title: "" },
-  { id: "l105", bgColor: "#dfd8fd", title: "" },
-  { id: "l106", bgColor: "#4bce97", title: "" },
-  { id: "l107", bgColor: "#e2b203", title: "" },
-  { id: "l108", bgColor: "#faa53d", title: "" },
-  { id: "l109", bgColor: "#f87462", title: "" },
-  { id: "l1010", bgColor: "#9f8fef", title: "" },
-  { id: "l1011", bgColor: "#1f845a", title: "" },
-  { id: "l1012", bgColor: "#946f00", title: "" },
-  { id: "l1013", bgColor: "#b65c02", title: "" },
-  { id: "l1014", bgColor: "#ca3521", title: "" },
-  { id: "l1015", bgColor: "#6e5dc6", title: "" },
-  { id: "l1016", bgColor: "#cce0ff", title: "" },
-  { id: "l1017", bgColor: "#c1f0f5", title: "" },
-  { id: "l1018", bgColor: "#D3F1A7", title: "" },
-  { id: "l1019", bgColor: "#fdd0ec", title: "" },
-  { id: "l1020", bgColor: "#dcdfe4", title: "" },
-  { id: "l1021", bgColor: "#579dff", title: "" },
-  { id: "l1022", bgColor: "#60c6d2", title: "" },
-  { id: "l1023", bgColor: "#94c748", title: "" },
-  { id: "l1024", bgColor: "#e774bb", title: "" },
-  { id: "l1025", bgColor: "#8590a2", title: "" },
-  { id: "l1026", bgColor: "#0c66e4", title: "" },
-  { id: "l1027", bgColor: "#1d7f8c", title: "" },
-  { id: "l1028", bgColor: "#5b7f24", title: "" },
-  { id: "l1029", bgColor: "#ae4787", title: "" },
-  { id: "l1030", bgColor: "#ae4787", title: "" },
+  { id: "l101", bgColor: "#baf3db", title: "", name: "Mint Green" },
+  { id: "l102", bgColor: "#f8e6a0", title: "", name: "Light Yellow" },
+  { id: "l103", bgColor: "#ffe2bd", title: "", name: "Peach" },
+  { id: "l104", bgColor: "#ffd2cc", title: "", name: "Light Coral" },
+  { id: "l105", bgColor: "#dfd8fd", title: "", name: "Lavender" },
+  { id: "l106", bgColor: "#4bce97", title: "", name: "Green" },
+  { id: "l107", bgColor: "#e2b203", title: "", name: "Gold" },
+  { id: "l108", bgColor: "#faa53d", title: "", name: "Orange" },
+  { id: "l109", bgColor: "#f87462", title: "", name: "Coral" },
+  { id: "l1010", bgColor: "#9f8fef", title: "", name: "Purple" },
+  { id: "l1011", bgColor: "#1f845a", title: "", name: "Dark Green" },
+  { id: "l1012", bgColor: "#946f00", title: "", name: "Dark Gold" },
+  { id: "l1013", bgColor: "#b65c02", title: "", name: "Brown" },
+  { id: "l1014", bgColor: "#ca3521", title: "", name: "Red" },
+  { id: "l1015", bgColor: "#6e5dc6", title: "", name: "Blue Violet" },
+  { id: "l1016", bgColor: "#cce0ff", title: "", name: "Light Blue" },
+  { id: "l1017", bgColor: "#c1f0f5", title: "", name: "Aqua" },
+  { id: "l1018", bgColor: "#D3F1A7", title: "", name: "Light Green" },
+  { id: "l1019", bgColor: "#fdd0ec", title: "", name: "Pink" },
+  { id: "l1020", bgColor: "#dcdfe4", title: "", name: "Light Gray" },
+  { id: "l1021", bgColor: "#579dff", title: "", name: "Sky Blue" },
+  { id: "l1022", bgColor: "#60c6d2", title: "", name: "Turquoise" },
+  { id: "l1023", bgColor: "#94c748", title: "", name: "Lime Green" },
+  { id: "l1024", bgColor: "#e774bb", title: "", name: "Magenta" },
+  { id: "l1025", bgColor: "#8590a2", title: "", name: "Slate Gray" },
+  { id: "l1026", bgColor: "#0c66e4", title: "", name: "Royal Blue" },
+  { id: "l1027", bgColor: "#1d7f8c", title: "", name: "Teal" },
+  { id: "l1028", bgColor: "#5b7f24", title: "", name: "Olive" },
+  { id: "l1029", bgColor: "#ae4787", title: "", name: "Dark Magenta" },
+  { id: "l1030", bgColor: "#ae4787", title: "", name: "Dark Magenta" },
 ]
 
 const COVER_COLORS = [
@@ -53,6 +53,7 @@ export const uiService = {
   getDateStatusAndClassName,
   isRgbBright,
   getDominantColor,
+  getDueDateStatusAndClassName,
 }
 
 function getBoardLabels() {
@@ -67,7 +68,7 @@ function getDefaultBoardLabels() {
   return BOARD_LABELS.slice(6, 12)
 }
 
-function getDateStatusAndClassName(timestamp, isCompleted) {
+function getDueDateStatusAndClassName(timestamp, isCompleted) {
   const now = dayjs()
   const dueDate = dayjs(timestamp)
 
@@ -75,13 +76,13 @@ function getDateStatusAndClassName(timestamp, isCompleted) {
   const dueSoon = now.add(24, "hour")
 
   if (isCompleted) {
-    return { status: "completed", className: "completed" }
+    return { status: "Complete", className: "completed" }
   } else if (dueDate.isBefore(overdueRecently)) {
-    return { status: "overdue", className: "past-overdue" }
+    return { status: "Overdue", className: "past-overdue" }
   } else if (dueDate.isBefore(now) && dueDate.isAfter(overdueRecently)) {
-    return { status: "overdue", className: "overdue-recently" }
+    return { status: "Overdue", className: "overdue-recently" }
   } else if (dueDate.isBefore(dueSoon) && dueDate.isAfter(now)) {
-    return { status: "due soon", className: "due-soon" }
+    return { status: "Due soon", className: "due-soon" }
   } else {
     return { status: "", className: "" }
   }
@@ -138,4 +139,32 @@ function isRgbBright(rgb) {
 
   const res = brightness >= 155 ? true : false
   return res
+
+export function getEmptyBoardCard(type) {
+  switch (type) {
+    case "list":
+      return {
+        imgUrl: "https://trello.com/assets/58551b69c73b0c3abe12.png",
+        msg: "This board doesn't have any lists yet.",
+        title: "Cards per list",
+      }
+    case "dueDate":
+      return {
+        imgUrl: "https://trello.com/assets/ef769d2a141355c08d0e.png",
+        msg: "This board doesn't have any cards with due dates yet.",
+        title: "Cards per dueDate",
+      }
+    case "label":
+      return {
+        imgUrl: "https://trello.com/assets/a5465d28947b51ca12ca.png",
+        msg: "This board doesn't have any cards with labels yet.",
+        title: "Cards per label",
+      }
+    default:
+      return {
+        imgUrl: "",
+        msg: "",
+        title: "",
+      }
+  }
 }
