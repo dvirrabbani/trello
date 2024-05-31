@@ -41,8 +41,8 @@
     }
     .due-date-badge {
       display: inline-block;
-      color: $clr8;
-      background-color: $bg-success;
+      color: var(--ds-text-inverse, #ffffff);
+      background-color: var(--ds-background-success-bold, #1f845a);
       font-size: rem(12px);
       line-height: rem(16px);
       padding: 0 rem(4px);
@@ -57,22 +57,22 @@
       border-radius: rem(2px);
 
       &.due-date-status-completed {
-        color: $clr8;
-        background-color: $bg-success;
+        color: var(--ds-text-inverse, #ffffff);
+        background-color: var(--ds-background-success-bold, #1f845a);
       }
 
       &.due-date-status-past-overdue {
-        background-color: $background-danger-bold;
+        background-color: var(--ds-background-danger-bold, #ca3521);
         color: var(--ds-text-inverse, #ffffff);
       }
 
       &.due-date-status-overdue-recently {
-        color: $txt-accent-red;
-        background-color: $background-danger;
+        color: var(--ds-text-danger, #ae2a19);
+        background-color: var(--ds-background-danger, #ffedeb);
       }
       &.due-date-status-due-soon {
-        color: $color-txt-primary;
-        background-color: $bg-warning;
+        background-color: var(--ds-background-warning-bold, #f5cd47);
+        color: var(--ds-icon-inverse, #ffffff);
       }
     }
   }

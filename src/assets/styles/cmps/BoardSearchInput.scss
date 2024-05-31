@@ -38,7 +38,11 @@
     align-content: start;
     z-index: 9;
     border-radius: rem(4px);
-    box-shadow: $box-shadow-overlay;
+    box-shadow: var(
+      --ds-shadow-overlay,
+      0 4px 8px rgba(9, 30, 66, 0.25),
+      0 0 1px rgba(9, 30, 66, 0.31)
+    );
     .search-option {
       font-size: rem(14px);
       font-weight: 600;

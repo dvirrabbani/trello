@@ -40,10 +40,10 @@
     }
 
     button {
-      background-color: $group-background;
+      background-color: var(--ds-background-accent-gray-subtlest, #f1f2f4);
 
       &:hover {
-        background-color: $background-accent-gray-subtle;
+        background-color: var(--ds-background-accent-gray-subtler, #dcdfe4);
       }
     }
   }

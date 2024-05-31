@@ -23,16 +23,17 @@
     }
 
     .cover {
-      border: rem(1px) solid $border-input;
+      border: rem(1px) solid var(--ds-border-disabled, #091e420f);
       height: rem(62px);
       border-radius: rem(3px);
       cursor: pointer;
       position: relative;
+      overflow: hidden;
+      background-color: var(--ds-background-accent-gray-subtler, #dcdfe4);
       &.active {
         box-shadow: 0 0 0 2px var(--ds-border-inverse, #ffffff),
           0 0 0 4px var(--ds-border-brand, #0c66e4);
       }
-      background-color: $background-accent-gray-subtle;
       &.has-bg-img {
         .cover-background {
           height: rem(28px);
@@ -58,6 +59,9 @@
         bottom: 0;
         left: 0;
       }
+      .skeleton-line {
+        background-color: var(--ds-background-accent-gray-subtler, #dcdfe4);
+      }
     }
 
     .cover.size-full {
@@ -70,13 +74,15 @@
         background-size: cover;
         background-position: center;
       }
+      .skeleton-line {
+        background-color: var(--ds-surface-raised, #ffffff);
+      }
     }
 
     .skeleton-card {
       padding: rem(6px) rem(4px) rem(4px) rem(6px);
 
       .skeleton {
-        background-color: $background-accent-gray-subtle;
         &.skeleton-line {
           height: rem(4px);
           border-radius: rem(2px);

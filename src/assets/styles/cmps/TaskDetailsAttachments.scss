@@ -14,7 +14,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $progress-bar-background;
+      background-color: var(--ds-background-neutral, #091e420f);
       border-radius: rem(3px);
     }
 

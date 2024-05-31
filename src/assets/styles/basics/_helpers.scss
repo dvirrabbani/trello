@@ -98,7 +98,7 @@
   transition-timing-function: ease;
   border-radius: rem(3px);
   padding: rem(8px) rem(12px);
-  box-shadow: inset 0 0 0 rem(2px) $background-neutral-hovered;
+  box-shadow: inset 0 0 0 rem(1px) var(--ds-border-input, #091e4224);
   background-color: var(--ds-background-input, #ffffff);
   width: 100%;
   margin-bottom: 0;
@@ -107,11 +107,8 @@
     box-shadow: inset 0 0 0 1px var(--ds-border-input, #091e4224);
   }
   &:focus {
-    background-color: $clr8;
-    box-shadow: inset 0 0 0 rem(2px) $border-focused;
-  }
-  &.danger {
-    box-shadow: inset 0 0 0 rem(2px) $border-danger;
+    background-color: var(--ds-background-input, #ffffff);
+    box-shadow: inset 0 0 0 rem(2px) var(--ds-border-focused, #388bff);
   }
 }
 

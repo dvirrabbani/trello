@@ -30,7 +30,7 @@
         transition-duration: 85ms;
         transition-timing-function: ease;
         &:hover {
-          background-color: $border-input;
+          background-color: var(--ds-background-neutral-hovered, #091e4224);
         }
         &.active {
           background-color: var(--ds-background-selected, #e9f2ff);
@@ -38,7 +38,7 @@
         }
         &:active {
           color: $color-txt-primary;
-          background-color: $color-text-disabled;
+          background-color: var(--ds-background-neutral-pressed, #091e424f);
         }
       }
     }

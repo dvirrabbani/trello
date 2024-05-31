@@ -49,7 +49,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: $background-neutral-hovered-solid;
+        background-color: var(--ds-background-neutral-solid, #d4d8dd);
 
         :hover {
           background-color: transparent;
@@ -124,11 +124,12 @@
     );
     @include typography($type: "h2");
     font-weight: 500;
-    color: $color-txt-primary;
+    color: var(--dynamic-text);
     height: fit-content;
     min-width: $group-width;
     &:hover {
-      background-color: $background-neutral-hovered;
+      background-color: var(--dynamic-button-hovered);
+      color: var(--dynamic-text);
     }
   }
 }

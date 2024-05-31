@@ -17,7 +17,7 @@
 
     .board-actions {
       position: absolute;
-      color: $bg-warning;
+      color: var(--tr-icon-star);
       bottom: em(10px);
       right: em(9px);
       line-height: 20px;

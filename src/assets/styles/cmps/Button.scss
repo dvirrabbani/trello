@@ -9,10 +9,10 @@
   border-radius: rem(3px);
 
   &:hover {
-    background-color: $background-neutral-hovered;
+    background-color: var(--ds-background-neutral-hovered, #091e4224);
   }
   &:active {
-    background-color: $background-neutral-pressed;
+    background-color: var(--ds-background-neutral-pressed, #091e424f);
   }
 
   &.shape-circle {
@@ -37,40 +37,20 @@
     }
   }
 
-  &.variant-contained {
-    background-color: $background-neutral;
-    &:hover {
-      background-color: $background-neutral-hovered;
-    }
-    &:active {
-      background-color: $background-neutral-pressed;
-    }
-  }
-
   &.variant-primary {
-    color: $clr8;
-    background-color: $background-brand-bold;
+    color: var(--ds-text-inverse, #fff);
+    background-color: var(--ds-background-brand-bold, #0c66e4);
     &:hover {
-      background-color: $background-brand-bold-hovered;
+      background-color: var(--ds-background-brand-bold-hovered, #05c);
     }
     &:active {
-      background-color: $background-brand-bold-pressed;
-    }
-  }
-
-  &.variant-group {
-    background-color: $group-background;
-    &:hover {
-      background-color: $group-background;
-    }
-    &:active {
-      background-color: $background-accent-gray-subtle;
+      background-color: var(--ds-background-brand-bold-pressed, #09326c);
     }
   }
 
   &:disabled {
-    background-color: $background-disabled;
-    color: $color-text-disabled;
+    background-color: var(--ds-background-disabled, #091e4208);
+    color: var(--ds-text-disabled, #091e424f);
     cursor: not-allowed;
   }
 }

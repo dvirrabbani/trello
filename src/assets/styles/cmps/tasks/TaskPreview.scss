@@ -16,7 +16,7 @@
   cursor: pointer;
 
   &:hover {
-    outline-color: $border-focused;
+    outline-color: var(--ds-border-focused, #388bff);
     outline-color: -webkit-focus-ring-color;
     outline-style: solid;
     outline-width: rem(2px);
@@ -145,23 +145,23 @@
     }
 
     .dueDate-badge.due-soon {
-      background-color: $bg-warning;
+      background-color: var(--ds-background-warning-bold, #e2b203);
     }
 
     .dueDate-badge.recently-overdue {
-      background-color: $bg-danger;
-      color: white;
+      background-color: var(--ds-background-danger-bold, #ca3521);
+      color: var(--ds-icon-inverse, #ffffff);
     }
 
     .dueDate-badge.past-overdue {
-      background-color: $bg-accent-red;
-      color: $txt-accent-red;
+      background-color: var(--ds-background-accent-red-subtler, #ffd2cc);
+      color: var(--ds-text-accent-red, #ae2a19);
     }
 
     .dueDate-badge.complete,
     .action-badge.complete {
-      background-color: $bg-success;
-      color: white;
+      background-color: var(--ds-background-success-bold, #1f845a);
+      color: var(--ds-text-inverse, #ffffff);
     }
 
     .dueDate-badge {

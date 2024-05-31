@@ -66,12 +66,13 @@
       overflow: auto;
 
       .button {
-        background-color: $background-accent-gray-subtle;
-        color: $color-txt-primary;
+        background-color: var(--dynamic-button-highlighted);
+        color: var(--dynamic-button-highlighted-text);
         border-radius: 0;
 
         &:hover {
-          background-color: white;
+          background: var(--dynamic-button-highlighted-hovered);
+          color: var(--dynamic-button-highlighted-text);
         }
       }
     }
@@ -96,7 +97,7 @@
         width: rem(12px);
         height: rem(12px);
         border-radius: 50%;
-        background-color: $background-brand-bold;
+        background-color: var(--ds-icon-brand, #0c66e4);
       }
     }
   }
