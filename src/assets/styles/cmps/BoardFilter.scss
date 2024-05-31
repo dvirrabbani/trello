@@ -19,7 +19,7 @@
   }
 
   .section-title {
-    @include typography($type: "h3", $color: $color-text-subtle);
+    @include typography($type: "h3", $color: var(--ds-text-subtle, #44546f));
     margin-top: rem(16px);
     margin-bottom: rem(8px);
   }
@@ -52,7 +52,7 @@
       padding-right: 0;
 
       .filter-txt {
-        @include typography($type: "txt", $color: $color-txt-primary);
+        @include typography($type: "txt", $color: var(--ds-text, #172b4d));
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: auto 1fr;
@@ -67,8 +67,8 @@
         border-radius: 50%;
         width: 24px;
         height: 24px;
-        background-color: $background-neutral;
-        color: $color-text-subtle;
+        background-color: var(--ds-background-neutral, #091e420f);
+        color: var(--ds-text-subtle, #44546f);
 
         &.overdue {
           background-color: var(--ds-background-danger-bold, #ca3521);

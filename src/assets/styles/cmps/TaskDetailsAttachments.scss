@@ -34,7 +34,7 @@
         font-weight: 700;
         text-wrap: wrap;
         word-wrap: break-word;
-        color: $color-txt-primary;
+        color: var(--ds-text, #172b4d);
       }
       .actions {
         display: flex;
@@ -46,12 +46,12 @@
           font-size: rem(14px);
           font-weight: 400;
           line-height: rem(20px);
-          color: $color-text-subtle;
+          color: var(--ds-text-subtle, #44546f);
         }
 
         .button {
           font-size: rem(14px);
-          color: $color-text-subtle;
+          color: var(--ds-text-subtle, #44546f);
           font-weight: 400;
           line-height: rem(20px);
           padding: 0;

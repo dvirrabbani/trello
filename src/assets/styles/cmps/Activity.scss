@@ -1,7 +1,7 @@
 .activity {
   display: grid;
   grid-template-columns: auto 1fr;
-  color: $color-txt-primary;
+  color: var(--ds-text, #172b4d);
   gap: 8px;
 
   .header {
@@ -19,7 +19,7 @@
   .activity-sub-title,
   .activity-date {
     font-size: rem(12px);
-    color: $color-text-subtle;
+    color: var(--ds-text-subtle, #5e6c84);
     font-weight: 400;
   }
 }

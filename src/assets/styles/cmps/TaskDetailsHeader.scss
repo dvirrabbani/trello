@@ -50,7 +50,7 @@
       position: absolute;
       top: rem(16px);
       svg {
-        fill: $color-text-subtle;
+        fill: var(--ds-icon, #44546f);
       }
     }
 

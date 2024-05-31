@@ -1,6 +1,6 @@
 .popover {
   .MuiPopover-paper {
-    box-shadow: $shadow-overlay;
+    box-shadow: var(--ds-shadow-overlay);
     border-radius: rem(8px);
   }
   .popover-content {
@@ -36,7 +36,7 @@
     height: rem(40px);
     justify-content: space-between;
     align-items: center;
-    color: $color-text-subtle;
+    color: var(--ds-text-subtle, #44546f);
     .popover-title {
       margin: 0 auto;
     }

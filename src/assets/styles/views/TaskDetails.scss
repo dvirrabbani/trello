@@ -23,10 +23,10 @@ $task-detail-main-width: rem(552px);
 
     .task-details {
       border: none;
-      color: $color-txt-primary;
+      color: var(--ds-text, #172b4d);
       grid-column: 1/-1;
       & > * {
-        background-color: $group-background;
+        background-color: #f2f4f5;
       }
       .task-details-main-container {
         border-bottom-left-radius: rem(8px);

@@ -33,7 +33,7 @@
       cursor: grabbing;
       .preview {
         opacity: 0.85;
-        background-color: $background-neutral;
+        background-color: var(--ds-background-neutral, #091e420f);
       }
     }
 
@@ -51,7 +51,7 @@
       font-size: rem(14px);
 
       &:hover {
-        background-color: $background-neutral;
+        background-color: var(--ds-background-neutral, #091e420f);
         .checklist-item-controls {
           visibility: visible;
         }

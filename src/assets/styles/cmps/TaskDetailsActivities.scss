@@ -4,7 +4,7 @@
     .comment-item {
       display: grid;
       grid-template-columns: auto 1fr;
-      color: $color-text-subtle;
+      color: var(--ds-text-subtle, #44546f);
       .aside {
         img {
           width: rem(32px);

@@ -4,7 +4,7 @@
     font-weight: 700;
     line-height: rem(16px);
     margin-bottom: rem(4px);
-    color: $color-text-subtle;
+    color: var(--ds-text-subtle, #44546f);
   }
 
   .form-group {

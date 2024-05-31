@@ -87,7 +87,7 @@
       padding-right: rem(6px);
       padding-left: rem(4px);
       background-color: white;
-      color: $color-txt-primary;
+      color: var(--ds-text, #172b4d);
       display: flex;
       align-items: center;
       gap: rem(6px);

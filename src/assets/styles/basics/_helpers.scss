@@ -62,7 +62,7 @@
 
 // Typography
 .h3 {
-  color: $color-txt-primary;
+  color: var(--ds-text, #172b4d);
   font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.006em;
@@ -77,7 +77,7 @@
 
 .label,
 .legend {
-  color: $color-text-subtle;
+  color: var(--ds-text-subtle, #44546f);
   display: block;
   font-size: rem(12px);
   font-weight: 700;

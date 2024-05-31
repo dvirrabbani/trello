@@ -12,11 +12,11 @@
   .login-card {
     background: var(--ds-surface-overlay, #ffffff);
     width: rem(400px);
-    color: $color-text-subtle;
+    color: var(--ds-text-subtle, #44546f);
     padding: rem(32px) rem(40px);
     border-radius: rem(3px);
     margin: rem(50px) auto rem(15px) auto;
-    box-shadow: $login-card-shadow;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
     text-align: center;
 
     header {
@@ -29,7 +29,7 @@
         font-weight: 600;
         font-size: rem(16px);
         line-height: rem(20px);
-        color: $color-txt-primary;
+        color: var(--ds-text, #172b4d);
       }
     }
 

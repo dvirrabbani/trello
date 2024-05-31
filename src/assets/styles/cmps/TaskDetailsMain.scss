@@ -19,7 +19,7 @@
   }
 
   .task-details-checklist.dragging {
-    background-color: $background-neutral;
+    background-color: var(--ds-background-neutral, #091e420f);
     border-radius: 12px;
     cursor: grabbing;
     opacity: 0.85;

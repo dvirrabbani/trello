@@ -1,6 +1,6 @@
 .button {
   @include btn;
-  color: $color-txt-primary;
+  color: var(--ds-text, #172b4d);
   padding: rem(8px);
   gap: rem(6px);
   font-weight: 500;
