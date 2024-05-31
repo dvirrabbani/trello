@@ -15,7 +15,7 @@
     display: grid;
     padding: rem(16px);
     height: 100%;
-    background: $group-background;
+    background: var(--ds-background-accent-gray-subtlest, #f1f2f4);
     border-radius: rem(8px);
   }
 
@@ -27,7 +27,8 @@
     grid-column-gap: var(--ds-space-400, 2rem);
     grid-row-gap: var(--ds-space-400, 2rem);
     overflow-y: auto;
-    scrollbar-color: $border-input $background-neutral;
+    scrollbar-color: var(--ds-background-neutral-hovered, #091e4224)
+      var(--ds-background-neutral, #091e420f);
     scrollbar-width: thin;
     padding: rem(8px);
   }
@@ -35,12 +36,16 @@
   .dashboard-card {
     position: relative;
     border-radius: rem(8px);
-    background-color: $clr8;
+    background-color: var(--ds-surface-overlay, #ffffff);
     padding: rem(16px);
     display: flex;
     flex-direction: column;
     border-radius: rem(6px);
-    box-shadow: var(--ds-shadow-raised, 0px 1px 1px #091e4240, 0px 0px 1px #091e424f);
+    box-shadow: var(
+      --ds-shadow-raised,
+      0px 1px 1px #091e4240,
+      0px 0px 1px #091e424f
+    );
 
     .dashboard-card-header {
       color: var(--ds-text, #172b4d);
