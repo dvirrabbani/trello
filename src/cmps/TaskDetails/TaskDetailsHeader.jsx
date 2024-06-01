@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import SvgIcon from "../SvgIcon"
 import { ButtonDynamicTaskPopover } from "../ButtonDynamicTaskPopover"
 import { uiService } from "../../services/ui.service"
+import { parseToRgb } from "polished"
 
 export function TaskDetailsHeader({ params, task, onUpdateTask }) {
   const editableAttrs = {
@@ -28,10 +29,23 @@ export function TaskDetailsHeader({ params, task, onUpdateTask }) {
     let className = "task-details-header"
 
     if (task.style) {
-      const bgColor = task.style?.bgColor
-      const rgb = bgColor.match(/\(([^)]+)\)/)[1]
-      const isBgColorBright = uiService.isRgbBright(rgb)
-      !isBgColorBright && (className += " light-theme")
+      let bgColor = task.style?.bgColor
+      let rgb
+
+      try {
+        // Parse the color using polished
+        const { red, green, blue } = parseToRgb(bgColor)
+        rgb = `${red},${green},${blue}`
+      } catch (error) {
+        console.error("Invalid color format:", bgColor)
+      }
+
+      if (rgb) {
+        const isBgColorBright = uiService.isRgbBright(rgb)
+        if (!isBgColorBright) {
+          className += " light-theme"
+        }
+      }
     }
     return className
   }

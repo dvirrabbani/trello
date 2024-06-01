@@ -127,7 +127,7 @@ export const DEMO_BOARD_LIST = [
                 "https://trello-members.s3.amazonaws.com/623214502cc0530dcce588e3/3e1849faf09890be34d57bf5131c6afe/170.png",
             },
             style: {
-              bgColor: "#53A8E2",
+              bgColor: "#4bce97",
               bgImg: null,
               isCoverFull: true,
             },
@@ -460,9 +460,9 @@ export const DEMO_BOARD_LIST = [
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
             },
             style: {
-              bgColor: "#53A8E2",
+              bgColor: "#9f8fef",
               bgImg: null,
-              isCoverFull: true,
+              isCoverFull: false,
             },
           },
           {
@@ -1240,7 +1240,7 @@ export const DEMO_BOARD_LIST = [
                 "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
             },
             style: {
-              bgColor: "#53A8E2",
+              bgColor: "#4bce97",
               bgImg: null,
               isCoverFull: true,
             },

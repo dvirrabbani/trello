@@ -58,9 +58,6 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
     return false
   })
 
-  console.log("task", task)
-  console.log("filterBtnPopoverDataList", filterBtnPopoverDataList)
-
   function onSaveTitleTask() {
     updateCurrentBoard(groupId, task.id, {
       key: "title",
