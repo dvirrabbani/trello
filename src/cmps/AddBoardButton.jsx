@@ -7,6 +7,7 @@ import { addBoard } from "../store/board.actions"
 import { DEMO_USER } from "../demo/user"
 import SvgIcon from "./SvgIcon"
 import { uiService } from "../services/ui.service"
+import { BtnImgUploader } from "./btn/BtnImgUpload"
 
 export function AddBoardButton({ iconName, title, variant, className }) {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -123,6 +124,18 @@ export function AddBoardButton({ iconName, title, variant, className }) {
     }))
   }
 
+  async function onChangeBackgroundImg(imgUrl) {
+    const dominantColor = await uiService.getDominantColor(imgUrl)
+    const isBright = uiService.isRgbBright(dominantColor)
+    const themeColor = isBright ? "dark" : "light"
+    setFields((prevFields) => ({
+      ...prevFields,
+      bgImg: imgUrl,
+      colorRgb: dominantColor,
+      themeColor: themeColor,
+    }))
+  }
+
   const isPopoverOpen = Boolean(anchorEl)
   const popoverId = isPopoverOpen ? "add-board-popover-id" : undefined
 
@@ -185,6 +198,10 @@ export function AddBoardButton({ iconName, title, variant, className }) {
                 )
               })}
             </ul>
+            <BtnImgUploader
+              title={"Upload background image"}
+              onUploaded={onChangeBackgroundImg}
+            />
           </section>
           <label htmlFor="add-board-title" className="label">
             Board title
