@@ -28,6 +28,7 @@
 
   &.full-cover {
     min-height: rem(56px);
+    max-height: rem(260px);
     display: flex;
     align-items: flex-end;
 
@@ -76,6 +77,11 @@
 
   .semi-cover {
     min-height: rem(36px);
+    max-height: rem(260px);
+
+    img {
+      object-fit: contain;
+    }
   }
 
   .task-preview-main {
