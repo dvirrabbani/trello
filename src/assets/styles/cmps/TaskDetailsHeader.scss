@@ -3,6 +3,15 @@
   border-top-right-radius: rem(8px);
   border-top-left-radius: rem(8px);
 
+  &.light-theme {
+    .button {
+      color: var(--ds-text-inverse, #ffffff);
+      &:hover {
+        background-color: #a6c5e229;
+      }
+    }
+  }
+
   .task-cover {
     height: rem(116px);
     background-size: contain;
@@ -26,7 +35,7 @@
         display: flex;
         gap: rem(6px);
         padding: rem(6px) rem(12px) rem(6px) rem(6px);
-        color: currentColor;
+
         span {
           font-size: rem(14px);
           font-weight: 400;

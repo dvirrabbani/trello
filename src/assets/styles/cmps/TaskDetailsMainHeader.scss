@@ -62,17 +62,17 @@
       }
 
       &.due-date-status-past-overdue {
-        background-color: var(--ds-background-danger-bold, #ca3521);
-        color: var(--ds-text-inverse, #ffffff);
-      }
-
-      &.due-date-status-overdue-recently {
         color: var(--ds-text-danger, #ae2a19);
         background-color: var(--ds-background-danger, #ffedeb);
       }
+
+      &.due-date-status-overdue-recently {
+        background-color: var(--ds-background-danger-bold, #ca3521);
+        color: var(--ds-text-inverse, #ffffff);
+      }
       &.due-date-status-due-soon {
         background-color: var(--ds-background-warning-bold, #f5cd47);
-        color: var(--ds-icon-inverse, #ffffff);
+        color: var(--ds-text, #172b4d);
       }
     }
   }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import SvgIcon from "../SvgIcon"
 import { ButtonDynamicTaskPopover } from "../ButtonDynamicTaskPopover"
+import { uiService } from "../../services/ui.service"
 
 export function TaskDetailsHeader({ params, task, onUpdateTask }) {
   const editableAttrs = {
@@ -23,8 +24,20 @@ export function TaskDetailsHeader({ params, task, onUpdateTask }) {
     }
   }
 
+  function taskHeaderClassName(task) {
+    let className = "task-details-header"
+
+    if (task.style) {
+      const bgColor = task.style?.bgColor
+      const rgb = bgColor.match(/\(([^)]+)\)/)[1]
+      const isBgColorBright = uiService.isRgbBright(rgb)
+      !isBgColorBright && (className += " light-theme")
+    }
+    return className
+  }
+
   return (
-    <header className="task-details-header">
+    <header className={taskHeaderClassName(task)}>
       {(task?.style?.bgImg || task?.style?.bgColor) && (
         <div
           className={`task-cover ${
