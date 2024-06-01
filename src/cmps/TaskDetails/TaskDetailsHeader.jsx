@@ -29,9 +29,11 @@ export function TaskDetailsHeader({ params, task, onUpdateTask }) {
 
     if (task.style) {
       const bgColor = task.style?.bgColor
-      const rgb = bgColor.match(/\(([^)]+)\)/)[1]
-      const isBgColorBright = uiService.isRgbBright(rgb)
-      !isBgColorBright && (className += " light-theme")
+      const rgb = bgColor.match(/\(([^)]+)\)/)
+      if (rgb) {
+        const isBgColorBright = uiService.isRgbBright(rgb[1])
+        !isBgColorBright && (className += " light-theme")
+      }
     }
     return className
   }
@@ -40,14 +42,10 @@ export function TaskDetailsHeader({ params, task, onUpdateTask }) {
     <header className={taskHeaderClassName(task)}>
       {(task?.style?.bgImg || task?.style?.bgColor) && (
         <div
-          className={`task-cover ${
-            task.style?.bgImg ? "task-cover-img" : "task-cover-color"
-          }`}
+          className={`task-cover ${task.style?.bgImg ? "task-cover-img" : "task-cover-color"}`}
           style={{
             backgroundColor: task.style?.bgColor || "",
-            backgroundImage: task.style?.bgImg
-              ? `url(${task.style.bgImg})`
-              : "",
+            backgroundImage: task.style?.bgImg ? `url(${task.style.bgImg})` : "",
           }}
         >
           <menu>
@@ -70,10 +68,7 @@ export function TaskDetailsHeader({ params, task, onUpdateTask }) {
           {task.title}
         </h2>
       </div>
-      <Link
-        className="close-button button shape-circle"
-        to={`/board/${params.boardId}`}
-      >
+      <Link className="close-button button shape-circle" to={`/board/${params.boardId}`}>
         <SvgIcon size={"md"} iconName={"close"} />
       </Link>
     </header>
