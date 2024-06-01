@@ -6,6 +6,8 @@ import { toggleLabels, updateCurrentBoard } from "../../../store/board.actions"
 import SvgIcon from "../../SvgIcon"
 import { useEffect, useState } from "react"
 import { ProfileImg } from "../../ProfileImg"
+import { uiService } from "../../../services/ui.service"
+import dayjs from "dayjs"
 
 export function TaskPreview({
   groupId,
@@ -161,25 +163,19 @@ export function TaskPreview({
 
 function DueDateBadge({ dueDate, onUpdateTask }) {
   const { date, isCompleted } = dueDate
-  const dueDateObj = new Date(date)
-  let dueDateStr = dueDateObj.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-  })
-  const currentDate = new Date()
-  const oneYearAgo = new Date(
-    currentDate.setFullYear(currentDate.getFullYear() - 1)
-  )
 
-  if (dueDateObj < oneYearAgo) {
-    dueDateStr = dueDateObj.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    })
+  const formatDueDate = (date) => {
+    const currentYear = dayjs().year()
+    const dateYear = dayjs(date).year()
+
+    if (dateYear < currentYear) {
+      return dayjs(date).format("MMM D, YYYY")
+    } else {
+      return dayjs(date).format("MMM D")
+    }
   }
 
-  const { status, className } = utilService.calculateDueDateStatus(
+  const { className } = uiService.getDueDateStatusAndClassName(
     date,
     isCompleted
   )
@@ -202,7 +198,7 @@ function DueDateBadge({ dueDate, onUpdateTask }) {
           <SvgIcon iconName={isCompleted ? "checkbox" : "unChecked"} />
         </span>
       </span>
-      <span>{dueDateStr}</span>
+      <span>{formatDueDate(date)}</span>
     </div>
   )
 }

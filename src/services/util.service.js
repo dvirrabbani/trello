@@ -9,7 +9,6 @@ export const utilService = {
   saveToStorage,
   loadFromStorage,
   getAssetSrc,
-  calculateDueDateStatus,
   getImageMetaData,
 }
 
@@ -108,44 +107,6 @@ function getAssetSrc(name) {
   const modules = import.meta.glob("/src/assets/*", { eager: true })
   const mod = modules[path]
   return mod.default
-}
-
-// calculate the time difference between two dates
-function calculateDueDateStatus(dueDate, isCompleted) {
-  const now = new Date()
-  const due = new Date(dueDate)
-  const diffInHours = Math.abs(now - due) / 36e5
-
-  if (now < due) {
-    return {
-      status: "Not due yet",
-      className: "",
-    }
-  } else if (diffInHours <= 24) {
-    return {
-      status: "Due soon",
-      className: "due-soon",
-    }
-  } else if (diffInHours <= 36) {
-    return {
-      status: "overdue",
-      className: "recently-overdue",
-    }
-  } else if (isCompleted) {
-    return {
-      status: "completed",
-      className: "complete",
-    }
-  } else {
-    return {
-      status: "overdue",
-      className: "past-overdue",
-    }
-  }
-}
-
-export function formatDate(date) {
-  return format(new Date(date).getTime(), "MMM d yyyy 'at' h:mm aa")
 }
 
 function getImageMetaData(imageUrl) {

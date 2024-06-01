@@ -152,9 +152,10 @@
 
     .dueDate-badge.due-soon {
       background-color: var(--ds-background-warning-bold, #e2b203);
+      color: var(--ds-text, #172b4d);
     }
 
-    .dueDate-badge.recently-overdue {
+    .dueDate-badge.overdue-recently {
       background-color: var(--ds-background-danger-bold, #ca3521);
       color: var(--ds-icon-inverse, #ffffff);
     }
@@ -164,8 +165,8 @@
       color: var(--ds-text-accent-red, #ae2a19);
     }
 
-    .dueDate-badge.complete,
-    .action-badge.complete {
+    .dueDate-badge.completed,
+    .action-badge.completed {
       background-color: var(--ds-background-success-bold, #1f845a);
       color: var(--ds-text-inverse, #ffffff);
     }
