@@ -206,7 +206,6 @@ export const DEMO_BOARD_LIST = [
               bgImg:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717169138/zcw8hqjfj793o3y1ehen.gif",
               isCoverFull: false,
-              themeColor: "dark",
             },
           },
           {
@@ -253,7 +252,6 @@ export const DEMO_BOARD_LIST = [
               bgImg:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717169431/azbqq53oskw7nlhnd1ck.webp",
               isCoverFull: true,
-              themeColor: "dark",
             },
           },
           {

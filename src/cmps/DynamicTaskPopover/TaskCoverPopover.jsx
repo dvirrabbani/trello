@@ -50,14 +50,11 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
   async function onUpdateTaskCoverImg(imgUrl) {
     const taskStyleToUpdate = {}
     const dominantColor = await uiService.getDominantColor(imgUrl)
-    const isBright = uiService.isRgbBright(dominantColor)
-    const themeColor = isBright ? "dark" : "light"
 
     // Update task cover
     if (imgUrl !== task?.style?.bgImg) {
       taskStyleToUpdate.bgImg = imgUrl
       taskStyleToUpdate.bgColor = `rgb(${dominantColor})`
-      taskStyleToUpdate.themeColor = themeColor
     }
 
     onUpdateTask({
@@ -68,22 +65,6 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
     // update task attachments
     onAddAttachmentImgUrl(imgUrl)
   }
-  // function onUpdateTaskCoverImg(imgUrl) {
-  //   const taskStyleToUpdate = {}
-
-  //   // Update task cover
-  //   if (imgUrl !== task?.style?.bgImg) {
-  //     taskStyleToUpdate.bgImg = imgUrl
-  //   }
-
-  //   onUpdateTask({
-  //     key: "style",
-  //     value: taskStyleToUpdate,
-  //   })
-
-  //   // update task attachments
-  //   onAddAttachmentImgUrl(imgUrl)
-  // }
 
   const coverStyle = {
     backgroundImage: `url(${task?.style?.bgImg})`,
