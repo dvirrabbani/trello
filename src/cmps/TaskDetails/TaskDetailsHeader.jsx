@@ -26,10 +26,13 @@ export function TaskDetailsHeader({ params, task, onUpdateTask }) {
 
   function taskHeaderClassName(task) {
     let className = "task-details-header"
-    const bgColor = task.style?.bgColor
-    const rgb = bgColor.match(/\(([^)]+)\)/)[1]
-    const isBgColorBright = uiService.isRgbBright(rgb)
-    !isBgColorBright && (className += " light-theme")
+
+    if (task.style) {
+      const bgColor = task.style?.bgColor
+      const rgb = bgColor.match(/\(([^)]+)\)/)[1]
+      const isBgColorBright = uiService.isRgbBright(rgb)
+      !isBgColorBright && (className += " light-theme")
+    }
     return className
   }
 
