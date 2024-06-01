@@ -21,6 +21,7 @@ export function Popover({
       anchorEl={anchorEl}
       onClose={onClose}
       anchorOrigin={anchorOrigin}
+      transitionDuration={0}
       className={"popover"}
     >
       <header className="popover-header flex align-center justify-between">

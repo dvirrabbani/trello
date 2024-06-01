@@ -52,7 +52,7 @@ export default function BoarDashboardView({ board }) {
                     }}
                   >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="title" tickLine={false} dy={8} />
+                    <XAxis dataKey="title" tickLine={false} />
                     <YAxis allowDecimals={false} stroke="" tickMargin={8} />
                     <Tooltip />
                     <Bar dataKey="count" fill="var(--ds-background-neutral-bold, #44546F)" />
@@ -122,7 +122,7 @@ export default function BoarDashboardView({ board }) {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="title" tickLine={false} dy={8} />
+                  <XAxis dataKey="title" tickLine={false} />
                   <YAxis allowDecimals={false} stroke="" tickMargin={8} />
                   <Tooltip />
                   <Bar dataKey="count" fill="var(--ds-background-neutral-bold, #44546F)" />
@@ -144,7 +144,7 @@ export default function BoarDashboardView({ board }) {
                     }}
                   >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="title" tickLine={false} dy={8} />
+                    <XAxis dataKey="title" tickLine={false} />
                     <YAxis allowDecimals={false} stroke="" tickMargin={8} />
                     <Tooltip />
                     <Bar dataKey="count">
