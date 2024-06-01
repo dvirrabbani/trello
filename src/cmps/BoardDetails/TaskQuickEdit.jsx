@@ -17,13 +17,6 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
 
   const btnPopoverDataList = [
     {
-      iconName: "profile",
-      type: "Members",
-      title: "Members",
-      popoverTitle: "Members",
-      popoverId: "popover-members-id",
-    },
-    {
       iconName: "label",
       type: "Labels",
       title: "Labels",
@@ -31,13 +24,42 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
       popoverId: "popover-labels-id",
     },
     {
+      iconName: "profile",
+      type: "Members",
+      title: "Change Members",
+      popoverTitle: "Members",
+      popoverId: "popover-members-id",
+    },
+    {
+      iconName: "cover",
+      type: "Cover",
+      title: "Change Cover",
+      popoverTitle: "Cover",
+      popoverId: "popover-cover-id",
+    },
+    {
       iconName: "clock",
       type: "Dates",
-      title: "Dates",
-      popoverTitle: "Members",
+      title: "Edit Dates",
+      popoverTitle: "Dates",
       popoverId: "popover-dates-id",
     },
   ]
+
+  const filterBtnPopoverDataList = btnPopoverDataList.filter((btn) => {
+    //check if task has labels
+    if (btn.type === "Labels" && task.labelIds?.length > 0) return true
+    //check if task has members
+    if (btn.type === "Members" && task.members?.length > 0) return true
+    //check if task has cover
+    if (btn.type === "Cover" && task.style?.bgColor) return true
+    //check if task has dates
+    if (btn.type === "Dates" && task.dueDate) return true
+    return false
+  })
+
+  console.log("task", task)
+  console.log("filterBtnPopoverDataList", filterBtnPopoverDataList)
 
   function onSaveTitleTask() {
     updateCurrentBoard(groupId, task.id, {
@@ -83,7 +105,7 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
           Open card
         </button>
         <TaskSideBtnActions
-          btnPopoverDataList={btnPopoverDataList}
+          btnPopoverDataList={filterBtnPopoverDataList}
           task={task}
           onUpdateTask={onUpdateTask}
         />
