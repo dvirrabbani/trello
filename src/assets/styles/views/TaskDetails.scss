@@ -20,17 +20,14 @@ $task-detail-main-width: rem(552px);
     grid-template-columns: minmax(auto, 768px);
     height: 100%;
     position: relative;
+    background-color: #f2f4f5;
+    border-radius: rem(8px);
 
     .task-details {
       border: none;
       color: var(--ds-text, #172b4d);
       grid-column: 1/-1;
-      & > * {
-        background-color: #f2f4f5;
-      }
       .task-details-main-container {
-        border-bottom-left-radius: rem(8px);
-        border-bottom-right-radius: rem(8px);
         display: grid;
         grid-template-columns: rem(552px) rem(216px);
       }
