@@ -18,6 +18,7 @@ export function TaskPopoverCheckList({ task, onUpdateTask }) {
           Title
         </label>
         <input
+          className="input-text"
           name="title"
           id="task-checklist-title"
           type="text"
