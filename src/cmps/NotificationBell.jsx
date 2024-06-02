@@ -6,9 +6,7 @@ import Popover from "@mui/material/Popover"
 import { Activity } from "./TaskDetails/Activity"
 
 export function NotificationBell() {
-  const activities = useSelector(
-    (storeState) => storeState.boardModule?.board?.activities
-  )
+  const activities = useSelector((storeState) => storeState.boardModule?.board?.activities)
   const [anchorEl, setAnchorEl] = useState(null)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -36,17 +34,12 @@ export function NotificationBell() {
           vertical: "bottom",
           horizontal: "right",
         }}
+        transitionDuration={0}
       >
         <div className="content">
           <ul className="activities-popover clean-list">
             {activities?.map((activity) => {
-              return (
-                <Activity
-                  key={activity.id}
-                  activity={activity}
-                  profileSize={"lg"}
-                />
-              )
+              return <Activity key={activity.id} activity={activity} profileSize={"lg"} />
             })}
           </ul>
         </div>

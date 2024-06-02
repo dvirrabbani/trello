@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import SvgIcon from "../../cmps/SvgIcon"
 import { NotificationBell } from "../../cmps/NotificationBell"
 import { BoardSearchInput } from "../../cmps/BoardSearchInput"
 import { AddBoardButton } from "../../cmps/AddBoardButton"
 import { SelectStarredBoardsButton } from "../../cmps/SelectStarredBoardsButton"
+import { ProfileImg } from "../../cmps/ProfileImg"
 
 export function BoardHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
+  const params = useParams()
 
   return (
     <header className="board-header">
@@ -17,13 +19,13 @@ export function BoardHeader() {
             <SvgIcon iconName={"logo"} size={"lg"} />
           </Link>
           <SelectStarredBoardsButton />
-          <AddBoardButton variant={"primary"} title={"Create"} />
+          <AddBoardButton variant={!params.boardId ? "primary" : undefined} title={"Create"} />
         </div>
       </div>
       <BoardSearchInput />
       <div className="pref">
         <NotificationBell />
-        <SvgIcon iconName={"profile"} size={"md"} />
+        <ProfileImg member={user} />
       </div>
     </header>
   )

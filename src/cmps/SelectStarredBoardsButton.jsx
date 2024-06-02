@@ -37,7 +37,7 @@ export function SelectStarredBoardsButton() {
 
   return (
     <section className="select-starred-boards-button">
-      <Button variant="contained" onClick={handleClick}>
+      <Button onClick={handleClick}>
         <span>Starred</span>
         <SvgIcon iconName={"arrow"} />
       </Button>
@@ -46,26 +46,15 @@ export function SelectStarredBoardsButton() {
         open={isPopoverOpen}
         anchorEl={anchorEl}
         onClose={handleClose}
-        title={"Create board"}
+        transitionDuration={0}
         anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
       >
         <section className="search-options">
           {starredBoards?.map((board) => (
-            <Button
-              key={board._id}
-              className="search-option"
-              onClick={() => onSelectBoard(board._id)}
-            >
-              <img
-                className="thumbnail"
-                src={board.style.bgImg}
-                alt="board image"
-              />
+            <Button key={board._id} className="search-option" onClick={() => onSelectBoard(board._id)}>
+              <img className="thumbnail" src={board.style.bgImg} alt="board image" />
               <span>{board.title}</span>
-              <SvgIcon
-                onClick={() => onRemoveBoardIsStarred(board)}
-                iconName={"starFill"}
-              />
+              <SvgIcon onClick={() => onRemoveBoardIsStarred(board)} iconName={"starFill"} />
             </Button>
           ))}
         </section>

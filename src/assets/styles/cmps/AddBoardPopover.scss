@@ -24,6 +24,9 @@
       button {
         width: rem(64px);
         height: rem(40px);
+        &:hover {
+          background-color: unset;
+        }
       }
     }
     .bg-svg-list {

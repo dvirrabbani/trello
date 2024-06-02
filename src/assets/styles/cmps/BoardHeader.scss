@@ -11,6 +11,10 @@
     display: grid;
     gap: rem(12px);
     grid-auto-flow: column;
+    align-items: center;
+    .add-board-button .button {
+      height: rem(32px);
+    }
   }
 
   .pref {

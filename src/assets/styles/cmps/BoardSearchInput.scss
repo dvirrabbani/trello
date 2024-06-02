@@ -1,10 +1,19 @@
 .board-search-input {
   position: relative;
   margin-inline-start: auto;
+  border: var(--ds-border-width, 1px) solid var(--dynamic-text-transparent, rgba(255, 255, 255, 0.25));
+  border-color: var(--ds-border-input, #dfe1e6);
+  border-radius: rem(8px);
+  font-size: rem(14px);
+  line-height: rem(20px);
+  &.board-index-search {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--ds-text-subtlest, #626f86);
+  }
 
   > .form-group {
-    padding: rem(8px);
     border-radius: rem(8px);
+    padding: rem(8px);
     background-color: var(--background-color);
     display: flex;
     gap: rem(4px);
@@ -38,11 +47,7 @@
     align-content: start;
     z-index: 9;
     border-radius: rem(4px);
-    box-shadow: var(
-      --ds-shadow-overlay,
-      0 4px 8px rgba(9, 30, 66, 0.25),
-      0 0 1px rgba(9, 30, 66, 0.31)
-    );
+    box-shadow: var(--ds-shadow-overlay, 0 4px 8px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31));
     .search-option {
       font-size: rem(14px);
       font-weight: 600;
