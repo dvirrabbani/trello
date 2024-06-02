@@ -1,5 +1,5 @@
 import SvgIcon from "../SvgIcon"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { updateBoard } from "../../store/board.actions"
 import { BoardNavLink } from "../BoardNavLink"
@@ -13,6 +13,12 @@ export function BoardSidebar() {
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const user = useSelector((storeState) => storeState.userModule.user)
   const userFirstLetter = user.fullName.charAt(0).toUpperCase()
+
+  useEffect(() => {
+    const isMobileViewport = window.matchMedia("(max-width: 768px)").matches
+
+    setSidebarCollapse(isMobileViewport)
+  }, [])
 
   function onToggleBoardStarred(ev, board) {
     ev.preventDefault()
