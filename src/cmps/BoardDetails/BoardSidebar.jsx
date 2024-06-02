@@ -23,12 +23,12 @@ export function BoardSidebar() {
   }
 
   return (
-    <>
-      <div className="collapse-sidebar">
-        <Button
-          className="dynamic-button shape-circle"
-          onClick={() => setSidebarCollapse(false)}
-        >
+    <div className={`sidebar-wrapper ${sidebarCollapse ? "collapse" : ""}`}>
+      <div
+        className="collapse-sidebar"
+        onClick={() => setSidebarCollapse(false)}
+      >
+        <Button className="dynamic-button shape-circle">
           <SvgIcon iconName="arrow" />
         </Button>
       </div>
@@ -66,6 +66,6 @@ export function BoardSidebar() {
           ))}
         </ul>
       </nav>
-    </>
+    </div>
   )
 }
