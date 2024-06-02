@@ -1,4 +1,62 @@
+.collapse-sidebar {
+  .button {
+    width: rem(24px);
+    height: rem(24px);
+    .svg-icon {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
 .board-sidebar {
+  backdrop-filter: blur(6px);
+  background-color: var(
+    --dynamic-background-transparent,
+    var(--ds-surface, #ffffff)
+  );
+  color: white;
+  border-right: 1px solid hsla(0, 0%, 100%, 0.16);
+  width: $sidebar-width;
+
+  .board-sidebar-header {
+    padding: rem(8px) rem(12px);
+    border-bottom: rem(1px) solid var(--dynamic-text-transparent, #dfe1e6);
+
+    .user-workspace {
+      gap: rem(8px);
+    }
+
+    .user-thumbnail {
+      width: rem(32px);
+      height: rem(32px);
+      border-radius: rem(4px);
+      background: linear-gradient(
+        var(--ds-background-accent-green-bolder, #006644),
+        var(--ds-background-accent-green-subtle, #00875a)
+      );
+      color: var(--ds-text-inverse, #ffffff);
+      font-size: rem(20px);
+      color: var(--ds-text-inverse, #ffffff);
+      font-weight: bold;
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+
+    .user-info {
+      .user-fullname {
+        @include typography("h2", var(--dynamic-text));
+      }
+      .plan-type {
+        font-size: rem(12px);
+        line-height: rem(20px);
+        color: var(--dynamic-text);
+      }
+    }
+
+    .button:not(.sidebar-expand-btn) .svg-icon {
+      transform: rotate(90deg);
+    }
+  }
   ul {
     color: var(--dynamic-text);
     padding-top: rem(12px);
