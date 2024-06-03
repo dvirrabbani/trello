@@ -16,7 +16,7 @@ const initialState = {
   boards: [],
   board: null,
   lastRemovedBoard: null,
-  labelsExpand: true,
+  labelsExpand: false,
   boardFilterBy: boardService.getDefaultFilter(),
 }
 
