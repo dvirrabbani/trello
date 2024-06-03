@@ -1445,14 +1445,21 @@ export const DEMO_BOARD_LIST = [
           },
           {
             id: "t1B33Lnestfou9",
-            title: "Best time to visit",
-            description:
-              "Best time to visit: When traveling to Rome, keep major Catholic holidays in mind — things may be closed, or it could mean huge crowds. It will . also help your hotel (or flight) plans if you know in advance.",
+            title: "This is all the labels in the board",
+            description: "",
             comments: [],
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: [],
+            labelIds: [
+              "l106",
+              "l107",
+              "l108",
+              "l109",
+              "l1010",
+              "l1016",
+              "l1027",
+            ],
             dueDate: null,
             byMember: {
               id: "u102",
