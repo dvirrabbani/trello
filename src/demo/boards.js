@@ -1315,7 +1315,7 @@ export const DEMO_BOARD_LIST = [
         title: "History & heritage",
         name: "Orange",
       },
-      { id: "l109", bgColor: "#f87462", title: "To do", name: "Coral" },
+      { id: "l109", bgColor: "#f87462", title: "Urgent", name: "Coral" },
       {
         id: "l1010",
         bgColor: "#9f8fef",
@@ -1334,6 +1334,7 @@ export const DEMO_BOARD_LIST = [
         title: "Sightseeing tour",
         name: "Teal",
       },
+      { id: "l1021", bgColor: "#579dff", title: "To do", name: "Sky Blue" },
     ],
     members: [
       {
@@ -1507,7 +1508,7 @@ export const DEMO_BOARD_LIST = [
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: ["l106"],
+            labelIds: ["l1021", "l106"],
             dueDate: { date: 1717275600000, isCompleted: false },
             byMember: {
               id: "u102",
@@ -1525,7 +1526,7 @@ export const DEMO_BOARD_LIST = [
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: ["l106"],
+            labelIds: ["l1021", "l106"],
             dueDate: null,
             byMember: {
               id: "u102",
@@ -1544,7 +1545,7 @@ export const DEMO_BOARD_LIST = [
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: ["l106"],
+            labelIds: ["l1021", "l106"],
             dueDate: null,
             byMember: {
               id: "u102",
@@ -1626,7 +1627,7 @@ export const DEMO_BOARD_LIST = [
             ],
             attachments: [],
             members: [],
-            labelIds: ["l109"],
+            labelIds: ["l1021"],
             dueDate: null,
             byMember: {
               id: "u102",
@@ -1644,7 +1645,7 @@ export const DEMO_BOARD_LIST = [
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: ["l109"],
+            labelIds: ["l1021"],
             dueDate: null,
             byMember: {
               id: "u102",
@@ -1663,7 +1664,7 @@ export const DEMO_BOARD_LIST = [
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: ["l109"],
+            labelIds: ["l1021"],
             dueDate: null,
             byMember: {
               id: "u102",
@@ -1681,7 +1682,7 @@ export const DEMO_BOARD_LIST = [
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: ["l109"],
+            labelIds: ["l1021"],
             dueDate: null,
             byMember: {
               id: "u102",
@@ -1700,7 +1701,7 @@ export const DEMO_BOARD_LIST = [
             checklists: [],
             attachments: [],
             members: [],
-            labelIds: ["l109"],
+            labelIds: ["l1021"],
             dueDate: null,
             byMember: {
               id: "u102",
