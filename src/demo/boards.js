@@ -1485,7 +1485,7 @@ export const DEMO_BOARD_LIST = [
             attachments: [],
             members: [],
             labelIds: ["l106"],
-            dueDate: 1714755227,
+            dueDate: { date: 1714755227, isCompleted: false },
             byMember: {
               id: "u102",
               fullName: "Yuval Mor",
@@ -1864,7 +1864,7 @@ export const DEMO_BOARD_LIST = [
             attachments: [],
             members: [],
             labelIds: ["l108"],
-            dueDate: 1718729627,
+            dueDate: { date: 1718729627, isCompleted: false },
             byMember: {
               id: "u102",
               fullName: "Yuval Mor",
@@ -1923,7 +1923,7 @@ export const DEMO_BOARD_LIST = [
             attachments: [],
             members: [],
             labelIds: ["l1027"],
-            dueDate: 1718729627,
+            dueDate: { date: 1718729627, isCompleted: false },
             byMember: {
               id: "u102",
               fullName: "Yuval Mor",
@@ -1948,7 +1948,7 @@ export const DEMO_BOARD_LIST = [
             attachments: [],
             members: [],
             labelIds: ["l1016"],
-            dueDate: 1718729627,
+            dueDate: { date: 1718729627, isCompleted: false },
             byMember: {
               id: "u102",
               fullName: "Yuval Mor",
@@ -1975,7 +1975,7 @@ export const DEMO_BOARD_LIST = [
             attachments: [],
             members: [],
             labelIds: ["l1010"],
-            dueDate: 1718816027,
+            dueDate: { date: 1718816027, isCompleted: false },
             byMember: {
               id: "u102",
               fullName: "Yuval Mor",
@@ -2000,7 +2000,7 @@ export const DEMO_BOARD_LIST = [
             attachments: [],
             members: [],
             labelIds: ["l1010"],
-            dueDate: 1718816027,
+            dueDate: { date: 1718816027, isCompleted: false },
             byMember: {
               id: "u102",
               fullName: "Yuval Mor",
@@ -2025,7 +2025,7 @@ export const DEMO_BOARD_LIST = [
             attachments: [],
             members: [],
             labelIds: ["l1016"],
-            dueDate: 1718816027,
+            dueDate: { date: 1718816027, isCompleted: false },
             byMember: {
               id: "u102",
               fullName: "Yuval Mor",
