@@ -1315,7 +1315,7 @@ export const DEMO_BOARD_LIST = [
         title: "History & heritage",
         name: "Orange",
       },
-      { id: "l109", bgColor: "#f87462", title: "Urgent", name: "Coral" },
+      { id: "l109", bgColor: "#f87462", title: "Important!", name: "Coral" },
       {
         id: "l1010",
         bgColor: "#9f8fef",
