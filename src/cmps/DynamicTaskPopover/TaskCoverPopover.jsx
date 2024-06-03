@@ -79,9 +79,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
         <ul className="cover-list clean-list">
           {/* Cover Normal Size */}
           <li
-            className={`cover size-normal ${
-              isCoverFull === false ? "active" : ""
-            }
+            className={`cover size-normal ${!isCoverFull ? "active" : ""}
              ${bgImg ? "has-bg-img" : ""}`}
             onClick={() => onChangeCoverSize(false)}
           >
@@ -99,9 +97,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
           </li>
           {/* Cover Full Size */}
           <li
-            className={`cover size-full ${
-              isCoverFull === true ? "active" : ""
-            } ${bgImg ? "has-bg-img" : ""}`}
+            className={`cover size-full ${isCoverFull === true ? " active" : ""} ${bgImg ? "has-bg-img" : ""}`}
             onClick={() => onChangeCoverSize(true)}
           >
             <div className="cover-background" style={coverStyle}></div>
@@ -115,11 +111,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
       </section>
       {/* Remove Cover Color */}
       {(bgColor || bgImg) && (
-        <Button
-          className={"remove-cover-btn"}
-          variant="contained"
-          onClick={onRemoveCover}
-        >
+        <Button className={"remove-cover-btn"} variant="contained" onClick={onRemoveCover}>
           Remove cover
         </Button>
       )}
@@ -127,21 +119,12 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
       <h4 className="label">Colors</h4>
       <ul className="clean-list colors-palette-grid">
         {uiService.getCoverColors().map((color) => {
-          return (
-            <LabelButton
-              key={color}
-              color={color}
-              onClick={() => updateCoverColor(color)}
-            />
-          )
+          return <LabelButton key={color} color={color} onClick={() => updateCoverColor(color)} />
         })}
       </ul>
       {/* Upload Cover image */}
       <h4 className="label">Attachments</h4>
-      <BtnImgUploader
-        title={"Upload a cover image"}
-        onUploaded={onUpdateTaskCoverImg}
-      />
+      <BtnImgUploader title={"Upload a cover image"} onUploaded={onUpdateTaskCoverImg} />
     </div>
   )
 }

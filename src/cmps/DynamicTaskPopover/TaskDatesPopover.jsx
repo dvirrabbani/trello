@@ -6,21 +6,14 @@ import { DateField, TimeField } from "@mui/x-date-pickers"
 import dayjs from "dayjs"
 import { Button } from "../Button"
 
-export function TaskDatesPopover({
-  task,
-  onUpdateTask,
-  onClose,
-  defaultDueDate = dayjs(new Date()),
-}) {
-  const [dueDate, setDueDate] = useState(
-    dayjs(task?.dueDate?.date || defaultDueDate)
-  )
-  const [isDueDateChecked, setIsDueDateChecked] = useState(true)
+export function TaskDatesPopover({ task, onUpdateTask, onClose, defaultDueDate = dayjs(new Date()) }) {
+  const [dueDate, setDueDate] = useState(dayjs(task?.dueDate?.date || defaultDueDate))
+  const [isDueDateChecked, setIsDueDateChecked] = useState(task?.dueDate?.isCompleted || false)
   const prevDueDateRef = useRef(dayjs(task?.dueDate?.date || defaultDueDate))
 
   function onSaveTaskDate() {
     const dueDateToSave = {
-      isCompleted: task?.dueDate?.isCompleted || false,
+      isCompleted: isDueDateChecked,
       date: new Date(dueDate.$d).getTime(),
     }
 
@@ -39,7 +32,6 @@ export function TaskDatesPopover({
 
   function onChangeDueDateChecked() {
     setIsDueDateChecked((prev) => !prev)
-    setDueDate(isDueDateChecked ? null : prevDueDateRef.current)
   }
 
   function onRemoveDueDate() {
@@ -59,26 +51,9 @@ export function TaskDatesPopover({
         <div className="task-due-date">
           <label>Due date</label>
           <section className="form-group flex">
-            <input
-              type="checkbox"
-              checked={Boolean(isDueDateChecked)}
-              onChange={onChangeDueDateChecked}
-            />
-
-            <DateField
-              value={dueDate}
-              onChange={onChangeDueDate}
-              InputProps={{
-                disabled: !isDueDateChecked,
-              }}
-            />
-            <TimeField
-              value={dueDate}
-              onChange={onChangeDueDate}
-              InputProps={{
-                disabled: !isDueDateChecked,
-              }}
-            />
+            <input type="checkbox" checked={Boolean(isDueDateChecked)} onChange={onChangeDueDateChecked} />
+            <DateField value={dueDate} onChange={onChangeDueDate} />
+            <TimeField value={dueDate} onChange={onChangeDueDate} />
           </section>
         </div>
       </LocalizationProvider>

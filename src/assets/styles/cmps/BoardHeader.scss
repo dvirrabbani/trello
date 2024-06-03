@@ -6,15 +6,24 @@
   padding: em(8px);
   height: $board-header-height;
   background-color: var(--dynamic-background, #0c66e4);
-
   .buttons-list {
     display: grid;
     gap: rem(12px);
     grid-auto-flow: column;
     align-items: center;
+    color: var(--dynamic-text);
+
     .add-board-button .button {
       height: rem(32px);
     }
+  }
+
+  .select-starred-boards-button .button,
+  .add-board-button .button {
+    color: var(--dynamic-text);
+  }
+  .add-board-button .button.variant-primary {
+    color: var(--ds-text-inverse);
   }
 
   .pref {
