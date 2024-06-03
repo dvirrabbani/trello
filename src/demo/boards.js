@@ -974,7 +974,7 @@ export const DEMO_BOARD_LIST = [
     style: {
       bgImg:
         "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg",
-      colorRgb: "168, 103, 255",
+      colorRgb: "168, 103, 192",
       themeColor: "light",
     },
     labels: [
