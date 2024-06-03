@@ -1,4 +1,5 @@
-import { th } from "date-fns/locale"
+import { DEMO_BOARD } from "./const"
+// console.log(JSON.stringify(DEMO_BOARD))
 
 export const DEMO_BOARD_LIST = [
   {
@@ -9,8 +10,7 @@ export const DEMO_BOARD_LIST = [
     createdBy: {
       id: "u101",
       fullName: "Dvir Rabbani",
-      imgUrl:
-        "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+      imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
     },
     style: {
       bgImg: "https://images.unsplash.com/photo-1699116548123-73affe0987b7",
@@ -35,14 +35,12 @@ export const DEMO_BOARD_LIST = [
       {
         id: "u101",
         fullName: "Dvir Rabbani",
-        imgUrl:
-          "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+        imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
       },
       {
         id: "u102",
         fullName: "Yuval Mor",
-        imgUrl:
-          "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+        imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
       },
       {
         id: "u103",
@@ -80,8 +78,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -102,14 +99,12 @@ export const DEMO_BOARD_LIST = [
               {
                 id: "u101",
                 fullName: "Dvir Rabbani",
-                imgUrl:
-                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+                imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
               },
               {
                 id: "u102",
                 fullName: "Yuval Mor",
-                imgUrl:
-                  "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
               },
               {
                 id: "u103",
@@ -155,8 +150,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -177,14 +171,12 @@ export const DEMO_BOARD_LIST = [
               {
                 id: "u101",
                 fullName: "Dvir Rabbani",
-                imgUrl:
-                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+                imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
               },
               {
                 id: "u102",
                 fullName: "Yuval Mor",
-                imgUrl:
-                  "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
               },
               {
                 id: "u103",
@@ -203,8 +195,7 @@ export const DEMO_BOARD_LIST = [
             },
             style: {
               bgColor: "rgb(137,193,190)",
-              bgImg:
-                "https://res.cloudinary.com/df0eaacho/image/upload/v1717169138/zcw8hqjfj793o3y1ehen.gif",
+              bgImg: "https://res.cloudinary.com/df0eaacho/image/upload/v1717169138/zcw8hqjfj793o3y1ehen.gif",
               isCoverFull: false,
             },
           },
@@ -231,8 +222,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -249,8 +239,7 @@ export const DEMO_BOARD_LIST = [
             },
             style: {
               bgColor: "rgb(189,186,182)",
-              bgImg:
-                "https://res.cloudinary.com/df0eaacho/image/upload/v1717169431/azbqq53oskw7nlhnd1ck.webp",
+              bgImg: "https://res.cloudinary.com/df0eaacho/image/upload/v1717169431/azbqq53oskw7nlhnd1ck.webp",
               isCoverFull: true,
             },
           },
@@ -277,8 +266,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -288,14 +276,12 @@ export const DEMO_BOARD_LIST = [
               {
                 id: "u101",
                 fullName: "Dvir Rabbani",
-                imgUrl:
-                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+                imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
               },
               {
                 id: "u102",
                 fullName: "Yuval Mor",
-                imgUrl:
-                  "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
               },
             ],
             labelIds: [],
@@ -331,8 +317,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -342,8 +327,7 @@ export const DEMO_BOARD_LIST = [
               {
                 id: "u101",
                 fullName: "Dvir Rabbani",
-                imgUrl:
-                  "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+                imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
               },
             ],
             labelIds: [],
@@ -367,8 +351,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1ssign",
             title: "Assign project tasks",
-            description:
-              "Project tasks should be assigned to team members based on their skills and availability.",
+            description: "Project tasks should be assigned to team members based on their skills and availability.",
             comments: [
               {
                 id: "ZdPnm",
@@ -377,8 +360,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
@@ -388,8 +370,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
               {
@@ -410,8 +391,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -456,8 +436,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: {
               bgColor: "#9f8fef",
@@ -468,8 +447,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1efine",
             title: "Define project scope",
-            description:
-              "scenarios, use cases, features, and functions that characterize a project's value.",
+            description: "scenarios, use cases, features, and functions that characterize a project's value.",
             comments: [
               {
                 id: "ZdPnm",
@@ -478,8 +456,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
             ],
@@ -540,8 +517,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: null,
           },
@@ -555,8 +531,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1cope",
             title: "Define project scope",
-            description:
-              "scenarios, use cases, features, and functions that characterize a project's value.",
+            description: "scenarios, use cases, features, and functions that characterize a project's value.",
             comments: [],
             checklists: [
               {
@@ -615,8 +590,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: null,
           },
@@ -630,8 +604,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1uld",
             title: "Assign project tasks",
-            description:
-              "Project tasks should be assigned to team members based on their skills and availability.",
+            description: "Project tasks should be assigned to team members based on their skills and availability.",
             comments: [
               {
                 id: "ZdPnm",
@@ -640,8 +613,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
@@ -651,8 +623,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -697,16 +668,14 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: null,
           },
           {
             id: "t10featu",
             title: "Define project scope",
-            description:
-              "scenarios, use cases, features, and functions that characterize a project's value.",
+            description: "scenarios, use cases, features, and functions that characterize a project's value.",
             comments: [],
             checklists: [
               {
@@ -765,8 +734,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: null,
           },
@@ -809,8 +777,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t9ask",
             title: "Assign project tasks",
-            description:
-              "Project tasks should be assigned to team members based on their skills and availability.",
+            description: "Project tasks should be assigned to team members based on their skills and availability.",
             comments: [
               {
                 id: "ZdPnm",
@@ -819,8 +786,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
@@ -830,8 +796,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -876,8 +841,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: null,
           },
@@ -921,8 +885,7 @@ export const DEMO_BOARD_LIST = [
         byMember: {
           id: "u101",
           fullName: "Dvir Rabbani",
-          imgUrl:
-            "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+          imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
         },
       },
       {
@@ -932,8 +895,7 @@ export const DEMO_BOARD_LIST = [
         byMember: {
           id: "u101",
           fullName: "Dvir Rabbani",
-          imgUrl:
-            "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+          imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
         },
       },
       {
@@ -943,8 +905,7 @@ export const DEMO_BOARD_LIST = [
         byMember: {
           id: "u102",
           fullName: "Yuval Mor",
-          imgUrl:
-            "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+          imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
         },
       },
       {
@@ -968,13 +929,11 @@ export const DEMO_BOARD_LIST = [
     createdBy: {
       id: "u102",
       fullName: "Yuval Mor",
-      imgUrl:
-        "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+      imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
     },
     style: {
-      bgImg:
-        "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg",
-      colorRgb: "168, 103, 192",
+      bgImg: "https://res.cloudinary.com/dp0y6hy2o/image/upload/v1686384787/a7c521b94eb153008f2d_ex0umg.svg",
+      colorRgb: "168, 103, 255",
       themeColor: "light",
     },
     labels: [
@@ -995,14 +954,12 @@ export const DEMO_BOARD_LIST = [
       {
         id: "u101",
         fullName: "Dvir Rabbani",
-        imgUrl:
-          "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+        imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
       },
       {
         id: "u102",
         fullName: "Yuval Mor",
-        imgUrl:
-          "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+        imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
       },
       {
         id: "u103",
@@ -1020,8 +977,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1Book",
             title: "Book flight tickets",
-            description:
-              "Book flight tickets to destination and back. Make sure to choose the best seats.",
+            description: "Book flight tickets to destination and back. Make sure to choose the best seats.",
             comments: [],
             checklists: [
               {
@@ -1064,8 +1020,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: null,
           },
@@ -1132,8 +1087,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: null,
           },
@@ -1147,8 +1101,7 @@ export const DEMO_BOARD_LIST = [
           {
             id: "t1gif",
             title: "Buy gifts",
-            description:
-              "Buy gifts for family members. Make sure to choose the best gifts.",
+            description: "Buy gifts for family members. Make sure to choose the best gifts.",
             comments: [
               {
                 id: "ZdPnm",
@@ -1157,8 +1110,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u101",
                   fullName: "Tal Tarablus",
-                  imgUrl:
-                    "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+                  imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
                 },
               },
               {
@@ -1168,8 +1120,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
               {
@@ -1190,8 +1141,7 @@ export const DEMO_BOARD_LIST = [
                 byMember: {
                   id: "u102",
                   fullName: "Yuval Mor",
-                  imgUrl:
-                    "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+                  imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
                 },
               },
             ],
@@ -1236,8 +1186,7 @@ export const DEMO_BOARD_LIST = [
             byMember: {
               id: "u101",
               fullName: "Dvir Rabbani",
-              imgUrl:
-                "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+              imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
             },
             style: {
               bgColor: "#4bce97",
@@ -1256,8 +1205,7 @@ export const DEMO_BOARD_LIST = [
         byMember: {
           id: "u101",
           fullName: "Dvir Rabbani",
-          imgUrl:
-            "https://trello-members.s3.amazonaws.com/5dda835ea341db563754a5f1/a13d8e3e5c75f27daf3519e37a6538e3/170.png",
+          imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717324592/170_p9gfyl.png",
         },
       },
       {
@@ -1267,8 +1215,7 @@ export const DEMO_BOARD_LIST = [
         byMember: {
           id: "u102",
           fullName: "Yuval Mor",
-          imgUrl:
-            "https://trello-members.s3.amazonaws.com/5e118d398d051d6d71ffe426/d849d5d80478e0bd4c34eeef5b0eb90c/30.png",
+          imgUrl: "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
         },
       },
       {
