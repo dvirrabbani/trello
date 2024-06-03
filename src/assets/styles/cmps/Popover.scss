@@ -11,19 +11,12 @@
     .group-actions-list {
       margin: 0 -12px;
       li > button {
-        @include btn(
-          $bg-color: transparent,
-          $width: 100%,
-          $padding: rem(6px) rem(12px)
-        );
+        @include btn($bg-color: transparent, $width: 100%, $padding: rem(6px) rem(12px));
         @include typography($type: "txt");
         color: var(--ds-text, #172b4d);
 
         &:hover {
-          background-color: var(
-            --ds-background-neutral-subtle-hovered,
-            #091e420f
-          );
+          background-color: var(--ds-background-neutral-subtle-hovered, #091e420f);
         }
       }
     }
@@ -39,6 +32,7 @@
     color: var(--ds-text-subtle, #44546f);
     .popover-title {
       margin: 0 auto;
+      padding-inline-start: rem(8px);
     }
     .popover-close .button {
       border-radius: rem(8px);
