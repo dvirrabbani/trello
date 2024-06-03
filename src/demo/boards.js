@@ -1371,7 +1371,11 @@ export const DEMO_BOARD_LIST = [
               imgUrl:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
             },
-            style: null,
+            style: {
+              bgColor: "#4bce97",
+              bgImg: null,
+              isCoverFull: true,
+            },
           },
           {
             id: "t1B33Languagalian",
@@ -1389,7 +1393,11 @@ export const DEMO_BOARD_LIST = [
               imgUrl:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
             },
-            style: null,
+            style: {
+              bgColor: "#9f8fef",
+              bgImg: null,
+              isCoverFull: true,
+            },
           },
           {
             id: "t1B33LCou9",
@@ -1407,7 +1415,11 @@ export const DEMO_BOARD_LIST = [
               imgUrl:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
             },
-            style: null,
+            style: {
+              bgColor: "#4bce97",
+              bgImg: null,
+              isCoverFull: true,
+            },
           },
           {
             id: "t1B33LCffou9",
@@ -1425,7 +1437,11 @@ export const DEMO_BOARD_LIST = [
               imgUrl:
                 "https://res.cloudinary.com/df0eaacho/image/upload/v1717325026/170_a6m1oi.png",
             },
-            style: null,
+            style: {
+              bgColor: "#9f8fef",
+              bgImg: null,
+              isCoverFull: true,
+            },
           },
           {
             id: "t1B33Lnestfou9",
