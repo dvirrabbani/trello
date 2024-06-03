@@ -22,12 +22,14 @@ export const boardService = {
   setBoardDynamicStyle,
   resetDynamicStyle,
   getBoardChartsData,
+  filterBtnPopoverDataList,
 }
 window.cs = boardService
 
 async function query() {
   let boards = utilService.loadFromStorage(STORAGE_KEY)
-  if (!boards || !boards.length) utilService.saveToStorage(STORAGE_KEY, DEMO_BOARD_LIST)
+  if (!boards || !boards.length)
+    utilService.saveToStorage(STORAGE_KEY, DEMO_BOARD_LIST)
   boards = await storageService.query(STORAGE_KEY)
   return boards
 }
@@ -156,11 +158,25 @@ function _isTaskMatchTxt(task, filter) {
 }
 
 function _isTaskMatchDates(task, filter) {
-  const { noDates, overdue, dueNextDay, dueNextWeek, dueNextMonth, isCompleted } = filter
+  const {
+    noDates,
+    overdue,
+    dueNextDay,
+    dueNextWeek,
+    dueNextMonth,
+    isCompleted,
+  } = filter
 
   const due = new Date(task.dueDate?.date)
 
-  if (!noDates && !overdue && !dueNextDay && !dueNextWeek && !dueNextMonth && !isCompleted) {
+  if (
+    !noDates &&
+    !overdue &&
+    !dueNextDay &&
+    !dueNextWeek &&
+    !dueNextMonth &&
+    !isCompleted
+  ) {
     // no date-related filtering
     return true
   }
@@ -232,14 +248,19 @@ function getBoardChartsData(board) {
       let dueDateStatus
       if (task.dueDate) {
         dueDateStatus =
-          uiService.getDueDateStatusAndClassName(task.dueDate.date, task.dueDate.isCompleted).status || "Due Later"
+          uiService.getDueDateStatusAndClassName(
+            task.dueDate.date,
+            task.dueDate.isCompleted
+          ).status || "Due Later"
       }
 
       if (!dueDateStatus) {
         dueDateStatus = "No due date"
       }
 
-      dueDateCounts[dueDateStatus] = dueDateCounts[dueDateStatus] ? dueDateCounts[dueDateStatus] + 1 : 1
+      dueDateCounts[dueDateStatus] = dueDateCounts[dueDateStatus]
+        ? dueDateCounts[dueDateStatus] + 1
+        : 1
 
       // Members tasks count
       if (task.members.length === 0) {
@@ -278,7 +299,9 @@ function getBoardChartsData(board) {
   cardsPerMember = board.members.map((member) => {
     return {
       title: member.fullName,
-      count: mapMemberIdToCountTasks[member.id] ? mapMemberIdToCountTasks[member.id] : 0,
+      count: mapMemberIdToCountTasks[member.id]
+        ? mapMemberIdToCountTasks[member.id]
+        : 0,
     }
   })
 
@@ -364,6 +387,21 @@ function resetDynamicStyle() {
   const root = document.documentElement
   root.style.setProperty("--dynamic-background-transparent", "")
   root.style.setProperty("--dynamic-background", "")
+}
+
+function filterBtnPopoverDataList(task, btnPopoverDataList) {
+  const filterBtnPopoverDataList = btnPopoverDataList.filter((btn) => {
+    //check if task has labels
+    if (btn.type === "Labels" && task.labelIds?.length > 0) return true
+    //check if task has members
+    if (btn.type === "Members" && task.members?.length > 0) return true
+    //check if task has cover
+    if (btn.type === "Cover" && task.style?.bgColor) return true
+    //check if task has dates
+    if (btn.type === "Dates" && task.dueDate) return true
+    return false
+  })
+  return filterBtnPopoverDataList
 }
 
 // TODO

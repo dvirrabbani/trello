@@ -1,19 +1,11 @@
 .board-details-container {
-  display: grid;
-  grid-template-columns: rem(260px) 1fr;
+  // display: grid;
+  // grid-template-columns: rem(260px) 1fr;
+  display: flex;
   height: 100%;
 
-  .board-sidebar {
-    backdrop-filter: blur(6px);
-    background-color: var(
-      --dynamic-background-transparent,
-      var(--ds-surface, #ffffff)
-    );
-    color: white;
-    border-right: 1px solid hsla(0, 0%, 100%, 0.16);
-  }
-
   .board-main-content {
+    flex: 1;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

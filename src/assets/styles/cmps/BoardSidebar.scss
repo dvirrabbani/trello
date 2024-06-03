@@ -1,60 +1,170 @@
-.board-sidebar {
-  ul {
-    color: var(--dynamic-text);
-    padding-top: rem(12px);
-    display: grid;
-    grid-template-columns: auto;
-    .board-sidebar-list-header {
-      padding: rem(4px) 0 rem(4px) rem(12px);
+.sidebar-wrapper {
+  position: relative;
+  transition: width 100ms ease-in;
+  width: $sidebar-width;
+
+  > * {
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+
+  &.collapse {
+    width: rem(16px);
+    .collapse-sidebar {
+      left: 0;
+    }
+    .board-sidebar {
+      left: -$sidebar-width;
+    }
+  }
+
+  .collapse-sidebar {
+    width: rem(16px);
+    left: -100%;
+    transition: 100ms ease-in;
+    background-color: var(
+      --dynamic-background-transparent,
+      var(--ds-surface, #ffffff)
+    );
+    border-right: 1px solid
+      var(--dynamic-text-transparent, hsla(218, 54%, 19.6%, 0.16));
+
+    .button {
+      padding: 0;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      .title {
-        font-size: rem(14px);
-        font-weight: 600;
-        line-height: rem(24px);
-      }
-      button {
-        background-color: transparent;
-        color: inherit;
-        @include btn();
-        width: fit-content;
-        padding: rem(4px);
-        margin: 0 rem(6px);
-        &:hover {
-          background-color: var(--dynamic-button-hovered);
-        }
+      justify-content: center;
+      background-color: var(
+        --dynamic-background-transparent,
+        var(--ds-surface, #ffffff)
+      );
+      color: var(--dynamic-text);
+      border: 1px solid
+        var(--dynamic-text-transparent, hsla(218, 54%, 19.6%, 0.16));
+      position: absolute;
+      z-index: 1;
+      backdrop-filter: blur(16px);
+      top: rem(15px);
+      left: rem(5px);
+      width: rem(24px);
+      height: rem(24px);
+
+      .svg-icon {
+        transform: rotate(-90deg);
+        width: rem(12px);
       }
     }
-    .board-sidebar-item {
-      padding: rem(6px) rem(12px);
-      display: grid;
-      grid-template-columns: auto auto;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      &:hover {
-        background-color: var(
-          --dynamic-background-transparent,
-          var(--ds-surface, #ffffff)
+  }
+
+  .board-sidebar {
+    left: 0;
+    transition: 100ms ease-in;
+    backdrop-filter: blur(6px);
+    background-color: var(
+      --dynamic-background-transparent,
+      var(--ds-surface, #ffffff)
+    );
+    color: white;
+    border-right: 1px solid hsla(0, 0%, 100%, 0.16);
+    width: $sidebar-width;
+
+    .board-sidebar-header {
+      padding: rem(8px) rem(12px);
+      border-bottom: rem(1px) solid var(--dynamic-text-transparent, #dfe1e6);
+
+      .user-workspace {
+        gap: rem(8px);
+      }
+
+      .user-thumbnail {
+        width: rem(32px);
+        height: rem(32px);
+        border-radius: rem(4px);
+        background: linear-gradient(
+          var(--ds-background-accent-green-bolder, #006644),
+          var(--ds-background-accent-green-subtle, #00875a)
         );
+        color: var(--ds-text-inverse, #ffffff);
+        font-size: rem(20px);
+        color: var(--ds-text-inverse, #ffffff);
+        font-weight: bold;
+        overflow: hidden;
+        text-transform: uppercase;
       }
 
-      .thumbnail {
-        opacity: 0.7;
-      }
-      &:has(a.active),
-      &:active {
-        background-color: var(--dynamic-nav-button-background-color-pressed);
+      .user-info {
+        .user-fullname {
+          @include typography("h2", var(--dynamic-text));
+        }
+        .plan-type {
+          font-size: rem(12px);
+          line-height: rem(20px);
+          color: var(--dynamic-text);
+        }
       }
 
-      .button {
-        padding: 0;
-        color: inherit;
-        background-color: transparent;
+      .button:not(.sidebar-expand-btn) .svg-icon {
+        transform: rotate(90deg);
       }
-      .svg-icon {
-        cursor: pointer;
+    }
+    ul {
+      color: var(--dynamic-text);
+      padding-top: rem(12px);
+      display: grid;
+      grid-template-columns: auto;
+      .board-sidebar-list-header {
+        padding: rem(4px) 0 rem(4px) rem(12px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+          font-size: rem(14px);
+          font-weight: 600;
+          line-height: rem(24px);
+        }
+        button {
+          background-color: transparent;
+          color: inherit;
+          @include btn();
+          width: fit-content;
+          padding: rem(4px);
+          margin: 0 rem(6px);
+          &:hover {
+            background-color: var(--dynamic-button-hovered);
+          }
+        }
+      }
+      .board-sidebar-item {
+        padding: rem(6px) rem(12px);
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        &:hover {
+          background-color: var(
+            --dynamic-background-transparent,
+            var(--ds-surface, #ffffff)
+          );
+        }
+
+        .thumbnail {
+          opacity: 0.7;
+        }
+        &:has(a.active),
+        &:active {
+          background-color: var(--dynamic-nav-button-background-color-pressed);
+        }
+
+        .button {
+          padding: 0;
+          color: inherit;
+          background-color: transparent;
+        }
+        .svg-icon {
+          cursor: pointer;
+        }
       }
     }
   }

@@ -6,6 +6,7 @@ $normal-breakpoint: 960px;
 //widths
 $group-width: rem(272px);
 $task-width: rem(256px);
+$sidebar-width: rem(260px);
 
 // height
 $board-header-height: rem(48px);
@@ -31,6 +32,8 @@ $board-header-height: rem(48px);
   --ds-background-accent-gray-bolder: #626f86;
   --ds-background-accent-gray-bolder-hovered: #44546f;
   --ds-background-accent-gray-bolder-pressed: #2c3e5d;
+  --ds-background-accent-green-bolder: #1f845a;
+  --ds-background-accent-green-subtle: #4bce97;
   --ds-background-accent-red-subtler: #ffd5d2;
   --ds-background-accent-red-subtler-hovered: #fd9891;
   --ds-background-accent-red-subtler-pressed: #f87168;
@@ -110,7 +113,9 @@ $board-header-height: rem(48px);
   --create-menu-button-background: rgba(255, 255, 255, 0.2);
   --create-menu-button-background-hovered: rgba(255, 255, 255, 0.3);
   --create-menu-button-background-active: rgba(255, 255, 255, 0.3);
-  --create-menu-button-background-active-hovered: var(--create-menu-button-background-active);
+  --create-menu-button-background-active-hovered: var(
+    --create-menu-button-background-active
+  );
 }
 
 [data-theme="light"] {

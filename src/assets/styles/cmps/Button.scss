@@ -15,6 +15,17 @@
     background-color: var(--ds-background-neutral-pressed, #091e424f);
   }
 
+  &.dynamic-button {
+    background-color: var(--dynamic-button);
+    color: var(--dynamic-text);
+    &:hover {
+      background-color: var(--dynamic-button-hovered);
+    }
+    &:active {
+      background-color: var(--dynamic-button-pressed);
+    }
+  }
+
   &.shape-circle {
     border-radius: 50%;
   }

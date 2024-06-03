@@ -46,18 +46,6 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
     },
   ]
 
-  const filterBtnPopoverDataList = btnPopoverDataList.filter((btn) => {
-    //check if task has labels
-    if (btn.type === "Labels" && task.labelIds?.length > 0) return true
-    //check if task has members
-    if (btn.type === "Members" && task.members?.length > 0) return true
-    //check if task has cover
-    if (btn.type === "Cover" && task.style?.bgColor) return true
-    //check if task has dates
-    if (btn.type === "Dates" && task.dueDate) return true
-    return false
-  })
-
   function onSaveTitleTask() {
     updateCurrentBoard(groupId, task.id, {
       key: "title",
@@ -102,7 +90,7 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
           Open card
         </button>
         <TaskSideBtnActions
-          btnPopoverDataList={filterBtnPopoverDataList}
+          btnPopoverDataList={btnPopoverDataList}
           task={task}
           onUpdateTask={onUpdateTask}
         />
