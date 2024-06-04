@@ -53,16 +53,11 @@ export function TaskDetails() {
 
   function onAddCheckListTodo(checklistId, todo) {
     const checkListToEdit = task?.checklists?.find((c) => c.id === checklistId)
-    checkListToEdit.todos = [
-      ...(checkListToEdit?.todos || []),
-      { id: utilService.makeId(), title: todo.title, isDone: false },
-    ]
+    checkListToEdit.todos = [...(checkListToEdit?.todos || []), { id: utilService.makeId(), title: todo.title, isDone: false }]
 
     onUpdateTask({
       key: "checklists",
-      value: task.checklists.map((c) =>
-        c.id === checklistId ? checkListToEdit : c
-      ),
+      value: task.checklists.map((c) => (c.id === checklistId ? checkListToEdit : c)),
     })
   }
 
@@ -70,9 +65,7 @@ export function TaskDetails() {
     const checklistToEdit = task?.checklists?.find((c) => c.id === checklistId)
     checklistToEdit.todos = checklistToEdit.todos.filter((t) => t.id !== todoId)
 
-    task?.checklists.map((checklist) =>
-      checklist.id === checklistId ? checklistToEdit : checklist
-    )
+    task?.checklists.map((checklist) => (checklist.id === checklistId ? checklistToEdit : checklist))
 
     onUpdateTask({
       key: "checklists",
@@ -126,8 +119,7 @@ export function TaskDetails() {
           byMember: {
             id: "u101",
             fullName: "Tal Tarablus",
-            imgUrl:
-              "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
+            imgUrl: "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
           },
         },
         ...taskComments,
@@ -152,18 +144,10 @@ export function TaskDetails() {
     <div className="task-details-container">
       <div className="task-detail-wrapper">
         <div className="task-details">
-          <TaskDetailsHeader
-            params={params}
-            task={task}
-            onUpdateTask={onUpdateTask}
-          />
+          <TaskDetailsHeader params={params} task={task} onUpdateTask={onUpdateTask} />
           <div className="task-details-main-container">
             <main className="task-details-main full">
-              <TaskDetailsMainHeader
-                task={task}
-                labels={labels}
-                onUpdateTask={onUpdateTask}
-              />
+              <TaskDetailsMainHeader task={task} labels={labels} onUpdateTask={onUpdateTask} />
               <TaskDetailsDescription
                 description={task.description}
                 onUpdateTask={onUpdateTask}
@@ -178,22 +162,12 @@ export function TaskDetails() {
                 onUpdateTask={onUpdateTask}
               />
 
-              {task?.attachments && (
-                <TaskDetailsAttachments
-                  task={task}
-                  onUpdateTask={onUpdateTask}
-                />
-              )}
-
+              {task?.attachments.length > 0 && <TaskDetailsAttachments task={task} onUpdateTask={onUpdateTask} />}
               <TaskDetailsActivities
                 task={task}
                 boardMembers={board.members}
                 // filter board activities by task
-                activities={
-                  board?.activities.filter(
-                    (activity) => activity?.taskId === task.id
-                  ) || []
-                }
+                activities={board?.activities.filter((activity) => activity?.taskId === task.id) || []}
                 onRemoveComment={onRemoveComment}
                 onAddComment={onAddComment}
                 onUpdateComment={onUpdateComment}
