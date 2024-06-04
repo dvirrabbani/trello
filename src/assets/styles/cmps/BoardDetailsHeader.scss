@@ -17,6 +17,14 @@
     }
   }
 
+  .board-title-container {
+    position: relative;
+
+    .hide {
+      display: none;
+    }
+  }
+
   .board-details-title {
     background: transparent;
     font-size: rem(18px);
@@ -29,6 +37,19 @@
     height: 100%;
     color: var(--dynamic-text);
     padding: 0 rem(10px);
+  }
+
+  input.board-details-title {
+    color: var(--ds-text, #172b4d);
+    background-color: var(--ds-background-input, #ffffff);
+    border: 0;
+    margin: 0;
+    border-radius: rem(3px);
+    box-shadow: inset 0 0 0 2px var(--ds-border-focused, #388bff);
+    height: auto;
+    outline: none;
+    height: rem(32px);
+    line-height: rem(30px);
   }
 
   .board-topbar-end {

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { updateCurrentBoard } from "../../store/board.actions"
+import { useEffect, useRef, useState } from "react"
+import { updateBoard, updateCurrentBoard } from "../../store/board.actions"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { Popover } from "../Popover"
@@ -8,9 +8,14 @@ import { FilterCount } from "./FilterCount"
 import { store } from "../../store/store"
 import { boardService } from "../../services/board.service"
 import { ProfileImg } from "../ProfileImg"
+import { useForm } from "../../customHooks/useForm"
 
 export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
   const [anchorEl, setAnchorEl] = useState(null)
+  const [fields, setFields, handleChange, resetForm] = useForm({
+    title: board.title,
+  })
+
   const isPopoverOpen = Boolean(anchorEl)
   const isFilterEmpty = Object.values(filterBy).every((val) => {
     if (Array.isArray(val)) return val.length === 0
@@ -19,6 +24,8 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
   const tasksCount = board.groups.reduce((acc, group) => {
     return acc + group.tasks.length
   }, 0)
+  const boardTitleH1 = useRef(null)
+  const boardTitleInput = useRef(null)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -49,10 +56,56 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
   function onChangeViewType(viewType) {
     setViewType(viewType)
   }
+
+  function handleTitleClick() {
+    boardTitleH1.current.classList.add("hide")
+    boardTitleInput.current.classList.remove("hide")
+    boardTitleInput.current.focus()
+    updateInputWidth()
+  }
+
+  function handleInputTitleBlur() {
+    boardTitleH1.current.classList.remove("hide")
+    boardTitleInput.current.classList.add("hide")
+    if (fields.title === board.title) return
+    updateBoard(board, { key: "title", value: fields.title })
+  }
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      boardTitleInput.current.blur()
+    }
+    updateInputWidth()
+  }
+
+  function updateInputWidth() {
+    const input = boardTitleInput.current
+    input.style.width = input.value.length + 1 + "ch"
+  }
+
   return (
     <section className="board-details-header">
       <div className="board-topbar-start">
-        <h1 className="board-details-title">{board.title}</h1>
+        <div className="board-title-container">
+          <h1
+            className="board-details-title"
+            onClick={handleTitleClick}
+            ref={boardTitleH1}
+          >
+            {fields.title}
+          </h1>
+          <input
+            className="board-details-title hide"
+            type="text"
+            name="title"
+            ref={boardTitleInput}
+            value={fields.title}
+            onChange={handleChange}
+            onBlur={handleInputTitleBlur}
+            onFocus={(e) => e.currentTarget.select()}
+            onKeyDown={handleKeyPress}
+          />
+        </div>
         <Button>
           <SvgIcon
             onClick={onToggleBoardStarred}
