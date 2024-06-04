@@ -18,18 +18,10 @@ export function TaskDetailsChecklist({
     // dropped outside the list
     if (!destination) return
     // dropped in the same place
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    )
-      return
+    if (destination.droppableId === source.droppableId && destination.index === source.index) return
 
     if (type === "checklist-section") {
-      const newChecklists = handleDragInsideDroppable(
-        checklists,
-        source,
-        destination
-      )
+      const newChecklists = handleDragInsideDroppable(checklists, source, destination)
       onUpdateTask({
         key: "checklists",
         value: newChecklists,
@@ -37,13 +29,9 @@ export function TaskDetailsChecklist({
       return
     }
 
-    const startChecklist = checklists.find(
-      (checklist) => checklist.id === source.droppableId
-    )
+    const startChecklist = checklists.find((checklist) => checklist.id === source.droppableId)
     const startTodoIds = Array.from(startChecklist.todos)
-    const endChecklist = checklists.find(
-      (checklist) => checklist.id === destination.droppableId
-    )
+    const endChecklist = checklists.find((checklist) => checklist.id === destination.droppableId)
     const endTodoIds = Array.from(endChecklist.todos)
 
     const todoToMove = {
@@ -51,11 +39,7 @@ export function TaskDetailsChecklist({
     }
 
     if (startChecklist === endChecklist) {
-      const newTodoIds = handleDragInsideDroppable(
-        startChecklist.todos,
-        source,
-        destination
-      )
+      const newTodoIds = handleDragInsideDroppable(startChecklist.todos, source, destination)
       const updatedChecklists = checklists.map((checklist) => {
         if (checklist.id === startChecklist.id) {
           return { ...checklist, todos: newTodoIds }
@@ -97,44 +81,24 @@ export function TaskDetailsChecklist({
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable
-        droppableId="checklist-section"
-        direction="vertical"
-        type="checklist-section"
-      >
+      <Droppable droppableId="checklist-section" direction="vertical" type="checklist-section">
         {(provided) => (
-          <section
-            className="task-details-checklist"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
+          <section className="task-details-checklist-container" {...provided.droppableProps} ref={provided.innerRef}>
             {checklists?.map((checklist, index) => {
               return (
-                <Draggable
-                  key={checklist.id}
-                  draggableId={checklist.id}
-                  index={index}
-                >
+                <Draggable key={checklist.id} draggableId={checklist.id} index={index}>
                   {(provided, snapshot) => (
                     <div
-                      className={`task-details-checklist ${
-                        snapshot.isDragging ? "dragging" : ""
-                      }`}
+                      className={`task-details-checklist ${snapshot.isDragging ? "dragging" : ""}`}
                       key={checklist.id}
                       {...provided.draggableProps}
                       ref={provided.innerRef}
                     >
                       {/* Checklist header */}
-                      <div
-                        {...provided.dragHandleProps}
-                        className="task-details-checklist-header task-detail-header-section"
-                      >
+                      <div {...provided.dragHandleProps} className="task-details-checklist-header task-detail-header-section">
                         <SvgIcon size={"md"} iconName={"checkbox"} />
                         <h3>{checklist.title}</h3>
-                        <Button
-                          variant="contained"
-                          onClick={() => onRemoveChecklist(checklist.id)}
-                        >
+                        <Button variant="contained" onClick={() => onRemoveChecklist(checklist.id)}>
                           Delete
                         </Button>
                       </div>

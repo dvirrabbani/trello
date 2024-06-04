@@ -1,0 +1,5 @@
+.task-details-checklist-container {
+  .task-details-checklist:not(:last-of-type) {
+    margin-bottom: rem(24px);
+  }
+}
