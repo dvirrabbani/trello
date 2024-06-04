@@ -10,6 +10,7 @@ import { TaskDetailsChecklist } from "../cmps/TaskDetails/TaskDetailsCheckList"
 import { TaskDetailsActivities } from "../cmps/TaskDetails/TaskDetailsActivities"
 import { utilService } from "../services/util.service"
 import { TaskDetailsAttachments } from "../cmps/TaskDetails/TaskDetailsAttachments"
+import { Loader } from "../cmps/shared/Loader"
 
 export function TaskDetails() {
   const params = useParams()
@@ -137,7 +138,13 @@ export function TaskDetails() {
   const labels = { board: board.labels, task: getTaskLabels() }
 
   if (!task) {
-    return "loading..."
+    return (
+      <div className="task-details-container">
+        <div className="task-detail-wrapper loading">
+          <Loader />
+        </div>
+      </div>
+    )
   }
 
   return (

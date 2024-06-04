@@ -11,6 +11,7 @@ import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
 import { boardService } from "../services/board.service"
 import { saveUserRecentBoards } from "../store/user.actions"
 import BoarDashboardView from "../cmps/board/view/BoarDashboardView"
+import { Loader } from "../cmps/shared/Loader"
 
 export function BoardDetails() {
   const params = useParams()
@@ -48,14 +49,10 @@ export function BoardDetails() {
     }
   }, [board])
 
-
-  if (!board) return <div>Loading..</div>
+  if (!board) return <Loader />
 
   return (
-    <div
-      className="board-details-container bg-image-cover"
-      style={{ backgroundImage: `url(${board.style.bgImg})` }}
-    >
+    <div className="board-details-container bg-image-cover" style={{ backgroundImage: `url(${board.style.bgImg})` }}>
       <BoardSidebar />
       <div className="board-main-content flex column">
         <BoardDetailsHeader board={board} filterBy={filterBy} viewType={viewType} setViewType={setViewType} />

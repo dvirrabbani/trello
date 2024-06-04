@@ -23,6 +23,10 @@ $task-detail-main-width: rem(552px);
     background-color: #f2f4f5;
     border-radius: rem(8px);
 
+    &.loading {
+      place-items: center;
+    }
+
     .task-details {
       border: none;
       color: var(--ds-text, #172b4d);
