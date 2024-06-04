@@ -143,10 +143,7 @@
         align-items: center;
         width: 100%;
         &:hover {
-          background-color: var(
-            --dynamic-background-transparent,
-            var(--ds-surface, #ffffff)
-          );
+          background-color: var(--dynamic-button-hovered);
         }
 
         .thumbnail {
