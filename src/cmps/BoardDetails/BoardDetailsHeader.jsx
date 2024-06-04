@@ -54,17 +54,24 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
       <div className="board-topbar-start">
         <h1 className="board-details-title">{board.title}</h1>
         <Button>
-          <SvgIcon onClick={onToggleBoardStarred} iconName={board.isStarred ? "starFill" : "star"} />
+          <SvgIcon
+            onClick={onToggleBoardStarred}
+            iconName={board.isStarred ? "starFill" : "star"}
+          />
         </Button>
         <Button
-          className={`board-details-header-button${viewType === "board" ? " active" : ""}`}
+          className={`board-details-header-button dynamic-button${
+            viewType === "board" ? " active" : ""
+          }`}
           onClick={() => onChangeViewType("board")}
         >
           <SvgIcon iconName="boardView" />
           <span>Board</span>
         </Button>
         <Button
-          className={`board-details-header-button${viewType === "dashboard" ? " active" : ""}`}
+          className={`board-details-header-button dynamic-button${
+            viewType === "dashboard" ? " active" : ""
+          }`}
           onClick={() => onChangeViewType("dashboard")}
         >
           <SvgIcon iconName="dashboard" />
@@ -72,8 +79,15 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
         </Button>
       </div>
       <div className="board-topbar-end">
-        <span className={`filter-btns-container flex ${!isFilterEmpty || isPopoverOpen ? "active" : ""}`}>
-          <button className="filter-btn button" onClick={handleClick}>
+        <span
+          className={`filter-btns-container flex ${
+            !isFilterEmpty || isPopoverOpen ? "active" : ""
+          }`}
+        >
+          <button
+            className="filter-btn button dynamic-button"
+            onClick={handleClick}
+          >
             <SvgIcon iconName="filter" />
             Filters
             {!isFilterEmpty && <FilterCount tasksCount={tasksCount} />}
@@ -91,7 +105,11 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
           onClose={handleClose}
           title="Filter"
         >
-          <BoardFilter members={board.members} labels={board.labels} filterBy={filterBy} />
+          <BoardFilter
+            members={board.members}
+            labels={board.labels}
+            filterBy={filterBy}
+          />
         </Popover>
         <div className="divider"></div>
         <ul className="member-list">
