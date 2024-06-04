@@ -3,8 +3,8 @@
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue", fantasy;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", Ubuntu, "Droid Sans", "Helvetica Neue",
+    fantasy;
 
   line-height: 1.6;
 }
@@ -60,4 +60,8 @@ textarea:focus {
   min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+menu {
+  margin: 0;
 }
