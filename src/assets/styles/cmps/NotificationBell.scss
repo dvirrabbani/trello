@@ -1,4 +1,7 @@
 .notification-bell {
+  .svg-icon {
+    color: var(--dynamic-text);
+  }
   .activities {
     padding: 12px 12px 8px;
     overflow-y: auto;
