@@ -20,7 +20,7 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
       iconName: "label",
       type: "Labels",
       title: "Labels",
-      popoverTitle: "Members",
+      popoverTitle: "Labels",
       popoverId: "popover-labels-id",
     },
     {
@@ -72,28 +72,14 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
   }
 
   return (
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className="task-quick-edit"
-      style={style}
-    >
-      <TaskPreview
-        groupId={groupId}
-        task={task}
-        titleToEdit={titleToEdit}
-        setTitleToEdit={setTitleToEdit}
-        isQuickEditParent
-      />
+    <div onClick={(e) => e.stopPropagation()} className="task-quick-edit" style={style}>
+      <TaskPreview groupId={groupId} task={task} titleToEdit={titleToEdit} setTitleToEdit={setTitleToEdit} isQuickEditParent />
       <div className="task-quick-edit-menu">
         <button className="button" onClick={onOpenTask}>
           <SvgIcon iconName="task" />
           Open card
         </button>
-        <TaskSideBtnActions
-          btnPopoverDataList={btnPopoverDataList}
-          task={task}
-          onUpdateTask={onUpdateTask}
-        />
+        <TaskSideBtnActions btnPopoverDataList={btnPopoverDataList} task={task} onUpdateTask={onUpdateTask} />
         <ButtonDynamicTaskPopover
           iconName={"duplicate"}
           title={"Copy"}
@@ -109,10 +95,7 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
           Archive
         </button>
       </div>
-      <button
-        className="save-btn button variant-primary"
-        onClick={onSaveTitleTask}
-      >
+      <button className="save-btn button variant-primary" onClick={onSaveTitleTask}>
         Save
       </button>
     </div>
