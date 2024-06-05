@@ -6,6 +6,7 @@ import { GroupActions } from "./GroupActions"
 import { TaskList } from "./Task/TaskList"
 import { Popover } from "../Popover"
 import { activityService } from "../../services/acitivity.service"
+// import { boardService } from "../../../services/board.service.local"
 import { boardService } from "../../services/board.service"
 
 export function GroupPreview({ group, deleteGroup }) {

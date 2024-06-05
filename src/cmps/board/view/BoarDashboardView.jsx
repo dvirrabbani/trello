@@ -1,19 +1,35 @@
 import React from "react"
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, XAxis, YAxis, PieChart, Pie, Cell, Tooltip } from "recharts"
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+} from "recharts"
+// import { boardService } from "../../../services/board.service.local"
 import { boardService } from "../../../services/board.service"
 import { Button } from "../../Button"
 import SvgIcon from "../../SvgIcon"
 import { getEmptyBoardCard } from "../../../services/ui.service"
 
 export default function BoarDashboardView({ board }) {
-  const { cardsPerList, cardsPerDueDate, cardsPerMember, cardsPerLabel } = boardService.getBoardChartsData(board)
+  const { cardsPerList, cardsPerDueDate, cardsPerMember, cardsPerLabel } =
+    boardService.getBoardChartsData(board)
 
   const dueDatesLegend = [
     { title: "Complete", color: "var(--icon-accent-green, #22A06B)" },
     { title: "Due soon", color: "var(--icon-accent-yellow, #B38600)" },
     { title: "Due later", color: "var(--icon-accent-orange, #E56910)" },
     { title: "Overdue", color: "var(--icon-accent-red, #C9372C)" },
-    { title: "No due date", color: "var(--background-accent-gray-subtler, #DCDFE4)" },
+    {
+      title: "No due date",
+      color: "var(--background-accent-gray-subtler, #DCDFE4)",
+    },
   ]
 
   const DueDateTooltip = ({ active, payload }) => {
@@ -41,7 +57,11 @@ export default function BoarDashboardView({ board }) {
             {cardsPerList.length > 0 ? (
               <section className="dashboard-card">
                 <DashBoardCardHeader title="Cards per list" />
-                <ResponsiveContainer width="100%" height="100%" maxHeight={"404px"}>
+                <ResponsiveContainer
+                  width="100%"
+                  height="100%"
+                  maxHeight={"404px"}
+                >
                   <BarChart
                     data={cardsPerList}
                     margin={{
@@ -55,7 +75,10 @@ export default function BoarDashboardView({ board }) {
                     <XAxis dataKey="title" tickLine={false} />
                     <YAxis allowDecimals={false} stroke="" tickMargin={8} />
                     <Tooltip />
-                    <Bar dataKey="count" fill="var(--ds-background-neutral-bold, #44546F)" />
+                    <Bar
+                      dataKey="count"
+                      fill="var(--ds-background-neutral-bold, #44546F)"
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </section>
@@ -83,7 +106,9 @@ export default function BoarDashboardView({ board }) {
                           key={`cell-${entry.dueDate}`}
                           fill={
                             dueDatesLegend.find(
-                              (dueDate) => dueDate.title.toLocaleLowerCase() === entry.title.toLocaleLowerCase()
+                              (dueDate) =>
+                                dueDate.title.toLocaleLowerCase() ===
+                                entry.title.toLocaleLowerCase()
                             ).color
                           }
                         />
@@ -96,8 +121,14 @@ export default function BoarDashboardView({ board }) {
                   <ul className="clean-list flex column justify-center">
                     {dueDatesLegend.map((dueDateLegend) => {
                       return (
-                        <li key={dueDateLegend.title} className="flex align-center">
-                          <span className="legend-color" style={{ backgroundColor: dueDateLegend.color }}></span>
+                        <li
+                          key={dueDateLegend.title}
+                          className="flex align-center"
+                        >
+                          <span
+                            className="legend-color"
+                            style={{ backgroundColor: dueDateLegend.color }}
+                          ></span>
                           <span>{dueDateLegend.title}</span>
                         </li>
                       )
@@ -111,7 +142,11 @@ export default function BoarDashboardView({ board }) {
             {/* Dashboard Bar card - Cards per Member */}
             <section className="dashboard-card">
               <DashBoardCardHeader title="Cards per member" />
-              <ResponsiveContainer width="100%" height="100%" maxHeight={"404px"}>
+              <ResponsiveContainer
+                width="100%"
+                height="100%"
+                maxHeight={"404px"}
+              >
                 <BarChart
                   data={cardsPerMember}
                   margin={{
@@ -125,7 +160,10 @@ export default function BoarDashboardView({ board }) {
                   <XAxis dataKey="title" tickLine={false} />
                   <YAxis allowDecimals={false} stroke="" tickMargin={8} />
                   <Tooltip />
-                  <Bar dataKey="count" fill="var(--ds-background-neutral-bold, #44546F)" />
+                  <Bar
+                    dataKey="count"
+                    fill="var(--ds-background-neutral-bold, #44546F)"
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </section>
@@ -133,7 +171,11 @@ export default function BoarDashboardView({ board }) {
             {cardsPerLabel.length > 0 ? (
               <section className="dashboard-card">
                 <DashBoardCardHeader title="Cards per label" />
-                <ResponsiveContainer width="100%" height="100%" maxHeight={"404px"}>
+                <ResponsiveContainer
+                  width="100%"
+                  height="100%"
+                  maxHeight={"404px"}
+                >
                   <BarChart
                     data={cardsPerLabel}
                     margin={{

@@ -1,4 +1,5 @@
 import { utilService } from "../services/util.service.js"
+// import { boardService } from "../services/board.service.local.js"
 import { boardService } from "../services/board.service.js"
 import { store } from "./store.js"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
@@ -89,12 +90,24 @@ export async function addBoard(board) {
 
 export function updateCurrentBoard(groupId, taskId, { key, value }, activity) {
   const board = store.getState().boardModule.board
-  const updateBoard = boardService.updateBoard(board, groupId, taskId, { key, value }, activity)
+  const updateBoard = boardService.updateBoard(
+    board,
+    groupId,
+    taskId,
+    { key, value },
+    activity
+  )
   store.dispatch(getActionUpdateCurrentBoard(updateBoard))
 }
 
 export function updateBoard(board, { key, value }, activity) {
-  const updateBoard = boardService.updateBoard(board, null, null, { key, value }, activity)
+  const updateBoard = boardService.updateBoard(
+    board,
+    null,
+    null,
+    { key, value },
+    activity
+  )
 
   store.dispatch(getActionUpdateBoard(updateBoard))
 }
@@ -149,7 +162,9 @@ export async function updateTaskMembers(member, taskMembers, onUpdateTask) {
       // have members
     } else {
       const taskMember = taskMembers.find((m) => m.id === member.id)
-      membersToEdit = taskMember ? taskMembers.filter((m) => m.id !== member.id) : [...taskMembers, member]
+      membersToEdit = taskMember
+        ? taskMembers.filter((m) => m.id !== member.id)
+        : [...taskMembers, member]
     }
 
     onUpdateTask({
@@ -170,7 +185,9 @@ export async function updateTaskLabels(labelId, taskLabelsIds, onUpdateTask) {
     // have labels
   } else {
     const taskLabel = taskLabelsIds.find((lIdx) => lIdx === labelId)
-    labelIdsToEdit = taskLabel ? taskLabelsIds.filter((lIdx) => lIdx !== labelId) : [...taskLabelsIds, labelId]
+    labelIdsToEdit = taskLabel
+      ? taskLabelsIds.filter((lIdx) => lIdx !== labelId)
+      : [...taskLabelsIds, labelId]
   }
 
   onUpdateTask({

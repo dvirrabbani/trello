@@ -8,6 +8,7 @@ import { eventBus } from "../services/event-bus.service"
 import { TaskQuickEdit } from "../cmps/BoardDetails/TaskQuickEdit"
 import { Modal } from "../cmps/Modal"
 import { BoardSidebar } from "../cmps/BoardDetails/BoardSidebar"
+// import { boardService } from "../../../services/board.service.local"
 import { boardService } from "../services/board.service"
 import { saveUserRecentBoards } from "../store/user.actions"
 import BoarDashboardView from "../cmps/board/view/BoarDashboardView"
@@ -16,7 +17,9 @@ import { Loader } from "../cmps/shared/Loader"
 export function BoardDetails() {
   const params = useParams()
   const initialBoard = useSelector((storeState) => storeState.boardModule.board)
-  const filterBy = useSelector((storeState) => storeState.boardModule.boardFilterBy)
+  const filterBy = useSelector(
+    (storeState) => storeState.boardModule.boardFilterBy
+  )
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [viewType, setViewType] = useState("board")
 
@@ -52,12 +55,23 @@ export function BoardDetails() {
   if (!board) return <Loader />
 
   return (
-    <div className="board-details-container bg-image-cover" style={{ backgroundImage: `url(${board.style.bgImg})` }}>
+    <div
+      className="board-details-container bg-image-cover"
+      style={{ backgroundImage: `url(${board.style.bgImg})` }}
+    >
       <BoardSidebar />
       <div className="board-main-content flex column">
-        <BoardDetailsHeader board={board} filterBy={filterBy} viewType={viewType} setViewType={setViewType} />
+        <BoardDetailsHeader
+          board={board}
+          filterBy={filterBy}
+          viewType={viewType}
+          setViewType={setViewType}
+        />
 
-        <div className="board-groups-container full" style={viewType === "dashboard" ? { display: "none" } : undefined}>
+        <div
+          className="board-groups-container full"
+          style={viewType === "dashboard" ? { display: "none" } : undefined}
+        >
           <GroupList groups={board.groups} />
         </div>
         {viewType === "dashboard" && <BoarDashboardView board={initialBoard} />}

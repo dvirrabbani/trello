@@ -5,6 +5,7 @@ import { AddItemForm } from "../AddItemForm"
 import { GroupPreview } from "./GroupPreview"
 import { activityService } from "../../services/acitivity.service"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
+// import { boardService } from "../../../services/board.service.local"
 import { boardService } from "../../services/board.service"
 
 export function GroupList({ groups }) {

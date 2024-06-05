@@ -1,5 +1,6 @@
+import { DEMO_BOARD_LIST } from "../demo/boards.js"
 import { activityService } from "./acitivity.service.js"
-import { httpService } from "./http.service.js"
+import { storageService } from "./async-storage.service.js"
 import { uiService } from "./ui.service.js"
 import { utilService } from "./util.service.js"
 import { darken, lighten, opacify } from "polished"
@@ -26,29 +27,33 @@ export const boardService = {
 window.cs = boardService
 
 async function query() {
-  return httpService.get(STORAGE_KEY)
+  let boards = utilService.loadFromStorage(STORAGE_KEY)
+  if (!boards || !boards.length)
+    utilService.saveToStorage(STORAGE_KEY, DEMO_BOARD_LIST)
+  boards = await storageService.query(STORAGE_KEY)
+  return boards
 }
 
 function getById(boardId) {
-  return httpService.get(`${STORAGE_KEY}/${boardId}`)
+  return storageService.get(STORAGE_KEY, boardId)
 }
 
 async function remove(boardId) {
-  return httpService.delete(`${STORAGE_KEY}/${boardId}`)
+  return storageService.remove(STORAGE_KEY, boardId)
 }
 
 async function save(board) {
   var savedBoard
   if (board._id) {
-    savedBoard = await httpService.put(`${STORAGE_KEY}/${board._id}`, board)
+    savedBoard = await storageService.put(STORAGE_KEY, board)
   } else {
-    savedBoard = await httpService.post(STORAGE_KEY, board)
+    savedBoard = await storageService.post(STORAGE_KEY, board)
   }
   return savedBoard
 }
 
 async function addBoardMsg(boardId, txt) {
-  const savedMsg = await httpService.post(`${STORAGE_KEY}/${boardId}/msg`, {
+  const savedMsg = await storageService.post(STORAGE_KEY, {
     _id: boardId,
     txt,
   })
