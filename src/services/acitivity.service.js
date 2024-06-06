@@ -1,7 +1,7 @@
-import { DEMO_USER } from "../demo/user"
 import { updateCurrentBoard } from "../store/board.actions"
 import { utilService } from "./util.service"
 import { store } from "../store/store"
+import { userService } from "./user.service"
 
 const activityTypes = {
   addBoard: "Add Board",
@@ -18,16 +18,17 @@ export const activityService = {
 function createActivity(activity) {
   activity.id = utilService.makeId()
   activity.createdAt = new Date().getTime()
-  activity.byMember = DEMO_USER
+  const loggedInUser = userService.getLoggedinUser()
+  activity.byMember = loggedInUser
   switch (activity.type) {
     case activityTypes.addGroup:
-      activity.txt = `${DEMO_USER.fullName} add new group`
+      activity.txt = `${loggedInUser.fullName} add new group`
       break
     case activityTypes.addCard:
-      activity.txt = `${DEMO_USER.fullName} add new card`
+      activity.txt = `${loggedInUser.fullName} add new card`
       break
     case activityTypes.addBoard:
-      activity.txt = `${DEMO_USER.fullName} add new board`
+      activity.txt = `${loggedInUser.fullName} add new board`
       break
     default:
       break

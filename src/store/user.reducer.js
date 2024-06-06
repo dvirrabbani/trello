@@ -1,4 +1,4 @@
-import { DEMO_USER } from "../demo/user.js"
+import { userService } from "../services/user.service.js"
 
 export const SET_USER = "SET_USER"
 export const SET_WATCHED_USER = "SET_WATCHED_USER"
@@ -7,11 +7,9 @@ export const REMOVE_USER = "REMOVE_USER"
 export const SET_USERS = "SET_USERS"
 
 const initialState = {
-  user: DEMO_USER,
-  //   user: userService.getLoggedinUser(),
+  user: userService.getLoggedinUser(),
   users: [],
   watchedUser: null,
-  recentBoards: null,
 }
 
 export function userReducer(state = initialState, action) {
@@ -36,9 +34,7 @@ export function userReducer(state = initialState, action) {
       const recentBoards = state.user.recentBoards || []
       const currentDate = Date.now()
 
-      const boardIdx = recentBoards.findIndex(
-        (board) => board.id === action.boardId
-      )
+      const boardIdx = recentBoards.findIndex((board) => board.id === action.boardId)
 
       if (boardIdx != -1) {
         recentBoards[boardIdx].date = currentDate

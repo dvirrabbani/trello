@@ -4,9 +4,9 @@ import { Popover } from "./Popover"
 import { Button } from "./Button"
 import { useForm } from "../customHooks/useForm"
 import { addBoard } from "../store/board.actions"
-import { DEMO_USER } from "../demo/user"
 import SvgIcon from "./SvgIcon"
 import { uiService } from "../services/ui.service"
+import { userService } from "../services/user.service"
 
 export function AddBoardButton({ iconName, title, variant, className }) {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -92,6 +92,7 @@ export function AddBoardButton({ iconName, title, variant, className }) {
     setAnchorEl(null)
   }
 
+  const loggedInUser = userService.getLoggedinUser()
   async function onAddBoard() {
     setAnchorEl(null)
     // TODO get logged in user
@@ -102,13 +103,13 @@ export function AddBoardButton({ iconName, title, variant, className }) {
         colorRgb: fields.colorRgb,
         themeColor: fields.themeColor,
       },
-      members: [DEMO_USER],
+      members: [loggedInUser],
       groups: [],
       labels: uiService.getDefaultBoardLabels(),
       activities: [],
       isStarred: false,
       archivedAt: null,
-      createdBy: DEMO_USER,
+      createdBy: loggedInUser,
     }
     const savedBoard = await addBoard(boardToAdd)
     navigate(`/board/${savedBoard._id}`)

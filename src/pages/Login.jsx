@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react"
 import { Button } from "../cmps/Button"
 import SvgIcon from "../cmps/SvgIcon"
-import { userService } from "../services/user.service"
 import { useForm } from "../customHooks/useForm"
 import { useNavigate } from "react-router"
+import { login } from "../store/user.actions"
 
 export function Login() {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ export function Login() {
 
   async function onLogin(ev) {
     ev.preventDefault()
-    const user = await userService.login(fields)
+    const user = await login(fields)
     if (user._id) {
       navigate("/board")
     }
