@@ -52,6 +52,11 @@ export function BoardDetails() {
     }
   }, [board])
 
+  //TODO: use effect to set room with board id on the socket (socket.emit)
+  //TODO: remove room with board id on the socket (socket.emit) and from the user
+
+  //TODO: use effect: on board change - update board with new groups
+  //dispatch board update action with new groups
   if (!board) return <Loader />
 
   return (

@@ -1,6 +1,7 @@
 // import { boardService } from "../../../services/board.service.local"
 import { boardService } from "../services/board.service"
 
+// TODO: change to on
 export const SET_BOARDS = "SET_BOARDS"
 export const UPDATE_BOARDS = "UPDATE_BOARDS"
 export const REMOVE_BOARD = "REMOVE_BOARD"
