@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
 import { Outlet, useParams } from "react-router"
 import { useSelector } from "react-redux"
-import { loadBoard } from "../store/board.actions"
+import {
+  getActionUpdateBoard,
+  getActionUpdateCurrentBoard,
+  loadBoard,
+} from "../store/board.actions"
 import { GroupList } from "../cmps/Group/GroupList"
 import { BoardDetailsHeader } from "../cmps/BoardDetails/BoardDetailsHeader"
 import { eventBus } from "../services/event-bus.service"
@@ -13,6 +17,13 @@ import { boardService } from "../services/board.service"
 import { saveUserRecentBoards } from "../store/user.actions"
 import BoarDashboardView from "../cmps/board/view/BoarDashboardView"
 import { Loader } from "../cmps/shared/Loader"
+import {
+  SOCKET_EMIT_JOIN_BOARD,
+  SOCKET_EMIT_LEAVE_BOARD,
+  SOCKET_EVENT_UPDATE_BOARD,
+  socketService,
+} from "../services/socket.service"
+import { store } from "../store/store"
 
 export function BoardDetails() {
   const params = useParams()
@@ -52,11 +63,32 @@ export function BoardDetails() {
     }
   }, [board])
 
-  //TODO: use effect to set room with board id on the socket (socket.emit)
-  //TODO: remove room with board id on the socket (socket.emit) and from the user
+  //join board socket
+  useEffect(() => {
+    if (board) {
+      socketService.emit(SOCKET_EMIT_JOIN_BOARD, board._id)
+    }
+    return () => {
+      if (board) {
+        socketService.emit(SOCKET_EMIT_LEAVE_BOARD, board._id)
+      }
+    }
+  }, [board])
 
   //TODO: use effect: on board change - update board with new groups
   //dispatch board update action with new groups
+  useEffect(() => {
+    if (board) {
+      socketService.on(SOCKET_EVENT_UPDATE_BOARD, (updatedBoard) => {
+        console.log("board was updated")
+        store.dispatch(getActionUpdateCurrentBoard(updatedBoard))
+      })
+    }
+    return () => {
+      socketService.off(SOCKET_EVENT_UPDATE_BOARD)
+    }
+  }, [board])
+
   if (!board) return <Loader />
 
   return (
