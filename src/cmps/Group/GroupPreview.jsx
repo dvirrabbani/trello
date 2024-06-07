@@ -32,13 +32,13 @@ export function GroupPreview({ group, deleteGroup }) {
   }
 
   function onFocusOut(e) {
+    groupTitleH3.current.classList.remove("hide")
+    groupTitleTextarea.current.classList.add("hide")
+    if (groupToEdit.title === group.title) return
     updateCurrentBoard(group.id, null, {
       key: "title",
       value: groupToEdit.title,
     })
-
-    groupTitleH3.current.classList.remove("hide")
-    groupTitleTextarea.current.classList.add("hide")
   }
 
   function handleMouseUp(e) {
@@ -93,7 +93,7 @@ export function GroupPreview({ group, deleteGroup }) {
               onMouseUp={handleMouseUp}
               ref={groupTitleH3}
             >
-              {groupToEdit.title}
+              {group.title}
             </h3>
             <textarea
               value={groupToEdit.title}
