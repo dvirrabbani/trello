@@ -69,7 +69,10 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
     boardTitleH1.current.classList.remove("hide")
     boardTitleInput.current.classList.add("hide")
     if (fields.title === board.title) return
-    updateBoard(board, { key: "title", value: fields.title })
+    updateCurrentBoard(null, null, {
+      key: "title",
+      value: fields.title,
+    })
   }
 
   function handleKeyPress(e) {
@@ -93,7 +96,7 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
             onClick={handleTitleClick}
             ref={boardTitleH1}
           >
-            {fields.title}
+            {board.title}
           </h1>
           <input
             className="board-details-title hide"

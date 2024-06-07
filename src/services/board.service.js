@@ -67,6 +67,7 @@ function updateBoard(board, groupId, taskId, { key, value }, activity) {
     console.log("update group")
   } else {
     board[key] = value
+    console.log("update board")
   }
 
   if (activity) {
