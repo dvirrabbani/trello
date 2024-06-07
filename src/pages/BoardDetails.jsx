@@ -75,12 +75,9 @@ export function BoardDetails() {
     }
   }, [board])
 
-  //TODO: use effect: on board change - update board with new groups
-  //dispatch board update action with new groups
   useEffect(() => {
     if (board) {
       socketService.on(SOCKET_EVENT_UPDATE_BOARD, (updatedBoard) => {
-        console.log("board was updated")
         store.dispatch(getActionUpdateCurrentBoard(updatedBoard))
       })
     }
