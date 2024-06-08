@@ -9,6 +9,8 @@ export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
   const menuList = [
     { title: "Activity", type: "activity" },
     { title: "Change background", type: "background" },
+    { title: "Colors", type: "bg-color" },
+    { title: "Photos", type: "bg-photo" },
   ]
   const initialMenuContent = { title: "Menu", type: "menu-list" }
   const [menuContent, setMenuContent] = useState(initialMenuContent)
