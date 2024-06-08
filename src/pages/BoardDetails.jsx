@@ -24,6 +24,7 @@ import {
   socketService,
 } from "../services/socket.service"
 import { store } from "../store/store"
+import { BoardMenu } from "../cmps/BoardDetails/BoardMenu"
 
 export function BoardDetails() {
   const params = useParams()
@@ -111,6 +112,7 @@ export function BoardDetails() {
         </div>
         {viewType === "dashboard" && <BoarDashboardView board={initialBoard} />}
       </div>
+      <BoardMenu />
       <Outlet />
       {taskQuickEdit && (
         <Modal cb={setTaskQuickEdit}>

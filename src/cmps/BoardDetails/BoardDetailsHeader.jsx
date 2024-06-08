@@ -183,6 +183,9 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
             )
           })}
         </ul>
+        <Button className={"dynamic-button"}>
+          <SvgIcon iconName="more" />
+        </Button>
       </div>
     </section>
   )
