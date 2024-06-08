@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { ProfileImg } from "../../ProfileImg"
 import { uiService } from "../../../services/ui.service"
 import dayjs from "dayjs"
+import { activityService } from "../../../services/acitivity.service"
 
 export function TaskPreview({
   groupId,
@@ -35,10 +36,19 @@ export function TaskPreview({
     if (!member) return
     if (members.some((member) => member.id === member)) return
 
-    updateCurrentBoard(groupId, task.id, {
-      key: "members",
-      value: [...members, member],
-    })
+    updateCurrentBoard(
+      groupId,
+      task.id,
+      {
+        key: "members",
+        value: [...members, member],
+      },
+      {
+        type: activityService.activityTypes.assignMember,
+        member,
+        taskTitle: task.title,
+      }
+    )
   }
 
   function onQuickEditTask(e) {

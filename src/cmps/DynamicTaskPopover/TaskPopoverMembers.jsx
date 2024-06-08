@@ -7,7 +7,7 @@ export function TaskPopoverMembers({ task, onUpdateTask }) {
   const board = useSelector((storeState) => storeState.boardModule.board)
 
   function onUpdateTaskMembers(member) {
-    updateTaskMembers(member, task.members, onUpdateTask)
+    updateTaskMembers(member, task.members, task.title, onUpdateTask)
   }
 
   return (

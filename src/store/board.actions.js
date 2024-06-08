@@ -153,24 +153,45 @@ export async function loadTask(boardId) {
   }
 }
 
-export async function updateTaskMembers(member, taskMembers, onUpdateTask) {
+export async function updateTaskMembers(
+  member,
+  taskMembers,
+  taskTitle,
+  onUpdateTask
+) {
   try {
     let membersToEdit = []
+    let activity = {}
     // dose not have members
     if (!taskMembers) {
       membersToEdit = [member]
       // have members
     } else {
       const taskMember = taskMembers.find((m) => m.id === member.id)
-      membersToEdit = taskMember
-        ? taskMembers.filter((m) => m.id !== member.id)
-        : [...taskMembers, member]
+      if (taskMember) {
+        membersToEdit = taskMembers.filter((m) => m.id !== member.id)
+        activity = {
+          type: activityService.activityTypes.removeMember,
+          member,
+          taskTitle,
+        }
+      } else {
+        membersToEdit = [...taskMembers, member]
+        activity = {
+          type: activityService.activityTypes.assignMember,
+          member,
+          taskTitle,
+        }
+      }
     }
 
-    onUpdateTask({
-      key: "members",
-      value: membersToEdit,
-    })
+    onUpdateTask(
+      {
+        key: "members",
+        value: membersToEdit,
+      },
+      activity
+    )
   } catch (err) {
     console.log("Cannot update member", err)
     throw err
