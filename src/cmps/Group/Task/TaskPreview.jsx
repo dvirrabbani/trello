@@ -2,7 +2,11 @@ import { useSelector } from "react-redux"
 import { json, useNavigate } from "react-router-dom"
 import { eventBus } from "../../../services/event-bus.service"
 import { utilService } from "../../../services/util.service"
-import { toggleLabels, updateCurrentBoard } from "../../../store/board.actions"
+import {
+  toggleLabels,
+  updateCurrentBoard,
+  updateTaskMembers,
+} from "../../../store/board.actions"
 import SvgIcon from "../../SvgIcon"
 import { useEffect, useState } from "react"
 import { ProfileImg } from "../../ProfileImg"
@@ -36,19 +40,7 @@ export function TaskPreview({
     if (!member) return
     if (members.some((member) => member.id === member)) return
 
-    updateCurrentBoard(
-      groupId,
-      task.id,
-      {
-        key: "members",
-        value: [...members, member],
-      },
-      {
-        type: activityService.activityTypes.assignMember,
-        member,
-        taskTitle: task.title,
-      }
-    )
+    updateTaskMembers(member, task.members, task.title, onUpdateTask)
   }
 
   function onQuickEditTask(e) {
@@ -70,11 +62,16 @@ export function TaskPreview({
     setTitleToEdit(value)
   }
 
-  async function onUpdateTask({ key, value }) {
-    updateCurrentBoard(groupId, task.id, {
-      key,
-      value,
-    })
+  async function onUpdateTask({ key, value }, activity) {
+    updateCurrentBoard(
+      groupId,
+      task.id,
+      {
+        key,
+        value,
+      },
+      activity
+    )
   }
 
   function fullCoverStyle() {
