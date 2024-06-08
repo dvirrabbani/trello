@@ -31,4 +31,12 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .notification {
+    position: absolute;
+    width: rem(12px);
+    height: rem(12px);
+    border-radius: 50%;
+    background-color: var(--ds-icon-brand, #0c66e4);
+  }
 }
