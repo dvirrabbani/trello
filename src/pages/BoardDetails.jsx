@@ -76,7 +76,6 @@ export function BoardDetails() {
   }, [board])
 
   useEffect(() => {
-    console.log("board mounted")
     if (board) {
       socketService.on(SOCKET_EVENT_UPDATE_BOARD, (updatedBoard) => {
         store.dispatch(getActionUpdateCurrentBoard(updatedBoard))
