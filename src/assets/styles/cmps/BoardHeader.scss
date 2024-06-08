@@ -31,12 +31,19 @@
     align-items: center;
     justify-content: space-between;
   }
+  .notification-bell {
+    .button {
+      position: relative;
+    }
 
-  .notification {
-    position: absolute;
-    width: rem(12px);
-    height: rem(12px);
-    border-radius: 50%;
-    background-color: var(--ds-icon-brand, #0c66e4);
+    .notification {
+      position: absolute;
+      width: rem(12px);
+      height: rem(12px);
+      border-radius: 50%;
+      background-color: var(--ds-icon-accent-red, #c9372c);
+      top: rem(8px);
+      right: rem(8px);
+    }
   }
 }
