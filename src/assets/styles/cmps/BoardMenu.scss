@@ -9,15 +9,28 @@
   transition: transform 0.1s ease-in;
   width: rem(339px);
   height: 100%;
+  padding: rem(12px);
   z-index: 5;
 
   .board-menu-header {
+    .title {
+      margin: rem(6px) 0 rem(12px) 0;
+      text-align: center;
+    }
     button {
       position: absolute;
       right: rem(12px);
       top: rem(12px);
       border-radius: rem(8px);
       color: var(--ds-icon, #44546f);
+
+      &.back-btn {
+        left: rem(12px);
+        right: unset;
+        i {
+          transform: rotate(90deg);
+        }
+      }
 
       &:hover {
         background-color: var(

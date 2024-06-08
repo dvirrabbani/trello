@@ -1,15 +1,49 @@
+import { useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
+import { Menu } from "@mui/material"
+import { MenuNavigationList } from "./MenuNavigationList"
+import { DynamicBoardMenu } from "./DynamicBoardMenu"
 
-export function BoardMenu() {
+export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
+  const menuList = [
+    { title: "Activity", type: "activity" },
+    { title: "Change background", type: "background" },
+    { title: "Labels", type: "labels" },
+  ]
+  const initialMenuContent = { title: "Menu", type: "menu-list" }
+  const [menuContent, setMenuContent] = useState(initialMenuContent)
+
   return (
-    <div className="board-menu">
+    <div className={`board-menu ${boardMenuIsOpen ? "open" : ""}`}>
       <header className="board-menu-header">
-        <div className="title">Menu</div>
-        <Button className={"close-menu-btn"}>
+        {menuContent.type !== "menu-list" && (
+          <Button
+            className={"back-btn"}
+            onClick={() => setMenuContent(initialMenuContent)}
+          >
+            <SvgIcon iconName="arrow" />
+          </Button>
+        )}
+        <div className="title">{menuContent.title}</div>
+        <Button className={"close-menu-btn"} onClick={onToggleBoardMenu}>
           <SvgIcon iconName="close" />
         </Button>
       </header>
+      <div className="divider"></div>
+      <div className="board-menu-content">
+        {menuContent.type == "menu-list" ? (
+          <MenuNavigationList
+            menuList={menuList}
+            setMenuContent={setMenuContent}
+          />
+        ) : (
+          <DynamicBoardMenu
+            type={menuContent.type}
+            setMenuContent={setMenuContent}
+          />
+        )}
+      </div>
     </div>
   )
 }

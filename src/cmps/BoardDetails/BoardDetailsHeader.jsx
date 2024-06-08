@@ -11,7 +11,13 @@ import { boardService } from "../../services/board.service"
 import { ProfileImg } from "../ProfileImg"
 import { useForm } from "../../customHooks/useForm"
 
-export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
+export function BoardDetailsHeader({
+  board,
+  filterBy,
+  viewType,
+  setViewType,
+  onToggleBoardMenu,
+}) {
   const [anchorEl, setAnchorEl] = useState(null)
   const [fields, setFields, handleChange, resetForm] = useForm({
     title: board.title,
@@ -183,7 +189,7 @@ export function BoardDetailsHeader({ board, filterBy, viewType, setViewType }) {
             )
           })}
         </ul>
-        <Button className={"dynamic-button"}>
+        <Button className={"dynamic-button"} onClick={onToggleBoardMenu}>
           <SvgIcon iconName="more" />
         </Button>
       </div>
