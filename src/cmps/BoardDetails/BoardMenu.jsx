@@ -3,13 +3,12 @@ import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { Menu } from "@mui/material"
 import { MenuNavigationList } from "./MenuNavigationList"
-import { DynamicBoardMenu } from "./DynamicBoardMenu"
+import { DynamicBoardMenu } from "./DynamicBoardMenu/DynamicBoardMenu"
 
 export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
   const menuList = [
     { title: "Activity", type: "activity" },
     { title: "Change background", type: "background" },
-    { title: "Labels", type: "labels" },
   ]
   const initialMenuContent = { title: "Menu", type: "menu-list" }
   const [menuContent, setMenuContent] = useState(initialMenuContent)
@@ -38,10 +37,7 @@ export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
             setMenuContent={setMenuContent}
           />
         ) : (
-          <DynamicBoardMenu
-            type={menuContent.type}
-            setMenuContent={setMenuContent}
-          />
+          <DynamicBoardMenu type={menuContent.type} />
         )}
       </div>
     </div>
