@@ -19,7 +19,7 @@ export const activityService = {
 }
 
 function createActivity(activity) {
-  activity.id = `${utilService.makeId()}`
+  activity.id = `ac${utilService.makeId()}`
   activity.createdAt = new Date().getTime()
   const loggedInUser = userService.getLoggedinUser()
   activity.byMember = loggedInUser
