@@ -6,10 +6,28 @@ import { BoardSearchInput } from "../../cmps/BoardSearchInput"
 import { AddBoardButton } from "../../cmps/AddBoardButton"
 import { SelectStarredBoardsButton } from "../../cmps/SelectStarredBoardsButton"
 import { ProfileImg } from "../../cmps/ProfileImg"
+import { useEffect } from "react"
+import {
+  SOCKET_EVENT_NOTIFICATION,
+  socketService,
+} from "../../services/socket.service"
 
 export function BoardHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const params = useParams()
+
+  useEffect(() => {
+    if (params.boardId) {
+      socketService.on(SOCKET_EVENT_NOTIFICATION, (notification) => {
+        console.log("add notification", notification)
+      })
+    }
+    return () => {
+      if (params.boardId) {
+        socketService.off(SOCKET_EVENT_NOTIFICATION)
+      }
+    }
+  }, [params.boardId])
 
   return (
     <header className="board-header">
@@ -19,7 +37,10 @@ export function BoardHeader() {
             <SvgIcon iconName={"logo"} size={"lg"} />
           </Link>
           <SelectStarredBoardsButton />
-          <AddBoardButton variant={!params.boardId ? "primary" : undefined} title={"Create"} />
+          <AddBoardButton
+            variant={!params.boardId ? "primary" : undefined}
+            title={"Create"}
+          />
         </div>
       </div>
       <BoardSearchInput />

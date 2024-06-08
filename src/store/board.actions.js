@@ -15,6 +15,10 @@ import {
   UPDATE_CURRENT_BOARD,
 } from "./board.reducer.js"
 import { activityService } from "../services/acitivity.service.js"
+import {
+  SOCKET_EMIT_ADD_MEMBER,
+  socketService,
+} from "../services/socket.service.js"
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -192,6 +196,10 @@ export async function updateTaskMembers(
       },
       activity
     )
+
+    if (activity.type === activityService.activityTypes.assignMember) {
+      socketService.emit(SOCKET_EMIT_ADD_MEMBER, activity)
+    }
   } catch (err) {
     console.log("Cannot update member", err)
     throw err

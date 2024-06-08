@@ -64,6 +64,7 @@ export function BoardDetails() {
   }, [board])
 
   //join board socket
+  //Q: cleanup?
   useEffect(() => {
     if (board) {
       socketService.emit(SOCKET_EMIT_JOIN_BOARD, board._id)

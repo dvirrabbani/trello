@@ -12,7 +12,6 @@ import { useEffect, useState } from "react"
 import { ProfileImg } from "../../ProfileImg"
 import { uiService } from "../../../services/ui.service"
 import dayjs from "dayjs"
-import { activityService } from "../../../services/acitivity.service"
 
 export function TaskPreview({
   groupId,
