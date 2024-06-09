@@ -1,17 +1,27 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
+import { Link, useNavigate } from "react-router-dom"
+import { Swiper, SwiperSlide } from "swiper/react"
 import SvgIcon from "../cmps/SvgIcon"
 // import Swiper styles
 import "swiper/css"
+import { login } from "../store/user.actions"
+import { DEMO_USER_CREDENTIALS } from "../demo/user"
 
 export function Home() {
   const [activePreviewIdx, setActivePreviewIdx] = useState(0)
+  const navigate = useNavigate()
   const [swiper, setSwiper] = useState()
 
   function onSlideTo(idx) {
     setActivePreviewIdx(idx)
     swiper.slideTo(idx)
+  }
+
+  async function onLoginDemoUser() {
+    const user = await login(DEMO_USER_CREDENTIALS)
+    if (user._id) {
+      navigate("/board")
+    }
   }
   return (
     <div className="home">
@@ -27,9 +37,9 @@ export function Home() {
               <Link className="cta" to={"/login"}>
                 Log in
               </Link>
-              <Link className="cta cta-link" to={"/board"}>
+              <button className="cta cta-link" onClick={onLoginDemoUser}>
                 Get Trello for free
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>

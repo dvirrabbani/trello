@@ -1,5 +1,10 @@
 import dayjs from "dayjs"
 
+export const DEMO_USER_CREDENTIALS = {
+  email: "taltarablus@gmail.com",
+  password: "Tal Tarablus",
+}
+
 export const DEMO_USER = {
   id: "u101",
   fullName: "Tal Tarablus",
