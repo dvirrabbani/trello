@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 import { Menu } from "@mui/material"
@@ -19,6 +19,10 @@ export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
   ]
   const initialMenuContent = { title: "Menu", type: "menu-list" }
   const [menuContent, setMenuContent] = useState(initialMenuContent)
+
+  useEffect(() => {
+    if (boardMenuIsOpen) setMenuContent(initialMenuContent)
+  }, [boardMenuIsOpen])
 
   return (
     <div className={`board-menu ${boardMenuIsOpen ? "open" : ""}`}>
