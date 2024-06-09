@@ -71,7 +71,8 @@ export async function logout() {
       type: SET_USER,
       user: null,
     })
-    // socketService.logout();
+    socketService.logout()
+    window.location.assign("/")
   } catch (err) {
     console.log("Cannot logout", err)
     throw err
