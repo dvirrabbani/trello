@@ -3,13 +3,8 @@ import { store } from "../store/store.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 
-import {
-  REMOVE_USER,
-  SET_USER,
-  SET_USERS,
-  SET_WATCHED_USER,
-  SAVE_USER_RECENT_BOARD,
-} from "./user.reducer.js"
+import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, SAVE_USER_RECENT_BOARD } from "./user.reducer.js"
+import { socketService } from "../services/socket.service.js"
 
 export function getActionSaveUserRecentBoards(boardId) {
   return {
@@ -46,7 +41,7 @@ export async function login(credentials) {
       type: SET_USER,
       user,
     })
-    // socketService.login(user._id);
+    socketService.login(user._id)
     return user
   } catch (err) {
     console.log("Cannot login", err)
@@ -61,7 +56,7 @@ export async function signup(credentials) {
       type: SET_USER,
       user,
     })
-    // socketService.login(user._id);
+    socketService.login(user._id)
     return user
   } catch (err) {
     console.log("Cannot signup", err)
