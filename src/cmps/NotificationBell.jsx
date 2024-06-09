@@ -25,7 +25,7 @@ export function NotificationBell({ notification, setNotification }) {
 
   return (
     <div className="notification-bell">
-      <Button shape="circle" onClick={handleClick}>
+      <Button shape="circle" onClick={handleClick} className={"dynamic-button"}>
         {notification && <div className="notification"></div>}
         <SvgIcon iconName={"notification"} size={"md"} />
       </Button>

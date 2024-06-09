@@ -1,6 +1,6 @@
 .board-details-header {
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: rem(12px) rem(10px) rem(12px) rem(16px);
@@ -55,6 +55,8 @@
   .board-topbar-end {
     display: grid;
     grid-auto-flow: column;
+    margin-left: auto;
+    gap: rem(4px);
   }
 
   .board-topbar-start {
@@ -121,6 +123,7 @@
     .filter-btn {
       font-size: rem(14px);
       line-height: rem(20px);
+      padding: rem(6px);
     }
 
     .filter-count {

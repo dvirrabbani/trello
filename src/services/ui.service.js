@@ -1,4 +1,5 @@
 import dayjs from "dayjs"
+import { em } from "polished"
 
 const BOARD_LABELS = [
   { id: "l101", bgColor: "#baf3db", title: "", name: "Mint Green" },
@@ -46,6 +47,84 @@ const COVER_COLORS = [
   "#6e5dc6",
 ]
 
+const BG_SVG = [
+  {
+    // Light blue
+    bgImg:
+      "https://res.cloudinary.com/df0eaacho/image/upload/v1717254967/707f35bc691220846678_noqfjy.svg",
+    colorRgb: "34,140,213",
+    themeColor: "light",
+    emoji: "❄️",
+  },
+  // Dark blue
+  {
+    bgImg:
+      "https://res.cloudinary.com/df0eaacho/image/upload/v1717255252/d106776cb297f000b1f4_yintmk.svg",
+    colorRgb: "9,50,108",
+    themeColor: "light",
+    emoji: "🌊",
+  },
+  // Dark purple
+  {
+    bgImg:
+      "https://res.cloudinary.com/df0eaacho/image/upload/v1717255566/8ab3b35f3a786bb6cdac_nzdemf.svg",
+    colorRgb: "103,66,132",
+    themeColor: "light",
+    emoji: "🔮",
+  },
+  // Light Purple
+  {
+    bgImg:
+      "https://res.cloudinary.com/df0eaacho/image/upload/v1717168335/yer4i01erod1gpcvqmff.svg",
+    colorRgb: "168, 105, 193",
+    themeColor: "light",
+    emoji: "🌈",
+  },
+  // Orange
+  {
+    bgImg:
+      "https://res.cloudinary.com/df0eaacho/image/upload/v1717255972/aec98becb6d15a5fc95e_xwapb2.svg",
+    colorRgb: "239, 118, 58",
+    themeColor: "light",
+    emoji: "🍑",
+  },
+  // Green
+  {
+    bgImg:
+      "https://res.cloudinary.com/df0eaacho/image/upload/v1717264208/92e67a71aaaa98dea5ad_sjeey7.svg",
+    colorRgb: "63, 164, 149",
+    themeColor: "light",
+    emoji: "🌎",
+  },
+]
+
+const BG_IMG = [
+  {
+    bgImg:
+      "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2560x1714/5ea1985d7774d2d37e2534a98813a12f/photo-1516394531575-d9bbfc59ef97.webp",
+    colorRgb: "23, 39, 64",
+    themeColor: "light",
+  },
+  {
+    bgImg:
+      "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2048x1152/9c05f34757e34207525e730c4b827391/photo-1497436072909-60f360e1d4b1.jpg",
+    colorRgb: "53,124,121",
+    themeColor: "light",
+  },
+  {
+    bgImg:
+      "https://trello-backgrounds.s3.amazonaws.com/53baf533e697a982248cd73f/2048x2048/22ec03aab9d36ea49139c569a62bb079/shutterstock_134707556.jpg",
+    colorRgb: "89, 68, 85",
+    themeColor: "light",
+  },
+  {
+    bgImg:
+      "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/dbcdcd797bbbabb501ababeb0c947f2c/photo-1496769336828-c522a3a7e33c.jpg",
+    colorRgb: "103,143,67",
+    themeColor: "light",
+  },
+]
+
 export const uiService = {
   getBoardLabels,
   getDefaultBoardLabels,
@@ -53,6 +132,16 @@ export const uiService = {
   isRgbBright,
   getDominantColor,
   getDueDateStatusAndClassName,
+  getBoardBgImg,
+  getBoardBgSvg,
+}
+
+function getBoardBgImg() {
+  return [...BG_IMG]
+}
+
+function getBoardBgSvg() {
+  return [...BG_SVG]
 }
 
 function getBoardLabels() {

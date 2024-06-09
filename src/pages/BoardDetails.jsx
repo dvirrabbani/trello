@@ -24,6 +24,7 @@ import {
   socketService,
 } from "../services/socket.service"
 import { store } from "../store/store"
+import { BoardMenu } from "../cmps/BoardDetails/BoardMenu"
 
 export function BoardDetails() {
   const params = useParams()
@@ -33,6 +34,7 @@ export function BoardDetails() {
   )
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [viewType, setViewType] = useState("board")
+  const [boardMenuIsOpen, setBoardMenuIsOpen] = useState(true)
 
   const board = boardService.filteredBoard(initialBoard, filterBy)
 
@@ -87,6 +89,10 @@ export function BoardDetails() {
     }
   }, [board])
 
+  function onToggleBoardMenu() {
+    setBoardMenuIsOpen(!boardMenuIsOpen)
+  }
+
   if (!board) return <Loader />
 
   return (
@@ -101,6 +107,7 @@ export function BoardDetails() {
           filterBy={filterBy}
           viewType={viewType}
           setViewType={setViewType}
+          onToggleBoardMenu={onToggleBoardMenu}
         />
 
         <div
@@ -111,6 +118,10 @@ export function BoardDetails() {
         </div>
         {viewType === "dashboard" && <BoarDashboardView board={initialBoard} />}
       </div>
+      <BoardMenu
+        boardMenuIsOpen={boardMenuIsOpen}
+        onToggleBoardMenu={onToggleBoardMenu}
+      />
       <Outlet />
       {taskQuickEdit && (
         <Modal cb={setTaskQuickEdit}>
