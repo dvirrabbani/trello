@@ -5,8 +5,7 @@ import { updateBoard } from "../../store/board.actions"
 import { BoardNavLink } from "../BoardNavLink"
 import { AddBoardButton } from "../AddBoardButton"
 import { Button } from "../Button"
-import { motion, AnimatePresence } from "framer-motion"
-import { Transition } from "react-transition-group"
+import { boardService } from "../../services/board.service"
 
 export function BoardSidebar() {
   const [sidebarCollapse, setSidebarCollapse] = useState(false)
@@ -20,8 +19,9 @@ export function BoardSidebar() {
     setSidebarCollapse(isMobileViewport)
   }, [])
 
-  function onToggleBoardStarred(ev, board) {
-    ev.preventDefault()
+  async function onToggleBoardStarred(miniBoard) {
+    const board = await boardService.getById(miniBoard._id)
+
     updateBoard(board, {
       key: "isStarred",
       value: !board.isStarred,
@@ -30,10 +30,7 @@ export function BoardSidebar() {
 
   return (
     <div className={`sidebar-wrapper ${sidebarCollapse ? "collapse" : ""}`}>
-      <div
-        className="collapse-sidebar"
-        onClick={() => setSidebarCollapse(false)}
-      >
+      <div className="collapse-sidebar" onClick={() => setSidebarCollapse(false)}>
         <Button className="dynamic-button shape-circle">
           <SvgIcon iconName="arrow" />
         </Button>
@@ -49,10 +46,7 @@ export function BoardSidebar() {
               <div className="plan-type">Free</div>
             </div>
           </div>
-          <Button
-            className="dynamic-button"
-            onClick={() => setSidebarCollapse(true)}
-          >
+          <Button className="dynamic-button" onClick={() => setSidebarCollapse(true)}>
             <SvgIcon iconName="arrow" />
           </Button>
         </header>
@@ -61,15 +55,16 @@ export function BoardSidebar() {
             <span className="title">Your boards</span>
             <AddBoardButton iconName="plus" />
           </div>
-          {boards?.map((board) => (
-            <li className="board-sidebar-item" key={board._id}>
-              <BoardNavLink board={board} />
-              <SvgIcon
-                onClick={(ev) => onToggleBoardStarred(ev, board)}
-                iconName={board.isStarred ? "starFill" : "star"}
-              />
-            </li>
-          ))}
+          {boards
+            ?.sort((a, b) => (a.isStarred === b.isStarred ? 0 : a.isStarred ? -1 : 1))
+            .map((board) => (
+              <li className="board-sidebar-item" key={board._id}>
+                <BoardNavLink board={board} />
+                <span onClick={() => onToggleBoardStarred(board)}>
+                  <SvgIcon iconName={board.isStarred ? "starFill" : "star"} className={board.isStarred ? "star-fill" : "star"} />
+                </span>
+              </li>
+            ))}
         </ul>
       </nav>
     </div>
