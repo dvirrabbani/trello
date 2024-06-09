@@ -23,4 +23,8 @@
   &.profile-img-size-lg {
     @include size(32px);
   }
+
+  &.profile-img-size-xl {
+    @include size(40px);
+  }
 }

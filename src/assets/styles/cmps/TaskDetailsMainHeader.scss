@@ -5,6 +5,7 @@
   margin-inline-start: rem(40px);
   .labels-list {
     display: flex;
+    flex-wrap: wrap;
     gap: rem(4px);
 
     .button {

@@ -5,13 +5,9 @@ import { NotificationBell } from "../../cmps/NotificationBell"
 import { BoardSearchInput } from "../../cmps/BoardSearchInput"
 import { AddBoardButton } from "../../cmps/AddBoardButton"
 import { SelectStarredBoardsButton } from "../../cmps/SelectStarredBoardsButton"
-import { ProfileImg } from "../../cmps/ProfileImg"
 import { useEffect, useState } from "react"
-import {
-  SOCKET_EVENT_NOTIFICATION,
-  socketService,
-} from "../../services/socket.service"
-import { tr } from "date-fns/locale"
+import { SOCKET_EVENT_NOTIFICATION, socketService } from "../../services/socket.service"
+import { ProfilePrefButton } from "../../cmps/ProfilePrefButton"
 
 export function BoardHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -39,19 +35,13 @@ export function BoardHeader() {
             <SvgIcon iconName={"logo"} size={"lg"} />
           </Link>
           <SelectStarredBoardsButton />
-          <AddBoardButton
-            variant={!params.boardId ? "primary" : undefined}
-            title={"Create"}
-          />
+          <AddBoardButton variant={!params.boardId ? "primary" : undefined} title={"Create"} />
         </div>
       </div>
       <BoardSearchInput />
       <div className="pref">
-        <NotificationBell
-          notification={notification}
-          setNotification={setNotification}
-        />
-        <ProfileImg member={user} />
+        <NotificationBell notification={notification} setNotification={setNotification} />
+        <ProfilePrefButton member={user} />
       </div>
     </header>
   )

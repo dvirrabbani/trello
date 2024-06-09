@@ -9,6 +9,8 @@
     align-items: center;
     font-size: 1.2rem;
     padding: 0.5rem 1.5rem;
+    border: none;
+    cursor: pointer;
   }
 
   .cta-link {
@@ -45,8 +47,8 @@
   .hero {
     background: url(https://images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg)
         center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box,
-      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
-        repeat scroll padding-box border-box rgb(82, 67, 170);
+      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box
+        rgb(82, 67, 170);
     background-blend-mode: normal, normal;
     color: #fff;
 
@@ -83,8 +85,8 @@
   }
 
   .preview {
-    background: linear-gradient(0deg, rgb(230, 252, 255), #fff) 0% 0% / auto
-      repeat scroll padding-box border-box rgb(178, 212, 255);
+    background: linear-gradient(0deg, rgb(230, 252, 255), #fff) 0% 0% / auto repeat scroll padding-box border-box
+      rgb(178, 212, 255);
     background-blend-mode: normal;
     color: #091e42;
 

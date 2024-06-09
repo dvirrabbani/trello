@@ -4,13 +4,11 @@ import SvgIcon from "../cmps/SvgIcon"
 import { useForm } from "../customHooks/useForm"
 import { useNavigate } from "react-router"
 import { login } from "../store/user.actions"
+import { DEMO_USER_CREDENTIALS } from "../demo/user"
 
 export function Login() {
   const navigate = useNavigate()
-  const [fields, , handleChange, resetForm] = useForm({
-    email: "taltarablus@gmail.com",
-    password: "Tal Tarablus",
-  })
+  const [fields, , handleChange, resetForm] = useForm(DEMO_USER_CREDENTIALS)
   const emailRef = useRef(null)
 
   useEffect(() => {

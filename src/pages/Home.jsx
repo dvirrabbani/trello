@@ -1,17 +1,27 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
+import { Link, useNavigate } from "react-router-dom"
+import { Swiper, SwiperSlide } from "swiper/react"
 import SvgIcon from "../cmps/SvgIcon"
 // import Swiper styles
 import "swiper/css"
+import { login } from "../store/user.actions"
+import { DEMO_USER_CREDENTIALS } from "../demo/user"
 
 export function Home() {
   const [activePreviewIdx, setActivePreviewIdx] = useState(0)
+  const navigate = useNavigate()
   const [swiper, setSwiper] = useState()
 
   function onSlideTo(idx) {
     setActivePreviewIdx(idx)
     swiper.slideTo(idx)
+  }
+
+  async function onLoginDemoUser() {
+    const user = await login(DEMO_USER_CREDENTIALS)
+    if (user._id) {
+      navigate("/board")
+    }
   }
   return (
     <div className="home">
@@ -27,9 +37,9 @@ export function Home() {
               <Link className="cta" to={"/login"}>
                 Log in
               </Link>
-              <Link className="cta cta-link" to={"/board"}>
+              <button className="cta cta-link" onClick={onLoginDemoUser}>
                 Get Trello for free
-              </Link>
+              </button>
             </li>
           </ul>
         </nav>
@@ -38,11 +48,9 @@ export function Home() {
         <div className="container">
           <div className="row">
             <div className="col">
-              <h1>
-                Trello brings all your tasks, teammates, and tools together
-              </h1>
+              <h1>Trello brings all your tasks, teammates, and tools together</h1>
               <p>Keep everything in the same place—even if your team isn’t.</p>
-              <Link className="cta cta-link" to={"/board"}>
+              <Link className="cta cta-link" to={"/signup"}>
                 Sign up - it’s free!
               </Link>
             </div>
@@ -61,45 +69,31 @@ export function Home() {
             <span>Trello 101</span>
             <h2>A productivity powerhouse</h2>
             <p>
-              Simple, flexible, and powerful. All it takes are boards, lists,
-              and cards to get a clear view of who’s doing what and what needs
-              to get done. Learn more in our{" "}
-              <span className="link">guide for getting started</span>.
+              Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what
+              and what needs to get done. Learn more in our <span className="link">guide for getting started</span>.
             </p>
           </header>
           <div className="board-preview-container">
             <ul className="clean-list preview-list">
-              <button
-                className={`${activePreviewIdx === 0 ? "active" : ""}`}
-                onClick={() => onSlideTo(0)}
-              >
+              <button className={`${activePreviewIdx === 0 ? "active" : ""}`} onClick={() => onSlideTo(0)}>
                 <h3>Boards</h3>
                 <p>
-                  Trello boards keep tasks organized and work moving forward. In
-                  a glance, see everything from “things to do” to “aww yeah, we
-                  did it!”
+                  Trello boards keep tasks organized and work moving forward. In a glance, see everything from “things to do” to
+                  “aww yeah, we did it!”
                 </p>
               </button>
-              <button
-                className={`${activePreviewIdx === 1 ? "active" : ""}`}
-                onClick={() => onSlideTo(1)}
-              >
+              <button className={`${activePreviewIdx === 1 ? "active" : ""}`} onClick={() => onSlideTo(1)}>
                 <h3>Lists</h3>
                 <p>
-                  The different stages of a task. Start as simple as To Do,
-                  Doing or Done—or build a workflow custom fit to your team’s
-                  needs. There’s no wrong way to Trello.
+                  The different stages of a task. Start as simple as To Do, Doing or Done—or build a workflow custom fit to your
+                  team’s needs. There’s no wrong way to Trello.
                 </p>
               </button>
-              <button
-                className={`${activePreviewIdx === 2 ? "active" : ""}`}
-                onClick={() => onSlideTo(2)}
-              >
+              <button className={`${activePreviewIdx === 2 ? "active" : ""}`} onClick={() => onSlideTo(2)}>
                 <h3>Cards</h3>
                 <p>
-                  Cards represent tasks and ideas and hold all the information
-                  to get the job done. As you make progress, move cards across
-                  lists to show their status.
+                  Cards represent tasks and ideas and hold all the information to get the job done. As you make progress, move
+                  cards across lists to show their status.
                 </p>
               </button>
             </ul>
@@ -154,21 +148,15 @@ export function Home() {
               </li>
               <li className="link-item">
                 <div className="title">Jobs</div>
-                <div className="link-desc">
-                  Learn about open roles on the Trello team.
-                </div>
+                <div className="link-desc">Learn about open roles on the Trello team.</div>
               </li>
               <li className="link-item">
                 <div className="title">Apps</div>
-                <div className="link-desc">
-                  Download the Trello App for your Desktop or Mobile devices.
-                </div>
+                <div className="link-desc">Download the Trello App for your Desktop or Mobile devices.</div>
               </li>
               <li className="link-item">
                 <div className="title">Contact us</div>
-                <div className="link-desc">
-                  Need anything? Get in touch and we can help.
-                </div>
+                <div className="link-desc">Need anything? Get in touch and we can help.</div>
               </li>
             </nav>
           </div>

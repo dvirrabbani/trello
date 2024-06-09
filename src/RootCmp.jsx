@@ -7,6 +7,7 @@ import { BoardDetails } from "./pages/BoardDetails"
 import { TaskDetails } from "./pages/TaskDetails"
 // Layouts
 import { BoardLayout } from "./layout/board/BoardLayout"
+import { Signup } from "./cmps/Signup"
 
 export function RootCmp() {
   return (
@@ -14,6 +15,7 @@ export function RootCmp() {
       <Routes>
         <Route exact={true} path={"/"} element={<Home />} />
         <Route exact={true} path={"/login"} element={<Login />} />
+        <Route exact={true} path={"/signup"} element={<Signup />} />
         <Route path="board" element={<BoardLayout />}>
           <Route index element={<BoardIndex />} />
           <Route path=":boardId" element={<BoardDetails />}>

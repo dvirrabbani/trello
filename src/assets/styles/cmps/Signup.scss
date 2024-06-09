@@ -1,0 +1,60 @@
+.signup {
+  display: grid;
+  height: 100dvh;
+  background-color: #fafbfc;
+  background-image: url(https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/trello-left.4f52d13c.svg),
+    url(https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/trello-right.3ee60d6f.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  background-size: rem(368px), rem(368px);
+  background-position: left bottom, right bottom;
+
+  .signup-card {
+    background: var(--ds-surface-overlay, #ffffff);
+    width: rem(400px);
+    color: var(--ds-text-subtle, #44546f);
+    padding: rem(32px) rem(40px);
+    border-radius: rem(3px);
+    margin: rem(50px) auto rem(15px) auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
+    text-align: center;
+
+    header {
+      margin-bottom: rem(16px);
+      .svg-icon {
+        height: rem(40px);
+      }
+      h3 {
+        padding-top: rem(24px);
+        font-weight: 600;
+        font-size: rem(16px);
+        line-height: rem(20px);
+        color: var(--ds-text, #172b4d);
+      }
+    }
+
+    input {
+      height: rem(40px);
+      padding: rem(8px);
+    }
+    .button {
+      height: rem(40px);
+      font-size: rem(16px);
+    }
+    form {
+      display: grid;
+      gap: rem(8px);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    background-size: calc(-232px + 50vw), calc(-232px + 50vw), cover;
+  }
+
+  @media (max-width: rem(800px)) {
+    background: #ffffff;
+    .signup-card {
+      box-shadow: none;
+    }
+  }
+}

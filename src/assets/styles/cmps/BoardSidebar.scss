@@ -23,25 +23,17 @@
     width: rem(16px);
     left: -100%;
     transition: 100ms ease-in;
-    background-color: var(
-      --dynamic-background-transparent,
-      var(--ds-surface, #ffffff)
-    );
-    border-right: 1px solid
-      var(--dynamic-text-transparent, hsla(218, 54%, 19.6%, 0.16));
+    background-color: var(--dynamic-background-transparent, var(--ds-surface, #ffffff));
+    border-right: 1px solid var(--dynamic-text-transparent, hsla(218, 54%, 19.6%, 0.16));
 
     .button {
       padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: var(
-        --dynamic-background-transparent,
-        var(--ds-surface, #ffffff)
-      );
+      background-color: var(--dynamic-background-transparent, var(--ds-surface, #ffffff));
       color: var(--dynamic-text);
-      border: 1px solid
-        var(--dynamic-text-transparent, hsla(218, 54%, 19.6%, 0.16));
+      border: 1px solid var(--dynamic-text-transparent, hsla(218, 54%, 19.6%, 0.16));
       position: absolute;
       z-index: 1;
       backdrop-filter: blur(16px);
@@ -61,10 +53,7 @@
     left: 0;
     transition: 100ms ease-in;
     backdrop-filter: blur(6px);
-    background-color: var(
-      --dynamic-background-transparent,
-      var(--ds-surface, #ffffff)
-    );
+    background-color: var(--dynamic-background-transparent, var(--ds-surface, #ffffff));
     color: white;
     border-right: 1px solid hsla(0, 0%, 100%, 0.16);
     width: $sidebar-width;
@@ -159,8 +148,17 @@
           color: inherit;
           background-color: transparent;
         }
+
         .svg-icon {
           cursor: pointer;
+        }
+
+        .svg-icon:where(.svg-icon.star) {
+          display: none;
+        }
+
+        &:hover .svg-icon.star {
+          display: flex;
         }
       }
     }
