@@ -8,9 +8,14 @@ import { DynamicBoardMenu } from "./DynamicBoardMenu/DynamicBoardMenu"
 export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
   const menuList = [
     { title: "Activity", type: "activity" },
-    { title: "Change background", type: "background" },
-    { title: "Colors", type: "bg-color" },
-    { title: "Photos", type: "bg-photo" },
+    {
+      title: "Change background",
+      type: "background",
+      children: [
+        { title: "Color", type: "bg-color" },
+        { title: "Photo", type: "bg-photo" },
+      ],
+    },
   ]
   const initialMenuContent = { title: "Menu", type: "menu-list" }
   const [menuContent, setMenuContent] = useState(initialMenuContent)
@@ -39,7 +44,10 @@ export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
             setMenuContent={setMenuContent}
           />
         ) : (
-          <DynamicBoardMenu type={menuContent.type} />
+          <DynamicBoardMenu
+            type={menuContent.type}
+            setMenuContent={setMenuContent}
+          />
         )}
       </div>
     </div>

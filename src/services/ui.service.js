@@ -137,11 +137,11 @@ export const uiService = {
 }
 
 function getBoardBgImg() {
-  return BG_IMG
+  return [...BG_IMG]
 }
 
 function getBoardBgSvg() {
-  return BG_SVG
+  return [...BG_SVG]
 }
 
 function getBoardLabels() {
