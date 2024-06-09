@@ -11,10 +11,13 @@
       background: var(--ds-background-neutral, #091e420f);
       width: 100%;
 
-      .progress-bar-complete {
+      .progress-bar-indicator {
         border-radius: rem(4px);
         height: 100%;
         background-color: var(--ds-background-accent-blue-subtle, #579dff);
+        &.complete {
+          background: var(--ds-background-success-bold, #1f845a);
+        }
       }
     }
     .checklist-progress-percentage {

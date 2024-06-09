@@ -26,7 +26,7 @@ export function TaskDetailsChecklistTodos({
         <div className="checklist-progress-percentage">{progressPercentage.toFixed()}%</div>
         <div className="progress-bar">
           <div
-            className="progress-bar-complete"
+            className={`progress-bar-indicator${progressValue === progressMax ? " complete" : ""}`}
             style={{
               width: `${progressPercentage}%`,
               transition: "width 0.3s ease-in-out",
