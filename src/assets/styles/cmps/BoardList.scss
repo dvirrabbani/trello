@@ -14,12 +14,30 @@
     overflow: hidden;
     border-radius: rem(3px);
     width: 100%;
+
     .board-actions {
       position: absolute;
       color: var(--tr-icon-star);
-      bottom: em(10px);
-      right: em(9px);
       line-height: 20px;
+      transition: all 0.15s ease-in;
+
+      &.unstarred-board {
+        bottom: em(10px);
+        right: em(-27px);
+        color: var(--ds-icon-inverse, #ffffff);
+      }
+
+      &.starred-board {
+        bottom: em(10px);
+        right: em(9px);
+      }
+    }
+
+    &:hover {
+      .board-actions {
+        bottom: em(10px);
+        right: em(9px);
+      }
     }
   }
 
