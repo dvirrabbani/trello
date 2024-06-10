@@ -6,6 +6,7 @@
   padding: em(8px);
   height: $board-header-height;
   background-color: var(--dynamic-background, #0c66e4);
+  width: 100vw;
   .buttons-list {
     display: grid;
     gap: rem(12px);
@@ -19,7 +20,8 @@
   }
 
   .select-starred-boards-button .button,
-  .add-board-button .button {
+  .add-board-button .button,
+  .board-header-search-button {
     color: var(--dynamic-text);
   }
   .add-board-button .button.variant-primary {
@@ -44,6 +46,12 @@
       background-color: var(--ds-icon-accent-red, #c9372c);
       top: rem(8px);
       right: rem(8px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .select-starred-boards-button {
+      display: none;
     }
   }
 }

@@ -9,12 +9,11 @@
 
   .board-item {
     height: rem(96px);
-    flex-basis: 25%;
     max-width: rem(193.87px);
     position: relative;
     overflow: hidden;
     border-radius: rem(3px);
-
+    width: 100%;
     .board-actions {
       position: absolute;
       color: var(--tr-icon-star);
@@ -22,5 +21,10 @@
       right: em(9px);
       line-height: 20px;
     }
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

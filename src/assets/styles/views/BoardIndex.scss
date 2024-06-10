@@ -47,7 +47,8 @@
   }
 
   .board-list-container {
-    margin: rem(40px) rem(16px) 0;
+    margin: rem(40px) 0;
+    padding: 0 rem(16px);
     padding-bottom: rem(32px);
     width: 100%;
     .board-list-header {
@@ -66,6 +67,16 @@
       height: 100%;
       font-weight: 400;
       justify-content: center;
+    }
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    .board-index-nav {
+      display: none;
+    }
+    .container {
+      grid-template-columns: auto;
+      justify-content: unset;
     }
   }
 }

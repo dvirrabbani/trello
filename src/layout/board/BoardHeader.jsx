@@ -8,11 +8,15 @@ import { SelectStarredBoardsButton } from "../../cmps/SelectStarredBoardsButton"
 import { useEffect, useState } from "react"
 import { SOCKET_EVENT_NOTIFICATION, socketService } from "../../services/socket.service"
 import { ProfilePrefButton } from "../../cmps/ProfilePrefButton"
+import useViewportWidth from "../../customHooks/useViewportWidth"
+import { Button } from "../../cmps/Button"
 
 export function BoardHeader() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const params = useParams()
   const [notification, setNotification] = useState(false)
+  const viewportWidth = useViewportWidth()
+  const isMobileViewportWidth = viewportWidth < 768
 
   useEffect(() => {
     if (params.boardId) {
@@ -34,12 +38,24 @@ export function BoardHeader() {
           <Link to={"/board"}>
             <SvgIcon iconName={"logo"} size={"lg"} />
           </Link>
-          <SelectStarredBoardsButton />
-          <AddBoardButton variant={!params.boardId ? "primary" : undefined} title={"Create"} />
+          {!isMobileViewportWidth && <SelectStarredBoardsButton />}
+
+          <AddBoardButton
+            variant={!params.boardId ? "primary" : undefined}
+            title={!isMobileViewportWidth ? "Create" : ""}
+            iconName={isMobileViewportWidth ? "plus" : ""}
+          />
         </div>
       </div>
-      <BoardSearchInput />
+
       <div className="pref">
+        {!isMobileViewportWidth ? (
+          <BoardSearchInput />
+        ) : (
+          <Button variant="link" shape="circle" className={"board-header-search-button"}>
+            <SvgIcon iconName={"search"} size={"sm"} />
+          </Button>
+        )}
         <NotificationBell notification={notification} setNotification={setNotification} />
         <ProfilePrefButton member={user} />
       </div>
