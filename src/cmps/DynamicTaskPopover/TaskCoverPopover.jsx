@@ -71,6 +71,21 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
     backgroundColor: bgColor ? bgColor : "",
   }
 
+  function coverClassNames() {
+    const classNames = ["cover"]
+
+    if (!task.style) {
+      classNames.push("disabled")
+      return classNames.join(" ")
+    }
+
+    if (bgImg) {
+      classNames.push("has-bg-img")
+    }
+
+    return classNames.join(" ")
+  }
+
   return (
     <div className="task-cover-popover">
       {/* Cover Size Edit */}
@@ -79,10 +94,9 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
         <ul className="cover-list clean-list">
           {/* Cover Normal Size */}
           <li
-            className={`cover size-normal ${
+            className={`${coverClassNames()} size-normal ${
               !isCoverFull && task.style ? "active" : ""
-            }
-             ${bgImg ? "has-bg-img" : ""}`}
+            }`}
             onClick={() => onChangeCoverSize(false)}
           >
             <div className="cover-background" style={coverStyle}></div>
@@ -99,9 +113,9 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
           </li>
           {/* Cover Full Size */}
           <li
-            className={`cover size-full ${
+            className={`${coverClassNames()} size-full ${
               isCoverFull === true ? " active" : ""
-            } ${bgImg ? "has-bg-img" : ""}`}
+            }`}
             onClick={() => onChangeCoverSize(true)}
           >
             <div className="cover-background" style={coverStyle}></div>

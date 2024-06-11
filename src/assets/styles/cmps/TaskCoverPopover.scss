@@ -30,6 +30,15 @@
       position: relative;
       overflow: hidden;
       background-color: var(--ds-background-accent-gray-subtler, #dcdfe4);
+
+      &:hover:not(.active) {
+        filter: saturate(85%) brightness(85%);
+      }
+
+      &.disabled {
+        pointer-events: none;
+      }
+
       &.active {
         box-shadow: 0 0 0 2px var(--ds-border-inverse, #ffffff),
           0 0 0 4px var(--ds-border-brand, #0c66e4);
