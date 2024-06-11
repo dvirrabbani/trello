@@ -10,9 +10,18 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
   const [titleToEdit, setTitleToEdit] = useState(task.title)
   const navigate = useNavigate()
 
-  const style = {
-    top: boundaries.y - 48,
-    left: boundaries.x,
+  const style = () => {
+    const screenHeight = window.innerHeight
+    if (boundaries.y > screenHeight - 240) {
+      return {
+        top: boundaries.y - 48 - 150,
+        left: boundaries.x,
+      }
+    }
+    return {
+      top: boundaries.y - 48,
+      left: boundaries.x,
+    }
   }
 
   const btnPopoverDataList = [
@@ -82,7 +91,7 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
     <div
       onClick={(e) => e.stopPropagation()}
       className="task-quick-edit"
-      style={style}
+      style={style()}
     >
       <TaskPreview
         groupId={groupId}
