@@ -109,7 +109,7 @@
     top: rem(2px);
     right: rem(2px);
     background-color: var(--ds-surface-raised, #ffffff);
-
+    z-index: 1;
     &:hover {
       background-color: var(--ds-surface-raised-hovered, #f1f2f4);
     }

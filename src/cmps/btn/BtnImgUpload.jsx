@@ -4,7 +4,7 @@ import { Loader } from "../shared/Loader"
 import { Button } from "../Button"
 import SvgIcon from "../SvgIcon"
 
-export function BtnImgUploader({ onUploaded = null }) {
+export function BtnImgUploader({ title, onUploaded = null }) {
   const [isUploading, setIsUploading] = useState(false)
   const inputFileRef = useRef(null)
 
@@ -28,7 +28,7 @@ export function BtnImgUploader({ onUploaded = null }) {
             onClick={onClick}
             className={"img-bg flex align-center justify-center"}
           >
-            <SvgIcon iconName="plus" size={"md"} />
+            {title === "" ? <SvgIcon iconName="plus" size={"md"} /> : title}
           </Button>
           <input
             ref={inputFileRef}

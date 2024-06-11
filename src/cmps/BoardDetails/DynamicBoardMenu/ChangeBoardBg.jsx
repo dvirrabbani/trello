@@ -43,7 +43,7 @@ export function ChangeBoardBg({ type, setMenuContent }) {
       <div className="custom-bg-section">
         <h3>Custom background</h3>
         <div>
-          <BtnImgUploader onUploaded={onUpdateCustomBg} />
+          <BtnImgUploader title={""} onUploaded={onUpdateCustomBg} />
         </div>
       </div>
     </div>
