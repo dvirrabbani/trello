@@ -10,6 +10,7 @@ import { store } from "../../store/store"
 import { boardService } from "../../services/board.service"
 import { ProfileImg } from "../ProfileImg"
 import { useForm } from "../../customHooks/useForm"
+import { set } from "date-fns"
 
 export function BoardDetailsHeader({
   board,
@@ -74,8 +75,8 @@ export function BoardDetailsHeader({
   function handleInputTitleBlur() {
     boardTitleH1.current.classList.remove("hide")
     boardTitleInput.current.classList.add("hide")
-    if (fields.title === "") fields.title = board.title
-    if (fields.title === board.title || fields === "") return
+    if (fields.title === "") setFields({ title: board.title })
+    if (fields.title === board.title || fields.title === "") return
     updateCurrentBoard(null, null, {
       key: "title",
       value: fields.title,
