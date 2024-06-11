@@ -11,7 +11,7 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
   const navigate = useNavigate()
 
   const style = {
-    top: boundaries.y,
+    top: boundaries.y - 48,
     left: boundaries.x,
   }
 
