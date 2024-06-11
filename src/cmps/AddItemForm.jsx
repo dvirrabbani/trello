@@ -28,7 +28,7 @@ export function AddItemForm({ onAddItem, setDisplayAddItem, type }) {
         <div className="add-item-actions flex">
           <button
             className="button variant-primary"
-            onClick={() => onAddItem(inputVal)}
+            onClick={(e) => onAddItem(e, inputVal)}
           >
             {`Add ${type == "task" ? "card" : "list"}`}
           </button>

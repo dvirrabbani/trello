@@ -74,7 +74,8 @@ export function BoardDetailsHeader({
   function handleInputTitleBlur() {
     boardTitleH1.current.classList.remove("hide")
     boardTitleInput.current.classList.add("hide")
-    if (fields.title === board.title) return
+    if (fields.title === "") fields.title = board.title
+    if (fields.title === board.title || fields === "") return
     updateCurrentBoard(null, null, {
       key: "title",
       value: fields.title,

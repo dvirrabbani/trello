@@ -34,7 +34,7 @@ export function GroupPreview({ group, deleteGroup }) {
   function onFocusOut(e) {
     groupTitleH3.current.classList.remove("hide")
     groupTitleTextarea.current.classList.add("hide")
-    if (groupToEdit.title === group.title) return
+    if (groupToEdit.title === group.title || groupToEdit === "") return
     updateCurrentBoard(group.id, null, {
       key: "title",
       value: groupToEdit.title,
@@ -47,7 +47,9 @@ export function GroupPreview({ group, deleteGroup }) {
     groupTitleTextarea.current.focus()
   }
 
-  function onAddTask(inputVal) {
+  function onAddTask(e, inputVal) {
+    e.preventDefault()
+    if (!inputVal || inputVal == "") return
     const task = boardService.createNewTask()
     task.title = inputVal
     const tasks = [...group.tasks, task]

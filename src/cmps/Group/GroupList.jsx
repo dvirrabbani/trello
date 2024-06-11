@@ -82,7 +82,9 @@ export function GroupList({ groups }) {
     return newItems
   }
 
-  function onAddGroup(inputVal) {
+  function onAddGroup(e, inputVal) {
+    e.preventDefault()
+    if (!inputVal || inputVal === "") return
     const group = boardService.createNewGroup()
     group.title = inputVal
 
