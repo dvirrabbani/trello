@@ -30,7 +30,10 @@ export function BoardSidebar() {
 
   return (
     <div className={`sidebar-wrapper ${sidebarCollapse ? "collapse" : ""}`}>
-      <div className="collapse-sidebar" onClick={() => setSidebarCollapse(false)}>
+      <div
+        className="collapse-sidebar"
+        onClick={() => setSidebarCollapse(false)}
+      >
         <Button className="dynamic-button shape-circle">
           <SvgIcon iconName="arrow" />
         </Button>
@@ -46,7 +49,10 @@ export function BoardSidebar() {
               <div className="plan-type">Free</div>
             </div>
           </div>
-          <Button className="dynamic-button" onClick={() => setSidebarCollapse(true)}>
+          <Button
+            className="dynamic-button"
+            onClick={() => setSidebarCollapse(true)}
+          >
             <SvgIcon iconName="arrow" />
           </Button>
         </header>
@@ -56,12 +62,17 @@ export function BoardSidebar() {
             <AddBoardButton iconName="plus" />
           </div>
           {boards
-            ?.sort((a, b) => (a.isStarred === b.isStarred ? 0 : a.isStarred ? -1 : 1))
+            ?.sort((a, b) =>
+              a.isStarred === b.isStarred ? 0 : a.isStarred ? -1 : 1
+            )
             .map((board) => (
               <li className="board-sidebar-item" key={board._id}>
                 <BoardNavLink board={board} />
-                <span onClick={() => onToggleBoardStarred(board)}>
-                  <SvgIcon iconName={board.isStarred ? "starFill" : "star"} className={board.isStarred ? "star-fill" : "star"} />
+                <span
+                  className={`action ${board.isStarred ? "star-fill" : "star"}`}
+                  onClick={() => onToggleBoardStarred(board)}
+                >
+                  <SvgIcon iconName={board.isStarred ? "starFill" : "star"} />
                 </span>
               </li>
             ))}
