@@ -7,10 +7,11 @@ import { DynamicBoardMenu } from "./DynamicBoardMenu/DynamicBoardMenu"
 
 export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
   const menuList = [
-    { title: "Activity", type: "activity" },
+    { title: "Activity", type: "activity", icon: "activities" },
     {
       title: "Change background",
       type: "background",
+      icon: "background",
       children: [
         { title: "Color", type: "bg-color" },
         { title: "Photo", type: "bg-photo" },
@@ -39,8 +40,9 @@ export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
         <Button className={"close-menu-btn"} onClick={onToggleBoardMenu}>
           <SvgIcon iconName="close" />
         </Button>
+
+        <div className="divider"></div>
       </header>
-      <div className="divider"></div>
       <div className="board-menu-content">
         {menuContent.type == "menu-list" ? (
           <MenuNavigationList

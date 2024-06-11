@@ -2,8 +2,9 @@ import { useRef, useState } from "react"
 import { uploadService } from "../../services/upload.service"
 import { Loader } from "../shared/Loader"
 import { Button } from "../Button"
+import SvgIcon from "../SvgIcon"
 
-export function BtnImgUploader({ title, onUploaded = null }) {
+export function BtnImgUploader({ onUploaded = null }) {
   const [isUploading, setIsUploading] = useState(false)
   const inputFileRef = useRef(null)
 
@@ -19,12 +20,15 @@ export function BtnImgUploader({ title, onUploaded = null }) {
   }
 
   return (
-    <div className="btn-img-uploader">
+    <div className="btn-img-uploader bg-option">
       {isUploading && <Loader />}
       {!isUploading && (
         <>
-          <Button variant="contained" onClick={onClick}>
-            {title || "Upload Image"}
+          <Button
+            onClick={onClick}
+            className={"img-bg flex align-center justify-center"}
+          >
+            <SvgIcon iconName="plus" size={"md"} />
           </Button>
           <input
             ref={inputFileRef}

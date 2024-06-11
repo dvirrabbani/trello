@@ -26,8 +26,8 @@ export function ChangeBoardBg({ type, setMenuContent }) {
   }
 
   return type === "background" ? (
-    <div>
-      <div>
+    <div className="change-board-bg">
+      <div className="flex justify-between">
         <BgOption
           imgUrl={imgBgUrl}
           title={"Photos"}
@@ -40,9 +40,11 @@ export function ChangeBoardBg({ type, setMenuContent }) {
         />
       </div>
       <div className="divider"></div>
-      <h3>Custom background</h3>
-      <div>
-        <BtnImgUploader title={"+"} onUploaded={onUpdateCustomBg} />
+      <div className="custom-bg-section">
+        <h3>Custom background</h3>
+        <div>
+          <BtnImgUploader onUploaded={onUpdateCustomBg} />
+        </div>
       </div>
     </div>
   ) : (

@@ -383,21 +383,39 @@ const svgs = {
       />
     </svg>
   `,
-  activities: `
-    <svg
+  activities: `<svg
+      id="Layer_2"
+      data-name="Layer 2"
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      role="presentation"
+      viewBox="0 0 62.56 43.67"
     >
-      <path
-        d="M6 8c0-.552.444-1 1-1 .552 0 1 .444 1 1 0 .552-.444 1-1 1-.552 0-1-.444-1-1zm5-1h6a1 1 0 010 2h-6a1 1 0 010-2zm-5 5c0-.552.444-1 1-1 .552 0 1 .444 1 1 0 .552-.444 1-1 1-.552 0-1-.444-1-1zm5-1h6a1 1 0 010 2h-6a1 1 0 010-2zm-5 5c0-.552.444-1 1-1 .552 0 1 .444 1 1 0 .552-.444 1-1 1-.552 0-1-.444-1-1zm5-1h6a1 1 0 010 2h-6a1 1 0 010-2z"
-        fill="currentColor"
-        fill-rule="evenodd"
-      />
-    </svg>
-  `,
+      <g id="Layer_1-2" data-name="Layer 1">
+        <g>
+          <path
+            class="cls-1"
+            d="M59.56,6H21.44c-1.66,0-3-1.34-3-3s1.34-3,3-3H59.56c1.66,0,3,1.34,3,3s-1.34,3-3,3Z"
+            fill="currentColor"
+          ></path>
+          <path
+            class="cls-1"
+            d="M49.94,18.33H21.44c-1.66,0-3-1.34-3-3s1.34-3,3-3h28.5c1.66,0,3,1.34,3,3s-1.34,3-3,3Z"
+            fill="currentColor"
+          ></path>
+          <path
+            class="cls-1"
+            d="M59.56,30.98H21.44c-1.66,0-3-1.34-3-3s1.34-3,3-3H59.56c1.66,0,3,1.34,3,3s-1.34,3-3,3Z"
+            fill="currentColor"
+          ></path>
+          <path
+            class="cls-1"
+            d="M49.94,43.67H21.44c-1.66,0-3-1.34-3-3s1.34-3,3-3h28.5c1.66,0,3,1.34,3,3s-1.34,3-3,3Z"
+            fill="currentColor"
+          ></path>
+          <circle class="cls-1" cx="6" cy="6" r="6" fill="currentColor"></circle>
+          <circle class="cls-1" cx="6" cy="30.98" r="6" fill="currentColor"></circle>
+        </g>
+      </g>
+    </svg>`,
   customFields: `
     <svg
       xmlns="http://www.w3.org/2000/svg"

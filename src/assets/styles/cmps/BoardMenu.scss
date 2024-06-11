@@ -12,6 +12,16 @@
   padding: rem(12px);
   z-index: 5;
 
+  &.open {
+    transform: translateX(0);
+  }
+
+  .divider {
+    width: 100%;
+    height: rem(1px);
+    background-color: var(--ds-border, #091e4224);
+  }
+
   .board-menu-header {
     .title {
       margin: rem(6px) 0 rem(12px) 0;
@@ -41,7 +51,89 @@
     }
   }
 
-  &.open {
-    transform: translateX(0);
+  .board-menu-content {
+    padding-top: rem(12px);
+  }
+
+  .menu-navigation-list {
+    .menu-item {
+      @include typography("txt");
+      padding: rem(6px) rem(6px) rem(6px) rem(12px);
+      border-radius: rem(8px);
+      cursor: pointer;
+      margin-bottom: 4px;
+      gap: rem(10px);
+
+      &:hover {
+        background-color: var(
+          --ds-background-neutral-subtle-hovered,
+          #091e420f
+        );
+      }
+
+      .menu-icon-bg {
+        border-radius: rem(3px);
+        width: rem(20px);
+        height: rem(20px);
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .change-board-bg {
+    .divider {
+      margin: rem(15px) 0 rem(20px) 0;
+    }
+  }
+
+  .custom-bg-section {
+    h3 {
+      font-size: rem(20px);
+      margin-bottom: rem(8px);
+    }
+  }
+
+  .bg-option {
+    @include typography("txt");
+    cursor: pointer;
+    float: left;
+    padding: 0 4px;
+    /* position: relative; */
+    text-align: center;
+    width: 50%;
+
+    .img-bg {
+      background-color: var(--ds-background-neutral, #091e420f);
+      background-size: cover;
+      border-radius: 8px;
+      height: 96px;
+      margin-bottom: 8px;
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+    .emoji {
+      font-size: rem(16px);
+      bottom: rem(16px);
+      left: rem(10px);
+      position: absolute;
+      text-shadow: 0 rem(1px) rem(1px)
+        var(--ds-shadow-overflow-spread, #091e4229);
+    }
   }
 }

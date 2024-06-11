@@ -16,6 +16,11 @@
       font-size: rem(16px);
       line-height: rem(20px);
     }
+
+    svg {
+      width: rem(24px);
+      height: rem(24px);
+    }
   }
 
   .task-details-checklist.dragging {

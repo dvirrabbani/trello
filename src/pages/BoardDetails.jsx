@@ -34,7 +34,7 @@ export function BoardDetails() {
   )
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [viewType, setViewType] = useState("board")
-  const [boardMenuIsOpen, setBoardMenuIsOpen] = useState(true)
+  const [boardMenuIsOpen, setBoardMenuIsOpen] = useState(false)
 
   const board = boardService.filteredBoard(initialBoard, filterBy)
 
