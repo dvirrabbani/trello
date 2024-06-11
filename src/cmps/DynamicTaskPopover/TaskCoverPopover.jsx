@@ -101,14 +101,13 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
           >
             <div className="cover-background" style={coverStyle}></div>
             <div className="skeleton-card">
-              {/* TODO change skeleton background color by cover color */}
               <div className="skeleton skeleton-line"></div>
               <div className="skeleton skeleton-line skeleton-line-2"></div>
               <div className="skeleton-card-row">
                 <div className="skeleton skeleton-btn"></div>
                 <div className="skeleton skeleton-btn"></div>
               </div>
-              <div className="skeleton-circle"></div>
+              <div className="skeleton skeleton-circle"></div>
             </div>
           </li>
           {/* Cover Full Size */}
