@@ -146,7 +146,7 @@ export function TaskDetails() {
   }
 
   function handleClickAway() {
-    navigate(`/board/${board.id}`)
+    navigate(`/board/${params.boardId}`)
   }
 
   const labels = { board: board.labels, task: getTaskLabels() }
