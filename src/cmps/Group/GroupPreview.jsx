@@ -64,7 +64,6 @@ export function GroupPreview({ group, deleteGroup }) {
         type: activityService.activityTypes.addCard,
       }
     )
-    setDisplayAddItem(false)
   }
 
   function onDeleteGroup(groupId) {
@@ -126,15 +125,14 @@ export function GroupPreview({ group, deleteGroup }) {
             <GroupActions groupId={group.id} onDeleteGroup={onDeleteGroup} />
           </Popover>
         </div>
-        <TaskList group={group} />
+        <TaskList
+          group={group}
+          onAddTask={onAddTask}
+          displayAddItem={displayAddItem}
+          setDisplayAddItem={setDisplayAddItem}
+        />
         <div className="group-footer flex justify-between">
-          {displayAddItem ? (
-            <AddItemForm
-              onAddItem={onAddTask}
-              setDisplayAddItem={setDisplayAddItem}
-              type="task"
-            />
-          ) : (
+          {!displayAddItem && (
             <>
               <button
                 className="button add-task-btn"

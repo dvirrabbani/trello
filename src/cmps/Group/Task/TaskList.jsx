@@ -2,8 +2,20 @@ import { ta } from "date-fns/locale"
 import { TaskPreview } from "./TaskPreview"
 import { Droppable, Draggable } from "react-beautiful-dnd"
 import { updateCurrentBoard } from "../../../store/board.actions"
+import { AddItemForm } from "../../AddItemForm"
+import { useEffect, useRef } from "react"
 
-export function TaskList({ group }) {
+export function TaskList({
+  group,
+  onAddTask,
+  displayAddItem,
+  setDisplayAddItem,
+}) {
+  const AddItemRef = useRef(null)
+  useEffect(() => {
+    if (AddItemRef.current)
+      AddItemRef.current.scrollIntoView({ behavior: "smooth" })
+  }, [group.tasks])
   return (
     <Droppable droppableId={group.id} type="group">
       {(provided, snapshot) => (
@@ -29,6 +41,14 @@ export function TaskList({ group }) {
             )
           })}
           {provided.placeholder}
+          {displayAddItem && (
+            <AddItemForm
+              ref={AddItemRef}
+              onAddItem={onAddTask}
+              setDisplayAddItem={setDisplayAddItem}
+              type="task"
+            />
+          )}
         </ol>
       )}
     </Droppable>
