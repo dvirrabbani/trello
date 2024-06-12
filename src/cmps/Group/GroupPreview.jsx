@@ -47,7 +47,7 @@ export function GroupPreview({ group, deleteGroup }) {
     groupTitleTextarea.current.focus()
   }
 
-  function onAddTask(e, inputVal) {
+  function onAddTask(e, inputVal, setInputVal) {
     e.preventDefault()
     if (!inputVal || inputVal == "") return
     const task = boardService.createNewTask()
@@ -64,6 +64,7 @@ export function GroupPreview({ group, deleteGroup }) {
         type: activityService.activityTypes.addCard,
       }
     )
+    setInputVal("")
   }
 
   function onDeleteGroup(groupId) {

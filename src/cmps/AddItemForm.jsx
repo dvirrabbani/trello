@@ -24,7 +24,7 @@ export const AddItemForm = forwardRef(
               onChange={handleChange}
               placeholder={placeholder}
               onKeyDown={(e) => {
-                if (e.key === "Enter") onAddItem(e, inputVal)
+                if (e.key === "Enter") onAddItem(e, inputVal, setInputVal)
               }}
               autoFocus
             ></textarea>

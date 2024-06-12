@@ -88,7 +88,7 @@ export function GroupList({ groups }) {
     return newItems
   }
 
-  function onAddGroup(e, inputVal) {
+  function onAddGroup(e, inputVal, setInputVal) {
     e.preventDefault()
     if (!inputVal || inputVal === "") return
     const group = boardService.createNewGroup()
@@ -106,6 +106,8 @@ export function GroupList({ groups }) {
         type: activityService.activityTypes.addGroup,
       }
     )
+
+    setInputVal("")
   }
 
   function deleteGroup(groupId) {
