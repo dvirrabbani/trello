@@ -33,6 +33,7 @@ export const AddItemForm = forwardRef(
             <button
               className="button variant-primary"
               onClick={(e) => onAddItem(e, inputVal)}
+              type="submit"
             >
               {`Add ${type == "task" ? "card" : "list"}`}
             </button>
