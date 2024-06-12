@@ -1,7 +1,6 @@
 import { useRef, useState } from "react"
 import { updateCurrentBoard } from "../../store/board.actions"
 import SvgIcon from "../SvgIcon"
-import { AddItemForm } from "../AddItemForm"
 import { GroupActions } from "./GroupActions"
 import { TaskList } from "./Task/TaskList"
 import { Popover } from "../Popover"

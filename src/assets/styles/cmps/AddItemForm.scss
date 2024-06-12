@@ -3,7 +3,15 @@
   height: fit-content;
 
   textarea {
+    color: var(--ds-text, #172b4d);
+    white-space: normal;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    border-radius: rem(4px);
+    font-size: rem(14px);
+    line-height: rem(20px);
     width: 100%;
+    cursor: pointer;
 
     &::placeholder {
       color: var(--ds-text, #172b4d);
@@ -12,6 +20,20 @@
 
   .group-preview {
     padding: rem(8px);
+
+    textarea {
+      padding: rem(6px) rem(12px);
+      font-weight: 600;
+      height: rem(32px);
+    }
+  }
+
+  .task-preview {
+    textarea {
+      padding: rem(8px) rem(12px);
+      height: rem(56px);
+      outline: none;
+    }
   }
 
   .add-item-actions {
