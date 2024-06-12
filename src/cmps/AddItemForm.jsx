@@ -22,6 +22,9 @@ export function AddItemForm({ onAddItem, setDisplayAddItem, type }) {
             value={inputVal}
             onChange={handleChange}
             placeholder={placeholder}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") onAddItem(e, inputVal)
+            }}
             autoFocus
           ></textarea>
         </div>
