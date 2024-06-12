@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { updateCurrentBoard } from "../store/board.actions"
 import { useSelector } from "react-redux"
 import { TaskDetailsHeader } from "../cmps/TaskDetails/TaskDetailsHeader"
@@ -11,9 +11,11 @@ import { TaskDetailsActivities } from "../cmps/TaskDetails/TaskDetailsActivities
 import { utilService } from "../services/util.service"
 import { TaskDetailsAttachments } from "../cmps/TaskDetails/TaskDetailsAttachments"
 import { Loader } from "../cmps/shared/Loader"
+import { ClickAwayListener } from "@mui/material"
 
 export function TaskDetails() {
   const params = useParams()
+  const navigate = useNavigate()
   const { groupId, taskId } = params
   const board = useSelector((storeState) => storeState.boardModule.board)
   const [task, setTask] = useState(null)
@@ -143,6 +145,10 @@ export function TaskDetails() {
     })
   }
 
+  function handleClickAway() {
+    navigate(`/board/${board.id}`)
+  }
+
   const labels = { board: board.labels, task: getTaskLabels() }
 
   if (!task) {
@@ -157,58 +163,60 @@ export function TaskDetails() {
 
   return (
     <div className="task-details-container">
-      <div className="task-detail-wrapper">
-        <div className="task-details">
-          <TaskDetailsHeader
-            params={params}
-            task={task}
-            onUpdateTask={onUpdateTask}
-          />
-          <div className="task-details-main-container">
-            <main className="task-details-main full">
-              <TaskDetailsMainHeader
-                task={task}
-                labels={labels}
-                onUpdateTask={onUpdateTask}
-              />
-              <TaskDetailsDescription
-                description={task.description}
-                onUpdateTask={onUpdateTask}
-                onUpdateTaskDescription={onUpdateTaskDescription}
-              />
-              <TaskDetailsChecklist
-                checklists={task.checklists}
-                onRemoveChecklist={onRemoveChecklist}
-                onAddCheckListTodo={onAddCheckListTodo}
-                onRemoveCheckListTodo={onRemoveCheckListTodo}
-                onUpdateCheckListTodo={onUpdateCheckListTodo}
-                onUpdateTask={onUpdateTask}
-              />
-
-              {task?.attachments.length > 0 && (
-                <TaskDetailsAttachments
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <div className="task-detail-wrapper">
+          <div className="task-details">
+            <TaskDetailsHeader
+              params={params}
+              task={task}
+              onUpdateTask={onUpdateTask}
+            />
+            <div className="task-details-main-container">
+              <main className="task-details-main full">
+                <TaskDetailsMainHeader
                   task={task}
+                  labels={labels}
                   onUpdateTask={onUpdateTask}
                 />
-              )}
-              <TaskDetailsActivities
-                task={task}
-                boardMembers={board.members}
-                // filter board activities by task
-                activities={
-                  board?.activities.filter(
-                    (activity) => activity?.taskId === task.id
-                  ) || []
-                }
-                onRemoveComment={onRemoveComment}
-                onAddComment={onAddComment}
-                onUpdateComment={onUpdateComment}
-              />
-            </main>
-            <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
+                <TaskDetailsDescription
+                  description={task.description}
+                  onUpdateTask={onUpdateTask}
+                  onUpdateTaskDescription={onUpdateTaskDescription}
+                />
+                <TaskDetailsChecklist
+                  checklists={task.checklists}
+                  onRemoveChecklist={onRemoveChecklist}
+                  onAddCheckListTodo={onAddCheckListTodo}
+                  onRemoveCheckListTodo={onRemoveCheckListTodo}
+                  onUpdateCheckListTodo={onUpdateCheckListTodo}
+                  onUpdateTask={onUpdateTask}
+                />
+
+                {task?.attachments.length > 0 && (
+                  <TaskDetailsAttachments
+                    task={task}
+                    onUpdateTask={onUpdateTask}
+                  />
+                )}
+                <TaskDetailsActivities
+                  task={task}
+                  boardMembers={board.members}
+                  // filter board activities by task
+                  activities={
+                    board?.activities.filter(
+                      (activity) => activity?.taskId === task.id
+                    ) || []
+                  }
+                  onRemoveComment={onRemoveComment}
+                  onAddComment={onAddComment}
+                  onUpdateComment={onUpdateComment}
+                />
+              </main>
+              <TaskDetailsSidebar task={task} onUpdateTask={onUpdateTask} />
+            </div>
           </div>
         </div>
-      </div>
+      </ClickAwayListener>
     </div>
   )
 }
