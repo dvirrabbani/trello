@@ -5,7 +5,6 @@ export function MenuNavigationList({ menuList, setMenuContent }) {
   const getBoardBgImg = useSelector(
     (state) => state.boardModule.board.style.bgImg
   )
-  console.log(getBoardBgImg)
 
   function displayMenuIcon(icon) {
     if (icon && icon !== "background") return <SvgIcon iconName={icon} />
