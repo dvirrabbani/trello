@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { updateCurrentBoard } from "../../store/board.actions"
 import SvgIcon from "../SvgIcon"
 import { AddItemForm } from "../AddItemForm"
@@ -10,6 +10,12 @@ import { boardService } from "../../services/board.service"
 
 export function GroupList({ groups }) {
   const [displayAddItem, setDisplayAddItem] = useState(false)
+  const AddItemRef = useRef(null)
+
+  useEffect(() => {
+    if (AddItemRef.current)
+      AddItemRef.current.scrollIntoView({ behavior: "smooth" })
+  }, [groups])
 
   function onDragEnd(result) {
     const { destination, source, draggableId, type } = result
@@ -100,7 +106,6 @@ export function GroupList({ groups }) {
         type: activityService.activityTypes.addGroup,
       }
     )
-    setDisplayAddItem(false)
   }
 
   function deleteGroup(groupId) {
@@ -144,6 +149,7 @@ export function GroupList({ groups }) {
                   onAddItem={onAddGroup}
                   setDisplayAddItem={setDisplayAddItem}
                   type="group"
+                  ref={AddItemRef}
                 />
               ) : (
                 <button
