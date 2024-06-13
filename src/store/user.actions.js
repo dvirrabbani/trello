@@ -6,10 +6,11 @@ import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, SAVE_USER_RECENT_BOARD } from "./user.reducer.js"
 import { socketService } from "../services/socket.service.js"
 
-export function getActionSaveUserRecentBoards(boardId) {
+export function getActionSaveUserRecentBoards(boardId, boards) {
   return {
     type: SAVE_USER_RECENT_BOARD,
     boardId,
+    boards,
   }
 }
 
@@ -40,6 +41,21 @@ export async function login(credentials) {
     store.dispatch({
       type: SET_USER,
       user,
+    })
+    socketService.login(user._id)
+    return user
+  } catch (err) {
+    console.log("Cannot login", err)
+    throw err
+  }
+}
+
+export async function loginWithGoogle() {
+  try {
+    const user = await userService.loginWithGoogle()
+    store.dispatch({
+      type: SET_USER,
+      user: user,
     })
     socketService.login(user._id)
     return user
@@ -89,9 +105,9 @@ export async function loadUser(userId) {
   }
 }
 
-export async function saveUserRecentBoards(boardId) {
+export async function saveUserRecentBoards(boardId, boards) {
   try {
-    store.dispatch(getActionSaveUserRecentBoards(boardId))
+    store.dispatch(getActionSaveUserRecentBoards(boardId, boards))
   } catch (err) {
     console.log("Cannot save viewed board", err)
   }

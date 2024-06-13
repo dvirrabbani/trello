@@ -47,6 +47,35 @@
     }
   }
 
+  .external-login-header {
+    margin-top: rem(24px);
+    color: var(--ds-text-subtle, #5e6c84);
+    font-size: rem(14px);
+    line-height: rem(16px);
+    margin-bottom: rem(16px);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .google-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem(10px);
+    font-weight: bold;
+    border: rem(1px) solid rgb(193, 199, 208);
+    border-radius: rem(3px);
+    color: rgb(23, 43, 77);
+    line-height: rem(40px);
+    background: var(--ds-text-inverse);
+    height: rem(40px);
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(9, 30, 66, 0.02);
+    }
+  }
+
   @media (max-width: 1200px) {
     background-size: calc(-232px + 50vw), calc(-232px + 50vw), cover;
   }

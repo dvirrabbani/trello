@@ -3,7 +3,7 @@ import { updateBoard } from "../store/board.actions"
 import { BoardPreview } from "./boardPreview"
 import SvgIcon from "./SvgIcon"
 
-export function BoardList({ boards, children }) {
+export function BoardList({ boards, children, type }) {
   async function onUpdateBoard(boardId, { key, value }) {
     const board = await boardService.getById(boardId)
 
@@ -13,10 +13,10 @@ export function BoardList({ boards, children }) {
   return (
     <ul className="board-list">
       {boards.map((board) => {
-        const { _id, title, style } = board
+        const { _id, id, title, style } = board
         return (
-          <li className="board-item" key={board._id}>
-            <BoardPreview id={_id} title={title} style={style} />
+          <li className="board-item" key={`${type}${board._id}`}>
+            <BoardPreview id={_id || id} title={title} style={style} />
             <div
               className={`board-actions${board.isStarred ? " starred-board" : " unstarred-board"}`}
               onClick={() =>

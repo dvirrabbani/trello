@@ -6,39 +6,17 @@ import SvgIcon from "../cmps/SvgIcon.jsx"
 import { AddBoardButton } from "../cmps/AddBoardButton.jsx"
 
 export function BoardIndex() {
-  const userRecentBoards = useSelector(
-    (storeState) => storeState.userModule.user.recentBoards
-  )
-  const [recentBoards, setRecentBoards] = useState([])
+  const user = useSelector((storeState) => storeState.userModule.user)
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [starredBoard, setStarredBoard] = useState([])
 
   useEffect(() => {
     updateStarredBoards()
-    loadRecentBoards()
     document.body.dataset.theme = "dark"
   }, [boards])
 
   function updateStarredBoards() {
     boards && setStarredBoard(boards.filter((board) => board.isStarred))
-  }
-
-  function loadRecentBoards() {
-    const recentBoards = []
-    const sortedViewBoards = [...userRecentBoards]
-      .sort((a, b) => b.date - a.date)
-      .slice(0, 4)
-
-    sortedViewBoards.forEach((sortedViewBoard) => {
-      const recentBoard = boards.find(
-        (board) => board._id === sortedViewBoard.id
-      )
-      if (recentBoard) {
-        recentBoards.push(recentBoard)
-      }
-    })
-
-    setRecentBoards(recentBoards)
   }
 
   return (
@@ -73,28 +51,24 @@ export function BoardIndex() {
                 <SvgIcon iconName={"star"} size={"md"} />
                 <span>Starred Boards</span>
               </div>
-              <BoardList key={"starred"} boards={starredBoard} />
+              <BoardList type={"starred"} key={"starred"} boards={starredBoard} />
             </>
           )}
-          {recentBoards.length > 0 && (
+          {user?.recentBoards?.length > 0 && (
             <>
               <div className="board-list-header">
                 <SvgIcon iconName={"clock"} size={"md"} />
                 <span>Recently viewed</span>
               </div>
-              <BoardList key={"Recently"} boards={recentBoards} />
+              <BoardList type={"Recently"} key={"Recently"} boards={user?.recentBoards} />
             </>
           )}
           <div className="board-list-header all-boards">
             <SvgIcon iconName={"profile"} size={"md"} />
             <span>Your Boards</span>
           </div>
-          <BoardList key={"all-boards"} boards={boards}>
-            <AddBoardButton
-              title={"Create new board"}
-              variant={"contained"}
-              className={"board-item"}
-            />
+          <BoardList type={"all-boards"} key={"all-boards"} boards={boards}>
+            <AddBoardButton title={"Create new board"} variant={"contained"} className={"board-item"} />
           </BoardList>
         </div>
       </div>
