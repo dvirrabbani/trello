@@ -31,19 +31,24 @@ export function userReducer(state = initialState, action) {
       newState = { ...state, users: action.users }
       break
     case SAVE_USER_RECENT_BOARD:
-      const recentBoards = state.user.recentBoards || []
+      const recentBoards = [...state.user.recentBoards] || []
       const currentDate = Date.now()
-
-      const boardIdx = recentBoards.findIndex((board) => board.id === action.boardId)
-
-      if (boardIdx != -1) {
-        recentBoards[boardIdx].date = currentDate
-      } else {
-        const recentBoardToAdd = { id: action.boardId, date: currentDate }
-        recentBoards.push(recentBoardToAdd)
+      let board = recentBoards.find((board) => board.id === action.boardId)
+      if (!board) {
+        board = action.boards.find((board) => board._id === action.boardId)
       }
 
-      newState = { ...state, recentBoards }
+      if (!board) board.date = currentDate
+      if (board._id) {
+        board.id = board._id
+        delete board._id
+        recentBoards.unshift(board)
+      } else {
+        recentBoards.sort((a, b) => b.date - a.date)
+      }
+
+      recentBoards.slice(0, 4)
+      newState = { ...state, user: { ...state.user, recentBoards } }
       break
     default:
   }
