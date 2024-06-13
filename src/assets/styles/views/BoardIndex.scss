@@ -6,6 +6,7 @@
     grid-template-columns: rem(256px) minmax(288px, 825px);
     justify-content: center;
     overflow-y: auto;
+    gap: rem(16px);
   }
 
   .board-index-nav {
@@ -48,7 +49,6 @@
 
   .board-list-container {
     margin: rem(40px) 0;
-    padding: 0 rem(16px);
     padding-bottom: rem(32px);
     width: 100%;
     .board-list-header {

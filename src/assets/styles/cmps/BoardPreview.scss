@@ -20,12 +20,4 @@
   .content {
     padding: rem(8px);
   }
-
-  &:hover .background {
-    filter: brightness(0.7);
-  }
-
-  &:hover {
-    text-decoration: none;
-  }
 }
