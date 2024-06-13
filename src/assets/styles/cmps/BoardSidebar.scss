@@ -55,6 +55,14 @@
         width: rem(12px);
       }
     }
+
+    &:hover {
+      background-color: var(--dynamic-background);
+
+      button {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
   }
 
   .board-sidebar {
