@@ -72,12 +72,16 @@
 
     .group-header {
       padding: rem(8px);
+
+      > button {
+        border-radius: rem(8px);
+      }
     }
 
     .add-task-btn {
       gap: rem(8px);
       font-size: (14px);
-      width: 100%;
+      flex: 1;
     }
 
     .group-title-container {
@@ -102,6 +106,11 @@
 
     .group-footer {
       padding: rem(8px);
+      gap: rem(4px);
+
+      > button {
+        border-radius: rem(8px);
+      }
 
       textarea {
         @include typography("txt");
@@ -117,7 +126,12 @@
   }
 
   .add-group-btn {
-    @include btn($bg-color: #ffffff3d, $width: $group-width, $borderRadius: rem(12px), $padding: rem(12px));
+    @include btn(
+      $bg-color: #ffffff3d,
+      $width: $group-width,
+      $borderRadius: rem(12px),
+      $padding: rem(12px)
+    );
     @include typography($type: "h2");
     font-weight: 500;
     color: var(--dynamic-text);

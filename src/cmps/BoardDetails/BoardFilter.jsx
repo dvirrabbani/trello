@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { store } from "../../store/store"
 import SvgIcon from "../SvgIcon"
+import { darken } from "polished"
 
 export function BoardFilter({ members, labels, filterBy }) {
   const [filter, setFilter] = useState(filterBy)
@@ -244,7 +245,10 @@ export function BoardFilter({ members, labels, filterBy }) {
                     <span className="checkmark"></span>
                     <div
                       className="button label-button variant-text shape-regular"
-                      style={{ backgroundColor: lb.bgColor }}
+                      style={{
+                        backgroundColor: lb.bgColor,
+                        color: darken(0.35, lb.bgColor),
+                      }}
                     >
                       {lb.title && <span>{lb.title}</span>}
                     </div>

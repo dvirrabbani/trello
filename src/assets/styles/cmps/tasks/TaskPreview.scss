@@ -17,7 +17,6 @@
 
   &:hover {
     outline-color: var(--ds-border-focused, #388bff);
-    outline-color: -webkit-focus-ring-color;
     outline-style: solid;
     outline-width: rem(2px);
   }

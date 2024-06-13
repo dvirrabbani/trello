@@ -26,7 +26,9 @@ export function BtnImgUploader({ title, onUploaded = null }) {
         <>
           <Button
             onClick={onClick}
-            className={"img-bg flex align-center justify-center"}
+            className={
+              "img-bg flex align-center justify-center variant-contained"
+            }
           >
             {title === "" ? <SvgIcon iconName="plus" size={"md"} /> : title}
           </Button>
