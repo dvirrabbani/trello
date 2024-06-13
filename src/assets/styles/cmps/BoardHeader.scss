@@ -26,6 +26,15 @@
   }
   .add-board-button .button.variant-primary {
     color: var(--ds-text-inverse);
+    padding: 0 rem(12px);
+  }
+
+  .logo-btn {
+    border-radius: rem(3px);
+
+    &:hover {
+      background-color: var(--dynamic-button-hovered, rgba(255, 255, 255, 0.3));
+    }
   }
 
   .logo {
@@ -75,6 +84,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: rem(4px);
+
+    .profile-pref-button,
+    .notification-bell {
+      width: rem(32px);
+      height: rem(32px);
+
+      button {
+        padding: rem(4px);
+      }
+    }
   }
   .notification-bell {
     .button {

@@ -25,7 +25,7 @@ export function BoardIndex() {
         <nav className="board-index-nav">
           <ul className="clean-list">
             <li>
-              <NavLink to={"/board"}>
+              <NavLink to={"/board"} className={"logo-btn"}>
                 <SvgIcon iconName={"logo"} />
                 <span>Boards</span>
               </NavLink>
@@ -51,7 +51,11 @@ export function BoardIndex() {
                 <SvgIcon iconName={"star"} size={"md"} />
                 <span>Starred Boards</span>
               </div>
-              <BoardList type={"starred"} key={"starred"} boards={starredBoard} />
+              <BoardList
+                type={"starred"}
+                key={"starred"}
+                boards={starredBoard}
+              />
             </>
           )}
           {user?.recentBoards?.length > 0 && (
@@ -60,7 +64,11 @@ export function BoardIndex() {
                 <SvgIcon iconName={"clock"} size={"md"} />
                 <span>Recently viewed</span>
               </div>
-              <BoardList type={"Recently"} key={"Recently"} boards={user?.recentBoards} />
+              <BoardList
+                type={"Recently"}
+                key={"Recently"}
+                boards={user?.recentBoards}
+              />
             </>
           )}
           <div className="board-list-header all-boards">
@@ -68,7 +76,11 @@ export function BoardIndex() {
             <span>Your Boards</span>
           </div>
           <BoardList type={"all-boards"} key={"all-boards"} boards={boards}>
-            <AddBoardButton title={"Create new board"} variant={"contained"} className={"board-item"} />
+            <AddBoardButton
+              title={"Create new board"}
+              variant={"contained"}
+              className={"board-item"}
+            />
           </BoardList>
         </div>
       </div>

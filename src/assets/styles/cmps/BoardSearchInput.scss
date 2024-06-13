@@ -1,20 +1,33 @@
 .board-search-input {
   position: relative;
   margin-inline-start: auto;
-  border: var(--ds-border-width, 1px) solid var(--dynamic-text-transparent, rgba(255, 255, 255, 0.25));
-  border-color: var(--ds-border-input, #dfe1e6);
-  border-radius: rem(8px);
+  border: var(--ds-border-width, 1px) solid
+    var(--dynamic-text-transparent, rgba(255, 255, 255, 0.25));
+  border-radius: rem(5px);
   font-size: rem(14px);
   line-height: rem(20px);
+
   &.board-index-search {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--ds-text-subtlest, #626f86);
+    border-color: var(--ds-border-input, #dfe1e6);
+
+    &:hover {
+      .form-group {
+        background-color: var(--ds-background-input-hovered, #f7f8f9);
+      }
+    }
+    .form-group {
+      color: var(--ds-text-subtlest, #626f86);
+    }
+  }
+
+  &:hover .form-group {
+    background-color: rgba(255, 255, 255, 0.4);
   }
 
   > .form-group {
-    border-radius: rem(8px);
-    padding: rem(8px);
-    background-color: var(--background-color);
+    border-radius: (5px);
+    padding: rem(7px) rem(15px);
+    background-color: rgba(255, 255, 255, 0.2);
     display: flex;
     gap: rem(4px);
     align-items: center;
@@ -30,13 +43,18 @@
     }
   }
   .search-title {
-    padding: rem(4px) rem(12px);
-    font-size: rem(12px);
-    font-weight: 500;
     text-transform: uppercase;
+    font-size: rem(11px);
+    line-height: rem(16px);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--ds-text-subtlest, #6b778c);
+    box-sizing: border-box;
+    padding: rem(0px) rem(16px);
+    margin-bottom: rem(6px);
   }
   .search-options {
-    padding-bottom: rem(8px);
+    padding: rem(8px) 0;
     width: 100%;
     margin-top: rem(11px);
     left: 0;
@@ -47,14 +65,18 @@
     align-content: start;
     z-index: 9;
     border-radius: rem(4px);
-    box-shadow: var(--ds-shadow-overlay, 0 4px 8px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31));
+    box-shadow: var(
+      --ds-shadow-overlay,
+      0 4px 8px rgba(9, 30, 66, 0.25),
+      0 0 1px rgba(9, 30, 66, 0.31)
+    );
+
     .search-option {
       font-size: rem(14px);
-      font-weight: 600;
+      font-weight: 400;
       color: var(--ds-text, #172b4d);
-      border-radius: rem(4px);
-      padding: rem(8px) rem(12px);
-      line-height: rem(20px);
+      line-height: rem(16px);
+      padding: rem(8px) rem(16px);
       display: grid;
       gap: rem(8px);
       text-align: left;
@@ -63,7 +85,8 @@
       .thumbnail {
         border-radius: rem(2px);
         width: rem(24px);
-        height: rem(20px);
+        height: rem(24px);
+        object-fit: cover;
       }
 
       &:hover {

@@ -38,7 +38,7 @@ export function BoardHeader() {
     <header className="board-header">
       <div className="flex">
         <div className="buttons-list">
-          <Link to={"/board"}>
+          <Link to={"/board"} className="logo-btn">
             <div className="logo"></div>
           </Link>
           {!isMobileViewportWidth && <SelectStarredBoardsButton />}
