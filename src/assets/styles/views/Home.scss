@@ -19,6 +19,17 @@
   .cta-link {
     background-color: #0065ff;
     color: #fff;
+    transition: background-color 0.5s ease 0s, box-shadow 0.5s ease 0s;
+
+    &:hover {
+      background-color: rgb(7, 71, 166);
+    }
+
+    &.guest-btn {
+      border-radius: 0.3rem;
+      padding: 10px 20px;
+      width: -webkit-fill-available;
+    }
   }
 
   .svg-icon {
@@ -27,17 +38,28 @@
   }
 
   .home-header {
+    position: fixed;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr minmax(auto, 1320px) 1fr;
     background-color: #fff;
+    z-index: 1;
+    transition: background-color 0.5s ease 0s, box-shadow 0.5s ease 0s;
     > * {
       grid-column: 2;
+    }
+
+    &:hover {
+      box-shadow: rgba(9, 30, 66, 0.15) 0px 0.5rem 1rem 0px;
     }
   }
 
   .home-nav {
+    ul {
+      height: 60px;
+    }
     .logo {
-      padding: 0.5rem 0rem 0.5rem 0.5rem;
+      padding: 11px 21px;
       height: 100%;
     }
   }
@@ -61,6 +83,7 @@
 
   // Sections
   .hero {
+    padding-top: 12rem;
     background: url(https://images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg)
         center bottom -0.5px / 100% 14% no-repeat scroll padding-box border-box,
       linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
@@ -83,19 +106,15 @@
 
     .row {
       display: flex;
+      gap: 24px;
 
-      .col:first-child {
-        width: rem(570px);
-        padding: 8rem 1rem 1rem;
+      @media (max-width: $normal-breakpoint) {
+        flex-direction: column;
       }
-      .col:last-child {
-        display: block;
-        flex: 0 0 auto;
-        width: rem(558px);
-        margin-top: rem(0px);
-        padding-top: 8rem;
-        margin-bottom: rem(0px);
-        padding-bottom: rem(0px);
+
+      .col {
+        flex: 1;
+        padding: 1rem;
       }
     }
   }
@@ -108,6 +127,7 @@
 
     header {
       padding: 1rem;
+      width: 58%;
 
       & > span {
         display: inline-block;
@@ -130,7 +150,7 @@
         font-weight: 400;
         line-height: 1.5;
         text-size-adjust: 100%;
-        width: 42.3333%;
+        font-size: 20px;
         .link {
           text-decoration: underline;
           color: #0052cc;
@@ -140,6 +160,11 @@
 
     .board-preview-container {
       display: flex;
+
+      @media (max-width: $normal-breakpoint) {
+        flex-direction: column;
+        align-items: center;
+      }
       .preview-list {
         display: flex;
         flex-direction: column;

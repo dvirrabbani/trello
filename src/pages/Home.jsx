@@ -52,8 +52,11 @@ export function Home() {
                 Trello brings all your tasks, teammates, and tools together
               </h1>
               <p>Keep everything in the same place—even if your team isn’t.</p>
-              <button className="cta cta-link" onClick={onLoginDemoUser}>
-                Get Trello for free
+              <button
+                className="cta cta-link guest-btn"
+                onClick={onLoginDemoUser}
+              >
+                Enter as a guest
               </button>
             </div>
             <div className="col">
