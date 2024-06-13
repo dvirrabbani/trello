@@ -28,6 +28,49 @@
     color: var(--ds-text-inverse);
   }
 
+  .logo {
+    width: 75px;
+    height: 16px;
+    margin: 8px;
+    position: relative;
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &:hover::before {
+      opacity: 0;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(/public/trello-full-logo.gif);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      filter: var(--logo-filter);
+    }
+
+    &::after {
+      opacity: 0;
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(/public/trello-full-logo-gif.gif);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      filter: var(--logo-filter);
+    }
+  }
+
   .pref {
     display: flex;
     align-items: center;

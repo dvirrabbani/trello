@@ -6,7 +6,10 @@ import { BoardSearchInput } from "../../cmps/BoardSearchInput"
 import { AddBoardButton } from "../../cmps/AddBoardButton"
 import { SelectStarredBoardsButton } from "../../cmps/SelectStarredBoardsButton"
 import { useEffect, useState } from "react"
-import { SOCKET_EVENT_NOTIFICATION, socketService } from "../../services/socket.service"
+import {
+  SOCKET_EVENT_NOTIFICATION,
+  socketService,
+} from "../../services/socket.service"
 import { ProfilePrefButton } from "../../cmps/ProfilePrefButton"
 import useViewportWidth from "../../customHooks/useViewportWidth"
 import { Button } from "../../cmps/Button"
@@ -36,7 +39,7 @@ export function BoardHeader() {
       <div className="flex">
         <div className="buttons-list">
           <Link to={"/board"}>
-            <SvgIcon iconName={"logo"} size={"lg"} />
+            <div className="logo"></div>
           </Link>
           {!isMobileViewportWidth && <SelectStarredBoardsButton />}
 
@@ -52,11 +55,18 @@ export function BoardHeader() {
         {!isMobileViewportWidth ? (
           <BoardSearchInput />
         ) : (
-          <Button variant="link" shape="circle" className={"board-header-search-button"}>
+          <Button
+            variant="link"
+            shape="circle"
+            className={"board-header-search-button"}
+          >
             <SvgIcon iconName={"search"} size={"sm"} />
           </Button>
         )}
-        <NotificationBell notification={notification} setNotification={setNotification} />
+        <NotificationBell
+          notification={notification}
+          setNotification={setNotification}
+        />
         <ProfilePrefButton member={user} />
       </div>
     </header>

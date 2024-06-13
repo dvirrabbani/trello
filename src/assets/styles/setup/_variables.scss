@@ -135,6 +135,7 @@ $board-header-height: rem(48px);
   --dynamic-text: #ffffff;
   --dynamic-text-transparent: hsla(0, 0%, 100%, 0.16);
   --board-header-background-color: #0000003d;
+  --logo-filter: none;
 }
 
 [data-theme="dark"] {
@@ -152,4 +153,6 @@ $board-header-height: rem(48px);
   --dynamic-text: #172b4d;
   --dynamic-text-transparent: hsla(218, 54%, 19.6%, 0.16);
   --board-header-background-color: #ffffff3d;
+  --logo-filter: brightness(0) saturate(100%) invert(30%) sepia(53%)
+    saturate(323%) hue-rotate(179deg) brightness(91%) contrast(88%);
 }
