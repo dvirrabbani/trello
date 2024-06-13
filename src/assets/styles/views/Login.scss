@@ -1,5 +1,7 @@
 .login {
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100dvh;
   background-color: #fafbfc;
   background-image: url(https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/trello-left.4f52d13c.svg),
@@ -15,7 +17,6 @@
     color: var(--ds-text-subtle, #44546f);
     padding: rem(32px) rem(40px);
     border-radius: rem(3px);
-    margin: rem(50px) auto rem(15px) auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px;
     text-align: center;
 

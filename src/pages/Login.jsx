@@ -10,7 +10,10 @@ import { userService } from "../services/user.service"
 
 export function Login() {
   const navigate = useNavigate()
-  const [fields, , handleChange, resetForm] = useForm(DEMO_USER_CREDENTIALS)
+  const [fields, , handleChange, resetForm] = useForm({
+    email: "",
+    password: "",
+  })
   const emailRef = useRef(null)
 
   useEffect(() => {
@@ -54,14 +57,23 @@ export function Login() {
             value={fields.email}
             onChange={handleChange}
           />
-          <input name="password" type="password" className="input-text" value={fields.password} onChange={handleChange} />
+          <input
+            name="password"
+            type="password"
+            className="input-text"
+            value={fields.password}
+            onChange={handleChange}
+          />
           <Button className={"w-100 flex justify-center"} variant="primary">
             Continue
           </Button>
           {/* Google Login */}
         </form>
         <div className="external-login-header">Or continue with:</div>
-        <button className="google-button" onClick={userService.openGoogleLoginWindow}>
+        <button
+          className="google-button"
+          onClick={userService.openGoogleLoginWindow}
+        >
           <SvgIcon iconName={"google"} size={"md"} />
           <span>Google</span>
         </button>
