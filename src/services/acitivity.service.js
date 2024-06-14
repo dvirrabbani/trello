@@ -22,22 +22,27 @@ function createActivity(activity) {
   activity.id = `ac${utilService.makeId()}`
   activity.createdAt = new Date().getTime()
   const loggedInUser = userService.getLoggedinUser()
-  activity.byMember = loggedInUser
+  const createByMember = {
+    id: loggedInUser._id,
+    fullName: loggedInUser.fullName,
+    imgUrl: loggedInUser.imgUrl,
+  }
+  activity.byMember = createByMember
   switch (activity.type) {
     case activityTypes.addGroup:
-      activity.txt = `${loggedInUser.fullName} add new group`
+      activity.txt = `${createByMember.fullName} add new group`
       break
     case activityTypes.addCard:
-      activity.txt = `${loggedInUser.fullName} add new card`
+      activity.txt = `${createByMember.fullName} add new card`
       break
     case activityTypes.addBoard:
-      activity.txt = `${loggedInUser.fullName} add new board`
+      activity.txt = `${createByMember.fullName} add new board`
       break
     case activityTypes.assignMember:
-      activity.txt = `${loggedInUser.fullName} assign ${activity.member.fullName} to card - ${activity.taskTitle}`
+      activity.txt = `${createByMember.fullName} assign ${activity.member.fullName} to card - ${activity.taskTitle}`
       break
     case activityTypes.removeMember:
-      activity.txt = `${loggedInUser.fullName} remove ${activity.member.fullName} from card - ${activity.taskTitle}`
+      activity.txt = `${createByMember.fullName} remove ${activity.member.fullName} from card - ${activity.taskTitle}`
       break
     default:
       break
