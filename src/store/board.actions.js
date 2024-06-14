@@ -227,7 +227,7 @@ export async function updateTaskLabels(labelId, taskLabelsIds, onUpdateTask) {
 
 export async function addTaskCheckList(title, task, onUpdateTask) {
   const checkListToAdd = {
-    id: utilService.makeId(),
+    id: `check${utilService.makeId()}`,
     title,
     todos: [],
   }

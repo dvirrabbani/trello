@@ -59,7 +59,7 @@ export function TaskDetails() {
     const checkListToEdit = task?.checklists?.find((c) => c.id === checklistId)
     checkListToEdit.todos = [
       ...(checkListToEdit?.todos || []),
-      { id: utilService.makeId(), title: todo.title, isDone: false },
+      { id: `todo${utilService.makeId()}`, title: todo.title, isDone: false },
     ]
 
     onUpdateTask({

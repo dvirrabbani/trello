@@ -23,7 +23,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
 
   function onAddAttachmentImgUrl(imgUrl) {
     const attachmentToAdd = {
-      id: utilService.makeId(),
+      id: `a${utilService.makeId()}`,
       imgUrl: imgUrl,
       createdAt: Date.now(),
     }
