@@ -9,16 +9,17 @@ export function BoardList({ boards, children, type }) {
 
     updateBoard(board, { key, value })
   }
-
   return (
     <ul className="board-list">
       {boards.map((board) => {
-        const { _id, id, title, style } = board
+        const { _id, title, style } = board
         return (
           <li className="board-item" key={`${type}${board._id}`}>
-            <BoardPreview id={_id || id} title={title} style={style} />
+            <BoardPreview id={_id} title={title} style={style} />
             <div
-              className={`board-actions${board.isStarred ? " starred-board" : " unstarred-board"}`}
+              className={`board-actions${
+                board.isStarred ? " starred-board" : " unstarred-board"
+              }`}
               onClick={() =>
                 onUpdateBoard(board._id, {
                   key: "isStarred",

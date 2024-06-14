@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 
 export function BoardPreview({ id, title, style }) {
   const { bgImg } = style
-
   return (
     <Link to={`/board/${id}`} className="board-preview">
       <div

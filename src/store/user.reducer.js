@@ -33,15 +33,10 @@ export function userReducer(state = initialState, action) {
     case SAVE_USER_RECENT_BOARD:
       const recentBoards = [...state.user.recentBoards] || []
       const currentDate = Date.now()
-      let board = recentBoards.find((board) => board.id === action.boardId)
-      if (!board) {
-        board = action.boards.find((board) => board._id === action.boardId)
-      }
+      const board = action.boards.find((board) => board._id === action.boardId)
 
       if (!board) board.date = currentDate
       if (board._id) {
-        board.id = board._id
-        delete board._id
         recentBoards.unshift(board)
       } else {
         recentBoards.sort((a, b) => b.date - a.date)
