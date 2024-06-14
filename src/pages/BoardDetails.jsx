@@ -38,7 +38,7 @@ export function BoardDetails() {
   const [boardMenuIsOpen, setBoardMenuIsOpen] = useState(false)
 
   const board = boardService.filteredBoard(initialBoard, filterBy)
-  console.log("in board details", boards)
+
   useEffect(() => {
     const unsubscribe = eventBus.on("quickEditTask", (data) => {
       setTaskQuickEdit(data)
