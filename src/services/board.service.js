@@ -1,6 +1,7 @@
 import { activityService } from "./acitivity.service.js"
 import { httpService } from "./http.service.js"
 import { uiService } from "./ui.service.js"
+import { userService } from "./user.service.js"
 import { utilService } from "./util.service.js"
 import { darken, lighten, opacify } from "polished"
 
@@ -340,6 +341,12 @@ function createNewGroup() {
 }
 
 function createNewTask() {
+  const user = userService.getLoggedinUser()
+  const createByMember = {
+    id: user._id,
+    fullName: user.fullName,
+    imgUrl: user.imgUrl,
+  }
   return {
     id: `t${utilService.makeId()}`,
     title: "",
@@ -350,8 +357,7 @@ function createNewTask() {
     members: [],
     labelIds: [],
     dueDate: null,
-    //TODO: get logged in user
-    byMember: {},
+    byMember: createByMember,
     style: null,
   }
 }
