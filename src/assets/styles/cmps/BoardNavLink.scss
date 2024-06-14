@@ -11,4 +11,8 @@
     width: rem(24px);
     height: rem(20px);
   }
+
+  &:visited {
+    color: inherit;
+  }
 }

@@ -7,6 +7,7 @@ import { addBoard } from "../store/board.actions"
 import SvgIcon from "./SvgIcon"
 import { uiService } from "../services/ui.service"
 import { userService } from "../services/user.service"
+import { de } from "date-fns/locale"
 
 export function AddBoardButton({ iconName, title, variant, className }) {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -29,10 +30,8 @@ export function AddBoardButton({ iconName, title, variant, className }) {
     setAnchorEl(null)
   }
 
-  const loggedInUser = userService.getLoggedinUser()
   async function onAddBoard() {
     setAnchorEl(null)
-    // TODO get logged in user
     const boardToAdd = {
       title: fields.title,
       style: {
@@ -40,13 +39,12 @@ export function AddBoardButton({ iconName, title, variant, className }) {
         colorRgb: fields.colorRgb,
         themeColor: fields.themeColor,
       },
-      members: [loggedInUser],
+      members: [],
       groups: [],
       labels: uiService.getDefaultBoardLabels(),
       activities: [],
       isStarred: false,
       archivedAt: null,
-      createdBy: loggedInUser,
     }
     const savedBoard = await addBoard(boardToAdd)
     navigate(`/board/${savedBoard._id}`)
