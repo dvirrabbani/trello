@@ -12,6 +12,7 @@ import { utilService } from "../services/util.service"
 import { TaskDetailsAttachments } from "../cmps/TaskDetails/TaskDetailsAttachments"
 import { Loader } from "../cmps/shared/Loader"
 import { ClickAwayListener } from "@mui/material"
+import { userService } from "../services/user.service"
 
 export function TaskDetails() {
   const params = useParams()
@@ -118,20 +119,20 @@ export function TaskDetails() {
   }
 
   function onAddComment(comment, taskComments) {
+    const loggedInUser = userService.getLoggedinUser()
+    const createByMember = {
+      id: loggedInUser._id,
+      fullName: loggedInUser.fullName,
+      imgUrl: loggedInUser.imgUrl,
+    }
     onUpdateTask({
       key: "comments",
       value: [
         {
-          id: utilService.makeId(),
+          id: `c${utilService.makeId()}`,
           createdAt: Date.now(),
           txt: comment.txt,
-          // TODO replace with the current loggedIn user
-          byMember: {
-            id: "u101",
-            fullName: "Tal Tarablus",
-            imgUrl:
-              "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg",
-          },
+          byMember: createByMember,
         },
         ...taskComments,
       ],
