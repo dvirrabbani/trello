@@ -7,6 +7,7 @@ import { Popover } from "../Popover"
 import { ProfileImg } from "../ProfileImg"
 import { ButtonDynamicTaskPopover } from "../ButtonDynamicTaskPopover"
 import { uiService } from "../../services/ui.service"
+import { darken } from "polished"
 
 export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
   const [datePopover, setDatePopover] = useState(null)
@@ -90,6 +91,10 @@ export function TaskDetailsMainHeader({ task, labels, onUpdateTask }) {
                   style={{
                     backgroundColor: labels.board.find((lb) => lb.id === lt.id)
                       .bgColor,
+                    color: darken(
+                      0.35,
+                      labels.board.find((lb) => lb.id === lt.id).bgColor
+                    ),
                   }}
                 >
                   {lt.title && <span>{lt.title}</span>}
