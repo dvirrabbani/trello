@@ -17,6 +17,7 @@ export function BoardMenu({ boardMenuIsOpen, onToggleBoardMenu }) {
         { title: "Photo", type: "bg-photo" },
       ],
     },
+    { title: "Delete board", type: "delete-board", icon: "trash" },
   ]
   const initialMenuContent = { title: "Menu", type: "menu-list" }
   const [menuContent, setMenuContent] = useState(initialMenuContent)
