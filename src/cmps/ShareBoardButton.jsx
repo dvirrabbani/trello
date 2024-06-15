@@ -9,7 +9,7 @@ import { updateBoard } from "../store/board.actions"
 
 export function ShareBoardButton() {
   const board = useSelector((storeState) => storeState.boardModule.board)
-  const [users, setUsers] = useState(null)
+  const [users, setUsers] = useState([])
   const [anchorEl, setAnchorEl] = useState(null)
 
   const handleClose = () => {
@@ -46,7 +46,7 @@ export function ShareBoardButton() {
     setAnchorEl(null)
   }
 
-  const isPopoverOpen = Boolean(anchorEl) && users
+  const isPopoverOpen = Boolean(anchorEl) && users.length > 0
 
   return (
     <div className="share-board-button">
