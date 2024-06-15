@@ -20,6 +20,7 @@ export function TaskDetailTodoForm({
         className="input-text"
         onChange={handleChange}
         value={title || ""}
+        autoFocus
       />
 
       <div className="actions">

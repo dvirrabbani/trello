@@ -24,6 +24,7 @@ export function TaskPopoverCheckList({ task, onUpdateTask }) {
           type="text"
           value={fields.title || ""}
           onChange={handleChange}
+          autoFocus
         />
       </div>
       <Button variant="primary" onClick={onAddCheckList}>
