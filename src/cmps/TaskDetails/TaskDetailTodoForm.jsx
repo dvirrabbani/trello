@@ -6,11 +6,12 @@ export function TaskDetailTodoForm({
   handleChange,
   setIsFormOpen,
   onAddCheckListTodo,
+  setFields,
 }) {
   function onSaveTodo(ev) {
     ev.preventDefault()
     onAddCheckListTodo(checklistId, { title })
-    setIsFormOpen(() => false)
+    setFields({ title: "" })
   }
 
   return (
@@ -21,6 +22,9 @@ export function TaskDetailTodoForm({
         onChange={handleChange}
         value={title || ""}
         autoFocus
+        onKeyDown={(ev) => {
+          if (ev.key === "Enter") onSaveTodo(ev)
+        }}
       />
 
       <div className="actions">

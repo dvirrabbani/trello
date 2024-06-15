@@ -13,7 +13,7 @@ export function TaskDetailsChecklistTodos({
   onUpdateCheckListTodo,
 }) {
   const [isTodoFormOpen, setIsTodoFormOpen] = useState(false)
-  const [fields, , handleChange] = useForm({
+  const [fields, setFields, handleChange] = useForm({
     title: "",
   })
   const progressValue = todos.length
@@ -100,6 +100,7 @@ export function TaskDetailsChecklistTodos({
             {isTodoFormOpen && (
               <TaskDetailTodoForm
                 fields={fields}
+                setFields={setFields}
                 checklistId={checklistsId}
                 title={fields.title}
                 handleChange={handleChange}
