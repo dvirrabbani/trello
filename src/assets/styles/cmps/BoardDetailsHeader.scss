@@ -145,4 +145,20 @@
       }
     }
   }
+
+  .share-button {
+    max-width: rem(400px);
+    height: rem(32px);
+    margin-bottom: rem(0px);
+    grid-area: rem(4px);
+    padding: rem(6px) rem(12px) rem(6px) rem(8px);
+
+    white-space: nowrap;
+    background-color: var(--dynamic-button-highlighted);
+    color: var(--dynamic-button-highlighted-text);
+    &:hover {
+      background: var(--dynamic-button-highlighted-hovered);
+      color: var(--dynamic-button-highlighted-text);
+    }
+  }
 }

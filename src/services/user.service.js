@@ -17,6 +17,7 @@ export const userService = {
   updateLocalUserFields,
   loginWithGoogle,
   openGoogleLoginWindow,
+  getAppUsers,
 }
 
 window.userService = userService
@@ -100,6 +101,11 @@ function updateLocalUserFields(user) {
 function getLoggedinUser() {
   const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
   return user
+}
+
+async function getAppUsers() {
+  const users = await httpService.get("user")
+  return users
 }
 
 export function openGoogleLoginWindow() {
