@@ -39,7 +39,7 @@ export const AddItemForm = forwardRef(
             <div className="add-item-actions flex">
               <button
                 className="button variant-primary"
-                onClick={(e) => onAddItem(e, inputVal)}
+                onClick={(e) => onAddItem(e, inputVal, setInputVal)}
                 type="submit"
               >
                 {`Add ${type == "task" ? "card" : "list"}`}
