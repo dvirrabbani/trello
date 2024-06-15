@@ -9,6 +9,8 @@
     display: grid;
     width: 100%;
     gap: 8px;
+    max-height: rem(400px);
+    overflow: overlay;
 
     li {
       display: grid;
