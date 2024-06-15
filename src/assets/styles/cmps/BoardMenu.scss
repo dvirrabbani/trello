@@ -63,6 +63,11 @@
       cursor: pointer;
       margin-bottom: 4px;
       gap: rem(10px);
+      grid-template-columns: 24px auto;
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: start;
+      align-items: center;
 
       &:hover {
         background-color: var(
