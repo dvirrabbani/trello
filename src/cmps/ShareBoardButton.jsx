@@ -18,16 +18,23 @@ export function ShareBoardButton() {
 
   async function onShareBoard(event) {
     const target = event.currentTarget
+    // set users which not include in the current board members
     const users = await userService.getAppUsers()
-    setUsers(users)
+    const idsToFilter = board.members.map((member) => member.id)
+    const appUsers = users.filter((user) => !idsToFilter.includes(user._id))
+    setUsers(appUsers)
     setAnchorEl(target)
   }
 
   function onShareMemberToBoard(member) {
     let boardMembersToSave = [...board.members]
     const memberToSave = { ...member }
-    memberToSave.id = memberToSave._id
-    delete memberToSave._id
+
+    if (memberToSave._id) {
+      memberToSave.id = memberToSave._id
+      delete memberToSave._id
+    }
+
     const mIdx = boardMembersToSave.findIndex((boardMember) => boardMember.id === memberToSave.id)
     if (mIdx < 0) {
       boardMembersToSave.push(memberToSave)
@@ -47,30 +54,40 @@ export function ShareBoardButton() {
         <SvgIcon iconName="shareUser" />
         <span>Share</span>
       </Button>
-      {isPopoverOpen && (
-        <Popover
-          id={isPopoverOpen ? "app-members-id" : undefined}
-          open={isPopoverOpen}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          title={"Members"}
-        >
-          <div className="app-members ">
-            {users.length > 0 && (
-              <ul className="clean-list flex column">
-                {users.map((member) => {
-                  return (
-                    <Button key={`shared-board-${member._id}`} onClick={() => onShareMemberToBoard(member)}>
-                      <ProfileImg member={member} size={"lg"} />
-                      <span>{member.fullName}</span>
-                    </Button>
-                  )
-                })}
-              </ul>
-            )}
-          </div>
-        </Popover>
-      )}
+      <Popover
+        id={isPopoverOpen ? "app-members-id" : undefined}
+        open={isPopoverOpen}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        title={"Members"}
+      >
+        <div className="app-members">
+          <h4 className="title h4">App members</h4>
+          {users.length > 0 && (
+            <ul className="clean-list flex column">
+              {users.map((member) => {
+                return (
+                  <Button key={`shared-board-${member._id}`} onClick={() => onShareMemberToBoard(member)}>
+                    <ProfileImg member={member} size={"lg"} />
+                    <span>{member.fullName}</span>
+                  </Button>
+                )
+              })}
+            </ul>
+          )}
+          <h4 className="title h4">Board Members</h4>
+          <ul className="clean-list flex column">
+            {board.members.map((member) => {
+              return (
+                <Button key={`shared-board-${member.id}`} onClick={() => onShareMemberToBoard(member)}>
+                  <ProfileImg member={member} size={"lg"} />
+                  <span>{member.fullName}</span>
+                </Button>
+              )
+            })}
+          </ul>
+        </div>
+      </Popover>
     </div>
   )
 }
