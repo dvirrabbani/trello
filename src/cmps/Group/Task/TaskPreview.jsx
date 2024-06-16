@@ -222,9 +222,10 @@ function ChecklistsBadge({ checklists }) {
   const badgeClassName = allTasksDone ? "complete" : ""
 
   return (
-    <div className={`action-badge ${badgeClassName}`}>
+    <div className={`action-badge checklist ${badgeClassName}`}>
       <SvgIcon iconName="checkbox" />
-      <span>{totalDoneTodos}</span>/<span>{totalTodos}</span>
+      <span className="todo-done">{totalDoneTodos}</span>/
+      <span className="todo-total">{totalTodos}</span>
     </div>
   )
 }

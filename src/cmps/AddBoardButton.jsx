@@ -132,6 +132,7 @@ export function AddBoardButton({ iconName, title, variant, className }) {
             type="text"
             className="input-text"
             onChange={handleChange}
+            autoFocus
           />
           <Button
             disabled={!fields.title.length}
