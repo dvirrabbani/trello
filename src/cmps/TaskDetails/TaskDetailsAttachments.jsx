@@ -14,7 +14,7 @@ export function TaskDetailsAttachments({ task, onUpdateTask }) {
     if (task.attachments.find((attachment) => attachment.id === attachmentId)?.imgUrl === task.style?.bgImg) {
       onUpdateTask({
         key: "style",
-        value: {},
+        value: null,
       })
     }
   }
