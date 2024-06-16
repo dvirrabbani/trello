@@ -145,6 +145,16 @@
       white-space: nowrap;
     }
 
+    .action-badge.checklist {
+      .todo-done {
+        padding-right: 0;
+      }
+
+      .todo-total {
+        padding-left: 0;
+      }
+    }
+
     .dueDate-badge:hover {
       filter: saturate(85%) brightness(85%);
     }
