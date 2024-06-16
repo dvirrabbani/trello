@@ -156,7 +156,7 @@
         .thumbnail {
           opacity: 0.7;
         }
-        &:has(a.active),
+        &:has(.active),
         &:active {
           background-color: var(--dynamic-nav-button-background-color-pressed);
         }
