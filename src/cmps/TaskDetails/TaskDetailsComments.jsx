@@ -3,8 +3,10 @@ import dayjs from "dayjs"
 import { Button } from "../Button"
 import { useForm } from "../../customHooks/useForm"
 import { ProfileImg } from "../ProfileImg"
+import { useSelector } from "react-redux"
 
 export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, onAddComment, onUpdateComment }) {
+  const user = useSelector((storeState) => storeState.userModule.user)
   const [isEditNewCommentOpen, setIsEditNewCommentOpen] = useState(false)
   const [selectedEditCommentId, setSelectedEditCommentId] = useState(null)
 
@@ -35,6 +37,8 @@ export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, o
     setFields((prevFields) => ({ ...prevFields, txt: comment.txt }))
   }
 
+  console.log(user)
+
   return (
     <div className="task-details-comments">
       <ul className="comments-list clean-list">
@@ -43,9 +47,7 @@ export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, o
         <div className="comment-item">
           <div className="aside">
             <Button shape={"circle"}>
-              {/* TODO replace with the current loggedIn user  */}
-
-              <img src={"http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"} />
+              <img src={user.imgUrl} />
             </Button>
           </div>
           {isEditNewCommentOpen ? (
@@ -93,9 +95,7 @@ export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, o
                   <span className="member-name">
                     {boardMembers.find((boardMember) => boardMember.id === comment.byMember.id).fullName}
                   </span>
-                  <span className="comment-date">
-                    {dayjs(comment.byMember.createdAt).format("MMM D YYYY [at] h:mm A")}
-                  </span>
+                  <span className="comment-date">{dayjs(comment.byMember.createdAt).format("MMM D YYYY [at] h:mm A")}</span>
                 </div>
                 <p className="comment-txt">{comment.txt}</p>
                 <div className="comment-actions">
