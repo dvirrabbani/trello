@@ -19,6 +19,7 @@ export function Login() {
   useEffect(() => {
     onLoginWithGoogle()
     emailRef.current.focus()
+    document.title = "Login | Trello"
     return () => resetForm()
   }, [])
 
@@ -71,7 +72,10 @@ export function Login() {
           {/* Google Login */}
         </form>
         <div className="external-login-header">Or continue with</div>
-        <button className="google-button" onClick={userService.openGoogleLoginWindow}>
+        <button
+          className="google-button"
+          onClick={userService.openGoogleLoginWindow}
+        >
           <SvgIcon iconName={"google"} size={"md"} />
           <span>Google</span>
         </button>

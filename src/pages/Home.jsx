@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Swiper, SwiperSlide } from "swiper/react"
 import SvgIcon from "../cmps/SvgIcon"
@@ -11,6 +11,10 @@ export function Home() {
   const [activePreviewIdx, setActivePreviewIdx] = useState(0)
   const navigate = useNavigate()
   const [swiper, setSwiper] = useState()
+
+  useEffect(() => {
+    document.title = "Trello"
+  }, [])
 
   function onSlideTo(idx) {
     setActivePreviewIdx(idx)

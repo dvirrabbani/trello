@@ -57,7 +57,10 @@ export function TaskQuickEdit({ groupId, task, boundaries, closeQuickEdit }) {
 
   function onSaveTitleTask() {
     if (titleToEdit === "") setTitleToEdit(task.title)
-    if (titleToEdit === task.title || titleToEdit === "") return
+    if (titleToEdit === task.title || titleToEdit === "") {
+      closeQuickEdit()
+      return
+    }
     updateCurrentBoard(groupId, task.id, {
       key: "title",
       value: titleToEdit,

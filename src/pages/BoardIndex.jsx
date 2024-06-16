@@ -12,6 +12,7 @@ export function BoardIndex() {
 
   useEffect(() => {
     updateStarredBoards()
+    document.title = "Boards"
     document.body.dataset.theme = "dark"
   }, [boards])
 

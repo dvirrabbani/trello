@@ -64,6 +64,7 @@ export function BoardDetails() {
       boardService.setBoardDynamicStyle(board.style)
     }
     return () => {
+      document.title = "Trello"
       boardService.resetDynamicStyle()
     }
   }, [board])

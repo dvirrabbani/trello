@@ -15,4 +15,10 @@
   &:visited {
     color: inherit;
   }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
