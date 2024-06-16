@@ -11,7 +11,7 @@ export function TaskDetailsAttachments({ task, onUpdateTask }) {
       value: task.attachments.filter((a) => a.id !== attachmentId),
     })
 
-    if (task.attachments.find((attachment) => attachment.id === attachmentId).imgUrl === task.style.bgImg) {
+    if (task.attachments.find((attachment) => attachment.id === attachmentId)?.imgUrl === task.style?.bgImg) {
       onUpdateTask({
         key: "style",
         value: {},
