@@ -36,7 +36,7 @@ export function TaskCoverPopover({ task, onUpdateTask, onClose }) {
   function onRemoveCover() {
     onUpdateTask({
       key: "style",
-      value: {},
+      value: null,
     })
   }
 
