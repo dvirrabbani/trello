@@ -52,7 +52,7 @@ export function Login() {
             name="email"
             type="email"
             className="input-text"
-            placeholder="Enter your email"
+            placeholder="Email"
             ref={emailRef}
             value={fields.email}
             onChange={handleChange}
@@ -60,6 +60,7 @@ export function Login() {
           <input
             name="password"
             type="password"
+            placeholder="Password"
             className="input-text"
             value={fields.password}
             onChange={handleChange}
@@ -69,11 +70,8 @@ export function Login() {
           </Button>
           {/* Google Login */}
         </form>
-        <div className="external-login-header">Or continue with:</div>
-        <button
-          className="google-button"
-          onClick={userService.openGoogleLoginWindow}
-        >
+        <div className="external-login-header">Or continue with</div>
+        <button className="google-button" onClick={userService.openGoogleLoginWindow}>
           <SvgIcon iconName={"google"} size={"md"} />
           <span>Google</span>
         </button>
