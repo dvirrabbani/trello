@@ -1,3 +1,6 @@
+body:has(#board-label-edit-popover) #popover-labels-id {
+  visibility: hidden;
+}
 .task-popover-label {
   > .button {
     display: flex;
