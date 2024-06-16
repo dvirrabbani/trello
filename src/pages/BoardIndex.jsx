@@ -6,7 +6,6 @@ import SvgIcon from "../cmps/SvgIcon.jsx"
 import { AddBoardButton } from "../cmps/AddBoardButton.jsx"
 
 export function BoardIndex() {
-  const user = useSelector((storeState) => storeState.userModule.user)
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [starredBoard, setStarredBoard] = useState([])
 
@@ -52,24 +51,7 @@ export function BoardIndex() {
                 <SvgIcon iconName={"star"} size={"md"} />
                 <span>Starred Boards</span>
               </div>
-              <BoardList
-                type={"starred"}
-                key={"starred"}
-                boards={starredBoard}
-              />
-            </>
-          )}
-          {user?.recentBoards?.length > 0 && (
-            <>
-              <div className="board-list-header">
-                <SvgIcon iconName={"clock"} size={"md"} />
-                <span>Recently viewed</span>
-              </div>
-              <BoardList
-                type={"Recently"}
-                key={"Recently"}
-                boards={user?.recentBoards}
-              />
+              <BoardList type={"starred"} key={"starred"} boards={starredBoard} />
             </>
           )}
           <div className="board-list-header all-boards">
@@ -77,11 +59,7 @@ export function BoardIndex() {
             <span>Your Boards</span>
           </div>
           <BoardList type={"all-boards"} key={"all-boards"} boards={boards}>
-            <AddBoardButton
-              title={"Create new board"}
-              variant={"contained"}
-              className={"board-item"}
-            />
+            <AddBoardButton title={"Create new board"} variant={"contained"} className={"board-item"} />
           </BoardList>
         </div>
       </div>
