@@ -5,7 +5,13 @@ import { useForm } from "../../customHooks/useForm"
 import { ProfileImg } from "../ProfileImg"
 import { useSelector } from "react-redux"
 
-export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, onAddComment, onUpdateComment }) {
+export function TaskDetailsComments({
+  comments,
+  boardMembers,
+  onRemoveComment,
+  onAddComment,
+  onUpdateComment,
+}) {
   const user = useSelector((storeState) => storeState.userModule.user)
   const [isEditNewCommentOpen, setIsEditNewCommentOpen] = useState(false)
   const [selectedEditCommentId, setSelectedEditCommentId] = useState(null)
@@ -53,12 +59,20 @@ export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, o
           {isEditNewCommentOpen ? (
             <div className="edit-comment">
               {/* Submit new comment */}
-              <input className="input-text" name="txt" onChange={handleChange} value={fields.txt || ""} />
+              <input
+                className="input-text"
+                name="txt"
+                onChange={handleChange}
+                value={fields.txt || ""}
+                autoFocus
+              />
               <div className="actions">
                 <Button variant="contained" onClick={onSaveNewComment}>
                   Save
                 </Button>
-                <Button onClick={() => setIsEditNewCommentOpen(() => false)}>Cancel</Button>
+                <Button onClick={() => setIsEditNewCommentOpen(() => false)}>
+                  Cancel
+                </Button>
               </div>
             </div>
           ) : (
@@ -79,12 +93,24 @@ export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, o
               <div className="edit-comment">
                 {/* edit selected comment */}
 
-                <input className="input-text" name="txt" value={fields.txt} onChange={handleChange} />
+                <input
+                  className="input-text"
+                  name="txt"
+                  value={fields.txt}
+                  onChange={handleChange}
+                />
                 <div className="actions">
-                  <Button variant={"primary"} disabled={!fields.txt} onClick={() => onSaveSelectedComment(comment)}>
+                  <Button
+                    variant={"primary"}
+                    disabled={!fields.txt}
+                    onClick={() => onSaveSelectedComment(comment)}
+                  >
                     Save
                   </Button>
-                  <Button variant={"contained"} onClick={() => setSelectedEditCommentId(() => null)}>
+                  <Button
+                    variant={"contained"}
+                    onClick={() => setSelectedEditCommentId(() => null)}
+                  >
                     Cancel
                   </Button>
                 </div>
@@ -93,16 +119,30 @@ export function TaskDetailsComments({ comments, boardMembers, onRemoveComment, o
               <div className="comment-body">
                 <div className="comment-header">
                   <span className="member-name">
-                    {boardMembers.find((boardMember) => boardMember.id === comment.byMember.id).fullName}
+                    {
+                      boardMembers.find(
+                        (boardMember) => boardMember.id === comment.byMember.id
+                      ).fullName
+                    }
                   </span>
-                  <span className="comment-date">{dayjs(comment.byMember.createdAt).format("MMM D YYYY [at] h:mm A")}</span>
+                  <span className="comment-date">
+                    {dayjs(comment.byMember.createdAt).format(
+                      "MMM D YYYY [at] h:mm A"
+                    )}
+                  </span>
                 </div>
                 <p className="comment-txt">{comment.txt}</p>
                 <div className="comment-actions">
-                  <Button variant="link" onClick={() => onRemoveComment(comment.id, comments)}>
+                  <Button
+                    variant="link"
+                    onClick={() => onRemoveComment(comment.id, comments)}
+                  >
                     Delete
                   </Button>
-                  <Button variant="link" onClick={() => onOpenEditSelectedComment(comment)}>
+                  <Button
+                    variant="link"
+                    onClick={() => onOpenEditSelectedComment(comment)}
+                  >
                     Edit
                   </Button>
                 </div>
