@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
 import { Outlet, useParams } from "react-router"
 import { useSelector } from "react-redux"
-import { getActionUpdateBoard, getActionUpdateCurrentBoard, loadBoard } from "../store/board.actions"
+import {
+  getActionUpdateBoard,
+  getActionUpdateCurrentBoard,
+  loadBoard,
+} from "../store/board.actions"
 import { GroupList } from "../cmps/Group/GroupList"
 import { BoardDetailsHeader } from "../cmps/BoardDetails/BoardDetailsHeader"
 import { eventBus } from "../services/event-bus.service"
@@ -24,7 +28,9 @@ import { BoardMenu } from "../cmps/BoardDetails/BoardMenu"
 export function BoardDetails() {
   const params = useParams()
   const initialBoard = useSelector((storeState) => storeState.boardModule.board)
-  const filterBy = useSelector((storeState) => storeState.boardModule.boardFilterBy)
+  const filterBy = useSelector(
+    (storeState) => storeState.boardModule.boardFilterBy
+  )
   const boards = useSelector((storeState) => storeState.boardModule.boards)
   const [taskQuickEdit, setTaskQuickEdit] = useState(null)
   const [viewType, setViewType] = useState("board")
@@ -54,7 +60,7 @@ export function BoardDetails() {
       boardService.setBoardDynamicStyle(board.style)
     }
     return () => {
-      document.title = "Trello"
+      document.title = "Treiio"
       boardService.resetDynamicStyle()
     }
   }, [board])
@@ -90,7 +96,10 @@ export function BoardDetails() {
   if (!board) return <Loader />
 
   return (
-    <div className="board-details-container bg-image-cover" style={{ backgroundImage: `url(${board.style.bgImg})` }}>
+    <div
+      className="board-details-container bg-image-cover"
+      style={{ backgroundImage: `url(${board.style.bgImg})` }}
+    >
       <BoardSidebar />
       <div className="board-main-content flex column">
         <BoardDetailsHeader
@@ -101,12 +110,18 @@ export function BoardDetails() {
           onToggleBoardMenu={onToggleBoardMenu}
         />
 
-        <div className="board-groups-container full" style={viewType === "dashboard" ? { display: "none" } : undefined}>
+        <div
+          className="board-groups-container full"
+          style={viewType === "dashboard" ? { display: "none" } : undefined}
+        >
           <GroupList groups={board.groups} />
         </div>
         {viewType === "dashboard" && <BoarDashboardView board={initialBoard} />}
       </div>
-      <BoardMenu boardMenuIsOpen={boardMenuIsOpen} onToggleBoardMenu={onToggleBoardMenu} />
+      <BoardMenu
+        boardMenuIsOpen={boardMenuIsOpen}
+        onToggleBoardMenu={onToggleBoardMenu}
+      />
       <Outlet />
       {taskQuickEdit && (
         <Modal cb={setTaskQuickEdit}>

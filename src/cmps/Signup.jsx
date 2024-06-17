@@ -16,7 +16,7 @@ export function Signup() {
   })
 
   useEffect(() => {
-    document.title = "Sign up | Trello"
+    document.title = "Sign up | Treiio"
     return () => resetForm()
   }, [])
 

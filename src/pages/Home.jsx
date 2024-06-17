@@ -13,7 +13,7 @@ export function Home() {
   const [swiper, setSwiper] = useState()
 
   useEffect(() => {
-    document.title = "Trello"
+    document.title = "Treiio"
   }, [])
 
   function onSlideTo(idx) {
@@ -53,7 +53,7 @@ export function Home() {
           <div className="row">
             <div className="col">
               <h1>
-                Trello brings all your tasks, teammates, and tools together
+                Treiio brings all your tasks, teammates, and tools together
               </h1>
               <p>Keep everything in the same place—even if your team isn’t.</p>
               <button
@@ -65,7 +65,7 @@ export function Home() {
             </div>
             <div className="col">
               <img
-                src="https://images.ctfassets.net/rz1oowkt5gyp/75rDABL8fyMtNLlUAtBxrg/c5e145977a86c41c47e17c69410c64f7/TrelloUICollage_4x.png?w=1080"
+                src="https://images.ctfassets.net/rz1oowkt5gyp/75rDABL8fyMtNLlUAtBxrg/c5e145977a86c41c47e17c69410c64f7/TreiioUICollage_4x.png?w=1080"
                 alt=""
               />
             </div>
@@ -75,7 +75,7 @@ export function Home() {
       <section className="home-section preview">
         <div className="container">
           <header>
-            <span>Trello 101</span>
+            <span>Treiio 101</span>
             <h2>A productivity powerhouse</h2>
             <p>
               Simple, flexible, and powerful. All it takes are boards, lists,
@@ -92,7 +92,7 @@ export function Home() {
               >
                 <h3>Boards</h3>
                 <p>
-                  Trello boards keep tasks organized and work moving forward. In
+                  Treiio boards keep tasks organized and work moving forward. In
                   a glance, see everything from “things to do” to “aww yeah, we
                   did it!”
                 </p>
@@ -105,7 +105,7 @@ export function Home() {
                 <p>
                   The different stages of a task. Start as simple as To Do,
                   Doing or Done—or build a workflow custom fit to your team’s
-                  needs. There’s no wrong way to Trello.
+                  needs. There’s no wrong way to Treiio.
                 </p>
               </button>
               <button
@@ -166,19 +166,19 @@ export function Home() {
                 <div className="title">Log in</div>
               </li>
               <li className="link-item">
-                <div className="title">About Trello</div>
+                <div className="title">About Treiio</div>
                 <div className="link-desc">What’s behind the boards.</div>
               </li>
               <li className="link-item">
                 <div className="title">Jobs</div>
                 <div className="link-desc">
-                  Learn about open roles on the Trello team.
+                  Learn about open roles on the Treiio team.
                 </div>
               </li>
               <li className="link-item">
                 <div className="title">Apps</div>
                 <div className="link-desc">
-                  Download the Trello App for your Desktop or Mobile devices.
+                  Download the Treiio App for your Desktop or Mobile devices.
                 </div>
               </li>
               <li className="link-item">

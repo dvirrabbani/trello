@@ -15,7 +15,7 @@ export function Login() {
 
   useEffect(() => {
     emailRef.current.focus()
-    document.title = "Login | Trello"
+    document.title = "Login | Treiio"
     return () => resetForm()
   }, [])
 
