@@ -1,14 +1,14 @@
 @font-face {
-  font-family: Roboto;
-  src: url(../../fonts/roboto/Roboto-Regular.ttf);
+  font-family: "Roboto";
+  src: url("/src/assets/fonts/roboto/Roboto-Regular.ttf");
 }
 
 @font-face {
   font-family: charlie-display;
-  src: url(/src/assets/fonts/charlie/charlie-display.ttf) format("truetype");
+  src: url("/src/assets/fonts/charlie/charlie-display.ttf") format("truetype");
 }
 
 @font-face {
   font-family: trellicons;
-  src: url(../../fonts/trellicons.dd0e4c2f.ttf) format("truetype");
+  src: url("/src/assets/fonts/trellicons.dd0e4c2f.ttf") format("truetype");
 }
