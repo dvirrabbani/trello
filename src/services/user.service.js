@@ -15,8 +15,6 @@ export const userService = {
   update,
   changeScore,
   updateLocalUserFields,
-  loginWithGoogle,
-  openGoogleLoginWindow,
   getAppUsers,
 }
 
@@ -53,13 +51,6 @@ async function login(userCred) {
   // const users = await storageService.query('user')
   // const user = users.find(user => user.username === userCred.username)
   const user = await httpService.post("auth/login", userCred)
-  if (user) {
-    return saveLocalUser(user)
-  }
-}
-
-async function loginWithGoogle() {
-  const { user } = await httpService.get("auth/google/login/success")
   if (user) {
     return saveLocalUser(user)
   }
@@ -106,10 +97,6 @@ function getLoggedinUser() {
 async function getAppUsers() {
   const users = await httpService.get("user")
   return users
-}
-
-export function openGoogleLoginWindow() {
-  window.open(`${BASE_URL}auth/google/callback`, "_self")
 }
 
 // ;(async ()=>{

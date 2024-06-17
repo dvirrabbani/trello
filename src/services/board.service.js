@@ -39,7 +39,7 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-  var savedBoard
+  let savedBoard
   if (board._id) {
     savedBoard = await httpService.put(`${STORAGE_KEY}/${board._id}`, board)
   } else {
@@ -155,25 +155,11 @@ function _isTaskMatchTxt(task, filter) {
 }
 
 function _isTaskMatchDates(task, filter) {
-  const {
-    noDates,
-    overdue,
-    dueNextDay,
-    dueNextWeek,
-    dueNextMonth,
-    isCompleted,
-  } = filter
+  const { noDates, overdue, dueNextDay, dueNextWeek, dueNextMonth, isCompleted } = filter
 
   const due = new Date(task.dueDate?.date)
 
-  if (
-    !noDates &&
-    !overdue &&
-    !dueNextDay &&
-    !dueNextWeek &&
-    !dueNextMonth &&
-    !isCompleted
-  ) {
+  if (!noDates && !overdue && !dueNextDay && !dueNextWeek && !dueNextMonth && !isCompleted) {
     // no date-related filtering
     return true
   }
@@ -214,14 +200,7 @@ function _isTaskMatchDates(task, filter) {
     isMatchIsCompleted = task.dueDate?.isCompleted
   }
 
-  return (
-    isMatchNoDates ||
-    isMatchOverdue ||
-    isMatchDueNextDay ||
-    isMatchDueNextWeek ||
-    isMatchDueNextMonth ||
-    isMatchIsCompleted
-  )
+  return isMatchNoDates || isMatchOverdue || isMatchDueNextDay || isMatchDueNextWeek || isMatchDueNextMonth || isMatchIsCompleted
 }
 
 function getBoardChartsData(board) {
@@ -244,32 +223,22 @@ function getBoardChartsData(board) {
       // due dates count
       let dueDateStatus
       if (task.dueDate) {
-        dueDateStatus =
-          uiService.getDueDateStatusAndClassName(
-            task.dueDate.date,
-            task.dueDate.isCompleted
-          ).status || "Due Later"
+        dueDateStatus = uiService.getDueDateStatusAndClassName(task.dueDate.date, task.dueDate.isCompleted).status || "Due Later"
       }
 
       if (!dueDateStatus) {
         dueDateStatus = "No due date"
       }
 
-      dueDateCounts[dueDateStatus] = dueDateCounts[dueDateStatus]
-        ? dueDateCounts[dueDateStatus] + 1
-        : 1
+      dueDateCounts[dueDateStatus] = dueDateCounts[dueDateStatus] ? dueDateCounts[dueDateStatus] + 1 : 1
 
       // Members tasks count
       if (task.members.length === 0) {
-        mapMemberIdToCountTasks.unassigned = mapMemberIdToCountTasks.unassigned
-          ? mapMemberIdToCountTasks.unassigned + 1
-          : 1
+        mapMemberIdToCountTasks.unassigned = mapMemberIdToCountTasks.unassigned ? mapMemberIdToCountTasks.unassigned + 1 : 1
       }
 
       task.members.map((member) => {
-        mapMemberIdToCountTasks[member.id] = mapMemberIdToCountTasks[member.id]
-          ? mapMemberIdToCountTasks[member.id] + 1
-          : 1
+        mapMemberIdToCountTasks[member.id] = mapMemberIdToCountTasks[member.id] ? mapMemberIdToCountTasks[member.id] + 1 : 1
       })
       // Board Label count
       task.labelIds.forEach((labelId) => {
@@ -296,9 +265,7 @@ function getBoardChartsData(board) {
   cardsPerMember = board.members.map((member) => {
     return {
       title: member.fullName,
-      count: mapMemberIdToCountTasks[member.id]
-        ? mapMemberIdToCountTasks[member.id]
-        : 0,
+      count: mapMemberIdToCountTasks[member.id] ? mapMemberIdToCountTasks[member.id] : 0,
     }
   })
 
@@ -366,14 +333,8 @@ function setBoardDynamicStyle(boardStyle) {
   const { colorRgb, themeColor } = boardStyle
 
   const root = document.documentElement
-  root.style.setProperty(
-    "--dynamic-background-transparent",
-    _darkenOrLightenColor(themeColor, `rgba(${colorRgb}, 0.8)`)
-  )
-  root.style.setProperty(
-    "--dynamic-background",
-    _darkenOrLightenColor(themeColor, `rgb(${colorRgb})`)
-  )
+  root.style.setProperty("--dynamic-background-transparent", _darkenOrLightenColor(themeColor, `rgba(${colorRgb}, 0.8)`))
+  root.style.setProperty("--dynamic-background", _darkenOrLightenColor(themeColor, `rgb(${colorRgb})`))
 }
 
 function _darkenOrLightenColor(themeColor, color) {

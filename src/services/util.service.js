@@ -13,11 +13,10 @@ export const utilService = {
 }
 
 function makeId(length = 6) {
-  var txt = ""
-  var possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  let txt = ""
+  let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     txt += possible.charAt(Math.floor(Math.random() * possible.length))
   }
 
@@ -25,7 +24,7 @@ function makeId(length = 6) {
 }
 
 function makeLorem(size = 100) {
-  var words = [
+  let words = [
     "The sky",
     "above",
     "the port",
@@ -43,7 +42,7 @@ function makeLorem(size = 100) {
     "had",
     "the story",
     "bit by bit",
-    "from various people",
+    "from letious people",
     "and",
     "as generally",
     "happens",
@@ -59,7 +58,7 @@ function makeLorem(size = 100) {
     "to",
     "burn",
   ]
-  var txt = ""
+  let txt = ""
   while (size > 0) {
     size--
     txt += words[Math.floor(Math.random() * words.length)] + " "
@@ -112,21 +111,21 @@ function getAssetSrc(name) {
 function getImageMetaData(imageUrl) {
   return new Promise(function (resolve, reject) {
     // Create a new image object
-    var img = new Image()
+    let img = new Image()
 
     // Set the src attribute to the image URL
     img.src = imageUrl
 
     // When the image is loaded, resolve the promise with its metadata
     img.onload = function () {
-      var width = this.width // Image width
-      var height = this.height // Image height
+      let width = this.width // Image width
+      let height = this.height // Image height
 
       // Calculate the aspect ratio
-      var aspectRatio = width / height
+      let aspectRatio = width / height
 
       // Create an object with image metadata
-      var metaData = {
+      let metaData = {
         width: width,
         height: height,
         aspectRatio: aspectRatio,

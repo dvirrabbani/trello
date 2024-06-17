@@ -1,12 +1,9 @@
 import { useEffect, useRef } from "react"
-import { useSelector } from "react-redux"
 import { Button } from "../cmps/Button"
 import SvgIcon from "../cmps/SvgIcon"
 import { useForm } from "../customHooks/useForm"
 import { useNavigate } from "react-router"
-import { login, loginWithGoogle } from "../store/user.actions"
-import { DEMO_USER_CREDENTIALS } from "../demo/user"
-import { userService } from "../services/user.service"
+import { login } from "../store/user.actions"
 
 export function Login() {
   const navigate = useNavigate()
@@ -17,7 +14,6 @@ export function Login() {
   const emailRef = useRef(null)
 
   useEffect(() => {
-    onLoginWithGoogle()
     emailRef.current.focus()
     document.title = "Login | Trello"
     return () => resetForm()
@@ -31,16 +27,6 @@ export function Login() {
     }
   }
 
-  const onLoginWithGoogle = async () => {
-    try {
-      const googleUser = await loginWithGoogle()
-      if (googleUser._id) {
-        navigate("/board")
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  }
   return (
     <div className="login">
       <section className="login-card">
@@ -69,16 +55,7 @@ export function Login() {
           <Button className={"w-100 flex justify-center"} variant="primary">
             Continue
           </Button>
-          {/* Google Login */}
         </form>
-        <div className="external-login-header">Or continue with</div>
-        <button
-          className="google-button"
-          onClick={userService.openGoogleLoginWindow}
-        >
-          <SvgIcon iconName={"google"} size={"md"} />
-          <span>Google</span>
-        </button>
       </section>
     </div>
   )

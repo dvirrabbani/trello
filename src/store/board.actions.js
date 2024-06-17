@@ -15,10 +15,7 @@ import {
   UPDATE_CURRENT_BOARD,
 } from "./board.reducer.js"
 import { activityService } from "../services/acitivity.service.js"
-import {
-  SOCKET_EMIT_ADD_MEMBER,
-  socketService,
-} from "../services/socket.service.js"
+import { SOCKET_EMIT_ADD_MEMBER, socketService } from "../services/socket.service.js"
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -92,28 +89,16 @@ export async function addBoard(board) {
   }
 }
 
-export function updateCurrentBoard(groupId, taskId, { key, value }, activity) {
+export async function updateCurrentBoard(groupId, taskId, { key, value }, activity) {
   const board = store.getState().boardModule.board
-  const updateBoard = boardService.updateBoard(
-    board,
-    groupId,
-    taskId,
-    { key, value },
-    activity
-  )
-  store.dispatch(getActionUpdateCurrentBoard(updateBoard))
+  const updateBoard = await boardService.updateBoard(board, groupId, taskId, { key, value }, activity)
+  await store.dispatch(getActionUpdateCurrentBoard(updateBoard))
 }
 
-export function updateBoard(board, { key, value }, activity) {
-  const updateBoard = boardService.updateBoard(
-    board,
-    null,
-    null,
-    { key, value },
-    activity
-  )
+export async function updateBoard(board, { key, value }, activity) {
+  const updateBoard = await boardService.updateBoard(board, null, null, { key, value }, activity)
 
-  store.dispatch(getActionUpdateBoard(updateBoard))
+  await store.dispatch(getActionUpdateBoard(updateBoard))
 }
 
 export async function loadBoards() {
@@ -157,12 +142,7 @@ export async function loadTask(boardId) {
   }
 }
 
-export async function updateTaskMembers(
-  member,
-  taskMembers,
-  taskTitle,
-  onUpdateTask
-) {
+export async function updateTaskMembers(member, taskMembers, taskTitle, onUpdateTask) {
   try {
     let membersToEdit = []
     let activity = {}
@@ -209,14 +189,13 @@ export async function updateTaskMembers(
 export async function updateTaskLabels(labelId, taskLabelsIds, onUpdateTask) {
   let labelIdsToEdit = []
   // dose not have labels
+
   if (!taskLabelsIds) {
     labelIdsToEdit = [labelId]
     // have labels
   } else {
     const taskLabel = taskLabelsIds.find((lIdx) => lIdx === labelId)
-    labelIdsToEdit = taskLabel
-      ? taskLabelsIds.filter((lIdx) => lIdx !== labelId)
-      : [...taskLabelsIds, labelId]
+    labelIdsToEdit = taskLabel ? taskLabelsIds.filter((lIdx) => lIdx !== labelId) : [...taskLabelsIds, labelId]
   }
 
   onUpdateTask({
