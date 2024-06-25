@@ -34,41 +34,44 @@ $task-detail-main-width: rem(552px);
       .task-details-main-container {
         display: grid;
         grid-template-columns: rem(552px) rem(216px);
-      }
-
-      .task-details-description {
-        p {
-          cursor: pointer;
-          margin: 0;
+        @media (max-width: 768px) {
+          display: block;
         }
 
-        main {
-          margin-inline-start: rem(40px);
-          display: grid;
-          & > .button {
-            display: flex;
-            align-items: baseline;
-            height: rem(60px);
-            flex: 1;
-            padding: rem(8px) rem(12px);
-          }
-
-          > pre {
+        .task-details-description {
+          p {
             cursor: pointer;
+            margin: 0;
           }
 
-          .task-detail-description-edit {
-            pre {
-              min-height: rem(275px);
-            }
-            .actions {
+          main {
+            margin-inline-start: rem(40px);
+            display: grid;
+            & > .button {
               display: flex;
-              gap: rem(6px);
-              margin-top: rem(8px);
+              align-items: baseline;
+              height: rem(60px);
+              flex: 1;
+              padding: rem(8px) rem(12px);
+            }
 
-              .button {
-                height: rem(32px);
-                padding: rem(6px) rem(12px);
+            > pre {
+              cursor: pointer;
+            }
+
+            .task-detail-description-edit {
+              pre {
+                min-height: rem(275px);
+              }
+              .actions {
+                display: flex;
+                gap: rem(6px);
+                margin-top: rem(8px);
+
+                .button {
+                  height: rem(32px);
+                  padding: rem(6px) rem(12px);
+                }
               }
             }
           }
